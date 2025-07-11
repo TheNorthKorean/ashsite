@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -10,19 +10,24 @@ const Testimonials = () => {
   });
   
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
+  const [animationOffset, setAnimationOffset] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   
   const nextTestimonials = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 3000);
+    const newIndex = (currentIndex + 1) % testimonials.length;
+    setCurrentIndex(newIndex);
+    setAnimationOffset(-(newIndex * 386)); // 380px width + 6px gap
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 3000);
   };
   
   const prevTestimonials = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 3000);
+    const newIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+    setCurrentIndex(newIndex);
+    setAnimationOffset(-(newIndex * 386)); // 380px width + 6px gap
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 3000);
   };
 
   const testimonials = [
@@ -91,16 +96,7 @@ const Testimonials = () => {
     },
   ];
 
-  // Auto-advance testimonials
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 4000); // Change testimonial every 4 seconds
-    
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, testimonials.length]);
+
 
   return (
     <section id="testimonials" className="py-32 relative overflow-hidden">
@@ -177,17 +173,26 @@ const Testimonials = () => {
           >
             <motion.div
               className="flex gap-6"
-              animate={{
-                x: `${-currentIndex * 380}px`
+              animate={!isPaused ? {
+                x: [0, -(testimonials.length * 386)], // 380px width + 6px gap
+              } : {
+                x: animationOffset
               }}
-              transition={{
+              transition={!isPaused ? {
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 50, // Smooth speed - 50 seconds for full cycle
+                  ease: "linear",
+                }
+              } : {
                 duration: 0.5,
                 ease: "easeInOut"
               }}
             >
-              {testimonials.map((testimonial, index) => (
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
                 <motion.div
-                  key={testimonial.name}
+                  key={`${testimonial.name}-${index}`}
                   className="group flex-shrink-0 w-[320px] md:w-[360px]"
                   whileHover={{ scale: 1.02 }}
                 >
@@ -262,8 +267,9 @@ const Testimonials = () => {
                 key={index}
                 onClick={() => {
                   setCurrentIndex(index);
-                  setIsAutoPlaying(false);
-                  setTimeout(() => setIsAutoPlaying(true), 3000);
+                  setAnimationOffset(-(index * 386)); // 380px width + 6px gap
+                  setIsPaused(true);
+                  setTimeout(() => setIsPaused(false), 3000);
                 }}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentIndex 

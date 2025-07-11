@@ -105,7 +105,7 @@ const GetStarted = () => {
         >
           <div className="inline-flex items-center px-4 py-1.5 bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-500/30 rounded-full">
             <Shield className="text-green-400 mr-2" size={16} />
-            <span className="text-sm font-normal text-green-400">
+            <span className="text-xs md:text-sm font-normal text-green-400">
               Trusted by 200+ aesthetic practices • $90M+ revenue generated
             </span>
           </div>
@@ -122,7 +122,7 @@ const GetStarted = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1 
-            className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 tracking-tight leading-[1.1]"
+            className="text-4xl md:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 tracking-tight leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -146,7 +146,7 @@ const GetStarted = () => {
 
           {/* Key Benefits */}
           <motion.div
-            className="flex flex-col-2 xs:flex-cols-3 flex-row gap-4 justify-center mb-12 max-w-12xl mx-auto text-s"
+            className="flex flex-col-2 xs:flex-cols-3 flex-row gap-4 justify-center mb-12 max-w-12xl mx-auto text-xs md:text-sm"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -406,7 +406,7 @@ const GetStarted = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Practice?</h2>
-            <p className="text-xl text-white/70 mb-8 leading-relaxed">
+            <p className="text-medium md:text-xl text-white/70 mb-8 leading-relaxed">
               Join 200+ aesthetic professionals who've already increased their revenue by 27% on average. 
               Start your 14-day free trial today.
             </p>
