@@ -131,10 +131,10 @@ const Testimonials = () => {
             {[...testimonials, ...testimonials].map((testimonial, index) => (
               <motion.div
                 key={`${testimonial.name}-${index}`}
-                className="group min-w-[300px] md:min-w-[400px] max-w-[300px] md:max-w-[400px]"
+                className="group min-w-[280px] md:min-w-[350px] lg:min-w-[400px] max-w-[280px] md:max-w-[350px] lg:max-w-[400px]"
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 transition-all duration-300 group-hover:border-[#00d9ff]/50">
+                <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 lg:p-8 h-full hover:bg-white/10 transition-all duration-300 group-hover:border-[#00d9ff]/50">
                   {/* Quote Icon */}
                   <div className="flex justify-between items-start mb-6">
                     <Quote className="text-[#00d9ff]/50" size={32} />

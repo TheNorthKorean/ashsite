@@ -33,7 +33,7 @@ const GetStarted = () => {
       name: `Company ${companyNumber}`,
       logo: `/logos/${companyNumber}.png`
     };
-  }).filter(Boolean); // Remove null entries
+  }).filter((company): company is { name: string; logo: string } => company !== null); // Remove null entries
 
   const trustIndicators = [
     { metric: '200+', label: 'Practices Transformed' },
@@ -122,7 +122,7 @@ const GetStarted = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1 
-            className="text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1]"
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 tracking-tight leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -135,7 +135,7 @@ const GetStarted = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-l text-white/70 leading-relaxed mb-8 max-w-3xl mx-auto"
+            className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed mb-8 max-w-3xl mx-auto px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -180,13 +180,13 @@ const GetStarted = () => {
 
           {/* CTAs */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-6 justify-center mb-8"
+            className="flex flex-col sm:flex-row gap-2 md:gap-4 justify-center mb-8 px-0 md:px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
             <motion.button
-              className="group px-7 py-3.5 bg-[#00d9ff] rounded-xl font-semibold text-medium shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-3"
+              className="group px-6 py-4 md:px-8 md:py-4 bg-[#00d9ff] rounded-xl font-medium text-sm md:text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-3"
               whileHover={{ 
                 scale: 1.05, 
                 boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' 
@@ -198,7 +198,7 @@ const GetStarted = () => {
             </motion.button>
             
             <motion.button
-              className="group px-8 py-3.5 border-2 border-white/20 rounded-xl font-semibold text-medium hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-4 backdrop-blur-sm"
+              className="group px-6 py-3 md:px-8 md:py-4 border-2 border-white/20 rounded-xl font-medium text-sm md:text-base hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

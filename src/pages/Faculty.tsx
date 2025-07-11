@@ -54,7 +54,7 @@ const Faculty = () => {
       name: `Company ${companyNumber}`,
       logo: `/logos/${companyNumber}.png`
     };
-  }).filter(Boolean); // Remove null entries
+  }).filter((company): company is { name: string; logo: string } => company !== null); // Remove null entries
 
   const specialties = [
     { id: 'all', name: 'All Specialties', count: 35 },
@@ -244,7 +244,7 @@ const Faculty = () => {
           </motion.div>
 
           <motion.h1 
-            className="text-5xl lg:text-7xl font-bold mb-6 tracking-tight"
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -256,7 +256,7 @@ const Faculty = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-medium md:text-xl text-white/70 leading-relaxed mb-16"
+            className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed mb-16 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -266,18 +266,26 @@ const Faculty = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-2 md:gap-4 justify-center pt-0 md:pt-5 px-0 md:px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <button className="px-12 py-3 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-sm shadow-lg hover:scale-105 transition-transform">
+            <motion.button
+              className="group relative px-6 py-4 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               Apply Now
-            </button>
-            <button className="px-8 py-3.5 border-2 border-white/20 rounded-xl font-bold text-sm hover:bg-white/10 transition-all duration-300 flex items-center gap-2">
+            </motion.button>
+            <motion.button
+              className="group px-6 py-3 md:px-8 md:py-4 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm md:text-base hover:bg-gray-800/80 hover:border-[#00d9ff]/50 transition-all duration-300 flex items-center justify-center gap-3"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <Play size={20} />
               Learn More
-            </button>
+            </motion.button>
           </motion.div>
         </motion.div>
       </section>

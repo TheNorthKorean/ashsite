@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,

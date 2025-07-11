@@ -162,7 +162,7 @@ const AestheticDifference = () => {
       
       <motion.div
         ref={ref}
-        className="relative z-10 max-w-7xl mx-auto px-10 md:px-12"
+        className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12"
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
@@ -245,7 +245,7 @@ const AestheticDifference = () => {
           <div className="flex flex-col space-y-2 items-center">
             {/* Card Container with progressive partial blur effect */}
             <motion.div
-              className="relative w-[400px] h-[520px]"
+              className="relative w-[280px] md:w-[350px] lg:w-[400px] h-[420px] md:h-[480px] lg:h-[520px]"
               style={{ 
                 display: 'grid',
                 gridTemplateAreas: '"stack"',
@@ -289,14 +289,14 @@ const AestheticDifference = () => {
                     } : {}}
                   >
                     {/* Card background with consistent structure */}
-                    <div className={`h-[520px] ${
+                    <div className={`h-[420px] md:h-[480px] lg:h-[520px] ${
                       isActive ? 'bg-gray-900/85' : 'bg-gray-900/95'
                     } backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl transition-all duration-300 ${
                       isActive ? 'hover:bg-gray-900/90 hover:border-[#00d9ff]/50' : ''
                     } relative overflow-hidden`}>
                       
                       {/* Base content layer - ALWAYS present and positioned consistently */}
-                      <div className="absolute inset-0 h-full flex flex-col p-8">
+                      <div className="absolute inset-0 h-full flex flex-col p-4 md:p-6 lg:p-8">
                         <div className="flex items-center justify-between mb-6">
                           <div className="flex items-center space-x-2">
                             <TopLeftIconComponent className={`w-5 h-5 ${difference.topLeftIconColor}`} />
@@ -311,7 +311,7 @@ const AestheticDifference = () => {
                         
                         <div className="flex-1 flex flex-col justify-center items-center text-center">
                           <motion.div
-                            className={`w-20 h-20 bg-gradient-to-br ${difference.bgGradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg relative overflow-hidden`}
+                            className={`w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20 bg-gradient-to-br ${difference.bgGradient} rounded-2xl flex items-center justify-center mb-4 md:mb-6 shadow-lg relative overflow-hidden`}
                             animate={isActive ? {
                               scale: [1, 1.1, 1],
                             } : {}}
@@ -334,10 +334,10 @@ const AestheticDifference = () => {
                                 }}
                               />
                             )}
-                            <IconComponent className={`w-10 h-10 ${difference.iconColor} relative z-10`} />
+                            <IconComponent className={`w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 ${difference.iconColor} relative z-10`} />
                           </motion.div>
                           
-                          <h3 className="text-2xl font-bold tracking-tight mb-2 text-white">
+                          <h3 className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight mb-2 text-white">
                             {difference.title}
                           </h3>
                           

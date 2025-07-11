@@ -58,7 +58,7 @@ const Navigation = () => {
             {/* Logo and Brand */}
             <Link to="/" className="flex items-center gap-2 md:gap-3">
               <motion.div
-                className="w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center overflow-hidden"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center overflow-hidden"
                 whileHover={{ scale: 1.05 }}
                 style={{
                   filter: 'drop-shadow(0 0 12px #00d9ff) brightness(1.2)',
@@ -138,6 +138,7 @@ const Navigation = () => {
                 className="px-4 py-2 text-white/80 hover:text-gray-400 font-light text-sm tracking-tight transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.open('https://platform.aestheticsaleshero.com/login', '_blank')}
               >
                 Log In
               </motion.button>
@@ -154,7 +155,7 @@ const Navigation = () => {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="lg:hidden p-3 text-white"
+              className="lg:hidden p-3 mr-2 text-white"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.95 }}
             >
@@ -182,7 +183,7 @@ const Navigation = () => {
               transition={{ type: 'tween', duration: 0.3 }}
             >
               <div className="p-4 pt-20 h-full overflow-y-auto">
-                <div className="space-y-6">
+                <div className="space-y-3">
                   {navItems.map((item) => (
                     <div key={item.label}>
                       {item.dropdown ? (
@@ -217,7 +218,10 @@ const Navigation = () => {
                   ))}
                   <div className="pt-8 space-y-4 mt-auto">
                     <motion.button
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        window.open('https://platform.aestheticsaleshero.com/login', '_blank');
+                      }}
                       className="w-full px-6 py-4 border-2 border-white/20 rounded-xl font-semibold text-base hover:border-gray-400 transition-all duration-300"
                       whileTap={{ scale: 0.95 }}
                     >
