@@ -55,60 +55,516 @@ const Faculty = () => {
       name: `Company ${companyNumber}`,
       logo: `/logos/${companyNumber}.png`
     };
-  }).filter((company): company is { name: string; logo: string } => company !== null); // Remove null entries
+  }).filter((company): company is { name: string; logo: string } => company !== null);
 
   const specialties = [
-    { id: 'all', name: 'All Specialties', count: 35 },
-    { id: 'finance', name: 'Finance', count: 12 },
-    { id: 'marketing', name: 'M&A', count: 8 },
-    { id: 'operations', name: 'Operations', count: 6 },
-    { id: 'compliance', name: 'Compliance & Law', count: 5 },
-    { id: 'social', name: 'Social Media & Marketing', count: 4 },
-    { id: 'clinical', name: 'Clinical', count: 7 },
-    { id: 'manufacturers', name: 'Manufacturers', count: 9 },
-    { id: 'career', name: 'Career Development', count: 3 }
+    { id: 'all', name: 'All Specialties', count: 38 },
+    { id: 'finance', name: 'Finance', count: 8 },
+    { id: 'marketing', name: 'M&A', count: 6 },
+    { id: 'operations', name: 'Operations', count: 5 },
+    { id: 'compliance', name: 'Compliance & Law', count: 8 },
+    { id: 'social', name: 'Social Media & Marketing', count: 3 },
+    { id: 'clinical', name: 'Clinical', count: 5 },
+    { id: 'manufacturers', name: 'Manufacturers', count: 2 },
+    { id: 'career', name: 'Career Development', count: 1 }
   ];
 
   const facultyMembers = [
+    // Career Development (1)
     {
-      name: 'Dr. Sarah Chen',
-      title: 'Lead Sales Trainer & Medical Director',
-      specialty: 'finance',
+      name: 'Brandon Thompson',
+      title: 'Founder & CEO',
+      specialty: 'career',
+      company: 'Careers in Aesthetics',
+      profileImage: '/faculty/brandon-thompson.jpg',
+      companyLogo: '/companylogos/careers-in-aesthetics.png',
+      expertise: 'Career Development & Industry Guidance',
       experience: '15+ years',
-      achievements: ['Generated $50M+ in practice revenue', 'Trained 500+ professionals', 'Industry Speaker'],
-      image: '👩‍⚕️',
-      content: 'Advanced Consultation Psychology',
-      progress: 85
+      practicesHelped: '500+',
+      rating: 4.9,
+      servicesOffered: 8
+    },
+    
+    // Clinical (5)
+    {
+      name: 'Dr. Gregory Buford, MD',
+      title: 'Owner & Founder', 
+      specialty: 'clinical',
+      company: 'Beauty by Buford & CORE Mastery Summit',
+      profileImage: '/faculty/gregory-buford.jpg',
+      companyLogo: '/companylogos/beauty-by-buford.png',
+      expertise: 'Medical Aesthetics Leadership',
+      experience: '20+ years',
+      practicesHelped: '1,200+',
+      rating: 4.8,
+      servicesOffered: 12
     },
     {
-      name: 'Michael Rodriguez',
-      title: 'Senior Sales Coach',
-      specialty: 'finance',
+      name: 'Sonya Ellis, MSN, CANS, CPSN',
+      title: 'Senior Medical Director',
+      specialty: 'clinical', 
+      company: 'The L.A.B. Med Spa',
+      profileImage: '/faculty/sonya-ellis.jpg',
+      companyLogo: '/companylogos/lab-med-spa.png',
+      expertise: 'Advanced Clinical Practice',
       experience: '12+ years',
-      achievements: ['95% average conversion rate', 'Top performer 8 years running', 'Certification Program Developer'],
-      image: '👨‍💼',
-      content: 'Objection Handling Mastery',
-      progress: 92
+      practicesHelped: '320+',
+      rating: 4.9,
+      servicesOffered: 6
     },
     {
-      name: 'Dr. Amanda Foster',
-      title: 'Practice Growth Specialist',
-      specialty: 'operations',
+      name: 'Ryan Bourgeois, FNP-C',
+      title: 'Founder',
+      specialty: 'clinical',
+      company: 'Bougie Aesthetics & Academy of Regenerative Aesthetics', 
+      profileImage: '/faculty/ryan-bourgeois.jpg',
+      companyLogo: '/companylogos/bougie-aesthetics.png',
+      expertise: 'Regenerative Medicine & Training',
       experience: '10+ years',
-      achievements: ['Built 3 multi-million practices', 'Team efficiency expert', 'Published researcher'],
-      image: '👩‍⚕️',
-      content: 'Team Training Systems',
-      progress: 78
+      practicesHelped: '280+',
+      rating: 4.7,
+      servicesOffered: 10
     },
     {
-      name: 'James Thompson',
-      title: 'Technology Integration Expert',
-      specialty: 'marketing',
+      name: 'Kiara Dewitt, BSN, RN, CPN',
+      title: 'Founder & CEO',
+      specialty: 'clinical',
+      company: 'Injectco',
+      profileImage: '/faculty/kiara-dewitt.jpg', 
+      companyLogo: '/companylogos/injectco.png',
+      expertise: 'Injection Techniques & Patient Safety',
       experience: '8+ years',
-      achievements: ['AI training pioneer', 'Software development lead', 'Innovation award winner'],
-      image: '👨‍💻',
-      content: 'Digital Sales Tools',
-      progress: 88
+      practicesHelped: '450+',
+      rating: 4.8,
+      servicesOffered: 7
+    },
+    {
+      name: 'Paulina Riedler',
+      title: 'CEO & Co-Founder',
+      specialty: 'clinical',
+      company: 'Spakinect',
+      profileImage: '/faculty/paulina-riedler.jpg',
+      companyLogo: '/companylogos/spakinect.png',
+      expertise: 'Spa Management & Operations',
+      experience: '11+ years',
+      practicesHelped: '380+',
+      rating: 4.9,
+      servicesOffered: 9
+    },
+
+    // Compliance & Law (8)
+    {
+      name: 'Sara Shikhman',
+      title: 'Founder & Managing Partner',
+      specialty: 'compliance',
+      company: 'Lengea Law',
+      profileImage: '/faculty/sara-shikhman.jpg',
+      companyLogo: '/companylogos/lengea-law.png',
+      expertise: 'Healthcare Legal Compliance',
+      experience: '18+ years',
+      practicesHelped: '600+',
+      rating: 4.9,
+      servicesOffered: 5
+    },
+    {
+      name: 'Justin Marti',
+      title: 'Founder & Attorney',
+      specialty: 'compliance',
+      company: 'Marti Law Group',
+      profileImage: '/faculty/justin-marti.jpg',
+      companyLogo: '/companylogos/marti-law-group.png', 
+      expertise: 'Medical Malpractice & Business Law',
+      experience: '16+ years',
+      practicesHelped: '400+',
+      rating: 4.8,
+      servicesOffered: 6
+    },
+    {
+      name: 'Michael S. Byrd',
+      title: 'CEO & Partner',
+      specialty: 'compliance',
+      company: 'Byrd Adatto',
+      profileImage: '/faculty/michael-byrd.jpg',
+      companyLogo: '/companylogos/byrd-adatto.png',
+      expertise: 'Healthcare Business Law',
+      experience: '22+ years',
+      practicesHelped: '750+',
+      rating: 4.9,
+      servicesOffered: 8
+    },
+    {
+      name: 'Bradford E. Adatto',
+      title: 'President & Partner', 
+      specialty: 'compliance',
+      company: 'Byrd Adatto',
+      profileImage: '/faculty/bradford-adatto.jpg',
+      companyLogo: '/companylogos/byrd-adatto.png',
+      expertise: 'Medical Practice Legal Strategy',
+      experience: '19+ years',
+      practicesHelped: '680+',
+      rating: 4.8,
+      servicesOffered: 7
+    },
+    {
+      name: 'Jay D. Reyero',
+      title: 'CFO & Partner',
+      specialty: 'compliance',
+      company: 'Byrd Adatto',
+      profileImage: '/faculty/jay-reyero.jpg',
+      companyLogo: '/companylogos/byrd-adatto.png',
+      expertise: 'Financial Compliance & Strategy',
+      experience: '14+ years',
+      practicesHelped: '520+',
+      rating: 4.7,
+      servicesOffered: 5
+    },
+    {
+      name: 'Amber Bechthold',
+      title: 'Founder & CEO',
+      specialty: 'compliance',
+      company: 'Aesthetic Compliance Experts',
+      profileImage: '/faculty/amber-bechthold.jpg',
+      companyLogo: '/companylogos/aesthetic-compliance-experts.png',
+      expertise: 'Regulatory Compliance & Risk Management',
+      experience: '13+ years',
+      practicesHelped: '850+',
+      rating: 4.9,
+      servicesOffered: 9
+    },
+    {
+      name: 'Nicole Strothman',
+      title: 'Founder & General Counsel',
+      specialty: 'compliance',
+      company: 'Venture Legal Advisors',
+      profileImage: '/faculty/nicole-strothman.jpg',
+      companyLogo: '/companylogos/venture-legal-advisors.png',
+      expertise: 'Corporate Legal Strategy',
+      experience: '17+ years',
+      practicesHelped: '290+',
+      rating: 4.8,
+      servicesOffered: 4
+    },
+
+    // Finance (8)
+    {
+      name: 'Christin Trujillo',
+      title: 'Partner & Financial Consultant',
+      specialty: 'finance',
+      company: 'Maven Financial Partners',
+      profileImage: '/faculty/christin-trujillo.jpg',
+      companyLogo: '/companylogos/maven-financial-partners.png',
+      expertise: 'Practice Financial Strategy',
+      experience: '12+ years',
+      practicesHelped: '350+',
+      rating: 4.8,
+      servicesOffered: 6
+    },
+    {
+      name: 'Jessica Nunn',
+      title: 'Founder & CEO',
+      specialty: 'finance',
+      company: 'Maven Financial Partners',
+      profileImage: '/faculty/jessica-nunn.jpg',
+      companyLogo: '/companylogos/maven-financial-partners.png',
+      expertise: 'Financial Planning & Investment',
+      experience: '16+ years',
+      practicesHelped: '580+',
+      rating: 4.9,
+      servicesOffered: 8
+    },
+    {
+      name: 'Ben Hernandez',
+      title: 'CEO & Managing Director',
+      specialty: 'finance',
+      company: 'Skytale Group',
+      profileImage: '/faculty/ben-hernandez.jpg',
+      companyLogo: '/companylogos/skytale-group.png',
+      expertise: 'Executive Financial Leadership',
+      experience: '18+ years',
+      practicesHelped: '720+',
+      rating: 4.8,
+      servicesOffered: 10
+    },
+    {
+      name: 'Annie Hockey',
+      title: 'President & Head of Consulting',
+      specialty: 'finance',
+      company: 'Skytale Group',
+      profileImage: '/faculty/annie-hockey.jpg',
+      companyLogo: '/companylogos/skytale-group.png',
+      expertise: 'Business Consulting & Strategy',
+      experience: '14+ years',
+      practicesHelped: '460+',
+      rating: 4.9,
+      servicesOffered: 7
+    },
+    {
+      name: 'Judy Kozlicki',
+      title: 'Head of Medical Aesthetics & Plastic Surgery',
+      specialty: 'finance',
+      company: 'Skytale Group',
+      profileImage: '/faculty/judy-kozlicki.jpg',
+      companyLogo: '/companylogos/skytale-group.png',
+      expertise: 'Medical Aesthetics Finance',
+      experience: '13+ years',
+      practicesHelped: '340+',
+      rating: 4.7,
+      servicesOffered: 5
+    },
+    {
+      name: 'Nick Liguori',
+      title: 'Owner & CPA',
+      specialty: 'finance',
+      company: 'Liguori Accounting',
+      profileImage: '/faculty/nick-liguori.jpg',
+      companyLogo: '/companylogos/liguori-accounting.png',
+      expertise: 'Tax Strategy & Accounting',
+      experience: '11+ years',
+      practicesHelped: '420+',
+      rating: 4.8,
+      servicesOffered: 6
+    },
+    {
+      name: 'Dan Simard',
+      title: 'Director of Business Development',
+      specialty: 'finance',
+      company: 'Liguori Accounting',
+      profileImage: '/faculty/dan-simard.jpg',
+      companyLogo: '/companylogos/liguori-accounting.png',
+      expertise: 'Business Growth & Development',
+      experience: '9+ years',
+      practicesHelped: '280+',
+      rating: 4.7,
+      servicesOffered: 4
+    },
+    {
+      name: 'John Bergano',
+      title: 'Founder & CEO',
+      specialty: 'finance',
+      company: 'Aesthetics Card',
+      profileImage: '/faculty/john-bergano.jpg',
+      companyLogo: '/companylogos/aesthetics-card.png',
+      expertise: 'Financial Technology & Innovation',
+      experience: '10+ years',
+      practicesHelped: '650+',
+      rating: 4.8,
+      servicesOffered: 3
+    },
+
+    // Manufacturers (2)
+    {
+      name: 'Sheldon Larson',
+      title: 'VP of Marketing',
+      specialty: 'manufacturers',
+      company: 'Sinclair North America',
+      profileImage: '/faculty/sheldon-larson.jpg',
+      companyLogo: '/companylogos/sinclair-north-america.png',
+      expertise: 'Product Marketing & Brand Strategy',
+      experience: '15+ years',
+      practicesHelped: '1,500+',
+      rating: 4.9,
+      servicesOffered: 12
+    },
+    {
+      name: 'Jen Sugermeyer',
+      title: 'Founder & CEO',
+      specialty: 'manufacturers',
+      company: 'ATA Cosmetics',
+      profileImage: '/faculty/jen-sugermeyer.jpg',
+      companyLogo: '/companylogos/ata-cosmetics.png',
+      expertise: 'Product Development & Manufacturing',
+      experience: '12+ years',
+      practicesHelped: '800+',
+      rating: 4.8,
+      servicesOffered: 8
+    },
+
+    // M&A (6)
+    {
+      name: 'Thomas Allen',
+      title: 'Founder & CEO',
+      specialty: 'marketing',
+      company: 'The Practice Companies',
+      profileImage: '/faculty/thomas-allen.jpg',
+      companyLogo: '/companylogos/practice-companies.png',
+      expertise: 'Mergers & Acquisitions Strategy',
+      experience: '20+ years',
+      practicesHelped: '180+',
+      rating: 4.9,
+      servicesOffered: 5
+    },
+    {
+      name: 'Tyler Weinberg',
+      title: 'CEO',
+      specialty: 'marketing',
+      company: 'AVIVA Aesthetics',
+      profileImage: '/faculty/tyler-weinberg.jpg',
+      companyLogo: '/companylogos/aviva-aesthetics.png',
+      expertise: 'Multi-Location Operations',
+      experience: '14+ years',
+      practicesHelped: '120+',
+      rating: 4.8,
+      servicesOffered: 6
+    },
+    {
+      name: 'Andrew Patch',
+      title: 'Chief Development Officer',
+      specialty: 'marketing',
+      company: 'AVIVA Aesthetics',
+      profileImage: '/faculty/andrew-patch.jpg',
+      companyLogo: '/companylogos/aviva-aesthetics.png',
+      expertise: 'Business Development & Growth',
+      experience: '11+ years',
+      practicesHelped: '95+',
+      rating: 4.7,
+      servicesOffered: 4
+    },
+    {
+      name: 'Josh Swearingen',
+      title: 'Director of Mergers & Acquisitions',
+      specialty: 'marketing',
+      company: 'Tusk Practice Sales',
+      profileImage: '/faculty/josh-swearingen.jpg',
+      companyLogo: '/companylogos/tusk-practice-sales.png',
+      expertise: 'Transaction Management & Valuation',
+      experience: '13+ years',
+      practicesHelped: '75+',
+      rating: 4.8,
+      servicesOffered: 3
+    },
+    {
+      name: 'Gary Bufalo',
+      title: 'Chief People & Partnership Officer',
+      specialty: 'marketing',
+      company: 'Princeton Medspa Partners',
+      profileImage: '/faculty/gary-bufalo.jpg',
+      companyLogo: '/companylogos/princeton-medspa-partners.png',
+      expertise: 'Partnership Development & Culture',
+      experience: '16+ years',
+      practicesHelped: '150+',
+      rating: 4.9,
+      servicesOffered: 7
+    },
+    {
+      name: 'Chris Hubble',
+      title: 'President & CEO',
+      specialty: 'marketing',
+      company: 'LuxMed Transition Strategies',
+      profileImage: '/faculty/chris-hubble.jpg',
+      companyLogo: '/companylogos/luxmed-transition-strategies.png',
+      expertise: 'Practice Transition & Exit Planning',
+      experience: '18+ years',
+      practicesHelped: '220+',
+      rating: 4.8,
+      servicesOffered: 8
+    },
+
+    // Operations (5)
+    {
+      name: 'Kara McClanahan',
+      title: 'CEO',
+      specialty: 'operations',
+      company: 'Aesthetic Practice Partners',
+      profileImage: '/faculty/kara-mcclanahan.jpg',
+      companyLogo: '/companylogos/aesthetic-practice-partners.png',
+      expertise: 'Practice Operations & Management',
+      experience: '17+ years',
+      practicesHelped: '940+',
+      rating: 4.9,
+      servicesOffered: 11
+    },
+    {
+      name: 'Kelly Pennington',
+      title: 'Founder',
+      specialty: 'operations',
+      company: 'Key Consulting',
+      profileImage: '/faculty/kelly-pennington.jpg',
+      companyLogo: '/companylogos/key-consulting.png',
+      expertise: 'Operational Excellence & Training',
+      experience: '14+ years',
+      practicesHelped: '680+',
+      rating: 4.8,
+      servicesOffered: 9
+    },
+    {
+      name: 'Candace Clay',
+      title: 'Founder',
+      specialty: 'operations',
+      company: 'Candi Aesthetics & Consulting',
+      profileImage: '/faculty/candace-clay.jpg',
+      companyLogo: '/companylogos/candi-aesthetics-consulting.png',
+      expertise: 'Aesthetic Practice Consulting',
+      experience: '12+ years',
+      practicesHelped: '420+',
+      rating: 4.8,
+      servicesOffered: 7
+    },
+    {
+      name: 'Barbara Taylor',
+      title: 'Founder',
+      specialty: 'operations',
+      company: 'Barb the Beauty Concierge',
+      profileImage: '/faculty/barbara-taylor.jpg',
+      companyLogo: '/companylogos/barb-beauty-concierge.png',
+      expertise: 'Client Experience & Service Excellence',
+      experience: '10+ years',
+      practicesHelped: '380+',
+      rating: 4.7,
+      servicesOffered: 5
+    },
+    {
+      name: 'Dana Hatch',
+      title: 'Founder',
+      specialty: 'operations',
+      company: 'Dana Hatch Coaching & Consulting',
+      profileImage: '/faculty/dana-hatch.jpg',
+      companyLogo: '/companylogos/dana-hatch-coaching.png',
+      expertise: 'Leadership Development & Coaching',
+      experience: '13+ years',
+      practicesHelped: '560+',
+      rating: 4.8,
+      servicesOffered: 8
+    },
+
+    // Social Media & Marketing (3)
+    {
+      name: 'Mary Robb',
+      title: 'Founder & CEO',
+      specialty: 'social',
+      company: 'Social Practice',
+      profileImage: '/faculty/mary-robb.jpg',
+      companyLogo: '/companylogos/social-practice.png',
+      expertise: 'Social Media Strategy & Content',
+      experience: '11+ years',
+      practicesHelped: '1,200+',
+      rating: 4.9,
+      servicesOffered: 10
+    },
+    {
+      name: 'Andrew Jones',
+      title: 'Founder & CEO',
+      specialty: 'social',
+      company: 'MAVAN Marketing Agency',
+      profileImage: '/faculty/andrew-jones.jpg',
+      companyLogo: '/companylogos/mavan-marketing-agency.png',
+      expertise: 'Digital Marketing & Brand Development',
+      experience: '9+ years',
+      practicesHelped: '780+',
+      rating: 4.8,
+      servicesOffered: 12
+    },
+    {
+      name: 'Jared Rohrer',
+      title: 'CEO',
+      specialty: 'social',
+      company: 'Aesthetic Conversion',
+      profileImage: '/faculty/jared-rohrer.jpg',
+      companyLogo: '/companylogos/aesthetic-conversion.png',
+      expertise: 'Conversion Optimization & Sales Funnels',
+      experience: '8+ years',
+      practicesHelped: '620+',
+      rating: 4.7,
+      servicesOffered: 6
     }
   ];
 
@@ -204,7 +660,7 @@ const Faculty = () => {
                 duration: 2.5,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: 1 // Start continuous animation after intro
+                delay: 1
               }}
             >
               <motion.div 
@@ -370,7 +826,7 @@ const Faculty = () => {
 
       {/* The Hero Academy Section */}
       <section className="py-24 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -386,7 +842,7 @@ const Faculty = () => {
 
           {/* Dashboard Interface */}
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-8 mb-12"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-3 md:p-8 mb-12"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -402,7 +858,7 @@ const Faculty = () => {
                       <Award className="text-[#00d9ff]" size={40} />
                     </div>
                     <h3 className="text-xl font-bold mb-2 md:mb-4">Expert Network</h3>
-                    <p className="text-white/70 text-xs md:text-sm">35+ Industry Leaders</p>
+                    <p className="text-white/70 text-xs md:text-sm">38+ Industry Leaders</p>
                   </div>
                 </div>
               </div>
@@ -427,37 +883,83 @@ const Faculty = () => {
                 </div>
 
                 {/* Faculty Cards */}
-                <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   <AnimatePresence mode="wait">
                     {filteredFaculty.map((member, index) => (
                       <motion.div
                         key={member.name}
-                        className="group bg-white/5 border border-white/10 rounded-xl p-2 md:p-4 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300"
+                        className="group bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.3, delay: index * 0.1 }}
                         layout
                       >
-                        <div className="flex items-start gap-3">
-                          <div className="text-2xl">{member.image}</div>
+                        <div className="flex items-start gap-3 mb-3">
+                          <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-600">
+                            <img
+                              src={member.profileImage}
+                              alt={member.name}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                                const parent = target.parentElement;
+                                if (parent) {
+                                  parent.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-[#00d9ff] to-[#ff41fd] flex items-center justify-center text-white font-bold">' + member.name.split(' ').map(n => n[0]).join('') + '</div>';
+                                }
+                              }}
+                            />
+                          </div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-semibold text-xs md:text-sm group-hover:text-[#00d9ff] transition-colors truncate">
+                            <h4 className="font-semibold text-sm group-hover:text-[#00d9ff] transition-colors truncate">
                               {member.name}
                             </h4>
-                            <p className="text-xs md:text-sm text-white/60 mb-1 md:mb-2">{member.title}</p>
-                            <div className="text-xs md:text-sm text-[#ff41fd] mb-1 md:mb-2">{member.content}</div>
-                            
-                            {/* Progress Bar */}
-                            <div className="w-full bg-white/10 rounded-full h-1.5 mb-1 md:mb-2">
-                              <motion.div
-                                className="bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] h-1.5 rounded-full"
-                                initial={{ width: 0 }}
-                                animate={{ width: `${member.progress}%` }}
-                                transition={{ duration: 1, delay: 0.5 }}
-                              />
+                            <p className="text-xs text-white/60 mb-1">{member.title}</p>
+                            <p className="text-xs text-[#ff41fd] mb-2">{member.company}</p>
+                          </div>
+                        </div>
+                        
+                        <div className="text-xs text-white/70 mb-3">{member.expertise}</div>
+                        
+                        {/* Faculty Showcase Features */}
+                        <div className="grid grid-cols-2 gap-2 mb-3">
+                          <div className="bg-white/5 rounded-lg p-2">
+                            <div className="text-xs text-white/50">Experience</div>
+                            <div className="text-xs font-semibold text-[#00d9ff]">{member.experience}</div>
+                          </div>
+                          <div className="bg-white/5 rounded-lg p-2">
+                            <div className="text-xs text-white/50">Practices Helped</div>
+                            <div className="text-xs font-semibold text-[#ff41fd]">{member.practicesHelped}</div>
+                          </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-2 mb-3">
+                          <div className="bg-white/5 rounded-lg p-2">
+                            <div className="text-xs text-white/50">Rating</div>
+                            <div className="text-xs font-semibold text-yellow-400 flex items-center gap-1">
+                              <Star size={10} fill="currentColor" />
+                              {member.rating}
                             </div>
-                            <div className="text-xs md:text-sm text-white/50">{member.progress}% Complete</div>
+                          </div>
+                          <div className="bg-white/5 rounded-lg p-2">
+                            <div className="text-xs text-white/50">Services Offered</div>
+                            <div className="text-xs font-semibold text-green-400">{member.servicesOffered}</div>
+                          </div>
+                        </div>
+
+                        {/* Company Logo */}
+                        <div className="mt-3 flex justify-end">
+                          <div className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity">
+                            <img
+                              src={member.companyLogo}
+                              alt={member.company}
+                              className="w-full h-full object-contain"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                              }}
+                            />
                           </div>
                         </div>
                       </motion.div>
@@ -486,7 +988,7 @@ const Faculty = () => {
             </p>
           </motion.div>
 
-          {/* Timeline Visualization - All icons colored, no animations */}
+          {/* Timeline Visualization */}
           <div className="relative max-w-2xl md:max-w-3xl mx-auto">
             <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-[#00d9ff] to-[#ff41fd] rounded-full"></div>
             
@@ -523,7 +1025,7 @@ const Faculty = () => {
         </div>
       </section>
 
-      {/* Dual Application Paths - Side by Side */}
+      {/* Dual Application Paths */}
       <section className="py-10 md:py-24 relative">
         <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
           <motion.div
@@ -539,7 +1041,6 @@ const Faculty = () => {
             </p>
           </motion.div>
 
-          {/* Both Tracks Side by Side */}
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Faculty Track */}
             <motion.div
@@ -577,60 +1078,15 @@ const Faculty = () => {
                     </li>
                   </ul>
                 </div>
-                
-                <div>
-                  <h4 className="font-semibold mb-2 text-[#00d9ff]">Benefits</h4>
-                  <ul className="space-y-2 text-white/70">
-                    <li className="flex items-center gap-2">
-                      <DollarSign size={16} className="text-green-400" />
-                      Revenue sharing on content
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Globe size={16} className="text-green-400" />
-                      Content hosting platform
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <BarChart3 size={16} className="text-green-400" />
-                      Custom dashboard access
-                    </li>
-                  </ul>
-                </div>
-              </div>
 
-              {/* Faculty Dashboard Preview */}
-              <div className="mt-8 bg-gradient-to-br from-[#00d9ff]/10 to-[#ff41fd]/10 backdrop-blur-xl border border-[#00d9ff]/30 rounded-2xl p-6">
-                <h4 className="text-lg font-bold mb-4">Faculty Dashboard Preview</h4>
-                <div className="space-y-4">
-                  <div className="bg-white/10 rounded-lg p-4">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium">Content Performance</span>
-                      <span className="text-[#00d9ff] text-sm">+23% this month</span>
-                    </div>
-                    <div className="w-full bg-white/20 rounded-full h-2">
-                      <div className="bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] h-2 rounded-full w-3/4"></div>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/10 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-[#00d9ff]">$12.5K</div>
-                      <div className="text-xs text-white/60">Monthly Revenue</div>
-                    </div>
-                    <div className="bg-white/10 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-[#ff41fd]">2.3K</div>
-                      <div className="text-xs text-white/60">Active Students</div>
-                    </div>
-                  </div>
+                <div className="mt-6">
+                  <Link to="/application">
+                    <button className="w-full px-6 py-3 bg-[#00d9ff] rounded-xl font-semibold text-m shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
+                      Apply for Faculty Track
+                      <ArrowRight size={20} />
+                    </button>
+                  </Link>
                 </div>
-              </div>
-
-              {/* Apply Button */}
-              <div className="mt-6">
-                <Link to="/application">
-                  <button className="w-full px-6 py-3 bg-[#00d9ff] rounded-xl font-semibold text-m shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
-                    Apply for Faculty Track
-                    <ArrowRight size={20} />
-                  </button>
-                </Link>
               </div>
             </motion.div>
 
@@ -670,60 +1126,15 @@ const Faculty = () => {
                     </li>
                   </ul>
                 </div>
-                
-                <div>
-                  <h4 className="font-semibold mb-2 text-[#ff41fd]">Benefits</h4>
-                  <ul className="space-y-2 text-white/70">
-                    <li className="flex items-center gap-2">
-                      <Target size={16} className="text-green-400" />
-                      Commission structure
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Briefcase size={16} className="text-green-400" />
-                      Promotional tools
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Users size={16} className="text-green-400" />
-                      Personalized referral system
-                    </li>
-                  </ul>
-                </div>
-              </div>
 
-              {/* Ambassador Tools Preview */}
-              <div className="mt-8 bg-gradient-to-br from-[#ff41fd]/10 to-[#00d9ff]/10 backdrop-blur-xl border border-[#ff41fd]/30 rounded-2xl p-6">
-                <h4 className="text-lg font-bold mb-4">Ambassador Tools Preview</h4>
-                <div className="space-y-4">
-                  <div className="bg-white/10 rounded-lg p-4">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium">Referral Performance</span>
-                      <span className="text-[#ff41fd] text-sm">+18% this month</span>
-                    </div>
-                    <div className="w-full bg-white/20 rounded-full h-2">
-                      <div className="bg-gradient-to-r from-[#ff41fd] to-[#00d9ff] h-2 rounded-full w-2/3"></div>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/10 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-[#ff41fd]">$3.2K</div>
-                      <div className="text-xs text-white/60">Monthly Commissions</div>
-                    </div>
-                    <div className="bg-white/10 rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-[#00d9ff]">47</div>
-                      <div className="text-xs text-white/60">Active Referrals</div>
-                    </div>
-                  </div>
+                <div className="mt-6">
+                  <Link to="/application">
+                    <button className="w-full px-6 py-3 bg-[#ff41fd] rounded-xl font-semibold text-xs md:text-base shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-1 md:gap-2">
+                      Apply for Ambassador Track
+                      <ArrowRight size={20} />
+                    </button>
+                  </Link>
                 </div>
-              </div>
-
-              {/* Apply Button */}
-              <div className="mt-6">
-                <Link to="/application">
-                  <button className="w-full px-6 py-3 bg-[#ff41fd] rounded-xl font-semibold text-xs md:text-base shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-1 md:gap-2">
-                    Apply for Ambassador Track
-                    <ArrowRight size={20} />
-                  </button>
-                </Link>
               </div>
             </motion.div>
           </div>
