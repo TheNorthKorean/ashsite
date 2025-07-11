@@ -17,7 +17,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-20 lg:pt-40 pb-60">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-24 lg:pt-40 pb-20 md:pb-40 lg:pb-60">
       {/* Background Gradient - seamless transition to TrustedBy section */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-1400 via-gray-1400 to-black" />
       <div className="absolute inset-0 bg-gradient-to-tr from-[#00d9ff]/10 via-transparent to-[#ff41fd]/10" />
@@ -50,7 +50,7 @@ const Hero = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center">
         <div className="grid lg:grid-cols-1 gap-12 items-center relative">
           {/* Content */}
           <motion.div
@@ -73,7 +73,7 @@ const Hero = () => {
             </motion.div>
 
             <motion.h1 
-              className="text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-center"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-center"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -86,10 +86,10 @@ const Hero = () => {
                 for Aesthetics & Wellness
               </span>
               <br />
-              <div className="flex items-baseline justify-center text-5xl lg:text-6xl mt-2 leading-none pb-4">
+              <div className="flex items-baseline justify-center text-2xl md:text-3xl lg:text-4xl xl:text-6xl mt-2 leading-none pb-4">
                 <div className="relative w-full flex justify-center">
                   <motion.div 
-                    className="flex items-baseline gap-4 whitespace-nowrap"
+                    className="flex items-baseline gap-2 md:gap-4 text-center"
                     key={`container-${currentWord}`}
                     animate={{
                       x: (() => {
@@ -146,23 +146,23 @@ const Hero = () => {
             </motion.h1>
             
             <motion.p 
-              className="text-xl lg:text-xl text-white/60 max-w-4xl mx-auto leading-relaxed text-center font-light"
+              className="text-base md:text-lg lg:text-xl text-white/60 max-w-4xl mx-auto leading-relaxed text-center font-light px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
               Transform your aesthetic practice with our revolutionary sales training system. 
-              <br />Close more consultations, increase revenue, and build lasting patient relationships.
+              Close more consultations, increase revenue, and build lasting patient relationships.
             </motion.p>
 
             <motion.div 
-              className="flex flex-col sm:flex-row gap-6 justify-center pt-5"
+              className="flex flex-col sm:flex-row gap-4 justify-center pt-5 px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <motion.button
-                className="group relative px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm overflow-hidden"
+                className="group relative px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -190,7 +190,7 @@ const Hero = () => {
               </motion.button>
               
               <motion.button
-                className="group px-8 py-3 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm hover:bg-gray-800/80 hover:border-[#00d9ff]/50 transition-all duration-300 flex items-center justify-center gap-3"
+                className="group px-8 py-4 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm md:text-base hover:bg-gray-800/80 hover:border-[#00d9ff]/50 transition-all duration-300 flex items-center justify-center gap-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -202,7 +202,7 @@ const Hero = () => {
 
           {/* Mockup Image - positioned in bottom right */}
           <motion.div
-            className="absolute bottom-[-100px] right-[-300px] hiddin lg:block"
+            className="absolute bottom-[-100px] right-[-300px] hidden xl:block"
             initial={{ opacity: 0, x: 50, y: 50 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 1, delay: 1.2 }}
@@ -237,7 +237,7 @@ const Hero = () => {
 
           {/* Hero Image - positioned in top left */}
           <motion.div
-            className="absolute top-[-70px] left-[-290px] hidden lg:block"
+            className="absolute top-[-70px] left-[-290px] hidden xl:block"
             initial={{ opacity: 0, x: -50, y: -30 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}

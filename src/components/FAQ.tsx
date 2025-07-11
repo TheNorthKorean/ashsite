@@ -66,14 +66,14 @@ const FAQ = () => {
       
       <motion.div
         ref={ref}
-        className="relative z-10 max-w-4xl mx-auto px-6"
+        className="relative z-10 max-w-4xl mx-auto px-4 md:px-6"
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
       >
         <div className="text-center mb-16">
           <motion.h2 
-            className="text-4xl lg:text-6xl font-bold mb-6 tracking-tight"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-bold mb-6 tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -85,7 +85,7 @@ const FAQ = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed"
+            className="text-base md:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -106,9 +106,9 @@ const FAQ = () => {
               <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 group-hover:border-[#00d9ff]/50">
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full p-6 text-left flex items-center justify-between group-hover:text-[#00d9ff] transition-colors duration-300"
+                  className="w-full p-4 md:p-6 text-left flex items-center justify-between group-hover:text-[#00d9ff] transition-colors duration-300"
                 >
-                  <h3 className="text-lg font-bold pr-8">
+                  <h3 className="text-base md:text-lg font-bold pr-4 md:pr-8">
                     {faq.question}
                   </h3>
                   <div className="flex-shrink-0">
@@ -128,8 +128,8 @@ const FAQ = () => {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="px-6 pb-6">
-                        <p className="text-white/80 leading-relaxed">
+                      <div className="px-4 md:px-6 pb-4 md:pb-6">
+                        <p className="text-white/80 leading-relaxed text-sm md:text-base">
                           {faq.answer}
                         </p>
                       </div>

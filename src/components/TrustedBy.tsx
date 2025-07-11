@@ -17,7 +17,7 @@ const TrustedBy = () => {
       name: `Company ${companyNumber}`,
       logo: `/logos/${companyNumber}.png`
     };
-  }).filter(Boolean); // Remove null entries
+  }).filter((company): company is { name: string; logo: string } => company !== null); // Remove null entries
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -32,7 +32,7 @@ const TrustedBy = () => {
         transition={{ duration: 0.8 }}
       >
         <motion.h2 
-          className="text-2xl lg:text-3xl font-medium mb-12 text-white/90"
+          className="text-xl md:text-2xl lg:text-3xl font-medium mb-12 text-white/90 px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -43,7 +43,7 @@ const TrustedBy = () => {
         <div className="relative max-w-6xl mx-auto">
           <div className="flex overflow-hidden">
             <motion.div
-              className="flex items-center gap-16"
+              className="flex items-center gap-8 md:gap-16"
               animate={{
                 x: [0, -100 * companies.length - 100],
               }}
@@ -72,10 +72,10 @@ const TrustedBy = () => {
                   <img
                     src={company.logo}
                     alt={company.name}
-                    className="h-21 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
+                    className="h-16 md:h-20 lg:h-21 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
                     style={{
-                      maxWidth: '140px',
-                      minWidth: '80px'
+                      maxWidth: '100px',
+                      minWidth: '60px'
                     }}
                   />
                 </motion.div>

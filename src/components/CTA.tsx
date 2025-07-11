@@ -25,14 +25,14 @@ const CTA = () => {
       
       <motion.div
         ref={ref}
-        className="relative z-10 max-w-4xl mx-auto px-6 text-center"
+        className="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center"
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
       >
         {/* Dark transparent container with solid border and single continuous trace */}
         <motion.div
-          className="relative p-12 rounded-3xl overflow-hidden"
+          className="relative p-6 md:p-8 lg:p-12 rounded-3xl overflow-hidden"
           style={{
             background: 'rgba(0, 0, 0, 0.4)',
             backdropFilter: 'blur(20px)',
@@ -99,7 +99,7 @@ const CTA = () => {
           </svg>
 
           <motion.h2 
-            className="text-4xl lg:text-6xl font-bold mb-6 tracking-tight relative z-10"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-bold mb-6 tracking-tight relative z-10"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -111,7 +111,7 @@ const CTA = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-l text-white/70 mb-8 leading-relaxed max-w-3xl mx-auto relative z-10"
+            className="text-base md:text-lg lg:text-xl text-white/70 mb-8 leading-relaxed max-w-3xl mx-auto relative z-10 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -122,7 +122,7 @@ const CTA = () => {
 
           {/* Social Proof */}
           <motion.div
-            className="flex items-center justify-center gap-8 mb-8 flex-wrap relative z-10"
+            className="flex items-center justify-center gap-4 md:gap-8 mb-8 flex-wrap relative z-10 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 1 }}
@@ -130,24 +130,24 @@ const CTA = () => {
             <div className="flex items-center gap-2">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="text-[#ff41fd]" size={20} fill="currentColor" />
+                  <Star key={i} className="text-[#ff41fd]" size={16} fill="currentColor" />
                 ))}
               </div>
-              <span className="text-white/80 font-semibold">4.9/5 rating</span>
+              <span className="text-white/80 font-semibold text-sm md:text-base">4.9/5 rating</span>
             </div>
-            <div className="text-white/80 font-semibold">200+ practitioners trained</div>
-            <div className="text-white/80 font-semibold">$90M+ revenue generated</div>
+            <div className="text-white/80 font-semibold text-sm md:text-base">200+ practitioners trained</div>
+            <div className="text-white/80 font-semibold text-sm md:text-base">$90M+ revenue generated</div>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-6 justify-center relative z-10"
+            className="flex flex-col sm:flex-row gap-4 justify-center relative z-10 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
             <motion.button
-              className="group px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-3"
+              className="group px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-base md:text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-3"
               whileHover={{ 
                 scale: 1.05, 
                 boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' 
@@ -159,7 +159,7 @@ const CTA = () => {
             </motion.button>
             
             <motion.button
-              className="group px-8 py-4 border-2 border-white/20 rounded-xl font-bold text-lg hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
+              className="group px-8 py-4 border-2 border-white/20 rounded-xl font-bold text-base md:text-lg hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

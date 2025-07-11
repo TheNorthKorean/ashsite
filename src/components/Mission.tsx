@@ -55,20 +55,20 @@ const Mission = () => {
       
       <motion.div
         ref={ref}
-        className="relative z-10 max-w-7xl mx-auto px-18"
+        className="relative z-10 max-w-7xl mx-auto px-4 md:px-6"
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
       >
         <div className="text-center mb-0">
           <motion.h2 
-            className="text-4xl lg:text-6xl font-bold mb-0 tracking-tight flex items-center justify-center gap-4"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-bold mb-0 tracking-tight flex items-center justify-center gap-2 md:gap-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="w-16 h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-2xl flex items-center justify-center">
-              <Heart className="text-[#00d9ff]" size={32} fill="currentColor" />
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-2xl flex items-center justify-center">
+              <Heart className="text-[#00d9ff]" size={24} fill="currentColor" />
             </div>
             Our
             <span className="bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
@@ -79,7 +79,7 @@ const Mission = () => {
 
         {/* Mission Container with enhanced gradient background - increased height */}
         <motion.div
-          className="relative rounded-3xl p-12 text-center overflow-hidden"
+          className="relative rounded-3xl p-6 md:p-8 lg:p-12 text-center overflow-hidden"
           style={{
             background: `linear-gradient(to top, 
               #00d9ff60 0%, 
@@ -123,7 +123,7 @@ const Mission = () => {
           
           <div className="relative z-10">
             <motion.p 
-              className="text-xl lg:text-2xl text-white/90 leading-relaxed mb-8 max-w-5xl mx-auto"
+              className="text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 leading-relaxed mb-8 max-w-5xl mx-auto px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -133,7 +133,7 @@ const Mission = () => {
             </motion.p>
 
             <motion.p 
-              className="text-lg text-white/70 leading-relaxed mb-15 max-w-4xl mx-auto"
+              className="text-sm md:text-base lg:text-lg text-white/70 leading-relaxed mb-15 max-w-4xl mx-auto px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -144,7 +144,7 @@ const Mission = () => {
             </motion.p>
 
             {/* Mission Points */}
-            <div className="grid lg:grid-cols-3 gap-8 mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
               {[
                 {
                   icon: Target,

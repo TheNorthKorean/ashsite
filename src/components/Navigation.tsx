@@ -56,9 +56,9 @@ const Navigation = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo and Brand */}
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-2 md:gap-3">
               <motion.div
-                className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center overflow-hidden"
                 whileHover={{ scale: 1.05 }}
                 style={{
                   filter: 'drop-shadow(0 0 12px #00d9ff) brightness(1.2)',
@@ -71,7 +71,7 @@ const Navigation = () => {
                 />
               </motion.div>
               <motion.div
-                className="text-lg font-bold tracking-tight"
+                className="text-base md:text-lg font-bold tracking-tight"
                 whileHover={{ scale: 1.05 }}
               >
                 <span className="text-white">Aesthetic</span>
@@ -154,7 +154,7 @@ const Navigation = () => {
 
             {/* Mobile Menu Button */}
             <motion.button
-              className="lg:hidden p-2 text-white"
+              className="lg:hidden p-3 text-white"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               whileTap={{ scale: 0.95 }}
             >
@@ -175,28 +175,28 @@ const Navigation = () => {
           >
             <div className="absolute inset-0 bg-black/50" onClick={() => setIsMobileMenuOpen(false)} />
             <motion.div
-              className="absolute top-0 right-0 h-full w-80 bg-black/95 backdrop-blur-md border-l border-gray-800/50"
+              className="absolute top-0 right-0 h-full w-full max-w-sm bg-black/95 backdrop-blur-md border-l border-gray-800/50"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
             >
-              <div className="p-6 pt-20">
+              <div className="p-4 pt-20 h-full overflow-y-auto">
                 <div className="space-y-6">
                   {navItems.map((item) => (
                     <div key={item.label}>
                       {item.dropdown ? (
                         <div>
-                          <div className="text-xl font-bold text-white/80 mb-3">
+                          <div className="text-lg font-semibold text-white/80 mb-3 py-2">
                             {item.label}
                           </div>
-                          <div className="pl-4 space-y-3">
+                          <div className="pl-4 space-y-2">
                             {item.dropdown.map((dropdownItem) => (
                               <Link
                                 key={dropdownItem.label}
                                 to={dropdownItem.href}
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="flex items-center gap-3 text-lg text-white/70 hover:text-gray-400 transition-colors"
+                                className="flex items-center gap-3 py-2 text-base text-white/70 hover:text-gray-400 transition-colors"
                               >
                                 <dropdownItem.icon size={16} />
                                 {dropdownItem.label}
@@ -208,26 +208,28 @@ const Navigation = () => {
                         <Link
                           to={item.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="block text-xl font-bold text-white/80 hover:text-gray-400 transition-colors"
+                          className="block py-3 text-lg font-semibold text-white/80 hover:text-gray-400 transition-colors"
                         >
                           {item.label}
                         </Link>
                       )}
                     </div>
                   ))}
-                  <div className="pt-6 space-y-4">
+                  <div className="pt-8 space-y-4 mt-auto">
                     <motion.button
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="w-full px-6 py-3 border-2 border-white/20 rounded-xl font-bold text-lg hover:border-gray-400 transition-all duration-300"
+                      className="w-full px-6 py-4 border-2 border-white/20 rounded-xl font-semibold text-base hover:border-gray-400 transition-all duration-300"
                       whileTap={{ scale: 0.95 }}
                     >
                       Log In
                     </motion.button>
                     <motion.button
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="w-full px-6 py-4 bg-white text-black hover:bg-gray-100 rounded-xl font-bold text-lg shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        window.location.href = '/getstarted';
+                      }}
+                      className="w-full px-6 py-4 bg-white text-black hover:bg-gray-100 rounded-xl font-semibold text-base shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
                       whileTap={{ scale: 0.95 }}
-                      onClick={() => window.location.href = '/getstarted'}
                     >
                       Get Started
                       <ArrowRight size={16} />

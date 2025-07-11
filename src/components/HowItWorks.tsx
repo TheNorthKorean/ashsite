@@ -90,14 +90,14 @@ const HowItWorks = () => {
       
       <motion.div
         ref={ref}
-        className="relative z-10 max-w-7xl mx-auto px-6"
+        className="relative z-10 max-w-7xl mx-auto px-4 md:px-6"
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
       >
         <div className="text-center mb-20">
           <motion.h2 
-            className="text-5xl lg:text-6xl font-bold tracking-tight leading-[1.3] py-0 mb-4"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-bold tracking-tight leading-[1.3] py-0 mb-4"
             style={{ lineHeight: '1.2' }}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -110,7 +110,7 @@ const HowItWorks = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed"
+            className="text-base md:text-lg lg:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -119,7 +119,7 @@ const HowItWorks = () => {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-6 pb-16 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 pb-16 relative">
           {steps.map((step, index) => (
             <motion.div
               key={step.title}
@@ -137,15 +137,7 @@ const HowItWorks = () => {
                 {/* Icon */}
                 <div className="flex justify-center mb-4">
                   <div className="w-16 h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-[5deg] transition-transform duration-300">
-                    {step.isCustomIcon ? (
-                      <img 
-                        src={step.icon} 
-                        alt={step.title}
-                        className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
-                      />
-                    ) : (
-                      <step.icon className="text-[#00d9ff] group-hover:text-[#ff41fd] transition-colors duration-300" size={32} />
-                    )}
+                    <step.icon className="text-[#00d9ff] group-hover:text-[#ff41fd] transition-colors duration-300" size={32} />
                   </div>
                 </div>
 

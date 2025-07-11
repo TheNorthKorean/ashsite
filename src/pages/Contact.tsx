@@ -43,6 +43,7 @@ const Contact = () => {
 
   if (isSubmitted) {
     return (
+      
       <div className="pt-20 bg-gradient-to-br from-black via-gray-900 to-black min-h-screen flex items-center justify-center">
         <motion.div
           className="max-w-xl mx-auto px-6 text-center"
@@ -65,6 +66,8 @@ const Contact = () => {
       </div>
     );
   }
+
+  
 
   const contactMethods = [
     {
@@ -96,13 +99,13 @@ const Contact = () => {
       <section className="py-24 relative overflow-hidden">
         <motion.div
           ref={ref}
-          className="relative z-10 max-w-4xl mx-auto px-6 text-center"
+          className="relative z-10 max-w-4xl mx-auto px-4 md:px-6 text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
         >
           <motion.h1 
-            className="text-5xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1]"
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 tracking-tight leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -114,7 +117,7 @@ const Contact = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl text-white/70 leading-relaxed"
+            className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -127,9 +130,9 @@ const Contact = () => {
 
       {/* Contact Form - NOW FIRST */}
       <section className="py-2 relative">
-        <div className="relative z-10 max-w-4xl mx-auto px-6">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 md:px-6">
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 lg:p-12"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -156,7 +159,7 @@ const Contact = () => {
                   Don’t fill this out: <input name="bot-field" onChange={() => {}} />
                 </label>
               </p>
-              <div className="grid lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold mb-2">First Name</label>
                   <input
@@ -164,7 +167,7 @@ const Contact = () => {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                     placeholder="Enter your first name"
                   />
                 </div>
@@ -175,12 +178,12 @@ const Contact = () => {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                     placeholder="Enter your last name"
                   />
                 </div>
               </div>
-              <div className="grid lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold mb-2">Email</label>
                   <input
@@ -188,7 +191,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -199,7 +202,7 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -210,7 +213,7 @@ const Contact = () => {
                   name="practiceType"
                   value={formData.practiceType}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                  className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                 >
                   <option value="">Select your practice type</option>
                   <option value="medical-spa">Medical Spa</option>
@@ -227,7 +230,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={6}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors resize-none"
+                  className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors resize-none"
                   placeholder="Tell us about your practice and how we can help..."
                 ></textarea>
               </div>
@@ -248,7 +251,7 @@ const Contact = () => {
 
       {/* Contact Methods - NOW SECOND */}
       <section className="py-24 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -256,13 +259,13 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Other Ways to Reach Us</h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">Other Ways to Reach Us</h2>
+            <p className="text-base md:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto px-4">
               Choose the contact method that works best for you.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {contactMethods.map((method, index) => (
               <motion.div
                 key={method.title}

@@ -65,14 +65,14 @@ const PricingCards = () => {
       
       <motion.div
         ref={ref}
-        className="relative z-10 max-w-7xl mx-auto px-6"
+        className="relative z-10 max-w-7xl mx-auto px-4 md:px-6"
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
       >
         <div className="text-center mb-16">
           <motion.h2 
-            className="text-4xl lg:text-6xl font-bold mb-6 tracking-tight"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-bold mb-6 tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -84,7 +84,7 @@ const PricingCards = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-8"
+            className="text-base md:text-lg lg:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-8 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -123,7 +123,7 @@ const PricingCards = () => {
           </motion.div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
@@ -170,7 +170,7 @@ const PricingCards = () => {
                     {typeof plan.monthlyPrice === 'number' ? (
                       <>
                         <span className="text-5xl font-bold bg-white bg-clip-text text-transparent">
-                          ${isAnnual ? Math.round(plan.annualPrice / 12) : plan.monthlyPrice}
+                          ${isAnnual && typeof plan.annualPrice === 'number' ? Math.round(plan.annualPrice / 12) : plan.monthlyPrice}
                         </span>
                         <span className="text-white/70 ml-2">/month</span>
                       </>
