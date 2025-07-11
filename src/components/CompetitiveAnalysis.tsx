@@ -43,7 +43,7 @@ const CompetitiveAnalysis = () => {
   ];
 
   return (
-    <section className="pb-32 relative overflow-hidden">
+    <section className="pb-16 md:pb-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black" />
       
       {/* Section Label */}

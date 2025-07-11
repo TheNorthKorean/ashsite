@@ -81,7 +81,7 @@ const CaseStudies = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl text-white/70 leading-relaxed"
+            className="text-medium md:text-xl text-white/70 leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -93,8 +93,8 @@ const CaseStudies = () => {
       </section>
 
       {/* Case Studies */}
-      <section className="py-10 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <section className="py-0 md:py-10 relative">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
           <div className="space-y-16">
             {caseStudies.map((study, index) => (
               <motion.div
@@ -105,11 +105,11 @@ const CaseStudies = () => {
                 transition={{ duration: 0.8, delay: 0.2 * index }}
                 viewport={{ once: true }}
               >
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50">
-                  <div className="grid lg:grid-cols-3 gap-12">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-12 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
                     {/* Study Info */}
                     <div className="lg:col-span-1">
-                      <h2 className="text-3xl font-bold mb-4 group-hover:text-[#00d9ff] transition-colors duration-300">
+                      <h2 className="text-3xl font-bold mb-4 mt-2 md:mt-0 group-hover:text-[#00d9ff] transition-colors duration-300">
                         {study.title}
                       </h2>
                       
@@ -134,13 +134,13 @@ const CaseStudies = () => {
 
                     {/* Results */}
                     <div className="lg:col-span-2">
-                      <h3 className="text-2xl font-bold mb-6">Results</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-6">Results</h3>
                       
-                      <div className="grid md:grid-cols-3 gap-6 mb-8">
+                      <div className="grid grid-cols-3 md:grid-cols-3 gap-4 md:gap-6 mb-8">
                         {study.results.map((result, i) => (
                           <motion.div 
                             key={i} 
-                            className="group/result bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center hover:bg-white/10 hover:scale-[1.05] transition-all duration-300 hover:border-[#00d9ff]/50"
+                            className="group/result bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-6 text-center hover:bg-white/10 hover:scale-[1.05] transition-all duration-300 hover:border-[#00d9ff]/50"
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, delay: 0.1 * i }}

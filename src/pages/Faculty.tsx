@@ -256,7 +256,7 @@ const Faculty = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl text-white/70 leading-relaxed mb-16"
+            className="text-medium md:text-xl text-white/70 leading-relaxed mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -362,14 +362,14 @@ const Faculty = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">The Hero Academy</h2>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto">
+            <p className="text-medium md:text-xl text-white/70 max-w-2xl mx-auto">
               Each faculty member brings unique insights into a specific niche, creating a rich well-rounded learning experience.
             </p>
           </motion.div>
 
           {/* Dashboard Interface */}
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 mb-12"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-8 mb-12"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -380,12 +380,12 @@ const Faculty = () => {
               <div className="lg:col-span-1">
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#00d9ff]/20 to-[#ff41fd]/20 blur-2xl rounded-full"></div>
-                  <div className="relative z-10 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-8 border border-white/10 text-center">
-                    <div className="w-24 h-24 bg-gradient-to-r from-[#00d9ff]/30 to-[#ff41fd]/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="relative z-10 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-3 md:p-8 border border-white/10 text-center">
+                    <div className="w-24 h-24 bg-gradient-to-r from-[#00d9ff]/30 to-[#ff41fd]/30 rounded-full flex items-center justify-center mx-auto mb-2 md:mb-4">
                       <Award className="text-[#00d9ff]" size={40} />
                     </div>
-                    <h3 className="text-xl font-bold mb-2">Expert Network</h3>
-                    <p className="text-white/70 text-sm">35+ Industry Leaders</p>
+                    <h3 className="text-xl font-bold mb-2 md:mb-4">Expert Network</h3>
+                    <p className="text-white/70 text-xs md:text-sm">35+ Industry Leaders</p>
                   </div>
                 </div>
               </div>
@@ -398,7 +398,7 @@ const Faculty = () => {
                     <button
                       key={specialty.id}
                       onClick={() => setSelectedFilter(specialty.id)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                      className={`px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
                         selectedFilter === specialty.id
                           ? 'bg-[#00d9ff] text-black'
                           : 'bg-white/10 text-white/70 hover:bg-white/20'
@@ -410,12 +410,12 @@ const Faculty = () => {
                 </div>
 
                 {/* Faculty Cards */}
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
                   <AnimatePresence mode="wait">
                     {filteredFaculty.map((member, index) => (
                       <motion.div
                         key={member.name}
-                        className="group bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300"
+                        className="group bg-white/5 border border-white/10 rounded-xl p-2 md:p-4 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
@@ -425,14 +425,14 @@ const Faculty = () => {
                         <div className="flex items-start gap-3">
                           <div className="text-2xl">{member.image}</div>
                           <div className="flex-1 min-w-0">
-                            <h4 className="font-semibold text-sm group-hover:text-[#00d9ff] transition-colors truncate">
+                            <h4 className="font-semibold text-xs md:text-sm group-hover:text-[#00d9ff] transition-colors truncate">
                               {member.name}
                             </h4>
-                            <p className="text-xs text-white/60 mb-2">{member.title}</p>
-                            <div className="text-xs text-[#ff41fd] mb-2">{member.content}</div>
+                            <p className="text-xs md:text-sm text-white/60 mb-1 md:mb-2">{member.title}</p>
+                            <div className="text-xs md:text-sm text-[#ff41fd] mb-1 md:mb-2">{member.content}</div>
                             
                             {/* Progress Bar */}
-                            <div className="w-full bg-white/10 rounded-full h-1.5 mb-2">
+                            <div className="w-full bg-white/10 rounded-full h-1.5 mb-1 md:mb-2">
                               <motion.div
                                 className="bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] h-1.5 rounded-full"
                                 initial={{ width: 0 }}
@@ -440,7 +440,7 @@ const Faculty = () => {
                                 transition={{ duration: 1, delay: 0.5 }}
                               />
                             </div>
-                            <div className="text-xs text-white/50">{member.progress}% Complete</div>
+                            <div className="text-xs md:text-sm text-white/50">{member.progress}% Complete</div>
                           </div>
                         </div>
                       </motion.div>
@@ -454,26 +454,26 @@ const Faculty = () => {
       </section>
 
       {/* Application Process Section */}
-      <section className="py-24 relative">
+      <section className="py-12 md:py-24 relative">
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">Application Process</h2>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto">
+            <p className="text-medium md:text-xl text-white/70 max-w-2xl mx-auto">
               Join our network in 5 simple steps. The entire process typically takes 2-3 weeks from application to launch.
             </p>
           </motion.div>
 
           {/* Timeline Visualization - All icons colored, no animations */}
-          <div className="relative max-w-3xl mx-auto">
+          <div className="relative max-w-2xl md:max-w-3xl mx-auto">
             <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-[#00d9ff] to-[#ff41fd] rounded-full"></div>
             
-            <div className="space-y-10">
+            <div className="space-y-4 md:space-y-10">
               {applicationSteps.map((step, index) => (
                 <motion.div
                   key={index}
@@ -484,14 +484,14 @@ const Faculty = () => {
                   viewport={{ once: true }}
                 >
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 bg-gradient-to-r from-[#00d9ff]/30 to-[#ff41fd]/30 rounded-xl flex items-center justify-center">
+                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 md:p-6 hover:bg-white/10 transition-all duration-300">
+                      <div className="flex items-center gap-3 mb-1 md:mb-3">
+                        <div className="w-10 h-10 md:w-10 md:h-10 bg-gradient-to-r from-[#00d9ff]/30 to-[#ff41fd]/30 rounded-xl flex items-center justify-center">
                           <step.icon className="text-[#00d9ff]" size={20} />
                         </div>
-                        <h3 className="text-lg font-bold">{step.title}</h3>
+                        <h3 className="text-base md:text-lg font-bold">{step.title}</h3>
                       </div>
-                      <p className="text-white/70">{step.description}</p>
+                      <p className="text-xs md:text-base text-white/70">{step.description}</p>
                     </div>
                   </div>
                   
@@ -507,8 +507,8 @@ const Faculty = () => {
       </section>
 
       {/* Dual Application Paths - Side by Side */}
-      <section className="py-24 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <section className="py-10 md:py-24 relative">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -517,7 +517,7 @@ const Faculty = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">Choose Your Path</h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            <p className="text-medium md:text-xl text-white/70 max-w-3xl mx-auto">
               Select the track that best matches your professional status and goals.
             </p>
           </motion.div>

@@ -110,7 +110,7 @@ const HowItWorks = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-base md:text-lg lg:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed px-4 md:px-2"
+            className="text-base md:text-lg lg:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed px-0 md:px-0"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -145,7 +145,7 @@ const HowItWorks = () => {
                   {step.title}
                 </h3>
                 
-                <p className="text-white/70 text-center leading-relaxed md:leading-snug mb-6 flex-grow">
+                <p className="text-white/70 text-center leading-relaxed md:leading-snug mb-6 flex-grow px-0 md:px-2">
                   {step.description}
                 </p>
 

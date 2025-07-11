@@ -10,7 +10,7 @@ const Mission = () => {
   });
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-4 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-black" />
       
       {/* Section Label */}
@@ -123,7 +123,7 @@ const Mission = () => {
           
           <div className="relative z-10">
             <motion.p 
-              className="text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 leading-relaxed mb-8 max-w-5xl mx-auto px-4"
+              className="text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 leading-relaxed mb-8 max-w-5xl mx-auto px-0 md:px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -133,7 +133,7 @@ const Mission = () => {
             </motion.p>
 
             <motion.p 
-              className="text-sm md:text-base lg:text-lg text-white/70 leading-relaxed mb-15 max-w-4xl mx-auto px-4"
+              className="text-sm md:text-base lg:text-lg text-white/70 leading-relaxed mb-15 max-w-4xl mx-auto px-0 md:px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.8 }}

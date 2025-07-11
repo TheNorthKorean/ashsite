@@ -86,7 +86,7 @@ const Hero = () => {
                 for Aesthetics & Wellness
               </span>
               <br />
-              <div className="flex items-baseline justify-center text-2xl md:text-3xl lg:text-4xl xl:text-6xl mt-2 leading-none pb-4">
+              <div className="flex items-baseline justify-center text-2xl md:text-3xl lg:text-4xl xl:text-6xl mt-2 leading-none pb-0 md:pb-4">
                 <div className="relative w-full flex justify-center">
                   <motion.div 
                     className="flex items-baseline gap-2 md:gap-4 text-center"
@@ -156,13 +156,13 @@ const Hero = () => {
             </motion.p>
 
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center pt-5 px-4"
+              className="flex flex-col-2 sm:flex-row gap-2 md:gap-4 justify-center pt-0 md:pt-5 px-0 md:px-4"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <motion.button
-                className="group relative px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
+                className="group relative px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -190,7 +190,7 @@ const Hero = () => {
               </motion.button>
               
               <motion.button
-                className="group px-8 py-4 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm md:text-base hover:bg-gray-800/80 hover:border-[#00d9ff]/50 transition-all duration-300 flex items-center justify-center gap-3"
+                className="group px-6 py-3 md:px-8 md:py-4 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm md:text-base hover:bg-gray-800/80 hover:border-[#00d9ff]/50 transition-all duration-300 flex items-center justify-center gap-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

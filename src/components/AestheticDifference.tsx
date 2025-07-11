@@ -162,7 +162,7 @@ const AestheticDifference = () => {
       
       <motion.div
         ref={ref}
-        className="relative z-10 max-w-7xl mx-auto px-12"
+        className="relative z-10 max-w-7xl mx-auto px-10 md:px-12"
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
@@ -190,7 +190,7 @@ const AestheticDifference = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="w-2 h-2 bg-[#00d9ff] rounded-full animate-pulse"></div>
-              <p className="text-sm uppercase tracking-widest text-white/60 font-medium">
+              <p className="text-xs md:text-sm lg:text-sm uppercase tracking-widest text-white/60 font-medium">
                 Aesthetic Sales Hero • Sales Training System 
               </p>
             </motion.div>
@@ -201,7 +201,7 @@ const AestheticDifference = () => {
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] py-2 mb-6" style={{ lineHeight: '1.2' }}>
+              <h2 className="text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] py-2 mb-2 md:mb-6" style={{ lineHeight: '1.2' }}>
                 <span className="block text-white">
                   The Future of
                 </span>
@@ -209,7 +209,7 @@ const AestheticDifference = () => {
                   Aesthetic Sales Training
                 </span>
               </h2>
-              <p className="text-lg text-white/70 leading-relaxed">
+              <p className="text-base md:text-lg lg:text-lg text-white/70 leading-relaxed">
                 Experience revolutionary training technology designed specifically for aesthetic professionals. 
                 Our platform combines AI, analytics, and industry expertise to transform your consultation success.
               </p>
@@ -457,14 +457,14 @@ const AestheticDifference = () => {
 
         {/* Bottom Highlight */}
         <motion.div
-          className="text-center mt-40"
+          className="text-center mt-20 md:mt-40"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <div className="inline-flex items-center gap-4 px-8 py-4 bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 backdrop-blur-xl border border-[#00d9ff]/30 rounded-2xl">
+          <div className="inline-flex items-center gap-4 px-4 py-2 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 backdrop-blur-xl border border-[#00d9ff]/30 rounded-2xl">
             <Shield className="text-[#00d9ff]" size={24} />
-            <span className="text-lg font-semibold">
+            <span className="text-xs md:text-lg font-semibold">
               Built by aesthetic professionals, for aesthetic professionals
             </span>
           </div>

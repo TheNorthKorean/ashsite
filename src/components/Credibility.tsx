@@ -62,7 +62,7 @@ const Credibility = () => {
       >
         {/* Main Headline */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-10 md:mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -79,7 +79,7 @@ const Credibility = () => {
         </motion.div>
 
         {/* Platform Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-3 lg:grid-cols-5 gap-8 md:gap-8 max-w-4xl mx-auto">
           {/* Existing Platforms */}
           {platforms.map((platform, index) => (
             <motion.div
@@ -256,8 +256,8 @@ const Credibility = () => {
           transition={{ duration: 0.8, delay: 1.2 }}
         >
           <div className="inline-flex items-center gap-4 px-8 py-4 bg-[#00d9ff]/5 backdrop-blur-xl border border-[#00d9ff]/30 rounded-2xl">
-            <Zap className="text-[#00d9ff]" size={24} />
-            <span className="text-lg font-medium">
+            <Zap className="text-[#00d9ff]" size={42} md:size={24} />
+            <span className="text-s md:text-lg font-medium">
               Complete your operational toolkit with our Sales System
             </span>
           </div>

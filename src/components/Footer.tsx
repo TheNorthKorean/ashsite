@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <div className="relative pt-12 px-8 pb-16 bg-gray-900">
+    <div className="relative pt-12 px-4 md:px-8 pb-16 bg-gray-900">
       <footer className="relative bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 max-w-7xl mx-auto">
-        <div className="max-w-7xl mx-auto px-8 py-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 py-4 md:py-8">
           {/* Header with Logo and Status */}
           <div className="flex items-center justify-between mb-8">
             <motion.div
@@ -22,7 +22,7 @@ const Footer = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="text-2xl font-bold tracking-tight">
+              <div className="text-medium md:text-2xl font-bold tracking-tight">
                 <span className="text-white">Aesthetic Sales Hero</span>
               </div>
             </motion.div>
@@ -40,7 +40,7 @@ const Footer = () => {
           </div>
 
           {/* Footer Links Grid */}
-          <div className="grid lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-4 md:mb-8">
             {[
               {
                 title: 'Quick Links',
@@ -87,13 +87,13 @@ const Footer = () => {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-lg font-semibold mb-3 text-white">{section.title}</h3>
+                <h3 className="text-medium md:text-lg font-semibold mb-1 md:mb-3 text-white">{section.title}</h3>
                 <ul className="space-y-2">
                   {section.links.map((link) => (
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-sm text-white/60 hover:text-white transition-colors duration-300"
+                        className="text-xs md:text-sm text-white/60 hover:text-white transition-colors duration-300"
                       >
                         {link.label}
                       </a>
@@ -105,21 +105,21 @@ const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="h-px bg-white/10 mb-6"></div>
+          <div className="h-px bg-white/10 mb-4 md:mb-6"></div>
 
           {/* Bottom Bar */}
           <motion.div
-            className="flex flex-col lg:flex-row justify-between items-center gap-4"
+            className="flex flex-col lg:flex-row justify-between items-center gap-2 md:gap-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="text-white/60 text-sm">
+            <p className="text-white/60 text-xs md:text-sm">
               © 2025 Aesthetic Sales Hero. All rights reserved.
             </p>
             
-            <p className="text-white/60 text-sm">
+            <p className="text-white/60 text-xs md:text-sm">
               Built for aesthetic & wellness professionals worldwide.
             </p>
           </motion.div>

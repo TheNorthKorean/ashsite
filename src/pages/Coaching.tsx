@@ -108,7 +108,7 @@ const Coaching = () => {
 
       {/* Founder/Coach Profile Section */}
       <section className="py-6 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -147,10 +147,10 @@ const Coaching = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-3xl font-bold mb-2 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
+                <h3 className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
                   Marco Emilio Valle
                 </h3>
-                <p className="text-xl text-white/80 mb-6">Founder & Helping You Win.</p>
+                <p className="text-base md:text-xl text-white/80 mb-6">Founder & Helping You Win.</p>
                 
                 <div className="space-y-4 text-white/80 leading-relaxed">
                   <p>
@@ -186,7 +186,7 @@ const Coaching = () => {
       <section className="py-20 relative">
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -198,7 +198,7 @@ const Coaching = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {coachingFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -208,15 +208,15 @@ const Coaching = () => {
                 transition={{ duration: 0.8, delay: 0.1 * index }}
                 viewport={{ once: true }}
               >
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-8 h-full hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50">
                   {/* Icon */}
-                  <div className="flex justify-center mb-6">
+                  <div className="flex justify-center mb-2 md:mb-6">
                     <div className="w-16 h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <feature.icon className="text-[#00d9ff] group-hover:text-white transition-colors duration-300" size={32} />
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-4 text-center group-hover:text-[#00d9ff] transition-colors duration-300">
+                  <h3 className="text-xl font-bold mb-2 md:mb-4 text-center group-hover:text-[#00d9ff] transition-colors duration-300">
                     {feature.title}
                   </h3>
                   
@@ -234,10 +234,10 @@ const Coaching = () => {
       </section>
 
       {/* Coaching Inquiry Form */}
-      <section className="py-24 relative">
+      <section className="py-12 md:py-24 relative">
         <div className="relative z-10 max-w-3xl mx-auto px-6">
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-10"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -246,7 +246,7 @@ const Coaching = () => {
             {!isSubmitted ? (
               <>
                 <div className="text-center mb-4">
-                  <h2 className="text-4xl font-bold mb-4">Start Your Coaching Journey</h2>
+                  <h2 className="text-4xl font-bold mb-4 mt-4 md:mt-0">Start Your Coaching Journey</h2>
                   <p className="text-l text-white/70 max-w-2xl mx-auto">
                     Ready to transform your practice? Let's discuss how personalized coaching can accelerate your success.
                   </p>
@@ -400,7 +400,7 @@ const Coaching = () => {
                   <div className="text-center pt-4">
                     <motion.button
                       type="submit"
-                      className="px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
+                      className="px-8 py-4 mb-4 md:mb-0 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
                       whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
                       whileTap={{ scale: 0.95 }}
                     >
