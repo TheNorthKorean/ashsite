@@ -250,6 +250,7 @@ const GetStarted = () => {
                 boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' 
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.open('https://platform.aestheticsaleshero.com/offers/rsare8xU/checkout', '_blank')}
             >
               Start Free Trial
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
@@ -259,6 +260,9 @@ const GetStarted = () => {
               className="group px-6 py-3 md:px-8 md:py-4 border-2 border-white/20 rounded-xl font-medium text-sm md:text-base hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                window.location.href = '/#how-it-works';
+              }}
             >
               <Play size={20} />
               Learn More
@@ -522,6 +526,7 @@ const GetStarted = () => {
                 className="px-8 py-3.5 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-medium shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.open('https://platform.aestheticsaleshero.com/offers/rsare8xU/checkout', '_blank')}
               >
                 Start Free Trial
                 <ArrowRight size={20} />
@@ -530,6 +535,9 @@ const GetStarted = () => {
                 className="px-8 py-3.5 border-2 border-white/20 rounded-xl font-semibold text-medium hover:bg-white/10 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  window.location.href = '/#how-it-works';
+                }}
               >
                 Learn More
               </motion.button>
