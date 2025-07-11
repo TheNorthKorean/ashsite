@@ -143,8 +143,8 @@ const CompetitiveAnalysis = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="sticky top-8">
-              <div className="bg-gradient-to-br from-black/80 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full">
-                <h3 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
+              <div className="bg-gradient-to-br from-black/80 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-8 h-full">
+                <h3 className="text-2xl font-bold mb-6 mt-2 md:mt-0 text-center bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
                   Traditional vs Modern
                 </h3>
                 

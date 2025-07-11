@@ -336,7 +336,7 @@ const Features = () => {
         
         <motion.div
           ref={ref}
-          className="relative z-10 max-w-3xl mx-auto px-6 text-center mb-14"
+          className="relative z-10 max-w-3xl mx-auto px-6 text-center mb-2 md:mb-14"
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
@@ -357,7 +357,7 @@ const Features = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl text-white/70 leading-relaxed"
+            className="text-lg md:text-xl text-white/70 leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}

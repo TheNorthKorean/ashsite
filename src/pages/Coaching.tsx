@@ -108,9 +108,9 @@ const Coaching = () => {
 
       {/* Founder/Coach Profile Section */}
       <section className="py-6 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-12"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -193,7 +193,7 @@ const Coaching = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">Coaching Options and Features</h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
               Comprehensive training and support designed to accelerate your success.
             </p>
           </motion.div>

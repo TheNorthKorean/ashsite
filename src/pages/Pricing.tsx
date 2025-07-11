@@ -95,7 +95,7 @@ const PricingPage = () => {
         >
           <div className="text-center mb-16">
             <motion.h2 
-              className="text-4xl lg:text-6xl font-bold mb-6 tracking-tight leading-[1.1]"
+              className="text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-[1.1]"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -107,7 +107,7 @@ const PricingPage = () => {
             </motion.h2>
             
             <motion.p 
-              className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-8"
+              className="text-lg md:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -155,7 +155,7 @@ const PricingPage = () => {
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.8, delay: 0.3 * index }}
               >
-                <div className={`relative bg-white/5 backdrop-blur-xl border rounded-3xl p-8 h-full hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 ${
+                <div className={`relative bg-white/5 backdrop-blur-xl border rounded-3xl p-6 md:p-8 h-full hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 ${
                   plan.recommended 
                     ? 'border-[#00d9ff]/50 hover:border-[#00d9ff]' 
                     : 'border-white/20 hover:border-[#ff41fd]/50'
@@ -262,14 +262,14 @@ const PricingPage = () => {
 
           {/* Compare Plans Section */}
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-8"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold mb-4">Compare Plans</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">Compare Plans</h3>
               <p className="text-white/70">See exactly what's included in each plan</p>
             </div>
 
@@ -287,12 +287,12 @@ const PricingPage = () => {
                     <React.Fragment key={category.category}>
                       <tr>
                         <td colSpan={3} className="py-6">
-                          <h4 className="text-lg font-bold text-white/90">{category.category}</h4>
+                          <h4 className="text-md md:text-lg font-bold text-white/90">{category.category}</h4>
                         </td>
                       </tr>
                       {category.features.map((feature, featureIndex) => (
                         <tr key={featureIndex} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                          <td className="py-3 px-6 text-white/80">{feature.name}</td>
+                          <td className="py-3 px-6 text-xs md:text-base text-white/80">{feature.name}</td>
                           <td className="py-3 px-6 text-center">
                             {feature.membership ? (
                               <Check className="text-green-400 mx-auto" size={20} />

@@ -140,7 +140,7 @@ const CaseStudies = () => {
                         {study.results.map((result, i) => (
                           <motion.div 
                             key={i} 
-                            className="group/result bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-6 text-center hover:bg-white/10 hover:scale-[1.05] transition-all duration-300 hover:border-[#00d9ff]/50"
+                            className="group/result bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-6 text-center text-sm md:text-lg hover:bg-white/10 hover:scale-[1.05] transition-all duration-300 hover:border-[#00d9ff]/50"
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, delay: 0.1 * i }}
@@ -156,7 +156,7 @@ const CaseStudies = () => {
                             
                             <h4 className="font-semibold mb-2 group-hover/result:text-[#00d9ff] transition-colors duration-300">{result.metric}</h4>
                             
-                            <div className="space-y-1 text-sm">
+                            <div className="space-y-1 text-xs md:text-sm">
                               <div className="text-white/60">Before: {result.before}</div>
                               <div className="text-white/80">After: {result.after}</div>
                               <div className="text-green-400 font-bold">{result.improvement}</div>
@@ -200,14 +200,14 @@ const CaseStudies = () => {
       <section className="py-24 relative">
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-12"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-6">Ready to Write Your Success Story?</h2>
-            <p className="text-xl text-white/70 mb-8 leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Write Your Success Story?</h2>
+            <p className="text-lg md:text-xl text-white/70 mb-8 leading-relaxed">
               Join hundreds of aesthetic practices that have transformed their consultation success. 
               Start your journey today and see measurable results within 30 days.
             </p>

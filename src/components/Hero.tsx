@@ -17,7 +17,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-24 lg:pt-40 pb-20 md:pb-40 lg:pb-60">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-0 md:pt-24 lg:pt-40 pb-20 md:pb-40 lg:pb-60">
       {/* Background Gradient - seamless transition to TrustedBy section */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-1400 via-gray-1400 to-black" />
       <div className="absolute inset-0 bg-gradient-to-tr from-[#00d9ff]/10 via-transparent to-[#ff41fd]/10" />
@@ -162,7 +162,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <motion.button
-                className="group relative px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
+                className="group relative px-6 py-4 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

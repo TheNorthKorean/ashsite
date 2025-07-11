@@ -105,7 +105,7 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1 
-            className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 tracking-tight leading-[1.1]"
+            className="text-5xl md:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 tracking-tight leading-[1.1]"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -117,7 +117,7 @@ const Contact = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed px-4"
+            className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed px-2 md:px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -129,7 +129,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form - NOW FIRST */}
-      <section className="py-2 relative">
+      <section className="py-0 md:py-2 relative">
         <div className="relative z-10 max-w-4xl mx-auto px-4 md:px-6">
           <motion.div
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 lg:p-12"
@@ -167,7 +167,7 @@ const Contact = () => {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-2 md:px-4 py-2 md:py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                     placeholder="Enter your first name"
                   />
                 </div>
@@ -178,7 +178,7 @@ const Contact = () => {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-2 md:px-4 py-2 md:py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                     placeholder="Enter your last name"
                   />
                 </div>
@@ -191,7 +191,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-2 md:px-4 py-2 md:py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -202,7 +202,7 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-2 md:px-4 py-2 md:py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -213,7 +213,7 @@ const Contact = () => {
                   name="practiceType"
                   value={formData.practiceType}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                  className="w-full px-4 py-2 md:px-4 py-2 md:py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                 >
                   <option value="">Select your practice type</option>
                   <option value="medical-spa">Medical Spa</option>
@@ -230,7 +230,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={6}
-                  className="w-full px-4 py-4 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors resize-none"
+                  className="w-full px-4 py-2 md:px-4 py-2 md:py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors resize-none"
                   placeholder="Tell us about your practice and how we can help..."
                 ></textarea>
               </div>

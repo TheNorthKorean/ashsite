@@ -22,13 +22,13 @@ const Footer = () => {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="text-medium md:text-2xl font-bold tracking-tight">
+              <div className="text-sm md:text-2xl font-bold tracking-tight">
                 <span className="text-white">Aesthetic Sales Hero</span>
               </div>
             </motion.div>
             
             <motion.div
-              className="flex items-center gap-2 text-xs text-white/60"
+              className="flex items-center gap-2 text-xs md:text-xs text-white/60"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
