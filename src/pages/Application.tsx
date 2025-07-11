@@ -229,7 +229,14 @@ const Application = () => {
   const encode = (data: Record<string, any>) => {
     return Object.keys(data)
       .map(
-        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+        (key) => {
+          const value = data[key];
+          if (Array.isArray(value)) {
+            // Convert array to comma-separated string
+            return encodeURIComponent(key) + "=" + encodeURIComponent(value.join(", "));
+          }
+          return encodeURIComponent(key) + "=" + encodeURIComponent(value);
+        }
       )
       .join("&");
   };

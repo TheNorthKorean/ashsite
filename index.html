@@ -14,5 +14,65 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Hidden forms for Netlify detection (required for React forms) -->
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <select name="practiceType">
+        <option value="medical-spa">Medical Spa</option>
+        <option value="dermatology">Dermatology</option>
+        <option value="plastic-surgery">Plastic Surgery</option>
+        <option value="wellness-center">Wellness Center</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea name="message"></textarea>
+    </form>
+    
+    <form name="coaching-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="coaching-inquiry" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <select name="coachingType">
+        <option value="one-on-one">1-on-1 Coaching</option>
+        <option value="group">Group Coaching</option>
+        <option value="certification">Certification Program</option>
+        <option value="custom">Custom Program</option>
+      </select>
+      <textarea name="goals"></textarea>
+      <select name="contactMethod">
+        <option value="email">Email</option>
+        <option value="phone">Phone</option>
+        <option value="video">Video Call</option>
+      </select>
+      <input type="text" name="bestTime" />
+    </form>
+    
+    <form name="application" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="application" />
+      <input name="bot-field" />
+      <input type="text" name="track" />
+      <input type="text" name="fullName" />
+      <input type="email" name="email" />
+      <input type="text" name="professionalTitle" />
+      <input type="text" name="organization" />
+      <input type="text" name="country" />
+      <input type="url" name="linkedinUrl" />
+      <input type="number" name="yearsExperience" />
+      <textarea name="briefBio"></textarea>
+      <input type="text" name="areasOfExpertise" />
+      <textarea name="motivationStatement"></textarea>
+      <textarea name="achievements"></textarea>
+      <input type="text" name="howDidYouHear" />
+      <input type="checkbox" name="gdprConsent" />
+      <input type="checkbox" name="marketingConsent" />
+      <input type="checkbox" name="termsAccepted" />
+    </form>
   </body>
 </html>

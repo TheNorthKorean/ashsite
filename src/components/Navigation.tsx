@@ -68,7 +68,7 @@ const Navigation = () => {
                 <img 
                   src="/AMG (40).png" 
                   alt="Aesthetic Sales Hero Logo" 
-                  className="w-8 h-8 md:w-10 md:h-10 object-contain rounded-full"
+                  className="w-10 h-10 md:w-10 md:h-10 object-contain rounded-full"
                 />
               </motion.div>
               <motion.div
@@ -184,22 +184,22 @@ const Navigation = () => {
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
             >
-              <div className="p-4 pt-20 h-full overflow-y-auto">
+              <div className="p-6 pt-20 h-full overflow-y-auto">
                 <div className="space-y-1">
                   {navItems.map((item) => (
                     <div key={item.label}>
                       {item.dropdown ? (
                         <div>
-                          <div className="text-lg font-semibold text-white/80 mb-3 py-2">
+                          <div className="text-lg font-semibold text-white/80 mb-0 py-1">
                             {item.label}
                           </div>
-                          <div className="pl-4 space-y-2">
+                          <div className="pl-4 space-y-0">
                             {item.dropdown.map((dropdownItem) => (
                               <Link
                                 key={dropdownItem.label}
                                 to={dropdownItem.href}
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="flex items-center gap-3 py-2 text-base text-white/70 hover:text-gray-400 transition-colors"
+                                className="flex items-center gap-3 py-1.5 text-sm md:text-base text-white/70 hover:text-gray-400 transition-colors"
                               >
                                 <dropdownItem.icon size={16} />
                                 {dropdownItem.label}
@@ -211,20 +211,20 @@ const Navigation = () => {
                         <Link
                           to={item.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="block py-3 text-lg font-semibold text-white/80 hover:text-gray-400 transition-colors"
+                          className="block py-1.5 text-lg font-semibold text-white/80 hover:text-gray-400 transition-colors"
                         >
                           {item.label}
                         </Link>
                       )}
                     </div>
                   ))}
-                  <div className="pt-8 space-y-4 mt-auto">
+                  <div className="pt-2 space-y-4 mt-auto">
                     <motion.button
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         window.open('https://platform.aestheticsaleshero.com/login', '_blank');
                       }}
-                      className="w-full px-6 py-4 border-2 border-white/20 rounded-xl font-semibold text-base hover:border-gray-400 transition-all duration-300"
+                      className="w-full px-6 py-4 border-2 border-white/20 rounded-xl font-semibold text-base hover:border-gray-400 transition-all duration-300 mb-4"
                       whileTap={{ scale: 0.95 }}
                     >
                       Log In

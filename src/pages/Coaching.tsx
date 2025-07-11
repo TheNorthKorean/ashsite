@@ -29,11 +29,25 @@ const Coaching = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const encode = (data: Record<string, any>) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&');
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'coaching-inquiry', ...formData }),
+      });
+      console.log('Form submitted successfully');
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
   };
 
   const coachingFeatures = [
@@ -413,7 +427,7 @@ const Coaching = () => {
                   <div className="text-center pt-4">
                     <motion.button
                       type="submit"
-                      className="px-8 py-3 md:py-4 mb-4 md:mb-0 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-medium md:text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
+                      className="px-8 py-4 md:py-4 mb-4 md:mb-0 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-medium md:text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
                       whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
                       whileTap={{ scale: 0.95 }}
                     >

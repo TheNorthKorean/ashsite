@@ -172,7 +172,7 @@ const Faculty = () => {
     : facultyMembers.filter(member => member.specialty === selectedFilter);
 
   return (
-    <div className="pt-24 bg-gradient-to-br from-black via-gray-900 to-black min-h-screen">
+    <div className="pt-10 md:pt-24 bg-gradient-to-br from-black via-gray-900 to-black min-h-screen">
       {/* Hero Section */}
       <section className="py-24 relative overflow-hidden">
         <motion.div
@@ -184,7 +184,7 @@ const Faculty = () => {
         >
           {/* Applications Badge */}
           <motion.div
-            className="flex justify-center mb-12"
+            className="flex justify-center mb-6 md:mb-12"
             initial={{ opacity: 0, y: -20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -256,7 +256,7 @@ const Faculty = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed mb-16 px-4"
+            className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed mb-8 md:mb-16 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
