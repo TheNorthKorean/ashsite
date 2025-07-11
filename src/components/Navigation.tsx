@@ -58,16 +58,17 @@ const Navigation = () => {
             {/* Logo and Brand */}
             <Link to="/" className="flex items-center gap-2 md:gap-3">
               <motion.div
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center overflow-hidden"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center overflow-hidden bg-white/10 backdrop-blur-sm"
                 whileHover={{ scale: 1.05 }}
                 style={{
                   filter: 'drop-shadow(0 0 12px #00d9ff) brightness(1.2)',
+                  clipPath: 'circle(50%)',
                 }}
               >
                 <img 
                   src="/AMG (40).png" 
                   alt="Aesthetic Sales Hero Logo" 
-                  className="w-full h-full object-contain"
+                  className="w-8 h-8 md:w-10 md:h-10 object-contain rounded-full"
                 />
               </motion.div>
               <motion.div
@@ -142,15 +143,16 @@ const Navigation = () => {
               >
                 Log In
               </motion.button>
-              <motion.button
-                className="group px-6 py-2.5 bg-white text-black hover:bg-gray-100 rounded-xl font-light text-sm tracking-tight shadow-lg transition-all duration-300 flex items-center gap-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => window.location.href = '/getstarted'}
-              >
-                Get Started
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              <Link to="/getstarted">
+                <motion.button
+                  className="group px-6 py-2.5 bg-white text-black hover:bg-gray-100 rounded-xl font-light text-sm tracking-tight shadow-lg transition-all duration-300 flex items-center gap-2"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Started
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -183,7 +185,7 @@ const Navigation = () => {
               transition={{ type: 'tween', duration: 0.3 }}
             >
               <div className="p-4 pt-20 h-full overflow-y-auto">
-                <div className="space-y-3">
+                <div className="space-y-1">
                   {navItems.map((item) => (
                     <div key={item.label}>
                       {item.dropdown ? (
@@ -227,17 +229,15 @@ const Navigation = () => {
                     >
                       Log In
                     </motion.button>
-                    <motion.button
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        window.location.href = '/getstarted';
-                      }}
-                      className="w-full px-6 py-4 bg-white text-black hover:bg-gray-100 rounded-xl font-semibold text-base shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Get Started
-                      <ArrowRight size={16} />
-                    </motion.button>
+                    <Link to="/getstarted" onClick={() => setIsMobileMenuOpen(false)}>
+                      <motion.button
+                        className="w-full px-6 py-4 bg-white text-black hover:bg-gray-100 rounded-xl font-semibold text-base shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Get Started
+                        <ArrowRight size={16} />
+                      </motion.button>
+                    </Link>
                   </div>
                 </div>
               </div>

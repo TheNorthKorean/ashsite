@@ -244,7 +244,7 @@ const Faculty = () => {
           </motion.div>
 
           <motion.h1 
-            className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 tracking-tight"
+            className="text-5xl md:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -266,20 +266,20 @@ const Faculty = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-2 md:gap-4 justify-center pt-0 md:pt-5 px-0 md:px-4"
+            className="flex flex-col-2 sm:flex-row gap-2 md:gap-4 justify-center pt-0 md:pt-5 px-0 md:px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <motion.button
-              className="group relative px-6 py-4 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
+              className="group relative px-10 py-4 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Apply Now
             </motion.button>
             <motion.button
-              className="group px-6 py-3 md:px-8 md:py-4 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm md:text-base hover:bg-gray-800/80 hover:border-[#00d9ff]/50 transition-all duration-300 flex items-center justify-center gap-3"
+              className="group px-6 py-2 md:px-8 md:py-4 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm md:text-base hover:bg-gray-800/80 hover:border-[#00d9ff]/50 transition-all duration-300 flex items-center justify-center gap-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -291,7 +291,7 @@ const Faculty = () => {
       </section>
 
       {/* Partner Showcase - Matching Home Page Format */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-10 md:py-20 relative overflow-hidden">
         <div className="absolute inset-0" />
         
         <motion.div
@@ -301,7 +301,7 @@ const Faculty = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h2 
-            className="text-xl lg:text-xl font-medium mb-2 text-white/90"
+            className="text-lg md:text-xl font-medium mb-2 text-white/90"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -312,7 +312,7 @@ const Faculty = () => {
           <div className="relative max-w-6xl mx-auto">
             <div className="flex overflow-hidden">
               <motion.div
-                className="flex items-center gap-16"
+                className="flex items-center gap-8 md:gap-16"
                 animate={{
                   x: [0, -100 * companies.length - 100],
                 }}
@@ -341,7 +341,7 @@ const Faculty = () => {
                     <img
                       src={company.logo}
                       alt={company.name}
-                      className="h-21 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
+                      className="h-16 md:h-28 lg:h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
                       style={{
                         maxWidth: '140px',
                         minWidth: '80px'

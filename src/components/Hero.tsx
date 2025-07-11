@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Play } from 'lucide-react';
 
 const Hero = () => {
@@ -161,33 +162,35 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
-              <motion.button
-                className="group relative px-6 py-4 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {/* Animated border light that follows the button border */}
-                <motion.div
-                  className="absolute inset-0 rounded-xl opacity-50"
-                  style={{
-                    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)',
-                    backgroundSize: '200% 100%',
-                  }}
-                  animate={{
-                    backgroundPosition: ['-200% 0%', '200% 0%'],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-                
-                <span className="relative z-10 flex items-center justify-center gap-4">
-                  Get Started
-                  <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-                </span>
-              </motion.button>
+              <Link to="/getstarted">
+                <motion.button
+                  className="group relative px-6 py-4 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* Animated border light that follows the button border */}
+                  <motion.div
+                    className="absolute inset-0 rounded-xl opacity-50"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)',
+                      backgroundSize: '200% 100%',
+                    }}
+                    animate={{
+                      backgroundPosition: ['-200% 0%', '200% 0%'],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                  
+                  <span className="relative z-10 flex items-center justify-center gap-4">
+                    Get Started
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
+                  </span>
+                </motion.button>
+              </Link>
               
               <motion.button
                 className="group px-6 py-3 md:px-8 md:py-4 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm md:text-base hover:bg-gray-800/80 hover:border-[#00d9ff]/50 transition-all duration-300 flex items-center justify-center gap-3"

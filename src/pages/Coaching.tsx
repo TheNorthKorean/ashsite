@@ -95,7 +95,7 @@ const Coaching = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl text-white/70 leading-relaxed"
+            className="text-lg md:text-xl text-white/70 leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -120,21 +120,21 @@ const Coaching = () => {
               {/* Profile Image */}
               <motion.div
                 className="relative"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
                 <div className="relative w-full max-w-md mx-auto">
-                  {/* Glow effect behind image */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#00d9ff]/20 to-[#ff41fd]/20 blur-2xl rounded-full transform scale-110"></div>
+                  {/* Simplified glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#00d9ff]/10 to-[#ff41fd]/10 blur-xl rounded-2xl"></div>
                   
-                  {/* Profile image placeholder - replace with actual image */}
-                  <div className="relative z-10 w-full aspect-square bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden">
+                  {/* Profile image */}
+                  <div className="relative z-10 w-full aspect-square bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl border border-white/10 overflow-hidden">
                     <img
                       src="/headshot/Marco.png"
                       alt="Marco Emilio Valle - Founder & Lead Coach"
-                      className="w-full h-full object-cover rounded-2xl"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
@@ -142,9 +142,9 @@ const Coaching = () => {
 
               {/* Profile Content */}
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
                 <h3 className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
@@ -252,7 +252,20 @@ const Coaching = () => {
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form 
+                  name="coaching-inquiry"
+                  method="POST"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
+                  onSubmit={handleSubmit} 
+                  className="space-y-6"
+                >
+                  <input type="hidden" name="form-name" value="coaching-inquiry" />
+                  <p style={{ display: 'none' }}>
+                    <label>
+                      Don't fill this out: <input name="bot-field" />
+                    </label>
+                  </p>
                   {/* Name */}
                   <div>
                     <label className="block text-sm font-semibold mb-2">
@@ -400,7 +413,7 @@ const Coaching = () => {
                   <div className="text-center pt-4">
                     <motion.button
                       type="submit"
-                      className="px-8 py-4 mb-4 md:mb-0 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
+                      className="px-8 py-3 md:py-4 mb-4 md:mb-0 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-medium md:text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
                       whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
                       whileTap={{ scale: 0.95 }}
                     >

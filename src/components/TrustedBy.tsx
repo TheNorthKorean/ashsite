@@ -72,7 +72,7 @@ const TrustedBy = () => {
                   <img
                     src={company.logo}
                     alt={company.name}
-                    className="h-16 md:h-20 lg:h-21 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
+                    className="h-16 md:h-28 lg:h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
                     style={{
                       maxWidth: '100px',
                       minWidth: '60px'
