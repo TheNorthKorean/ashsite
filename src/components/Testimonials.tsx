@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 const Testimonials = () => {
   const [ref, inView] = useInView({
@@ -146,25 +146,7 @@ const Testimonials = () => {
 
         {/* Testimonials Carousel with Arrow Navigation */}
         <div className="relative">
-          {/* Left Arrow */}
-          <motion.button
-            onClick={prevTestimonials}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <ChevronLeft className="text-white" size={24} />
-          </motion.button>
 
-          {/* Right Arrow */}
-          <motion.button
-            onClick={nextTestimonials}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <ChevronRight className="text-white" size={24} />
-          </motion.button>
 
           {/* Carousel Container */}
           <div 

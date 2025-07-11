@@ -446,20 +446,14 @@ const Features = () => {
             <p className="text-gray-400 font-extralight max-w-2xl mx-auto mb-8">
               Join thousands of aesthetic professionals already using our platform to accelerate their consultation success.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <motion.button
                 className="px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
                 whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => window.open('https://platform.aestheticsaleshero.com/offers/rsare8xU/checkout', '_blank')}
               >
-                Get started
-              </motion.button>
-              <motion.button
-                className="px-8 py-4 bg-transparent border border-gray-700 rounded-xl font-bold text-lg hover:bg-white/5 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View demo
+                Get Started
               </motion.button>
             </div>
           </motion.div>

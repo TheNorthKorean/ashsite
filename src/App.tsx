@@ -16,6 +16,7 @@ import CaseStudies from './pages/CaseStudies';
 import BlogPost from './pages/BlogPost';
 import Application from './pages/Application';
 import GetStarted from './pages/GetStarted';
+import Enterprise from './pages/Enterprise';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,6 +57,7 @@ function App() {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/application" element={<Application />} />
             <Route path="/getstarted" element={<GetStarted />} />
+            <Route path="/enterprise" element={<Enterprise />} />
           </Routes>
         </main>
         <Footer />

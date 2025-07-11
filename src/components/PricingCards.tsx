@@ -162,7 +162,7 @@ const PricingCards = () => {
                     {plan.name}
                   </h3>
                   
-                  <p className="text-white/70 mb-6">
+                  <p className="text-white/70 mb-4 md:mb-6">
                     {plan.subtitle}
                   </p>
 
@@ -189,7 +189,7 @@ const PricingCards = () => {
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
                       <Check className="text-[#00d9ff] mt-1 flex-shrink-0" size={16} />
@@ -207,6 +207,13 @@ const PricingCards = () => {
                   }`}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    if (plan.recommended) {
+                      window.open('https://platform.aestheticsaleshero.com/offers/rsare8xU/checkout', '_blank');
+                    } else {
+                      window.location.href = '/enterprise';
+                    }
+                  }}
                 >
                   {plan.recommended ? 'Start Your Journey' : 'Contact Sales'}
                 </motion.button>

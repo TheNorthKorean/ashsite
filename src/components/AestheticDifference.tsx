@@ -118,7 +118,7 @@ const AestheticDifference = () => {
           scale: 1 - scaleSteps,
           opacity: 0.8,
           order: 3,
-          blurIntensity: 7,
+          blurIntensity: window.innerWidth < 768 ? 2 : 7,
           clipOffset: 45, 
         };
       case 2:
@@ -128,7 +128,7 @@ const AestheticDifference = () => {
           scale: 1 - scaleSteps * 2,
           opacity: 0.7,
           order: 2,
-          blurIntensity: 12,
+          blurIntensity: window.innerWidth < 768 ? 3 : 12,
           clipOffset: 55,
         };
       default:
@@ -138,7 +138,7 @@ const AestheticDifference = () => {
           scale: 1 - scaleSteps * 3,
           opacity: 0.6,
           order: 1,
-          blurIntensity: 14,
+          blurIntensity: window.innerWidth < 768 ? 4 : 14,
           clipOffset: 55,
         };
     }

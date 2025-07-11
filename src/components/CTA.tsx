@@ -153,6 +153,7 @@ const CTA = () => {
                 boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' 
               }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.open('https://platform.aestheticsaleshero.com/offers/rsare8xU/checkout', '_blank')}
             >
               Start Your 14-Day Trial
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />

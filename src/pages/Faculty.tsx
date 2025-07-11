@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 import { 
   Award, 
   Users, 
@@ -59,7 +60,7 @@ const Faculty = () => {
   const specialties = [
     { id: 'all', name: 'All Specialties', count: 35 },
     { id: 'finance', name: 'Finance', count: 12 },
-    { id: 'marketing', name: 'Mergers & Acquisitions', count: 8 },
+    { id: 'marketing', name: 'M&A', count: 8 },
     { id: 'operations', name: 'Operations', count: 6 },
     { id: 'compliance', name: 'Compliance & Law', count: 5 },
     { id: 'social', name: 'Social Media & Marketing', count: 4 },
@@ -271,17 +272,25 @@ const Faculty = () => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <motion.button
-              className="group relative px-10 py-4 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Apply Now
-            </motion.button>
+            <Link to="/application">
+              <motion.button
+                className="group relative px-10 py-4 md:px-8 md:py-4 bg-gradient-to-r from-[#00d9ff] to-[#00bfff] rounded-xl font-medium text-sm md:text-base overflow-hidden"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Apply Now
+              </motion.button>
+            </Link>
             <motion.button
               className="group px-6 py-2 md:px-8 md:py-4 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm md:text-base hover:bg-gray-800/80 hover:border-[#00d9ff]/50 transition-all duration-300 flex items-center justify-center gap-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const element = document.getElementById('application-process');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
               <Play size={20} />
               Learn More
@@ -341,7 +350,7 @@ const Faculty = () => {
                     <img
                       src={company.logo}
                       alt={company.name}
-                      className="h-16 md:h-28 lg:h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
+                      className="h-24 md:h-28 lg:h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
                       style={{
                         maxWidth: '140px',
                         minWidth: '80px'
@@ -462,7 +471,7 @@ const Faculty = () => {
       </section>
 
       {/* Application Process Section */}
-      <section className="py-12 md:py-24 relative">
+      <section id="application-process" className="py-6 md:py-24 relative">
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
             className="text-center mb-10 md:mb-16"
@@ -616,10 +625,12 @@ const Faculty = () => {
 
               {/* Apply Button */}
               <div className="mt-6">
-                <button className="w-full px-6 py-3 bg-[#00d9ff] rounded-xl font-bold text-m shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
-                  Apply for Faculty Track
-                  <ArrowRight size={20} />
-                </button>
+                <Link to="/application">
+                  <button className="w-full px-6 py-3 bg-[#00d9ff] rounded-xl font-semibold text-m shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
+                    Apply for Faculty Track
+                    <ArrowRight size={20} />
+                  </button>
+                </Link>
               </div>
             </motion.div>
 
@@ -707,10 +718,12 @@ const Faculty = () => {
 
               {/* Apply Button */}
               <div className="mt-6">
-                <button className="w-full px-6 py-3 bg-[#ff41fd] rounded-xl font-bold text-m shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-2">
-                  Apply for Ambassador Track
-                  <ArrowRight size={20} />
-                </button>
+                <Link to="/application">
+                  <button className="w-full px-6 py-3 bg-[#ff41fd] rounded-xl font-semibold text-xs md:text-base shadow-lg hover:scale-105 transition-transform flex items-center justify-center gap-1 md:gap-2">
+                    Apply for Ambassador Track
+                    <ArrowRight size={20} />
+                  </button>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -778,26 +791,31 @@ const Faculty = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 relative">
+      <section className="py-4 md:py-24 relative">
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-12"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-12"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-6">Ready to Join Our Network?</h2>
-            <p className="text-xl text-white/70 mb-8 leading-relaxed">
+            <h2 className="text-4xl font-bold mb-6 mt-2 md:mt-0">Ready to Join Our Network?</h2>
+            <p className="text-medium md:text-xl text-white/70 mb-8 leading-relaxed">
               Take the next step in your career and become part of the most influential network 
               in aesthetic sales training. Applications are reviewed on a rolling basis.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-lg shadow-lg hover:scale-105 transition-transform">
-                Start Application
-              </button>
-              <button className="px-8 py-4 border-2 border-white/20 rounded-xl font-bold text-lg hover:bg-white/10 transition-all duration-300">
+              <Link to="/application">
+                <button className="px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-medium md:text-base shadow-lg hover:scale-105 transition-transform">
+                  Start Application
+                </button>
+              </Link>
+              <button 
+                className="px-8 py-4 border-2 border-white/20 rounded-xl font-semibold text-medium md:text-base hover:bg-white/10 transition-all duration-300"
+                onClick={() => window.location.href = 'mailto:contact@aestheticsaleshero.com?subject=Schedule Consultation - Faculty Program'}
+              >
                 Schedule Consultation
               </button>
             </div>

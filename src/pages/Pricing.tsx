@@ -230,6 +230,13 @@ const PricingPage = () => {
                     }`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      if (plan.recommended) {
+                        window.open('https://platform.aestheticsaleshero.com/offers/rsare8xU/checkout', '_blank');
+                      } else {
+                        window.location.href = '/enterprise';
+                      }
+                    }}
                   >
                     {plan.recommended ? 'Start Your Journey' : 'Contact Sales'}
                   </motion.button>

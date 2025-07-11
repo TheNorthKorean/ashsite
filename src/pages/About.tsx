@@ -10,7 +10,7 @@ const About = () => {
   });
 
   return (
-    <div className="pt-20 bg-gradient-to-br from-black via-gray-900 to-black min-h-screen">
+    <div className="pt-10 md:pt-20 bg-gradient-to-br from-black via-gray-900 to-black min-h-screen">
       {/* Hero Section */}
       <section className="py-24 relative overflow-hidden">
         <motion.div
@@ -33,7 +33,7 @@ const About = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl text-white/70 leading-relaxed"
+            className="text-medium md:text-xl text-white/70 leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -46,7 +46,7 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-24 relative">
+      <section className="py-10 md:py-24 relative">
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -111,7 +111,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-24 relative">
+      <section className="py-10 md:py-24 relative">
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
             className="text-center mb-16"
@@ -121,12 +121,12 @@ const About = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">Our Values</h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            <p className="text-medium md:text-xl text-white/70 max-w-3xl mx-auto">
               Everything we do is guided by these core principles that shape our platform and community.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-6">
             {[
               {
                 icon: Heart,
@@ -146,7 +146,7 @@ const About = () => {
             ].map((value, index) => (
               <motion.div
                 key={index}
-                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 hover:border-[#00d9ff]/50"
+                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-8 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 hover:border-[#00d9ff]/50"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 * index }}

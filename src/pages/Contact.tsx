@@ -300,6 +300,11 @@ const Contact = () => {
                       className="px-6 py-3 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 border border-[#00d9ff]/30 rounded-xl font-semibold text-[#00d9ff] hover:bg-gradient-to-r hover:from-[#00d9ff] hover:to-[#ff41fd] hover:text-white transition-all duration-300"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
+                      onClick={() => {
+                        if (method.title === 'Email Support') {
+                          window.location.href = 'mailto:contact@aestheticsaleshero.com?subject=Support Request';
+                        }
+                      }}
                     >
                       {method.action}
                     </motion.button>

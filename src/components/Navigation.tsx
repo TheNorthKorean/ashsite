@@ -61,7 +61,6 @@ const Navigation = () => {
                 className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center overflow-hidden bg-white/10 backdrop-blur-sm"
                 whileHover={{ scale: 1.05 }}
                 style={{
-                  filter: 'drop-shadow(0 0 12px #00d9ff) brightness(1.2)',
                   clipPath: 'circle(50%)',
                 }}
               >

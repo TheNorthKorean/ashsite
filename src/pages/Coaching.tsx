@@ -248,7 +248,7 @@ const Coaching = () => {
       </section>
 
       {/* Coaching Inquiry Form */}
-      <section className="py-12 md:py-24 relative">
+      <section id="coaching-form" className="py-12 md:py-24 relative">
         <div className="relative z-10 max-w-3xl mx-auto px-6">
           <motion.div
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-10"

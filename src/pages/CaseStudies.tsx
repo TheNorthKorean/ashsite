@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
 import { TrendingUp, DollarSign, Users, Award } from 'lucide-react';
 
 const CaseStudies = () => {
@@ -200,24 +201,26 @@ const CaseStudies = () => {
       <section className="py-24 relative">
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-12"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-12"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Write Your Success Story?</h2>
-            <p className="text-lg md:text-xl text-white/70 mb-8 leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 mt-2 md:mt-0">Ready to Write Your Success Story?</h2>
+            <p className="text-medium md:text-xl text-white/70 mb-8 leading-relaxed">
               Join hundreds of aesthetic practices that have transformed their consultation success. 
               Start your journey today and see measurable results within 30 days.
             </p>
-            <motion.button
-              className="px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
-              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Start Your Transformation
-            </motion.button>
+            <Link to="/coaching#coaching-form">
+              <motion.button
+                className="px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-medium md:text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
+                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Start Your Transformation
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </section>
