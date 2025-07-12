@@ -174,7 +174,7 @@ const GetStarted = () => {
       <section className="py-0 relative overflow-hidden">
         <motion.div
           ref={ref}
-          className="relative z-10 max-w-5xl mx-auto px-6 text-center"
+          className="relative z-10 max-w-9xl mx-auto px-6 text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
@@ -214,7 +214,7 @@ const GetStarted = () => {
               { text: 'Master ethical sales that patients trust', icon: GraduationCap, color: 'text-blue-400' },
               { text: 'Quick setup', icon: Clock, color: 'text-purple-400' }
             ].map((benefit, index) => (
-              <div key={index} className="flex items-center gap-1 md:gap-3">
+              <div key={index} className="flex items-center gap-2 md:gap-3">
                 <benefit.icon className={`${benefit.color} flex-shrink-0`} size={16} />
                 <span className="text-white/90">{benefit.text}</span>
               </div>
@@ -408,7 +408,7 @@ const GetStarted = () => {
 
       {/* Social Proof Section */}
       <section className="py-24 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-0 md:px-6">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -427,10 +427,10 @@ const GetStarted = () => {
             {/* Carousel Container */}
             <div 
               ref={carouselRef}
-              className="relative overflow-hidden py-8"
+              className="relative overflow-hidden py-0 md:py-8"
             >
               <motion.div
-                className="flex gap-6"
+                className="flex gap-4 md:gap-6"
                 animate={!isPaused ? {
                   x: [0, -(testimonials.length * 386)], // 380px width + 6px gap
                 } : {
@@ -451,7 +451,7 @@ const GetStarted = () => {
                 {[...testimonials, ...testimonials].map((testimonial, index) => (
                   <motion.div
                     key={`${testimonial.name}-${index}`}
-                    className="group flex-shrink-0 w-[320px] md:w-[360px]"
+                    className="group flex-shrink-0 w-[300px] md:w-[360px]"
                     whileHover={{ scale: 1.02 }}
                   >
                     <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 h-auto min-h-[280px] hover:bg-white/10 transition-all duration-300 group-hover:border-[#00d9ff]/50 flex flex-col">
@@ -515,7 +515,7 @@ const GetStarted = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Practice?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Practice?</h2>
             <p className="text-medium md:text-xl text-white/70 mb-8 leading-relaxed">
               Join 200+ aesthetic professionals who've already increased their revenue by 27% on average. 
               Start your 14-day free trial today.
@@ -544,15 +544,15 @@ const GetStarted = () => {
             </div>
             
             <div className="flex flex-wrap md:flex-row items-center justify-center gap-3 md:gap-6 text-xs md:text-sm text-white/60">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 <CheckCircle size={14} className="text-green-400" />
                 30-day money-back guarantee
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 <Shield size={14} className="text-green-400" />
                 No setup fees
               </div>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2">
                 <Clock size={14} className="text-green-400" />
                 Cancel anytime
               </div>
