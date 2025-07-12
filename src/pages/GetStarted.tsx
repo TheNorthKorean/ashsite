@@ -164,7 +164,7 @@ const GetStarted = () => {
           <div className="inline-flex items-center px-4 py-1.5 bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-500/30 rounded-full">
             <Shield className="text-green-400 mr-2" size={16} />
             <span className="text-xs md:text-sm font-normal text-green-400">
-              Trusted by 200+ Members • $90M+ Revenue Generated
+              Trusted by 200+ • $90M+ Revenue Generated
             </span>
           </div>
         </motion.div>
@@ -408,7 +408,7 @@ const GetStarted = () => {
 
       {/* Social Proof Section */}
       <section className="py-24 relative">
-        <div className="relative z-10 max-w-5xl mx-auto px-0 md:px-6">
+        <div className="relative z-10 max-w-6xl mx-auto px-2 md:px-6">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
