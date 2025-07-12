@@ -156,7 +156,7 @@ const GetStarted = () => {
       {/* Trust Badge */}
       <section className="py-12 relative">
         <motion.div
-          className="relative z-10 max-w-4xl mx-auto px-6 text-center"
+          className="relative z-10 max-w-5xl mx-auto px-6 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -174,7 +174,7 @@ const GetStarted = () => {
       <section className="py-0 relative overflow-hidden">
         <motion.div
           ref={ref}
-          className="relative z-10 max-w-9xl mx-auto px-6 text-center"
+          className="relative z-10 max-w-10xl mx-auto px-6 text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
@@ -238,7 +238,7 @@ const GetStarted = () => {
 
           {/* CTAs */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-2 md:gap-4 justify-center mb-8 px-0 md:px-4"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-8 px-0 md:px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 1 }}
@@ -257,7 +257,7 @@ const GetStarted = () => {
             </motion.button>
             
             <motion.button
-              className="group px-6 py-3 md:px-8 md:py-4 border-2 border-white/20 rounded-xl font-semibold text-sm md:text-base hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
+              className="group px-6 py-4 md:px-8 md:py-4 border-2 border-white/20 rounded-xl font-semibold text-sm md:text-base hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => {
@@ -271,7 +271,7 @@ const GetStarted = () => {
 
           {/* Reference-style benefits under CTAs */}
           <motion.div
-            className="flex flex-wrap justify-center gap-6 text-sm text-white/60"
+            className="flex flex-wrap justify-center gap-3 md:gap-6 text-sm text-white/60"
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 1.2 }}
@@ -341,7 +341,7 @@ const GetStarted = () => {
                     <img
                       src={company.logo}
                       alt={company.name}
-                      className="h-20 md:h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
+                      className="h-24 md:h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
                       style={{
                         maxWidth: '140px',
                         minWidth: '80px'
