@@ -164,7 +164,7 @@ const GetStarted = () => {
           <div className="inline-flex items-center px-4 py-1.5 bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-500/30 rounded-full">
             <Shield className="text-green-400 mr-2" size={16} />
             <span className="text-xs md:text-sm font-normal text-green-400">
-              Trusted by 200+ aesthetic practices • $90M+ revenue generated
+              Trusted by 200+ Professionals • $90M+ Revenue Generated
             </span>
           </div>
         </motion.div>
@@ -244,7 +244,7 @@ const GetStarted = () => {
             transition={{ duration: 0.8, delay: 1 }}
           >
             <motion.button
-              className="group px-6 py-4 md:px-8 md:py-4 bg-[#00d9ff] rounded-xl font-medium text-sm md:text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-3"
+              className="group px-6 py-4 md:px-8 md:py-4 bg-[#00d9ff] rounded-xl font-semibold text-sm md:text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-3"
               whileHover={{ 
                 scale: 1.05, 
                 boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' 
@@ -257,7 +257,7 @@ const GetStarted = () => {
             </motion.button>
             
             <motion.button
-              className="group px-6 py-3 md:px-8 md:py-4 border-2 border-white/20 rounded-xl font-medium text-sm md:text-base hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
+              className="group px-6 py-3 md:px-8 md:py-4 border-2 border-white/20 rounded-xl font-semibold text-sm md:text-base hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => {
@@ -312,7 +312,7 @@ const GetStarted = () => {
           <div className="relative max-w-6xl mx-auto">
             <div className="flex overflow-hidden">
               <motion.div
-                className="flex items-center gap-16"
+                className="flex items-center gap-12 md:gap-16"
                 animate={{
                   x: [0, -100 * companies.length - 100],
                 }}
@@ -341,7 +341,7 @@ const GetStarted = () => {
                     <img
                       src={company.logo}
                       alt={company.name}
-                      className="h-21 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
+                      className="h-20 md:h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
                       style={{
                         maxWidth: '140px',
                         minWidth: '80px'
@@ -408,7 +408,7 @@ const GetStarted = () => {
 
       {/* Social Proof Section */}
       <section className="py-24 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-0 md:px-6">
+        <div className="relative z-10 max-w-6xl mx-auto px-0 md:px-6">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
