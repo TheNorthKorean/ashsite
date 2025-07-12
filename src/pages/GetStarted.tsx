@@ -152,9 +152,9 @@ const GetStarted = () => {
 
 
   return (
-    <div className="pt-24 bg-gradient-to-br from-black via-gray-900 to-black min-h-screen">
+    <div className="pt-28 bg-gradient-to-br from-black via-gray-900 to-black min-h-screen">
       {/* Trust Badge */}
-      <section className="py-12 relative">
+      <section className="py-6 md:py-12 relative">
         <motion.div
           className="relative z-10 max-w-5xl mx-auto px-6 text-center"
           initial={{ opacity: 0, y: -20 }}
@@ -408,7 +408,7 @@ const GetStarted = () => {
 
       {/* Social Proof Section */}
       <section className="py-24 relative">
-        <div className="relative z-10 max-w-6xl mx-auto px-2 md:px-6">
+        <div className="relative z-10 max-w-6xl mx-auto px-0 md:px-6">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -416,7 +416,7 @@ const GetStarted = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Real Results from Real Practices</h2>
+            <h2 className="text-4xl lg:text-5xl max-w-3xl mx-auto font-bold mb-6">Real Results from Real Practices</h2>
             <p className="text-medium md:text-xl text-white/70 max-w-2xl mx-auto">
               See how aesthetic professionals are transforming their consultation success with our platform.
             </p>
@@ -440,7 +440,7 @@ const GetStarted = () => {
                   x: {
                     repeat: Infinity,
                     repeatType: "loop",
-                    duration: 50, // Smooth speed - 50 seconds for full cycle
+                    duration: 70, // Smooth speed - 50 seconds for full cycle
                     ease: "linear",
                   }
                 } : {
