@@ -98,7 +98,7 @@ const GetStarted = () => {
       role: 'Chief Operating Officer',
       company: 'Princeton Medspa Partners',
       profileImage: '/testimonials/gary-bufalo.jpeg',
-      companyLogo: '/companylogos/princetonmedspa.png',
+      companyLogo: '/companylogos/princeton-medspa.png',
       rating: 5,
       testimonial: 'As a company that acquires and partners with best in market med spas across the country, we\'re always looking for partners who can elevate our teams and help us continue to be best-in-class. Aesthetic Sales Hero has been exactly that. The coaching and consulting provided by Marco has been exceptional—our teams consistently share how interactive, encouraging, and hands-on his sessions are. The impact has been immediate, and we\'re grateful to have him as part of our growth journey.',
     },
@@ -114,9 +114,9 @@ const GetStarted = () => {
     {
       name: 'Tami Thompson',
       role: 'Practice Manager',
-      company: 'The Aesthetic Center',
+      company: 'Princeton Medspa Partners',
       profileImage: '/testimonials/tami-thompson.jpeg',
-      companyLogo: '/companylogos/aestheticcenter.png',
+      companyLogo: '/companylogos/princeton-medspa.png',
       rating: 5,
       testimonial: 'The comprehensive training modules and AI practice sessions have transformed how we approach patient consultations. Our team feels more confident and our patients are more satisfied with their experience.',
     },
@@ -193,7 +193,7 @@ const GetStarted = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed mb-8 max-w-3xl mx-auto px-4"
+            className="text-base md:text-lg lg:text-xl text-white/60 leading-relaxed mb-8 max-w-3xl mx-auto px-0 md:px-2"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -204,7 +204,7 @@ const GetStarted = () => {
 
           {/* Key Benefits */}
           <motion.div
-            className="flex flex-col-2 xs:flex-cols-3 flex-row gap-4 justify-center mb-12 max-w-12xl mx-auto text-xs md:text-sm"
+            className="flex flex-wrap md:flex-row items-center justify-center gap-4 md:gap-4 mb-12 max-w-12xl mx-auto text-xs md:text-sm"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -214,7 +214,7 @@ const GetStarted = () => {
               { text: 'Master ethical sales that patients trust', icon: GraduationCap, color: 'text-blue-400' },
               { text: 'Quick setup', icon: Clock, color: 'text-purple-400' }
             ].map((benefit, index) => (
-              <div key={index} className="flex items-center gap-3">
+              <div key={index} className="flex items-center gap-1 md:gap-3">
                 <benefit.icon className={`${benefit.color} flex-shrink-0`} size={16} />
                 <span className="text-white/90">{benefit.text}</span>
               </div>
@@ -230,7 +230,7 @@ const GetStarted = () => {
           >
             {trustIndicators.map((indicator, index) => (
               <div key={index} className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
-                <div className="text-2xl font-bold text-[#00d9ff] mb-1">{indicator.metric}</div>
+                <div className="text-2xl font-bold text-[#00d9ff] mb-0">{indicator.metric}</div>
                 <div className="text-sm text-white/70">{indicator.label}</div>
               </div>
             ))}
@@ -301,7 +301,7 @@ const GetStarted = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h2 
-            className="text-xl md:text-2xl font-medium mb-6 text-white/70"
+            className="text-lg md:text-2xl font-medium mb-6 text-white/70"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -463,7 +463,7 @@ const GetStarted = () => {
                       </div>
 
                       {/* Testimonial - Flexible content area */}
-                      <div className="flex-grow mb-4">
+                      <div className="flex-grow mb-2 md:mb-4">
                         <p className="text-white/80 leading-relaxed italic text-sm md:text-base">
                           "{testimonial.testimonial}"
                         </p>
@@ -488,11 +488,11 @@ const GetStarted = () => {
                         </div>
                         
                         {/* Company logo - Bottom right */}
-                        <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/10 flex-shrink-0">
+                        <div className="w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden flex-shrink-0">
                           <img
                             src={testimonial.companyLogo}
                             alt={testimonial.company}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-contain"
                           />
                         </div>
                       </div>
@@ -521,7 +521,7 @@ const GetStarted = () => {
               Start your 14-day free trial today.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-5 md:mb-8">
               <motion.button
                 className="px-8 py-3.5 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-medium shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
@@ -543,7 +543,7 @@ const GetStarted = () => {
               </motion.button>
             </div>
             
-            <div className="flex items-center justify-center gap-6 text-xs md:text-sm text-white/60">
+            <div className="flex flex-wrap md:flex-row items-center justify-center gap-3 md:gap-6 text-xs md:text-sm text-white/60">
               <div className="flex items-center gap-1">
                 <CheckCircle size={14} className="text-green-400" />
                 30-day money-back guarantee
