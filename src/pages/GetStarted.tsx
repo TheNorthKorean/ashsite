@@ -164,7 +164,7 @@ const GetStarted = () => {
           <div className="inline-flex items-center px-4 py-1.5 bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-500/30 rounded-full">
             <Shield className="text-green-400 mr-2" size={16} />
             <span className="text-xs md:text-sm font-normal text-green-400">
-              Trusted by 200+ Professionals • $90M+ Revenue Generated
+              Trusted by 200+ Members • $90M+ Revenue Generated
             </span>
           </div>
         </motion.div>
@@ -204,7 +204,7 @@ const GetStarted = () => {
 
           {/* Key Benefits */}
           <motion.div
-            className="flex flex-wrap md:flex-row items-center justify-center gap-4 md:gap-4 mb-12 max-w-12xl mx-auto text-xs md:text-sm"
+            className="flex flex-wrap md:flex-row items-center justify-center gap-2 md:gap-4 mb-12 max-w-12xl mx-auto text-xs md:text-sm"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -408,7 +408,7 @@ const GetStarted = () => {
 
       {/* Social Proof Section */}
       <section className="py-24 relative">
-        <div className="relative z-10 max-w-6xl mx-auto px-0 md:px-6">
+        <div className="relative z-10 max-w-5xl mx-auto px-0 md:px-6">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -417,7 +417,7 @@ const GetStarted = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">Real Results from Real Practices</h2>
-            <p className="text-medium md:text-xl text-white/70 max-w-3xl mx-auto">
+            <p className="text-medium md:text-xl text-white/70 max-w-2xl mx-auto">
               See how aesthetic professionals are transforming their consultation success with our platform.
             </p>
           </motion.div>
