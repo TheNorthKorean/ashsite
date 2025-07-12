@@ -410,7 +410,7 @@ const GetStarted = () => {
       <section className="py-28 md:py-24 relative">
         <div className="relative z-10 max-w-6xl mx-auto px-0 md:px-6">
           <motion.div
-            className="text-center mb-16 max-w-2xl mx-auto px-14 md:px-0"
+            className="text-center mb-16 max-w-2xl mx-auto px-12 md:px-0"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -506,7 +506,7 @@ const GetStarted = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-10 md:py-24 relative">
+      <section className="py-0 md:py-24 relative">
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-12"
