@@ -244,7 +244,7 @@ const GetStarted = () => {
             transition={{ duration: 0.8, delay: 1 }}
           >
             <motion.button
-              className="group px-6 py-4 md:px-8 md:py-4 bg-[#00d9ff] rounded-xl font-semibold text-sm md:text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-3"
+              className="group px-6 py-4 md:px-8 md:py-3 bg-[#00d9ff] rounded-xl font-semibold text-sm md:text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-3"
               whileHover={{ 
                 scale: 1.05, 
                 boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' 
@@ -257,7 +257,7 @@ const GetStarted = () => {
             </motion.button>
             
             <motion.button
-              className="group px-6 py-4 md:px-8 md:py-4 border-2 border-white/20 rounded-xl font-semibold text-sm md:text-base hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
+              className="group px-6 py-4 md:px-8 md:py-3.5 border-2 border-white/20 rounded-xl font-semibold text-sm md:text-base hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => {

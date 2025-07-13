@@ -17,7 +17,7 @@ const Blog = () => {
       date: 'March 15, 2024',
       category: 'Sales Techniques',
       slug: 'overcome-price-objections',
-      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
     },
     {
       title: 'The Psychology Behind Patient Decision-Making in Aesthetic Medicine',
@@ -25,7 +25,7 @@ const Blog = () => {
       date: 'March 10, 2024',
       category: 'Psychology',
       slug: 'psychology-patient-decisions',
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
     },
     {
       title: 'Building Trust: The Foundation of Successful Aesthetic Consultations',
@@ -33,7 +33,7 @@ const Blog = () => {
       date: 'March 5, 2024',
       category: 'Patient Relations',
       slug: 'building-trust-consultations',
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
+      image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
     },
     {
       title: 'Digital Tools That Are Revolutionizing Aesthetic Sales Training',
@@ -41,7 +41,7 @@ const Blog = () => {
       date: 'February 28, 2024',
       category: 'Technology',
       slug: 'digital-tools-sales-training',
-      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
     },
     {
       title: 'Advanced Consultation Frameworks for Complex Cases',
@@ -49,7 +49,7 @@ const Blog = () => {
       date: 'February 20, 2024',
       category: 'Advanced Techniques',
       slug: 'advanced-consultation-frameworks',
-      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=800&fit=crop&crop=entropy&auto=format&q=80',
     },
     {
       title: 'Creating Authentic Patient Relationships in the Digital Age',

@@ -86,7 +86,7 @@ const Features = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-medium md:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed px-0 md:px-4"
+            className="text-base md:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed px-0 md:px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}

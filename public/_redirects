@@ -1,1 +1,6 @@
+# Redirect login and store pages to platform subdomain
+/login https://platform.aestheticsaleshero.com/login 301
+/store https://platform.aestheticsaleshero.com/store 301
+
+# SPA fallback - must be last
 /* /index.html 200 

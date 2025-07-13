@@ -12,16 +12,30 @@ const BlogPost = () => {
   });
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  // Category colors function - matches Blog.tsx
+  const getCategoryColor = (category: string) => {
+    const colors = {
+      'Sales Techniques': 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+      'Psychology': 'bg-purple-500/10 text-purple-400 border-purple-500/30',
+      'Patient Relations': 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
+      'Technology': 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30',
+      'Advanced Techniques': 'bg-violet-500/10 text-violet-400 border-violet-500/30',
+    };
+    return colors[category as keyof typeof colors] || 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+  };
+
   // Blog post data - in a real app, this would come from an API or CMS
   const blogPosts = {
     'overcome-price-objections': {
       title: '10 Proven Techniques to Overcome Price Objections in Aesthetic Consultations',
-      image: '/blog/price-objections.jpg',
+      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=80',
       content: `
         <p>Price objections are one of the most common challenges aesthetic professionals face during consultations. However, with the right approach and techniques, you can address these concerns while maintaining trust and demonstrating value to your patients.</p>
 
         <h2>Understanding the Psychology Behind Price Objections</h2>
+        
         <p>Before diving into specific techniques, it's crucial to understand that price objections often aren't really about money. They're typically about:</p>
+        
         <ul>
           <li>Fear of making the wrong decision</li>
           <li>Lack of understanding about the value proposition</li>
@@ -32,36 +46,47 @@ const BlogPost = () => {
         <h2>The 10 Proven Techniques</h2>
 
         <h3>1. The Value Reframe</h3>
+        
         <p>Instead of focusing on cost, redirect the conversation to value and outcomes. Help patients understand what they're investing in - not just the procedure, but the confidence, satisfaction, and long-term benefits.</p>
 
         <h3>2. Break Down the Investment</h3>
+        
         <p>Large numbers can feel overwhelming. Break down the cost into smaller, more digestible amounts. For example, "This investment works out to less than your daily coffee over the next two years."</p>
 
         <h3>3. The Comparison Method</h3>
+        
         <p>Compare your services to alternatives they might consider - both in terms of quality and long-term value. This helps justify your pricing while highlighting your unique advantages.</p>
 
         <h3>4. Address Concerns Directly</h3>
+        
         <p>Don't avoid the price conversation. Address it head-on with confidence and transparency. This builds trust and shows you're comfortable with your value proposition.</p>
 
         <h3>5. Use Social Proof</h3>
+        
         <p>Share success stories and testimonials from similar patients who initially had price concerns but were thrilled with their results and investment.</p>
 
         <h3>6. Offer Flexible Payment Options</h3>
+        
         <p>Present various payment plans and financing options that make the investment more accessible without compromising your pricing structure.</p>
 
         <h3>7. The Consequence of Inaction</h3>
+        
         <p>Gently explore what happens if they don't move forward - how will they feel in 6 months or a year if their concerns remain unaddressed?</p>
 
         <h3>8. Bundle Value</h3>
+        
         <p>Instead of discounting, add value through complementary services, extended warranties, or additional consultations.</p>
 
         <h3>9. The Expertise Investment</h3>
+        
         <p>Emphasize the years of training, experience, and expertise they're investing in, not just the procedure itself.</p>
 
         <h3>10. Create Urgency Ethically</h3>
+        
         <p>If appropriate, mention limited availability, seasonal considerations, or upcoming price changes - but only if genuine.</p>
 
         <h2>Implementation Tips</h2>
+        
         <p>Remember, the key to successfully overcoming price objections is preparation, practice, and genuine care for your patients' well-being. These techniques should feel natural and authentic, not scripted or pushy.</p>
 
         <p>Practice these approaches regularly, and you'll find that price objections become opportunities to demonstrate your value and build stronger patient relationships.</p>
@@ -73,12 +98,14 @@ const BlogPost = () => {
     },
     'psychology-patient-decisions': {
       title: 'The Psychology Behind Patient Decision-Making in Aesthetic Medicine',
-      image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=80',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=80',
       content: `
         <p>Understanding the psychological factors that influence patient decision-making is crucial for aesthetic professionals who want to provide better consultations and achieve higher conversion rates.</p>
 
         <h2>The Emotional vs. Logical Brain</h2>
+        
         <p>Research shows that people make decisions emotionally and then justify them logically. In aesthetic medicine, patients are often driven by:</p>
+        
         <ul>
           <li>Desire for increased confidence</li>
           <li>Social pressures and comparisons</li>
@@ -89,18 +116,23 @@ const BlogPost = () => {
         <h2>Key Psychological Principles</h2>
 
         <h3>Loss Aversion</h3>
+        
         <p>People fear losing something more than they value gaining something equivalent. Frame your consultations around what patients might lose by not taking action.</p>
 
         <h3>Social Proof</h3>
+        
         <p>Patients look to others for validation of their decisions. Share relevant success stories and testimonials that resonate with their specific situation.</p>
 
         <h3>Authority Bias</h3>
+        
         <p>Patients trust experts. Establish your credibility early and throughout the consultation process.</p>
 
         <h3>Anchoring Effect</h3>
+        
         <p>The first piece of information presented influences all subsequent judgments. Start with your premium options to anchor expectations.</p>
 
         <h2>Practical Applications</h2>
+        
         <p>Use these insights to structure your consultations more effectively, address underlying concerns, and help patients make decisions that truly serve their goals.</p>
       `,
       author: 'Marco Emilio Valle',
@@ -110,15 +142,18 @@ const BlogPost = () => {
     },
     'building-trust-consultations': {
       title: 'Building Trust: The Foundation of Successful Aesthetic Consultations',
-      image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=80',
+      image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=80',
       content: `
         <p>Trust is the cornerstone of every successful aesthetic consultation. Without it, even the most skilled practitioners struggle to achieve optimal patient outcomes and satisfaction.</p>
 
         <h2>The Trust Equation</h2>
+        
         <p>Trust = (Credibility + Reliability + Intimacy) / Self-Orientation</p>
 
         <h3>Credibility</h3>
+        
         <p>Your expertise, qualifications, and track record. This includes:</p>
+        
         <ul>
           <li>Professional certifications and training</li>
           <li>Years of experience</li>
@@ -127,18 +162,23 @@ const BlogPost = () => {
         </ul>
 
         <h3>Reliability</h3>
+        
         <p>Consistency in your actions and follow-through. Patients need to know they can depend on you.</p>
 
         <h3>Intimacy</h3>
+        
         <p>The safety patients feel in sharing sensitive information and concerns with you.</p>
 
         <h3>Self-Orientation</h3>
+        
         <p>The degree to which you focus on yourself versus the patient. Lower self-orientation increases trust.</p>
 
         <h2>Building Trust from the First Moment</h2>
+        
         <p>Trust-building begins before the patient even enters your consultation room. Every touchpoint matters.</p>
 
         <h2>Maintaining Trust Throughout the Relationship</h2>
+        
         <p>Trust isn't built once - it's maintained through consistent, patient-focused actions and communications.</p>
       `,
       author: 'Aesthetic Sales Hero',
@@ -148,29 +188,36 @@ const BlogPost = () => {
     },
     'digital-tools-sales-training': {
       title: 'Digital Tools That Are Revolutionizing Aesthetic Sales Training',
-      image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=80',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=80',
       content: `
         <p>The aesthetic industry is experiencing a digital transformation, and sales training is no exception. Modern technology is creating unprecedented opportunities for skill development and performance improvement.</p>
 
         <h2>The Rise of AI-Powered Training</h2>
+        
         <p>Artificial intelligence is revolutionizing how aesthetic professionals practice and refine their consultation skills.</p>
 
         <h3>Virtual Patient Simulations</h3>
+        
         <p>AI-powered simulations allow practitioners to practice with virtual patients who present realistic scenarios, objections, and personalities.</p>
 
         <h3>Real-Time Feedback Systems</h3>
+        
         <p>Advanced analytics provide instant feedback on consultation performance, helping identify areas for improvement.</p>
 
         <h2>Mobile Learning Platforms</h2>
+        
         <p>The shift to mobile-first learning is making training more accessible and convenient than ever before.</p>
 
         <h2>Virtual Reality Training</h2>
+        
         <p>VR technology is creating immersive training experiences that closely replicate real-world consultation environments.</p>
 
         <h2>Data-Driven Performance Tracking</h2>
+        
         <p>Modern platforms provide detailed analytics on every aspect of consultation performance, enabling targeted improvement efforts.</p>
 
         <h2>The Future of Aesthetic Sales Training</h2>
+        
         <p>As technology continues to evolve, we can expect even more sophisticated tools that will further enhance the learning experience and outcomes for aesthetic professionals.</p>
       `,
       author: 'Aesthetic Sales Hero',
@@ -180,12 +227,14 @@ const BlogPost = () => {
     },
     'advanced-consultation-frameworks': {
       title: 'Advanced Consultation Frameworks for Complex Cases',
-      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=80',
+      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=80',
       content: `
         <p>When dealing with complex aesthetic cases, standard consultation approaches may fall short. Advanced frameworks provide structured methodologies for navigating challenging patient scenarios while maintaining ethical standards and achieving optimal outcomes.</p>
 
         <h2>Understanding Complex Cases</h2>
+        
         <p>Complex cases in aesthetic medicine often involve:</p>
+        
         <ul>
           <li>Multiple treatment areas requiring coordination</li>
           <li>Patients with unrealistic expectations</li>
@@ -195,22 +244,29 @@ const BlogPost = () => {
         </ul>
 
         <h2>The CARE Framework</h2>
+        
         <p>Our advanced CARE framework provides a systematic approach to complex consultations:</p>
 
         <h3>C - Comprehensive Assessment</h3>
+        
         <p>Begin with a thorough evaluation that goes beyond surface-level concerns. Understand the patient's complete medical history, aesthetic goals, lifestyle factors, and psychological motivations.</p>
 
         <h3>A - Adaptive Communication</h3>
+        
         <p>Adjust your communication style based on the patient's personality, education level, and emotional state. Some patients need detailed technical explanations, while others prefer simple, outcome-focused discussions.</p>
 
         <h3>R - Risk Mitigation</h3>
+        
         <p>Identify potential risks early and develop strategies to address them. This includes medical risks, expectation management, and financial considerations.</p>
 
         <h3>E - Ethical Decision Making</h3>
+        
         <p>Always prioritize patient well-being over revenue. Sometimes the best recommendation is to decline treatment or refer to another specialist.</p>
 
         <h2>Managing Difficult Conversations</h2>
+        
         <p>Complex cases often require difficult conversations. Key strategies include:</p>
+        
         <ul>
           <li>Setting realistic expectations from the first consultation</li>
           <li>Using visual aids and before/after photos appropriately</li>
@@ -219,9 +275,11 @@ const BlogPost = () => {
         </ul>
 
         <h2>Documentation and Follow-up</h2>
+        
         <p>Complex cases require meticulous documentation and structured follow-up protocols to ensure patient safety and satisfaction.</p>
 
         <h2>Building Expertise</h2>
+        
         <p>Developing proficiency with complex cases takes time and practice. Regular case reviews, continuing education, and peer consultation are essential for growth.</p>
       `,
       author: 'Marco Emilio Valle',
@@ -236,25 +294,33 @@ const BlogPost = () => {
         <p>In an increasingly digital world, the challenge of building authentic relationships with patients has become more complex yet more important than ever. Modern aesthetic practices must balance technological efficiency with genuine human connection.</p>
 
         <h2>The Digital Paradox</h2>
+        
         <p>While digital tools have made aesthetic practices more efficient, they can also create barriers to authentic connection. Patients often feel like numbers in a system rather than individuals with unique needs and concerns.</p>
 
         <h2>Foundations of Authentic Relationships</h2>
+        
         <p>Authentic patient relationships are built on several key principles:</p>
 
         <h3>Genuine Interest</h3>
+        
         <p>Show real curiosity about your patients as people, not just as cases. Ask about their lives, interests, and motivations beyond their aesthetic concerns.</p>
 
         <h3>Active Listening</h3>
+        
         <p>Listen not just to what patients say, but to what they don't say. Pay attention to body language, tone, and emotional cues that reveal deeper concerns or motivations.</p>
 
         <h3>Vulnerability and Transparency</h3>
+        
         <p>Share appropriate personal experiences and be honest about limitations. Patients connect with practitioners who are human, not perfect.</p>
 
         <h3>Consistency</h3>
+        
         <p>Maintain the same level of care and attention whether it's a patient's first visit or their tenth. Consistency builds trust over time.</p>
 
         <h2>Digital Tools for Human Connection</h2>
+        
         <p>Technology can actually enhance relationships when used thoughtfully:</p>
+        
         <ul>
           <li>Personalized follow-up messages that reference specific conversation points</li>
           <li>Digital portfolios that help patients visualize their journey</li>
@@ -263,12 +329,15 @@ const BlogPost = () => {
         </ul>
 
         <h2>The Long-term Perspective</h2>
+        
         <p>Authentic relationships are investments that pay dividends over time through increased patient loyalty, referrals, and practice satisfaction.</p>
 
         <h2>Measuring Relationship Quality</h2>
+        
         <p>Track relationship quality through patient feedback, retention rates, and referral patterns rather than just transaction metrics.</p>
 
         <h2>Training Your Team</h2>
+        
         <p>Ensure every team member understands the importance of authentic relationships and has the skills to build them effectively.</p>
       `,
       author: 'Aesthetic Sales Hero',
@@ -320,14 +389,14 @@ const BlogPost = () => {
           >
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 text-[#00d9ff] hover:text-[#ff41fd] transition-colors font-semibold"
+              className="inline-flex items-center gap-2 text-[#00d9ff] hover:text-[#ff41fd] transition-colors font-semibold text-sm"
             >
               <ArrowLeft size={20} />
               Back to Blog
             </Link>
           </motion.div>
 
-          {/* Category Badge */}
+          {/* Category Badge - Updated to match Blog.tsx */}
           <motion.div
             className="mb-6"
             style={{ willChange: 'opacity, transform' }}
@@ -335,14 +404,14 @@ const BlogPost = () => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.35 }}
           >
-            <div className="inline-block px-4 py-2 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full text-sm font-semibold text-[#00d9ff]">
+            <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${getCategoryColor(post.category)}`}>
               {post.category}
-            </div>
+            </span>
           </motion.div>
 
           {/* Title */}
           <motion.h1 
-            className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight leading-tight"
+            className="text-3xl lg:text-4xl font-bold mb-6 tracking-tight leading-tight"
             style={{ willChange: 'opacity, transform' }}
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -353,7 +422,7 @@ const BlogPost = () => {
 
           {/* Meta Information */}
           <motion.div
-            className="flex items-center gap-6 text-white/70 mb-2"
+            className="flex items-center gap-6 text-white/70 mb-2 text-sm"
             style={{ willChange: 'opacity, transform' }}
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -396,7 +465,7 @@ const BlogPost = () => {
                 src={post.image}
                 alt={post.title}
                 className="w-full h-auto max-w-full object-cover rounded-2xl"
-                style={{ maxHeight: '600px', willChange: 'opacity, transform' }}
+                style={{ maxHeight: '450px', willChange: 'opacity, transform' }}
                 loading="lazy"
                 onLoad={() => setImageLoaded(true)}
               />
@@ -443,16 +512,17 @@ const BlogPost = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Practice?</h2>
-            <p className="text-xl text-white/70 mb-8 leading-relaxed">
+            <p className="text-lg text-white/70 mb-8 leading-relaxed">
               Join thousands of aesthetic professionals who are already using our training system to increase their consultation success rates.
             </p>
-            <motion.button
-              className="px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
+            <motion.a
+              href="https://platform.aestheticsaleshero.com/offers/rsare8xU/checkout"
+              className="inline-block px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
               whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
               whileTap={{ scale: 0.95 }}
             >
               Start Your Training Today
-            </motion.button>
+            </motion.a>
           </motion.div>
         </div>
       </section>
