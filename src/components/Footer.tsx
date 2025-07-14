@@ -17,7 +17,7 @@ const Footer = () => {
             >
               <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/AMG (40).png" 
+                  src="/ashlogo.png" 
                   alt="Aesthetic Sales Hero Logo" 
                   className="w-full h-full object-contain"
                 />

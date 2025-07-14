@@ -81,7 +81,7 @@ const LoadingScreen = () => {
             }}
           >
             <motion.img 
-              src="/AMG (40).png" 
+              src="/ashlogo.png" 
               alt="Logo" 
               className="w-20 h-20 object-contain relative z-10"
               style={{

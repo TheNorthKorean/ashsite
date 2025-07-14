@@ -65,7 +65,7 @@ const Navigation = () => {
                 }}
               >
                 <img 
-                  src="/AMG (40).png" 
+                  src="/ashlogo.png" 
                   alt="Aesthetic Sales Hero Logo" 
                   className="w-10 h-10 md:w-10 md:h-10 object-contain rounded-full"
                 />
