@@ -434,7 +434,7 @@ const Faculty = () => {
     },
     {
       name: 'Gary Bufalo',
-      title: 'Chief People & Partnership Officer',
+      title: 'Chief Operations Officer',
       specialty: 'marketing',
       company: 'Princeton Medspa Partners',
       profileImage: '/facultyheadshots/GARY BUFALO.png',

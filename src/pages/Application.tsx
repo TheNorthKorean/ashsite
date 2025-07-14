@@ -181,7 +181,7 @@ const Application = () => {
           break;
         case 'linkedinUrl':
           const linkedinRegex = /^https:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9-]+\/?$/;
-          if (!value || !linkedinRegex.test(value as string)) newErrors[field] = 'Valid LinkedIn URL is required';
+          if (value && !linkedinRegex.test(value as string)) newErrors[field] = 'Please enter a valid LinkedIn URL';
           break;
         case 'yearsExperience':
           if (!value || parseInt(value as string) < 1) newErrors[field] = 'Years of experience is required';
@@ -589,8 +589,8 @@ const Application = () => {
 
                         <div>
                           <label className="block text-sm font-semibold mb-2">
-                            LinkedIn Profile URL <span className="text-red-400">*</span>
-                            {renderTooltip('Must be a valid LinkedIn profile URL (e.g., https://linkedin.com/in/yourname)')}
+                            LinkedIn Profile URL <span className="text-white/60">(Optional)</span>
+                            {renderTooltip('Optional - If provided, must be a valid LinkedIn profile URL (e.g., https://linkedin.com/in/yourname)')}
                           </label>
                           <input
                             type="url"
