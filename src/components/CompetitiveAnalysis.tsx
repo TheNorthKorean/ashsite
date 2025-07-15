@@ -72,19 +72,17 @@ const CompetitiveAnalysis = () => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Other sales training and coaches are
-            <span className="block text-red-400">
-              stuck in 2010
-            </span>
+            <span className="text-red-400">Traditional training is static.</span>
+            <span className="block mt-2">Your market isn't.</span>
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-white/70 max-w-5xl mx-auto leading-relaxed"
+            className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            While others rely on outdated methods, we've built the future of aesthetic sales training.
+            While others rely on outdated methods, we've built an adaptive aesthetic sales training system that updates with every algorithm shift and pricing trend.
           </motion.p>
         </div>
 
