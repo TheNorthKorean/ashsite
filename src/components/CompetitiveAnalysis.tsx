@@ -82,7 +82,7 @@ const CompetitiveAnalysis = () => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            While others rely on outdated methods, we've built an adaptive aesthetic sales training system that updates with every algorithm shift and pricing trend.
+            While others rely on outdated methods, we've built an adaptive aesthetic sales training system that updates with every pricing shift and patient trends.
           </motion.p>
         </div>
 

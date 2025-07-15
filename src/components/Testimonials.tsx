@@ -9,26 +9,7 @@ const Testimonials = () => {
     threshold: 0.1,
   });
   
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [animationOffset, setAnimationOffset] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
-  
-  const nextTestimonials = () => {
-    const newIndex = (currentIndex + 1) % testimonials.length;
-    setCurrentIndex(newIndex);
-    setAnimationOffset(-(newIndex * 386)); // 380px width + 6px gap
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 3000);
-  };
-  
-  const prevTestimonials = () => {
-    const newIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-    setCurrentIndex(newIndex);
-    setAnimationOffset(-(newIndex * 386)); // 380px width + 6px gap
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 3000);
-  };
 
   const testimonials = [
     {
@@ -135,7 +116,7 @@ const Testimonials = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-base md:text-lg lg:text-xl text-white/70 max-w-4xl mx-auto leading-relaxed px-4"
+            className="text-base md:text-base lg:text-lg text-white/70 max-w-4xl mx-auto leading-relaxed px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -155,21 +136,16 @@ const Testimonials = () => {
           >
             <motion.div
               className="flex gap-6"
-              animate={!isPaused ? {
+              animate={{
                 x: [0, -(testimonials.length * 386)], // 380px width + 6px gap
-              } : {
-                x: animationOffset
               }}
-              transition={!isPaused ? {
+              transition={{
                 x: {
                   repeat: Infinity,
                   repeatType: "loop",
                   duration: 50, // Smooth speed - 50 seconds for full cycle
                   ease: "linear",
                 }
-              } : {
-                duration: 0.5,
-                ease: "easeInOut"
               }}
             >
               {[...testimonials, ...testimonials].map((testimonial, index) => (
@@ -186,52 +162,49 @@ const Testimonials = () => {
                     ))}
                   </div>
 
-                  {/* Testimonial - Flexible content area */}
-                  <div className="flex-grow mb-4">
+                                    {/* Testimonial - Flexible content area */}
+                  <div className="flex-grow mb-2 md:mb-2">
                     <p className="text-white/80 leading-relaxed italic text-sm md:text-base">
                       "{testimonial.testimonial}"
                     </p>
                   </div>
 
-                  {/* Author - Fixed at bottom */}
-                  <div className="flex items-center gap-3 mt-auto pb-2">
-                    <div className="w-10 h-10 rounded-full bg-gray-600 overflow-hidden flex-shrink-0">
+                  {/* Profile - Bottom section */}
+                  <div className="flex items-center justify-between mb-[-10px]">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full overflow-hidden bg-white/10 flex-shrink-0">
+                        <img
+                          src={testimonial.profileImage}
+                          alt={testimonial.name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            // Fallback to a placeholder if image fails to load
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                            target.parentElement!.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-[#00d9ff]/20 to-[#ff41fd]/20 flex items-center justify-center text-white font-semibold text-xs">' + testimonial.name.charAt(0) + '</div>';
+                          }}
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-white text-sm group-hover:text-[#00d9ff] transition-colors duration-300">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-white/60 text-xs">{testimonial.role}</p>
+                      </div>
+                    </div>
+                    
+                    {/* Company logo - Bottom right */}
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden flex-shrink-0">
                       <img
-                        src={testimonial.profileImage}
-                        alt={testimonial.name}
-                        className="w-full h-full object-cover"
+                        src={testimonial.companyLogo}
+                        alt={`${testimonial.company} logo`}
+                        className="w-full h-full object-contain"
                         onError={(e) => {
-                          // Fallback to a placeholder if image fails to load
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          target.parentElement!.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-[#00d9ff]/20 to-[#ff41fd]/20 flex items-center justify-center text-white font-semibold text-xs">' + testimonial.name.charAt(0) + '</div>';
+                          // Hide the logo if it fails to load
+                          (e.target as HTMLImageElement).style.display = 'none';
                         }}
                       />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-white group-hover:text-[#00d9ff] transition-colors duration-300 text-sm truncate">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-white/70 text-xs truncate">
-                        {testimonial.role}
-                      </p>
-                      <p className="text-[#ff41fd] text-xs font-semibold truncate">
-                        {testimonial.company}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Company Logo - Bottom Right */}
-                  <div className="absolute bottom-4 right-4">
-                    <img
-                      src={testimonial.companyLogo}
-                      alt={`${testimonial.company} logo`}
-                      className="h-16 w-auto opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-                      onError={(e) => {
-                        // Hide the logo if it fails to load
-                        (e.target as HTMLImageElement).style.display = 'none';
-                      }}
-                    />
                   </div>
 
                   {/* Hover Glow Effect */}
@@ -240,26 +213,6 @@ const Testimonials = () => {
               </motion.div>
             ))}
             </motion.div>
-          </div>
-          
-          {/* Navigation Dots */}
-          <div className="flex justify-center mt-6 gap-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setCurrentIndex(index);
-                  setAnimationOffset(-(index * 386)); // 380px width + 6px gap
-                  setIsPaused(true);
-                  setTimeout(() => setIsPaused(false), 3000);
-                }}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-[#00d9ff] w-6' 
-                    : 'bg-white/30 hover:bg-white/50'
-                }`}
-              />
-            ))}
           </div>
         </div>
       </motion.div>

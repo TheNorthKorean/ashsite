@@ -146,7 +146,7 @@ const Enterprise = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex justify-center"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -162,13 +162,6 @@ const Enterprise = () => {
             >
               Get Started
               <ArrowRight size={20} />
-            </button>
-            <button
-              onClick={() => window.open('tel:+18558123456', '_self')}
-              className="px-8 py-4 border-2 border-white/20 rounded-xl font-bold text-lg hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              <Phone size={20} />
-              Call Sales
             </button>
           </motion.div>
         </motion.div>
@@ -382,7 +375,7 @@ const Enterprise = () => {
                 <Phone className="text-[#00d9ff]" size={24} />
               </div>
               <h3 className="text-lg font-bold mb-2">Phone</h3>
-              <p className="text-white/70">(855) 812-3456</p>
+              <p className="text-white/70">(505) 206-8746</p>
             </motion.div>
 
             <motion.div
@@ -396,7 +389,7 @@ const Enterprise = () => {
                 <Mail className="text-[#00d9ff]" size={24} />
               </div>
               <h3 className="text-lg font-bold mb-2">Email</h3>
-              <p className="text-white/70">sales@aestheticsaleshero.com</p>
+              <p className="text-white/70">contact@aestheticsaleshero.com</p>
             </motion.div>
 
             <motion.div

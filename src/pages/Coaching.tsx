@@ -198,7 +198,7 @@ const Coaching = () => {
 
       {/* Coaching Features */}
       <section className="py-20 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
           <motion.div
             className="text-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -212,7 +212,7 @@ const Coaching = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {coachingFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}

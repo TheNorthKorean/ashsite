@@ -407,7 +407,7 @@ const Faculty = () => {
       servicesOffered: 6
     },
     {
-      name: 'Andrew Patch',
+      name: 'Andrew Fatch',
       title: 'Chief Development Officer',
       specialty: 'marketing',
       company: 'AVIVA Aesthetics',
@@ -713,7 +713,7 @@ const Faculty = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-base md:text-lg lg:text-xl text-white/70 leading-relaxed mb-8 md:mb-16 px-4"
+            className="text-base md:text-lg lg:text-lg text-white/70 leading-relaxed mb-8 md:mb-16 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -835,20 +835,20 @@ const Faculty = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">The Hero Academy</h2>
-            <p className="text-medium md:text-xl text-white/70 max-w-2xl mx-auto">
+            <p className="text-medium md:text-lg text-white/70 max-w-2xl mx-auto">
               Each faculty member brings unique insights into a specific niche, creating a rich well-rounded learning experience.
             </p>
           </motion.div>
 
           {/* Dashboard Interface */}
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-3 md:p-8 mb-12"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-3 md:p-6 mb-12 max-w-5xl mx-auto"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-5 gap-8">
               {/* Central Focal Image */}
               <div className="lg:col-span-1">
                 <div className="relative">
@@ -858,13 +858,13 @@ const Faculty = () => {
                       <Award className="text-[#00d9ff]" size={40} />
                     </div>
                     <h3 className="text-xl font-bold mb-2 md:mb-4">Expert Network</h3>
-                    <p className="text-white/70 text-xs md:text-sm">38+ Industry Leaders</p>
+                    <p className="text-white/70 text-xs md:text-sm">40+ Industry Leaders</p>
                   </div>
                 </div>
               </div>
 
               {/* Faculty Grid */}
-              <div className="lg:col-span-2">
+              <div className="lg:col-span-4">
                 {/* Specialty Filters */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {specialties.map((specialty) => (
@@ -916,7 +916,7 @@ const Faculty = () => {
                               {member.name}
                             </h4>
                             <p className="text-xs text-white/60 mb-1">{member.title}</p>
-                            <p className="text-xs text-[#ff41fd] mb-2">{member.company}</p>
+                            <p className="text-xs text-white/90 mb-3">{member.company}</p>
                           </div>
                         </div>
                         
@@ -934,7 +934,7 @@ const Faculty = () => {
                           </div>
                         </div>
                         
-                        <div className="grid grid-cols-2 gap-2 mb-3">
+                        <div className="grid grid-cols-2 gap-2 mb-0">
                           <div className="bg-white/5 rounded-lg p-2">
                             <div className="text-xs text-white/50">Rating</div>
                             <div className="text-xs font-semibold text-yellow-400 flex items-center gap-1">
@@ -948,20 +948,7 @@ const Faculty = () => {
                           </div>
                         </div>
 
-                        {/* Company Logo */}
-                        <div className="mt-3 flex justify-end">
-                          <div className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity">
-                            <img
-                              src={member.companyLogo}
-                              alt={member.company}
-                              className="w-full h-full object-contain"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = 'none';
-                              }}
-                            />
-                          </div>
-                        </div>
+
                       </motion.div>
                     ))}
                   </AnimatePresence>

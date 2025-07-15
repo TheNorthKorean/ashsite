@@ -163,6 +163,7 @@ const CTA = () => {
               className="group px-8 py-4 border-2 border-white/20 rounded-xl font-bold text-base md:text-lg hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => window.location.href = '/contact'}
             >
               Schedule a Demo
             </motion.button>
