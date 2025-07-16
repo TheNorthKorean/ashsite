@@ -34,7 +34,7 @@ const Faculty = () => {
     threshold: 0.1,
   });
 
-  const [selectedFilter, setSelectedFilter] = useState('all');
+  const [selectedFilter, setSelectedFilter] = useState('finance');
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(0);
   const [currentStep, setCurrentStep] = useState(0);
 
