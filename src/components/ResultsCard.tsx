@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   TrendingUp, 
@@ -16,7 +16,9 @@ import {
   PieChart,
   Activity,
   ArrowLeft,
-  ArrowRight
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -74,6 +76,18 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
   notes,
   userData
 }) => {
+  
+  // Debug logging for notes
+  console.log('ResultsCard received notes prop:', notes);
+  console.log('Notes type:', typeof notes);
+  console.log('Notes length:', notes?.length);
+  console.log('Notes is array:', Array.isArray(notes));
+  
+  // Notes slider state
+  const [currentNotesPage, setCurrentNotesPage] = useState(0);
+  const notesPerPage = 3;
+  const totalNotesPages = notes ? Math.ceil(notes.length / notesPerPage) : 0;
+  
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   
@@ -94,6 +108,24 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
       // If from baseline assessment, go back to coaching demo main page (which shows options)
       navigate('/coaching-demo');
     }
+  };
+  
+  const nextNotesPage = () => {
+    if (currentNotesPage < totalNotesPages - 1) {
+      setCurrentNotesPage(currentNotesPage + 1);
+    }
+  };
+  
+  const prevNotesPage = () => {
+    if (currentNotesPage > 0) {
+      setCurrentNotesPage(currentNotesPage - 1);
+    }
+  };
+  
+  const getCurrentNotes = () => {
+    if (!notes || notes.length === 0) return [];
+    const startIndex = currentNotesPage * notesPerPage;
+    return notes.slice(startIndex, startIndex + notesPerPage);
   };
   const getProgressColor = (trend: 'up' | 'down' | 'stable', isPositive: boolean) => {
     if (trend === 'stable') return 'text-yellow-400';
@@ -507,14 +539,62 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               transition={{ delay: 0.7, duration: 0.6 }}
             >
               <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-                <div className="flex items-center mb-4">
-                  <Calendar className="text-[#ff41fd] mr-3" size={20} />
-                  <h3 className="text-lg font-bold text-white">Progress Notes</h3>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center">
+                    <Calendar className="text-[#ff41fd] mr-3" size={20} />
+                    <h3 className="text-lg font-bold text-white">Progress Notes</h3>
+                    <span className="text-white/60 text-sm ml-2">
+                      ({notes.length} total)
+                    </span>
+                  </div>
+                  
+                  {/* Navigation Controls */}
+                  {totalNotesPages > 1 && (
+                    <div className="flex items-center space-x-2">
+                      <motion.button
+                        onClick={prevNotesPage}
+                        disabled={currentNotesPage === 0}
+                        className={`p-2 rounded-lg transition-all duration-300 ${
+                          currentNotesPage === 0
+                            ? 'text-white/30 cursor-not-allowed'
+                            : 'text-white/70 hover:text-white hover:bg-white/10'
+                        }`}
+                        whileHover={currentNotesPage > 0 ? { scale: 1.1 } : {}}
+                        whileTap={currentNotesPage > 0 ? { scale: 0.95 } : {}}
+                      >
+                        <ChevronLeft size={20} />
+                      </motion.button>
+                      
+                      <span className="text-white/60 text-sm">
+                        {currentNotesPage + 1} of {totalNotesPages}
+                      </span>
+                      
+                      <motion.button
+                        onClick={nextNotesPage}
+                        disabled={currentNotesPage === totalNotesPages - 1}
+                        className={`p-2 rounded-lg transition-all duration-300 ${
+                          currentNotesPage === totalNotesPages - 1
+                            ? 'text-white/30 cursor-not-allowed'
+                            : 'text-white/70 hover:text-white hover:bg-white/10'
+                        }`}
+                        whileHover={currentNotesPage < totalNotesPages - 1 ? { scale: 1.1 } : {}}
+                        whileTap={currentNotesPage < totalNotesPages - 1 ? { scale: 0.95 } : {}}
+                      >
+                        <ChevronRight size={20} />
+                      </motion.button>
+                    </div>
+                  )}
                 </div>
                 
-                <div className="space-y-4">
-                  {notes.map((note, index) => (
-                    <div key={index} className="bg-white/5 rounded-lg p-4 border-l-4 border-[#ff41fd]">
+                <motion.div 
+                  className="space-y-4"
+                  key={currentNotesPage}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {getCurrentNotes().map((note, index) => (
+                    <div key={`${currentNotesPage}-${index}`} className="bg-white/5 rounded-lg p-4 border-l-4 border-[#ff41fd]">
                       <p className="text-white/90 text-sm mb-2">{note.text}</p>
                       <p className="text-[#ff41fd] text-xs font-medium">
                         {new Date(note.date).toLocaleDateString('en-US', {
@@ -525,10 +605,12 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                       </p>
                     </div>
                   ))}
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           )}
+          
+          
 
           {/* Completion Badge */}
           <motion.div

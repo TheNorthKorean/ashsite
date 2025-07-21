@@ -121,12 +121,14 @@ const CoachingDemo = () => {
             // Progress update results - show accumulated data
             const newImprovementsParam = searchParams.get('newImprovements');
             const newAchievementsParam = searchParams.get('newAchievements');
+            const notesParam = searchParams.get('notes');
             const salesConfidenceAfter = parseInt(searchParams.get('salesConfidenceAfter') || assessment.sales_confidence_before.toString());
             const currentScore = parseInt(searchParams.get('currentScore') || '60');
             
             // Parse progress data
             let newImprovements: string[] = [];
             let newAchievements: string[] = [];
+            let notes: Array<{ text: string; date: string }> = [];
             
             if (newImprovementsParam) {
               try {
@@ -142,6 +144,41 @@ const CoachingDemo = () => {
               } catch (e) {
                 console.error('Error parsing newAchievements:', e);
               }
+            }
+            
+            // Get notes from URL parameters (current week)
+            if (notesParam) {
+              try {
+                notes = JSON.parse(notesParam);
+                console.log('Notes from URL params:', notes);
+              } catch (e) {
+                console.error('Error parsing notes from URL:', e);
+              }
+            }
+            
+            // Fetch all cumulative notes from database
+            try {
+              const { data: allProgress, error: progressError } = await AssessmentService.getProgressUpdates(assessmentId);
+              
+              if (!progressError && allProgress) {
+                const allNotes: Array<{ text: string; date: string }> = [];
+                
+                allProgress.forEach(progress => {
+                  if (progress.notes && progress.notes.trim()) {
+                    allNotes.push({
+                      text: progress.notes,
+                      date: progress.updated_at
+                    });
+                  }
+                });
+                
+                console.log('All notes from database:', allNotes);
+                
+                // Use cumulative notes from database instead of just current week
+                notes = allNotes;
+              }
+            } catch (error) {
+              console.error('Error fetching notes from database:', error);
             }
 
             // Get KPI updates from URL params
@@ -207,6 +244,7 @@ const CoachingDemo = () => {
               // Use accumulated progress data
               nonFinancialImprovements: newImprovements,
               successAchievements: newAchievements,
+              notes: notes,
               // Include baseline assessment data
               userData: {
                 email: assessment.email,
@@ -252,6 +290,12 @@ const CoachingDemo = () => {
     const newImprovementsParam = searchParams.get('newImprovements');
     const newAchievementsParam = searchParams.get('newAchievements');
     const notesParam = searchParams.get('notes');
+    
+    console.log('URL parameters received:');
+    console.log('newImprovementsParam:', newImprovementsParam);
+    console.log('newAchievementsParam:', newAchievementsParam);
+    console.log('notesParam:', notesParam);
+    console.log('notesParam length:', notesParam?.length);
     
     // Parse selected KPIs if available
     let selectedKPIs = [];
@@ -320,12 +364,19 @@ const CoachingDemo = () => {
     if (notesParam) {
       try {
         notes = JSON.parse(notesParam);
+        console.log('Notes param received:', notesParam);
+        console.log('Notes parsed successfully:', notes);
+        console.log('Notes type after parsing:', typeof notes);
+        console.log('Notes length after parsing:', notes?.length);
       } catch (e) {
         console.error('Error parsing notes:', e);
+        console.error('Notes param that failed to parse:', notesParam);
       }
+    } else {
+      console.log('No notes param received');
     }
 
-    return {
+    const resultsData = {
       ...sampleResultsData,
       participantName,
       practiceName,
@@ -347,6 +398,13 @@ const CoachingDemo = () => {
         successDefinition: successDefinition || undefined
       }
     };
+    
+    console.log('Final results data being passed to ResultsCard:');
+    console.log('Notes in results data:', resultsData.notes);
+    console.log('Notes type:', typeof resultsData.notes);
+    console.log('Notes length:', resultsData.notes?.length);
+    
+    return resultsData;
   };
 
   // Sample data for the results card

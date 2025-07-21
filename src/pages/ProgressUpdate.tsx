@@ -350,6 +350,8 @@ const ProgressUpdate = () => {
       // Submit progress update
       const { id: progressId, error } = await AssessmentService.submitProgressUpdate(progressUpdate);
       
+      console.log('Progress update submitted. ID:', progressId, 'Error:', error);
+      
       if (error) {
         console.error('Database error details:', error);
         setError(`Failed to save progress: ${error}`);
@@ -361,6 +363,9 @@ const ProgressUpdate = () => {
         text: progressData.notes,
         date: new Date().toISOString()
       }] : [];
+
+      console.log('Notes data being prepared:', notesData);
+      console.log('Notes JSON string:', JSON.stringify(notesData));
 
       // Navigate to updated results with accumulated data
       const params = new URLSearchParams({
@@ -382,6 +387,8 @@ const ProgressUpdate = () => {
       });
 
       console.log('About to navigate to:', `/coaching-demo?${params.toString()}`);
+      console.log('Full URL length:', `/coaching-demo?${params.toString()}`.length);
+      console.log('Notes parameter in URL:', params.get('notes'));
       navigate(`/coaching-demo?${params.toString()}`);
     } catch (error) {
       console.error('Error in handleProgressSubmit:', error);
@@ -495,6 +502,10 @@ const ProgressUpdate = () => {
           }
         });
       }
+      
+      console.log('All progress updates:', allProgress);
+      console.log('All notes collected:', allNotes);
+      console.log('Notes being passed to results:', JSON.stringify(allNotes));
 
       // Get latest KPI updates
       const latestProgress = allProgress && allProgress.length > 0 ? allProgress[allProgress.length - 1] : null;
