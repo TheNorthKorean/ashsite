@@ -176,12 +176,16 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
   const nextStep = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
+      // Scroll to top when moving to next step
+      window.scrollTo({ top: 315, behavior: 'smooth' });
     }
   };
 
   const prevStep = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
+      // Scroll to top when moving to previous step
+      window.scrollTo({ top: 315, behavior: 'smooth' });
     }
   };
 
@@ -210,8 +214,8 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
             </motion.button>
           </div>
           
-          <h1 className="mt-14 text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
-            6-Week Transformation Coaching
+          <h1 className="mt-10 py-2 text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
+            6-Week Transformation Program
           </h1>
           <h2 className="text-xl md:text-2xl font-semibold text-white mb-4">
             Baseline Assessment
@@ -222,8 +226,8 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
         </motion.div>
 
         {/* Progress Bar */}
-        <div className="mb-12">
-          <div className="flex justify-between items-center mb-6">
+        <div className="mb-10">
+          <div className="flex justify-between items-center mb-4">
             {steps.map((step, index) => (
               <div key={index} className="flex items-center">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
@@ -530,7 +534,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                 </div>
 
                 <div className="bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 rounded-2xl p-6">
-                  <h4 className="text-lg font-semibold mb-3 text-[#00d9ff]">Consider Including:</h4>
+                  <h4 className="text-lg font-semibold mb-3 text-[#ffffff]">Consider Including:</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white/80 text-sm">
                     <div>
                       <p className="font-medium mb-2">Quantitative Goals:</p>
@@ -587,7 +591,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                 <motion.button
                   type="button"
                   onClick={nextStep}
-                  className="px-6 py-3 bg-[#00d9ff] text-white rounded-xl font-semibold hover:bg-[#00d9ff]/90 transition-all duration-300 flex items-center space-x-2"
+                  className="px-6 py-3 bg-[#00d9ff]/0 border border-[#00d9ff] text-white rounded-xl font-semibold hover:bg-[#00d9ff]/30 transition-all duration-300 flex items-center space-x-2"
                   disabled={isSubmitting}
                   whileHover={!isSubmitting ? { scale: 1.05 } : {}}
                   whileTap={!isSubmitting ? { scale: 0.95 } : {}}

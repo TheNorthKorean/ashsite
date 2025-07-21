@@ -586,7 +586,7 @@ const CoachingDemo = () => {
           <h2 className="text-3xl font-bold text-white mb-8">Experience the System</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <motion.div
-              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:transition-all duration-300"
               whileHover={{ scale: 1.02 }}
             >
               <div className="w-16 h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -598,7 +598,7 @@ const CoachingDemo = () => {
               </p>
               <motion.button
                 onClick={() => setCurrentView('assessment')}
-                className="w-full px-6 py-3 bg-[#00d9ff] text-white rounded-xl font-semibold hover:bg-[#00d9ff]/90 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="w-full px-6 py-3 bg-[#00d9ff]/20 text-white rounded-xl font-semibold hover:bg-[#00d9ff]/80 transition-all duration-300 flex items-center justify-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -608,7 +608,7 @@ const CoachingDemo = () => {
             </motion.div>
 
             <motion.div
-              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:transition-all duration-300"
               whileHover={{ scale: 1.02 }}
             >
               <div className="w-16 h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">

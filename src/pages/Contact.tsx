@@ -275,7 +275,7 @@ const Contact = () => {
                 transition={{ duration: 0.8, delay: 0.1 * index }}
                 viewport={{ once: true }}
               >
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full hover:hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50">
                   {/* Icon */}
                   <div className="flex justify-center mb-6">
                     <div className="w-16 h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -297,7 +297,7 @@ const Contact = () => {
 
                   <div className="text-center">
                     <motion.button
-                      className="px-6 py-3 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 border border-[#00d9ff]/30 rounded-xl font-semibold text-[#00d9ff] hover:bg-gradient-to-r hover:from-[#00d9ff] hover:to-[#ff41fd] hover:text-white transition-all duration-300"
+                      className="px-6 py-3 bg-[#00d9ff]/10 border border-[#00d9ff]/30 rounded-xl font-semibold text-[#ffffff] hover:bg-[#00d9ff]/30 transition-all duration-300"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => {
