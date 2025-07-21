@@ -57,8 +57,8 @@ Your coaching assessment system is now fully integrated with Supabase and ready 
 2. Copy your Project URL and anon key
 3. Update your `.env` file:
 ```env
-VITE_SUPABASE_URL=your_project_url_here
-VITE_SUPABASE_ANON_KEY=your_anon_key_here
+VITE_SUPABASE_URL=https://fcfbmzutjzseeynfwida.supabase.co
+VITE_SUPABASE_ANON_KEY=sb_publishable_7llOLp8u69umeWi57TSRCw_d-cBenzR
 ```
 
 ### **4. Test the Integration**

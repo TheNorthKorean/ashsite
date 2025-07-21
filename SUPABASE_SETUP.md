@@ -38,8 +38,8 @@ This will create:
 
 3. Update your `.env` file:
 ```env
-VITE_SUPABASE_URL=your_project_url_here
-VITE_SUPABASE_ANON_KEY=your_anon_key_here
+VITE_SUPABASE_URL=https://fcfbmzutjzseeynfwida.supabase.co
+VITE_SUPABASE_ANON_KEY=sb_publishable_7llOLp8u69umeWi57TSRCw_d-cBenzR
 ```
 
 ## 🧪 **Step 4: Test the Integration**

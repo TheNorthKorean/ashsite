@@ -15,6 +15,7 @@ import {
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AssessmentService } from '../services/assessmentService';
 
+
 interface AssessmentData {
   salesConfidence: number;
   selectedKPIs: Array<{

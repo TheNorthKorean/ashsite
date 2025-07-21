@@ -22,8 +22,8 @@ Your assessment form shows "Failed to submit assessment" because Supabase isn't 
 
 6. **Create `.env` file in your project root:**
 ```env
-VITE_SUPABASE_URL=your_project_url_here
-VITE_SUPABASE_ANON_KEY=your_anon_key_here
+VITE_SUPABASE_URL=https://fcfbmzutjzseeynfwida.supabase.co
+VITE_SUPABASE_ANON_KEY=sb_publishable_7llOLp8u69umeWi57TSRCw_d-cBenzR
 ```
 
 7. **Set up database:**
