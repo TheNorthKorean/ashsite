@@ -128,20 +128,20 @@ const HowItWorks = () => {
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.8, delay: 0.2 * index }}
             >
-              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 h-full hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50 flex flex-col">
+              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-4 h-full hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50 flex flex-col">
                 {/* Step Number */}
                 <div className="absolute -top-4 -left-4 w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center text-sm font-bold border border-gray-600">
                   <span className="text-[#00d9ff]">{index + 1}</span>
                 </div>
 
                 {/* Icon */}
-                <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-[5deg] transition-transform duration-300">
-                    <step.icon className="text-[#00d9ff] group-hover:text-[#ff41fd] transition-colors duration-300" size={32} />
+                <div className="flex justify-center mb-4 pt-2">
+                  <div className="w-12 h-12 bg-[#00d9ff]/10 rounded-xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-[5deg] transition-transform duration-300">
+                    <step.icon className="text-[#00d9ff] group-hover:text-[#00d9ff] transition-colors duration-300" size={24} />
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold mb-3 text-center group-hover:text-[#00d9ff] transition-colors duration-300">
+                <h3 className="text-xl font-bold mb-3 text-center transition-colors duration-300">
                   {step.title}
                 </h3>
                 

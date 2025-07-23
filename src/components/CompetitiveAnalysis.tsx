@@ -11,22 +11,16 @@ const CompetitiveAnalysis = () => {
 
   const oldMethods = [
     {
-      icon: BookX,
-      title: 'Generic Sales Books',
-      description: 'One-size-fits-all approaches that ignore aesthetic industry nuances',
-      problems: ['Not industry-specific', 'Outdated techniques', 'No practical application'],
+      icon: AlertCircle,
+      title: 'No Scalable System',
+      description: 'Lack of structured, repeatable processes that can grow with your practice',
+      problems: ['Inconsistent results', 'Hard to train new staff', 'Limited growth potential'],
     },
     {
       icon: Clock,
-      title: 'Lengthy Seminars',
+      title: 'Time-Consuming Talks',
       description: 'Expensive, time-consuming workshops with minimal follow-up support',
       problems: ['High time investment', 'No ongoing support', 'Information overload'],
-    },
-    {
-      icon: AlertCircle,
-      title: 'Trial & Error',
-      description: 'Learning through costly mistakes instead of proven methodologies',
-      problems: ['Lost revenue opportunities', 'Inconsistent results', 'Patient dissatisfaction'],
     },
     {
       icon: X,
@@ -141,19 +135,17 @@ const CompetitiveAnalysis = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="sticky top-8">
-              <div className="bg-gradient-to-br from-black/80 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-8 h-full">
+              <div className="bg-gradient-to-br from-black/80 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 h-full">
                 <h3 className="text-2xl font-bold mb-6 mt-2 md:mt-0 text-center bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
                   Traditional vs Modern
                 </h3>
                 
                 <div className="space-y-4">
                   {[
-                    { traditional: 'Generic sales books', modern: 'Industry-specific training' },
-                    { traditional: 'Lengthy seminars', modern: 'Bite-sized modules' },
-                    { traditional: 'Trial & error learning', modern: 'AI-powered practice' },
-                    { traditional: 'Outdated scripts', modern: 'Authentic conversations' },
+                    { traditional: 'Generic content', modern: 'Industry-specific content' },
+                    { traditional: 'Time-consuming talks', modern: 'Bite-sized modules' },
+                    { traditional: 'Limited practice', modern: 'AI-powered practice' },
                     { traditional: 'One-size-fits-all', modern: 'Personalized paths' },
-                    { traditional: 'No tracking', modern: 'Real-time analytics' },
                     { traditional: 'High time investment', modern: 'Flexible learning' },
                     { traditional: 'No ongoing support', modern: 'Community & coaching' },
                   ].map((comparison, index) => (

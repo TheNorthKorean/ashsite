@@ -154,7 +154,7 @@ const Testimonials = () => {
                   className="group flex-shrink-0 w-[320px] md:w-[360px]"
                   whileHover={{ scale: 1.02 }}
                 >
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 h-auto min-h-[280px] hover:bg-white/10 transition-all duration-300 group-hover:border-[#00d9ff]/50 flex flex-col">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 h-auto min-h-[280px] hover:bg-white/10 transition-all duration-300 group-hover:border-[#ffffff]/30 flex flex-col">
                   {/* Stars - Top Left */}
                   <div className="flex gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -206,9 +206,6 @@ const Testimonials = () => {
                       />
                     </div>
                   </div>
-
-                  {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#00d9ff]/0 to-[#ff41fd]/0 group-hover:from-[#00d9ff]/5 group-hover:to-[#ff41fd]/5 transition-all duration-300 pointer-events-none" />
                 </div>
               </motion.div>
             ))}

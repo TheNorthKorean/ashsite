@@ -105,24 +105,21 @@ const Features = () => {
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.8, delay: 0.1 * index }}
             >
-              <div className="relative bg-white/4 backdrop-blur-xl border border-white/10 rounded-2xl p-5 md:p-6 h-full hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50">
+              <div className="relative bg-white/4 backdrop-blur-xl border border-white/10 rounded-2xl p-5 md:p-6 h-full hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-[#ff41fd]/50">
                 {/* Icon */}
                 <div className="mb-2 md:mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="text-[#00d9ff] group-hover:text-[#ff41fd] transition-colors duration-300" size={24} />
+                  <div className="w-12 h-12 bg-[#ff41fd]/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="text-[#ff41fd] group-hover:text-[#ff41fd] transition-colors duration-300" size={24} />
                   </div>
                 </div>
 
-                <h3 className="text-xl font-medium mb-2 md:mb-4 group-hover:text-[#00d9ff] transition-colors duration-300">
+                <h3 className="text-xl font-medium mb-2 md:mb-4 transition-colors duration-300">
                   {feature.title}
                 </h3>
                 
                 <p className="text-white/70 leading-relaxed text-sm md:text-base">
                   {feature.description}
                 </p>
-
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#00d9ff]/0 to-[#ff41fd]/0 group-hover:from-[#00d9ff]/5 group-hover:to-[#ff41fd]/5 transition-all duration-300 pointer-events-none" />
               </div>
             </motion.div>
           ))}

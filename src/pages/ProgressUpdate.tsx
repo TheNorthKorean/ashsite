@@ -728,12 +728,11 @@ const ProgressUpdate = () => {
                 {/* Back Button - Top Right Corner */}
                 <motion.button
                   onClick={() => setCurrentStep('options')}
-                  className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300 text-white/80 hover:text-white"
-                  whileHover={{ scale: 1.05 }}
+                    className="flex items-center space-x-2 px-4 py-4 bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300 text-white/80 hover:text-white text-sm"
+                    whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <ArrowLeft size={20} />
-                  <span>Back</span>
                 </motion.button>
               </div>
             </div>

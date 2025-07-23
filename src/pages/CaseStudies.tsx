@@ -106,11 +106,11 @@ const CaseStudies = () => {
                 transition={{ duration: 0.8, delay: 0.2 * index }}
                 viewport={{ once: true }}
               >
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-12 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-10 hover:scale-[1.0] transition-all duration-300 group-hover:border-[#ffffff]/50">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
                     {/* Study Info */}
                     <div className="lg:col-span-1">
-                      <h2 className="text-3xl font-bold mb-4 mt-2 md:mt-0 group-hover:text-[#00d9ff] transition-colors duration-300">
+                      <h2 className="text-3xl font-bold mb-4 mt-2 md:mt-0 transition-colors duration-300">
                         {study.title}
                       </h2>
                       
@@ -141,17 +141,17 @@ const CaseStudies = () => {
                         {study.results.map((result, i) => (
                           <motion.div 
                             key={i} 
-                            className="group/result bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 md:p-6 text-center text-sm md:text-lg hover:bg-white/10 hover:scale-[1.05] transition-all duration-300 hover:border-[#00d9ff]/50"
+                            className="group/result bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 md:p-6 text-center text-sm md:text-lg hover:bg-white/10 hover:scale-[1.05] transition-all duration-300 hover:border-[#00d9ff]/50"
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, delay: 0.1 * i }}
                             viewport={{ once: true }}
                           >
                             <div className="flex justify-center mb-3">
-                              <div className="w-12 h-12 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-xl flex items-center justify-center group-hover/result:scale-110 transition-transform duration-300">
-                                {i === 0 && <TrendingUp className="text-[#00d9ff] group-hover/result:text-white transition-colors duration-300" size={24} />}
-                                {i === 1 && <DollarSign className="text-[#00d9ff] group-hover/result:text-white transition-colors duration-300" size={24} />}
-                                {i === 2 && <Users className="text-[#00d9ff] group-hover/result:text-white transition-colors duration-300" size={24} />}
+                              <div className="w-12 h-12 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-2xl flex items-center justify-center group-hover/result:scale-110 transition-transform duration-300">
+                                {i === 0 && <TrendingUp className="text-[#ffffff] group-hover/result:text-white transition-colors duration-300" size={24} />}
+                                {i === 1 && <DollarSign className="text-[#ffffff] group-hover/result:text-white transition-colors duration-300" size={24} />}
+                                {i === 2 && <Users className="text-[#ffffff] group-hover/result:text-white transition-colors duration-300" size={24} />}
                               </div>
                             </div>
                             
@@ -162,16 +162,13 @@ const CaseStudies = () => {
                               <div className="text-white/80">After: {result.after}</div>
                               <div className="text-green-400 font-bold">{result.improvement}</div>
                             </div>
-
-                            {/* Result Box Hover Glow Effect */}
-                            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#00d9ff]/0 to-[#ff41fd]/0 group-hover/result:from-[#00d9ff]/5 group-hover/result:to-[#ff41fd]/5 transition-all duration-300 pointer-events-none" />
                           </motion.div>
                         ))}
                       </div>
 
                       {/* Testimonial Quote Box */}
                       <motion.div 
-                        className="group/quote bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 backdrop-blur-sm border border-[#00d9ff]/30 rounded-xl p-6 hover:bg-gradient-to-r hover:from-[#00d9ff]/15 hover:to-[#ff41fd]/15 hover:scale-[1.02] transition-all duration-300 hover:border-[#00d9ff]/50"
+                        className="group/quote bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-gradient-to-r hover:from-[#00d9ff]/15 hover:to-[#ff41fd]/15 hover:scale-[1.02] transition-all duration-300 hover:border-[#00d9ff]/50"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
@@ -180,16 +177,13 @@ const CaseStudies = () => {
                         <p className="text-white/90 italic mb-4 leading-relaxed group-hover/quote:text-white transition-colors duration-300">
                           "{study.testimonial}"
                         </p>
-                        <p className="text-[#00d9ff] font-semibold group-hover/quote:text-white transition-colors duration-300">— {study.author}</p>
+                        <p className="text-[#00d9ff] font-semibold transition-colors duration-300">— {study.author}</p>
 
                         {/* Quote Box Hover Glow Effect */}
                         <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#00d9ff]/0 to-[#ff41fd]/0 group-hover/quote:from-[#00d9ff]/5 group-hover/quote:to-[#ff41fd]/5 transition-all duration-300 pointer-events-none" />
                       </motion.div>
                     </div>
                   </div>
-
-                  {/* Main Card Hover Glow Effect */}
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#00d9ff]/0 to-[#ff41fd]/0 group-hover:from-[#00d9ff]/5 group-hover:to-[#ff41fd]/5 transition-all duration-300 pointer-events-none" />
                 </div>
               </motion.div>
             ))}
@@ -208,7 +202,7 @@ const CaseStudies = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 mt-2 md:mt-0">Ready to Write Your Success Story?</h2>
-            <p className="text-medium md:text-xl text-white/70 mb-8 leading-relaxed">
+            <p className="text-base md:text-lg text-white/70 mb-8 leading-relaxed">
               Join hundreds of aesthetic practices that have transformed their consultation success. 
               Start your journey today and see measurable results within 30 days.
             </p>

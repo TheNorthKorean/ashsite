@@ -738,8 +738,8 @@ const Faculty = () => {
               </motion.button>
             </Link>
             <motion.button
-              className="group px-6 py-2 md:px-8 md:py-4 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm md:text-base hover:bg-gray-800/80 hover:border-[#00d9ff]/50 transition-all duration-300 flex items-center justify-center gap-3"
-              whileHover={{ scale: 1.05 }}
+              className="group px-6 py-2 md:px-8 md:py-4 bg-gray-800/60 backdrop-blur-sm border-2 border-gray-700/50 rounded-xl font-medium text-sm md:text-base hover:bg-white/10 hover:border-[#ffffff]/50 transition-all duration-300 flex items-center justify-center gap-3"
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => {
                 const element = document.getElementById('application-process');
@@ -990,10 +990,10 @@ const Faculty = () => {
                   viewport={{ once: true }}
                 >
                   <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
-                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 md:p-6 hover:bg-white/10 transition-all duration-300">
+                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-3 md:p-5 hover:bg-white/10 transition-all duration-300">
                       <div className="flex items-center gap-3 mb-1 md:mb-3">
-                        <div className="w-10 h-10 md:w-10 md:h-10 bg-gradient-to-r from-[#00d9ff]/30 to-[#ff41fd]/30 rounded-xl flex items-center justify-center">
-                          <step.icon className="text-[#00d9ff]" size={20} />
+                        <div className="w-12 h-12 md:w-10 md:h-10 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center">
+                          <step.icon className="text-[#ff41fd]" size={20} />
                         </div>
                         <h3 className="text-base md:text-lg font-bold">{step.title}</h3>
                       </div>
@@ -1156,7 +1156,7 @@ const Faculty = () => {
               >
                 <button
                   onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:text-[#00d9ff] transition-colors duration-300"
+                  className="w-full p-5 text-left flex items-center justify-between hover:text-[#00d9ff] transition-colors duration-300"
                 >
                   <h3 className="text-lg font-bold pr-8">{item.question}</h3>
                   <div className="flex-shrink-0">

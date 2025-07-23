@@ -21,8 +21,8 @@ const PricingPage = () => {
       features: [
         'Complete consultation training system',
         'AI conversation practice sessions',
-        'Performance analytics & tracking',
-        'Monthly live coaching calls',
+        'Comprehensive guidebooks & scripts',
+        'Expert faculty content',
         'Certification upon completion',
         'Email support',
       ],
@@ -163,7 +163,7 @@ const PricingPage = () => {
                   {/* Recommended Badge */}
                   {plan.recommended && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <div className="px-6 py-1.5 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-full text-sm font-bold">
+                      <div className="px-6 py-1.5 bg-gradient-to-r from-[#00d9ff]/90 to-[#ff41fd]/90 rounded-full text-sm font-bold">
                         {plan.highlight}
                       </div>
                     </div>
@@ -171,17 +171,17 @@ const PricingPage = () => {
 
                   {/* Icon */}
                   <div className="flex justify-center mb-6">
-                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${
+                    <div className={`w-14 h-14 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${
                       plan.recommended 
-                        ? 'bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20' 
-                        : 'bg-gradient-to-r from-[#ff41fd]/20 to-[#00d9ff]/20'
+                        ? 'bg-[#00d9ff]/10' 
+                        : 'bg-[#ff41fd]/10'
                     }`}>
-                      <plan.icon className={`${plan.recommended ? 'text-[#00d9ff]' : 'text-[#ff41fd]'} group-hover:text-white transition-colors duration-300`} size={32} />
+                      <plan.icon className={`${plan.recommended ? 'text-[#00d9ff]' : 'text-[#ff41fd]'} group-hover:text-white transition-colors duration-300`} size={26} />
                     </div>
                   </div>
 
                   <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold mb-2 group-hover:text-[#00d9ff] transition-colors duration-300">
+                    <h3 className={`text-2xl font-bold mb-2 ${plan.recommended ? 'group-hover:text-[#00d9ff]' : 'group-hover:text-[#ff41fd]'} transition-colors duration-300`}>
                       {plan.name}
                     </h3>
                     
@@ -215,7 +215,7 @@ const PricingPage = () => {
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start gap-3">
-                        <Check className="text-[#00d9ff] mt-1 flex-shrink-0" size={16} />
+                        <Check className={`${plan.recommended ? 'text-[#00d9ff]' : 'text-[#ff41fd]'} mt-1 flex-shrink-0`} size={16} />
                         <span className="text-white/80">{feature}</span>
                       </li>
                     ))}
@@ -223,7 +223,7 @@ const PricingPage = () => {
 
                   {/* CTA Button */}
                   <motion.button
-                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
+                    className={`w-full py-4 rounded-xl font-bold text-base transition-all duration-300 ${
                       plan.recommended
                         ? 'bg-[#00d9ff] text-black hover:shadow-[#00d9ff]/25 shadow-lg'
                         : 'border-2 border-[#ff41fd] text-[#ff41fd] hover:bg-[#ff41fd] hover:text-white'
@@ -242,11 +242,7 @@ const PricingPage = () => {
                   </motion.button>
 
                   {/* Hover Glow Effect */}
-                  <div className={`absolute inset-0 rounded-3xl transition-all duration-300 pointer-events-none ${
-                    plan.recommended
-                      ? 'bg-gradient-to-r from-[#00d9ff]/0 to-[#ff41fd]/0 group-hover:from-[#00d9ff]/5 group-hover:to-[#ff41fd]/5'
-                      : 'bg-gradient-to-r from-[#ff41fd]/0 to-[#00d9ff]/0 group-hover:from-[#ff41fd]/5 group-hover:to-[#00d9ff]/5'
-                  }`} />
+                  <div className={`absolute inset-0 rounded-3xl transition-all duration-300 pointer-events-none`} />
                 </div>
               </motion.div>
             ))}

@@ -103,10 +103,10 @@ const FAQ = () => {
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.1 * index }}
             >
-              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition-all duration-300 group-hover:border-[#00d9ff]/50">
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-[#00d9ff]/50">
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full p-4 md:p-6 text-left flex items-center justify-between group-hover:text-[#00d9ff] transition-colors duration-300"
+                  className="w-full p-4 md:p-5 text-left flex items-center justify-between transition-colors duration-300"
                 >
                   <h3 className="text-base md:text-lg font-bold pr-4 md:pr-8">
                     {faq.question}
@@ -115,7 +115,7 @@ const FAQ = () => {
                     {openIndex === index ? (
                       <ChevronUp className="text-[#00d9ff]" size={24} />
                     ) : (
-                      <ChevronDown className="text-white/70 group-hover:text-[#ff41fd]" size={24} />
+                      <ChevronDown className="text-white/70 group-hover:text-[#00d9ff]" size={24} />
                     )}
                   </div>
                 </button>

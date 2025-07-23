@@ -237,8 +237,8 @@ const Contact = () => {
               <div className="text-center">
                 <motion.button
                   type="submit"
-                  className="px-8 py-4  w-full bg-[#00d9ff] rounded-xl font-semibold text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
-                  whileHover={{ scale: 1.01, boxShadow: '0 0 10px rgba(0, 217, 255, 0.4)' }}
+                  className="px-8 py-4 text-[#00d9ff] w-full bg-[#00d9ff]/20 rounded-xl font-semibold text-lg shadow-lg hover:bg-[#00d9ff]/30 transition-all duration-300"
+                  whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Send Message
