@@ -25,6 +25,11 @@ interface ProgressData {
     currentValue: string;
     goalValue: string;
   }>;
+  nonFinancialKpiUpdates: Array<{
+    kpi: string;
+    currentValue: string;
+    goalValue: string;
+  }>;
   revenueForecastConfidence: string;
   jobDescriptionsClarity: string;
   newImprovements: string[];
@@ -100,6 +105,7 @@ const ProgressUpdate = () => {
     weekNumber: 1,
     salesConfidenceAfter: 3,
     kpiUpdates: [],
+    nonFinancialKpiUpdates: [],
     revenueForecastConfidence: '',
     jobDescriptionsClarity: '',
     newImprovements: [],
@@ -286,6 +292,42 @@ const ProgressUpdate = () => {
         return;
       }
     }
+
+    // Validate Non-Financial KPI updates if they exist
+    if (existingAssessment.selected_non_financial_kpis && existingAssessment.selected_non_financial_kpis.length > 0) {
+      try {
+        const nonFinancialKPIs = existingAssessment.selected_non_financial_kpis;
+        if (nonFinancialKPIs && nonFinancialKPIs.length > 0) {
+          const missingNonFinancialKPIs = nonFinancialKPIs.filter((kpi: any) => {
+            const update = progressData.nonFinancialKpiUpdates.find(u => u.kpi === kpi.kpi);
+            return !update || !update.currentValue;
+          });
+          
+          if (missingNonFinancialKPIs.length > 0) {
+            setError(`Please fill in current values for all Non-Financial KPI updates: ${missingNonFinancialKPIs.map((kpi: any) => {
+              const nonFinancialKpiLabels: { [key: string]: string } = {
+                'team_confidence': 'Team Sales Confidence',
+                'patient_satisfaction': 'Patient Satisfaction Score',
+                'consultation_quality': 'Consultation Quality Score',
+                'treatment_adherence': 'Treatment Plan Adherence',
+                'staff_productivity': 'Staff Productivity Score',
+                'response_time': 'Inquiry Response Time',
+                'online_reviews': 'Online Review Rating',
+                'social_engagement': 'Social Media Engagement Rate',
+                'staff_retention': 'Staff Retention Rate',
+                'training_completion': 'Training Completion Rate',
+                'customer_complaints': 'Customer Complaint Rate',
+                'custom_nf': kpi.customKpiName || 'Custom Non-Financial KPI'
+              };
+              return nonFinancialKpiLabels[kpi.kpi] || kpi.kpi;
+            }).join(', ')}`);
+            return;
+          }
+        }
+      } catch (e) {
+        console.error('Error parsing non-financial metrics:', e);
+      }
+    }
     
     setIsLoading(true);
     setError(null);
@@ -335,6 +377,7 @@ const ProgressUpdate = () => {
         week_number: progressData.weekNumber,
         sales_confidence_after: progressData.salesConfidenceAfter,
         kpi_updates: progressData.kpiUpdates,
+        non_financial_kpi_updates: progressData.nonFinancialKpiUpdates,
         revenue_forecast_confidence: progressData.revenueForecastConfidence,
         job_descriptions_clarity: progressData.jobDescriptionsClarity,
         new_improvements: progressData.newImprovements, // Only save new ones for this week
@@ -510,10 +553,12 @@ const ProgressUpdate = () => {
       // Get latest KPI updates
       const latestProgress = allProgress && allProgress.length > 0 ? allProgress[allProgress.length - 1] : null;
       const latestKpiUpdates = latestProgress?.kpi_updates || [];
+      const latestNonFinancialKpiUpdates = latestProgress?.non_financial_kpi_updates || [];
       const latestProgressId = latestProgress?.id || '';
       
       console.log('Latest progress for KPI updates:', latestProgress);
       console.log('Latest KPI updates:', latestKpiUpdates);
+      console.log('Latest Non-Financial KPI updates:', latestNonFinancialKpiUpdates);
 
       // Navigate to results with accumulated data
       const params = new URLSearchParams({
@@ -529,6 +574,7 @@ const ProgressUpdate = () => {
         newImprovements: JSON.stringify(allImprovements),
         newAchievements: JSON.stringify(allAchievements),
         kpiUpdates: JSON.stringify(latestKpiUpdates),
+        nonFinancialKpiUpdates: JSON.stringify(latestNonFinancialKpiUpdates),
         notes: JSON.stringify(allNotes)
       });
 
@@ -834,6 +880,77 @@ const ProgressUpdate = () => {
                       </div>
                     );
                   })}
+                </div>
+              )}
+
+              {/* Non-Financial KPI Updates */}
+              {existingAssessment.selected_non_financial_kpis && existingAssessment.selected_non_financial_kpis.length > 0 && (
+                <div className="space-y-5">
+                  <h4 className="text-lg font-semibold text-[#ff41fd]">Non-Financial KPI Updates</h4>
+                  <p className="text-white/70 text-sm">Update your current non-financial KPI values for this week.</p>
+                  
+                  {existingAssessment.selected_non_financial_kpis.map((baselineKPI: any, index: number) => {
+                        const currentUpdate = progressData.nonFinancialKpiUpdates.find(u => u.kpi === baselineKPI.kpi);
+                        
+                        const nonFinancialKpiLabels: { [key: string]: string } = {
+                          'team_confidence': 'Team Sales Confidence',
+                          'patient_satisfaction': 'Patient Satisfaction Score',
+                          'consultation_quality': 'Consultation Quality Score',
+                          'treatment_adherence': 'Treatment Plan Adherence',
+                          'staff_productivity': 'Staff Productivity Score',
+                          'response_time': 'Inquiry Response Time',
+                          'online_reviews': 'Online Review Rating',
+                          'social_engagement': 'Social Media Engagement Rate',
+                          'staff_retention': 'Staff Retention Rate',
+                          'training_completion': 'Training Completion Rate',
+                          'customer_complaints': 'Customer Complaint Rate',
+                          'custom_nf': baselineKPI.customKpiName || 'Custom Non-Financial KPI'
+                        };
+
+                        const kpiLabel = nonFinancialKpiLabels[baselineKPI.kpi] || baselineKPI.kpi;
+
+                        return (
+                          <div key={index} className="bg-gradient-to-br from-[#ff41fd]/10 to-[#ff41fd]/5 rounded-xl p-4 border border-[#ff41fd]/20">
+                            <h5 className="text-white font-semibold mb-3">{kpiLabel}</h5>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                              <div>
+                                <label className="block text-sm text-white/70 mb-1">Baseline (Current)</label>
+                                <div className="text-white font-medium">{baselineKPI.currentValue}</div>
+                              </div>
+                              <div>
+                                <label className="block text-sm text-white/70 mb-1">Goal</label>
+                                <div className="text-white font-medium">{baselineKPI.goalValue}</div>
+                              </div>
+                              <div>
+                                <label className="block text-sm text-white/70 mb-1">Current Week Value *</label>
+                                <input
+                                  type="text"
+                                  value={currentUpdate?.currentValue || ''}
+                                  onChange={(e) => {
+                                    const updatedKPIs = [...progressData.nonFinancialKpiUpdates];
+                                    const existingIndex = updatedKPIs.findIndex(u => u.kpi === baselineKPI.kpi);
+                                    if (existingIndex >= 0) {
+                                      updatedKPIs[existingIndex] = {
+                                        ...updatedKPIs[existingIndex],
+                                        currentValue: e.target.value
+                                      };
+                                    } else {
+                                      updatedKPIs.push({
+                                        kpi: baselineKPI.kpi,
+                                        currentValue: e.target.value,
+                                        goalValue: baselineKPI.goalValue
+                                      });
+                                    }
+                                    setProgressData(prev => ({ ...prev, nonFinancialKpiUpdates: updatedKPIs }));
+                                  }}
+                                  className="w-full px-3 py-2 bg-white/5 border border-[#ff41fd]/20 rounded-lg focus:border-[#ff41fd] focus:outline-none transition-colors text-white placeholder-white/50"
+                                  placeholder="Enter current value"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
                 </div>
               )}
 

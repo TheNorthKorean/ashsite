@@ -25,6 +25,12 @@ export interface AssessmentSubmission {
     currentValue: string;
     goalValue: string;
   }>;
+  selected_non_financial_kpis?: Array<{
+    kpi: string;
+    currentValue: string;
+    goalValue: string;
+    customKpiName?: string;
+  }>;
   non_financial_metrics: string;
   revenue_forecast_confidence: string;
   job_descriptions_clarity: string;

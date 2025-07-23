@@ -22,8 +22,14 @@ interface AssessmentData {
     kpi: string;
     currentValue: string;
     goalValue: string;
+    customKpiName?: string;
   }>;
-  nonFinancialMetrics: string;
+  selectedNonFinancialKPIs: Array<{
+    kpi: string;
+    currentValue: string;
+    goalValue: string;
+    customKpiName?: string;
+  }>;
   revenueForecastConfidence: string;
   jobDescriptionsClarity: string;
   successDefinition: string;
@@ -55,7 +61,11 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
       { kpi: '', currentValue: '', goalValue: '' },
       { kpi: '', currentValue: '', goalValue: '' }
     ],
-    nonFinancialMetrics: '',
+    selectedNonFinancialKPIs: [
+      { kpi: '', currentValue: '', goalValue: '' },
+      { kpi: '', currentValue: '', goalValue: '' },
+      { kpi: '', currentValue: '', goalValue: '' }
+    ],
     revenueForecastConfidence: '',
     jobDescriptionsClarity: '',
     successDefinition: '',
@@ -65,16 +75,35 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
   });
 
   const kpiOptions = [
-    { value: 'monthly_revenue', label: 'Monthly Revenue', formula: 'Total Revenue ÷ Number of Months' },
-    { value: 'conversion_rate', label: 'Consultation to Sale Conversion Rate', formula: '(Sales ÷ Consultations) × 100' },
-    { value: 'average_transaction', label: 'Average Transaction Value', formula: 'Total Revenue ÷ Number of Transactions' },
-    { value: 'new_clients', label: 'New Client Acquisition', formula: 'Number of New Clients per Month' },
-    { value: 'client_retention', label: 'Client Retention Rate', formula: '(Returning Clients ÷ Total Clients) × 100' },
-    { value: 'appointment_show_rate', label: 'Appointment Show Rate', formula: '(Appointments Attended ÷ Appointments Scheduled) × 100' },
-    { value: 'treatment_frequency', label: 'Treatment Frequency per Client', formula: 'Total Treatments ÷ Number of Active Clients' },
-    { value: 'referral_rate', label: 'Referral Rate', formula: '(Referred Clients ÷ Total Clients) × 100' },
-    { value: 'profit_margin', label: 'Profit Margin', formula: '((Revenue - Costs) ÷ Revenue) × 100' },
-    { value: 'consultation_bookings', label: 'Consultation Bookings', formula: 'Number of Consultations Booked per Month' }
+    { value: 'revenue_per_appointment', label: 'Revenue per Appointment', formula: 'Total Revenue ÷ Number of Appointments', example: '$400-$650' },
+    { value: 'revenue_per_hour', label: 'Revenue per Hour', formula: 'Total Revenue ÷ Number of Hours', example: '$400-$700/hour' },
+    { value: 'inquiry_to_appointment', label: 'Conversion Rate: Inquiry to Appointment', formula: '(Appointments Booked ÷ Inquiries) × 100', example: '30%-60%' },
+    { value: 'consult_to_treatment', label: 'Conversion Rate: Consult to Treatment', formula: '(Treatments Sold ÷ Consultations) × 100', example: '40%-70%' },
+    { value: 'retail_attach_rate', label: 'Retail/Skincare Attach Rate', formula: '(Retail Sales ÷ Total Sales) × 100', example: '10%-25%' },
+    { value: 'prebooking_rate', label: 'Prebooking Rate', formula: '(Prebooked Appointments ÷ Total Appointments) × 100', example: '30%-60%' },
+    { value: 'package_conversion', label: 'Package Conversion Rate', formula: '(Packages Sold ÷ Total Sales) × 100', example: '20%-40%' },
+    { value: 'average_order_value', label: 'Average Order Value (AOV)', formula: 'Total Revenue ÷ Number of Orders', example: '$300-$600' },
+    { value: 'new_patient_growth', label: 'New Patient Monthly Growth Rate', formula: '(New Patients This Month - New Patients Last Month) ÷ New Patients Last Month) × 100', example: '5%-10%' },
+    { value: 'client_retention', label: 'Client Retention Rate', formula: '(Returning Clients ÷ Total Clients) × 100', example: '70%-85%' },
+    { value: 'appointment_show_rate', label: 'Appointment Show Rate', formula: '(Appointments Attended ÷ Appointments Scheduled) × 100', example: '85%-95%' },
+    { value: 'referral_rate', label: 'Referral Rate', formula: '(Referred Clients ÷ Total Clients) × 100', example: '15%-30%' },
+    { value: 'profit_margin', label: 'Profit Margin', formula: '(Revenue - Costs) ÷ Revenue) × 100', example: '25%-40%' },
+    { value: 'custom', label: 'Custom KPI (Define your own metric)', formula: 'Track your own metric', example: 'Define your range' }
+  ];
+
+  const nonFinancialKpiOptions = [
+    { value: 'team_confidence', label: 'Team Sales Confidence', formula: 'Team Self-Assessment Score (1-10)', example: '6-9' },
+    { value: 'patient_satisfaction', label: 'Patient Satisfaction Score', formula: 'Average Rating from Patient Surveys', example: '4.2-4.8/5' },
+    { value: 'consultation_quality', label: 'Consultation Quality Score', formula: 'Internal Quality Assessment (1-10)', example: '7-9' },
+    { value: 'treatment_adherence', label: 'Treatment Plan Adherence', formula: '(Patients Following Plan ÷ Total Patients) × 100', example: '70%-85%' },
+    { value: 'staff_productivity', label: 'Staff Productivity Score', formula: 'Tasks Completed per Hour', example: '8-12 tasks/hour' },
+    { value: 'response_time', label: 'Inquiry Response Time', formula: 'Average Hours to Respond to Inquiries', example: '2-6 hours' },
+    { value: 'online_reviews', label: 'Online Review Rating', formula: 'Average Rating Across All Platforms', example: '4.5-5.0/5' },
+    { value: 'social_engagement', label: 'Social Media Engagement Rate', formula: '(Likes + Comments + Shares) ÷ Followers × 100', example: '3%-8%' },
+    { value: 'staff_retention', label: 'Staff Retention Rate', formula: '(Staff Retained ÷ Total Staff) × 100', example: '85%-95%' },
+    { value: 'training_completion', label: 'Training Completion Rate', formula: '(Completed Training Modules ÷ Assigned Modules) × 100', example: '80%-95%' },
+    { value: 'customer_complaints', label: 'Customer Complaint Rate', formula: '(Complaints ÷ Total Patients) × 100', example: '1%-5%' },
+    { value: 'custom_nf', label: 'Custom Non-Financial KPI', formula: 'Track your own metric', example: 'Define your range' }
   ];
 
   const steps = [
@@ -95,6 +124,12 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
     setFormData(prev => ({ ...prev, selectedKPIs: updatedKPIs }));
   };
 
+  const handleNonFinancialKPIChange = (index: number, field: string, value: string) => {
+    const updatedKPIs = [...formData.selectedNonFinancialKPIs];
+    updatedKPIs[index] = { ...updatedKPIs[index], [field]: value };
+    setFormData(prev => ({ ...prev, selectedNonFinancialKPIs: updatedKPIs }));
+  };
+
   const handleSubmit = async () => {
     
     setIsSubmitting(true);
@@ -108,7 +143,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
         email: formData.email,
         sales_confidence_before: formData.salesConfidence,
         selected_kpis: formData.selectedKPIs,
-        non_financial_metrics: formData.nonFinancialMetrics,
+        selected_non_financial_kpis: formData.selectedNonFinancialKPIs,
         revenue_forecast_confidence: formData.revenueForecastConfidence,
         job_descriptions_clarity: formData.jobDescriptionsClarity,
         success_definition: formData.successDefinition,
@@ -135,7 +170,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
             // Add all form data to URL params for results card
             email: formData.email,
             selectedKPIs: JSON.stringify(formData.selectedKPIs),
-            nonFinancialMetrics: formData.nonFinancialMetrics,
+            selectedNonFinancialKPIs: JSON.stringify(formData.selectedNonFinancialKPIs),
             revenueForecastConfidence: formData.revenueForecastConfidence,
             jobDescriptionsClarity: formData.jobDescriptionsClarity,
             successDefinition: formData.successDefinition,
@@ -159,7 +194,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
         // Add all form data to URL params for results card
         email: formData.email,
         selectedKPIs: JSON.stringify(formData.selectedKPIs),
-        nonFinancialMetrics: formData.nonFinancialMetrics,
+        selectedNonFinancialKPIs: JSON.stringify(formData.selectedNonFinancialKPIs),
         revenueForecastConfidence: formData.revenueForecastConfidence,
         jobDescriptionsClarity: formData.jobDescriptionsClarity,
         successDefinition: formData.successDefinition,
@@ -206,7 +241,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
           <div className="flex justify-start mb-6">
             <motion.button
               onClick={onBack || (() => navigate('/coaching-demo'))}
-              className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300 text-white/80 hover:text-white"
+              className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300 text-sm text-white/80 hover:text-white"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -233,7 +268,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
               <div key={index} className="flex items-center">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
                   index <= currentStep 
-                    ? 'bg-[#00d9ff] border-[#00d9ff] text-white' 
+                    ? 'bg-gradient-to-r from-[#00d9ff]/80 to-[#ff41fd]/80 border-[#ffffff]/20 text-[#ffffff]' 
                     : 'border-white/30 text-white/50'
                 }`}>
                   {index < currentStep ? (
@@ -244,7 +279,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                 </div>
                 {index < steps.length - 1 && (
                   <div className={`w-32 h-0.5 mx-4 transition-all duration-300 ${
-                    index < currentStep ? 'bg-[#00d9ff]' : 'bg-white/20'
+                    index < currentStep ? 'bg-gradient-to-r from-[#00d9ff] to-[#ff41fd]' : 'bg-white/20'
                   }`} />
                 )}
               </div>
@@ -388,11 +423,29 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                           </select>
                         </div>
 
+                        {kpiData.kpi === 'custom' && (
+                          <div>
+                            <label className="block text-sm font-medium mb-2 text-white">Custom KPI Name</label>
+                            <input
+                              type="text"
+                              value={kpiData.customKpiName || ''}
+                              onChange={(e) => handleKPIChange(index, 'customKpiName', e.target.value)}
+                              className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50"
+                              placeholder="Enter your custom KPI name (e.g., Social Media Engagement Rate, Patient Satisfaction Score)"
+                            />
+                          </div>
+                        )}
+
                         {kpiData.kpi && (
                           <div className="bg-gradient-to-r from-[#00d9ff]/5 to-[#ff41fd]/5 rounded-lg p-4">
-                            <p className="text-sm text-white/80 mb-3">
-                              <span className="font-medium">Formula:</span> {kpiOptions.find(opt => opt.value === kpiData.kpi)?.formula}
-                            </p>
+                            <div className="flex justify-between items-start mb-3">
+                              <p className="text-sm text-white/80">
+                                <span className="font-medium">Formula:</span> {kpiOptions.find(opt => opt.value === kpiData.kpi)?.formula}
+                              </p>
+                              <p className="text-sm text-[#00d9ff] font-medium ml-4">
+                                Example: {kpiOptions.find(opt => opt.value === kpiData.kpi)?.example}
+                              </p>
+                            </div>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                               <div>
@@ -424,17 +477,85 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                   ))}
                 </div>
 
-                <div>
-                  <label className="block text-sm font-semibold mb-2 text-white">
-                    What non-financial metric(s) would you like to see improved?
+                <div className="mt-8">
+                  <h4 className="text-xl font-bold text-[#ff41fd] mb-6">Non-Financial KPIs</h4>
+                  <label className="block text-sm font-semibold mb-4 text-white">
+                    Select your top 3 Non-Financial KPIs to track:
                   </label>
-                  <textarea
-                    value={formData.nonFinancialMetrics}
-                    onChange={(e) => handleInputChange('nonFinancialMetrics', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50 resize-none"
-                    placeholder="e.g., Team confidence, patient satisfaction, consultation quality, treatment adherence..."
-                    rows={4}
-                  />
+                  
+                  {formData.selectedNonFinancialKPIs.map((kpiData, index) => (
+                    <div key={index} className="bg-white/5 border border-white/10 rounded-xl p-6 mb-6">
+                      <h5 className="text-lg font-semibold mb-4 text-[#ff41fd]">Non-Financial KPI #{index + 1}</h5>
+                      
+                      <div className="space-y-4">
+                        <div>
+                          <label className="block text-sm font-medium mb-2 text-white">Select Non-Financial KPI</label>
+                          <select
+                            value={kpiData.kpi}
+                            onChange={(e) => handleNonFinancialKPIChange(index, 'kpi', e.target.value)}
+                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#ff41fd] focus:outline-none transition-colors text-white"
+                          >
+                            <option value="">Choose a Non-Financial KPI</option>
+                            {nonFinancialKpiOptions.map((option) => (
+                              <option key={option.value} value={option.value}>
+                                {option.label}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+
+                        {kpiData.kpi === 'custom_nf' && (
+                          <div>
+                            <label className="block text-sm font-medium mb-2 text-white">Custom Non-Financial KPI Name</label>
+                            <input
+                              type="text"
+                              value={kpiData.customKpiName || ''}
+                              onChange={(e) => handleNonFinancialKPIChange(index, 'customKpiName', e.target.value)}
+                              className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#ff41fd] focus:outline-none transition-colors text-white placeholder-white/50"
+                              placeholder="Enter your custom non-financial KPI name (e.g., Team Morale Score, Patient Wait Time)"
+                            />
+                          </div>
+                        )}
+
+                        {kpiData.kpi && (
+                          <div className="bg-gradient-to-r from-[#ff41fd]/5 to-[#00d9ff]/5 rounded-lg p-4">
+                            <div className="flex justify-between items-start mb-3">
+                              <p className="text-sm text-white/80">
+                                <span className="font-medium">Measurement:</span> {nonFinancialKpiOptions.find(opt => opt.value === kpiData.kpi)?.formula}
+                              </p>
+                              <p className="text-sm text-[#ff41fd] font-medium ml-4">
+                                Example: {nonFinancialKpiOptions.find(opt => opt.value === kpiData.kpi)?.example}
+                              </p>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div>
+                                <label className="block text-sm font-medium mb-2 text-white">Current Value</label>
+                                <input
+                                  type="text"
+                                  value={kpiData.currentValue}
+                                  onChange={(e) => handleNonFinancialKPIChange(index, 'currentValue', e.target.value)}
+                                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#ff41fd] focus:outline-none transition-colors text-white placeholder-white/50"
+                                  placeholder="Enter current value"
+                                />
+                              </div>
+                              
+                              <div>
+                                <label className="block text-sm font-medium mb-2 text-white">Goal Value</label>
+                                <input
+                                  type="text"
+                                  value={kpiData.goalValue}
+                                  onChange={(e) => handleNonFinancialKPIChange(index, 'goalValue', e.target.value)}
+                                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#ff41fd] focus:outline-none transition-colors text-white placeholder-white/50"
+                                  placeholder="Enter goal value"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}

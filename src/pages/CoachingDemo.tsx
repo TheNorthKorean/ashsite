@@ -110,7 +110,7 @@ const CoachingDemo = () => {
               userData: {
                 email: assessment.email,
                 selectedKPIs: assessment.selected_kpis || [],
-                nonFinancialMetrics: assessment.non_financial_metrics,
+                selectedNonFinancialKPIs: assessment.selected_non_financial_kpis || [],
                 revenueForecastConfidence: assessment.revenue_forecast_confidence,
                 jobDescriptionsClarity: assessment.job_descriptions_clarity,
                 successDefinition: assessment.success_definition
@@ -193,6 +193,18 @@ const CoachingDemo = () => {
               }
             }
 
+            // Get Non-Financial KPI updates from URL params
+            const nonFinancialKpiUpdatesParam = searchParams.get('nonFinancialKpiUpdates');
+            let nonFinancialKpiUpdates: any[] = [];
+            if (nonFinancialKpiUpdatesParam) {
+              try {
+                nonFinancialKpiUpdates = JSON.parse(nonFinancialKpiUpdatesParam);
+                console.log('Parsed nonFinancialKpiUpdates:', nonFinancialKpiUpdates);
+              } catch (e) {
+                console.error('Error parsing nonFinancialKpiUpdates:', e);
+              }
+            }
+
             console.log('Baseline KPIs:', assessment.selected_kpis);
 
             // Create KPI progress from baseline and updates
@@ -206,7 +218,9 @@ const CoachingDemo = () => {
                 current: currentValue,
                 goal: goalValue,
                 update: update,
-                kpiUpdates: kpiUpdates
+                kpiUpdates: kpiUpdates,
+                hasUpdate: !!update,
+                updateValue: update?.currentValue
               });
               
               const currentNum = parseFloat(currentValue.replace(/[^0-9.]/g, ''));
@@ -227,10 +241,21 @@ const CoachingDemo = () => {
               };
               
               console.log(`KPI Result for ${baselineKPI.kpi}:`, result);
+              console.log(`KPI ${baselineKPI.kpi} - Before: ${result.beforeValue}, After: ${result.afterValue}`);
               return result;
             });
 
             console.log('Final kpiProgress:', kpiProgress);
+            console.log('KPI Progress details:');
+            kpiProgress.forEach((kpi, index) => {
+              console.log(`KPI ${index}:`, {
+                label: kpi.label,
+                beforeValue: kpi.beforeValue,
+                afterValue: kpi.afterValue,
+                percentageChange: kpi.percentageChange,
+                trend: kpi.trend
+              });
+            });
 
             // Debug: Log the final result object
             const result = {
@@ -245,11 +270,26 @@ const CoachingDemo = () => {
               nonFinancialImprovements: newImprovements,
               successAchievements: newAchievements,
               notes: notes,
-              // Include baseline assessment data
+              // Include baseline assessment data with updated nonfinancial KPIs
               userData: {
                 email: assessment.email,
                 selectedKPIs: assessment.selected_kpis || [],
-                nonFinancialMetrics: assessment.non_financial_metrics,
+                selectedNonFinancialKPIs: (() => {
+                  try {
+                    const baselineNonFinancialKPIs = assessment.selected_non_financial_kpis || [];
+                    // Update baseline KPIs with progress updates
+                    return baselineNonFinancialKPIs.map((baselineKPI: any) => {
+                      const update = nonFinancialKpiUpdates.find(u => u.kpi === baselineKPI.kpi);
+                      return {
+                        ...baselineKPI,
+                        currentValue: update?.currentValue || baselineKPI.currentValue
+                      };
+                    });
+                  } catch (e) {
+                    console.error('Error parsing non-financial metrics:', e);
+                    return [];
+                  }
+                })(),
                 revenueForecastConfidence: assessment.revenue_forecast_confidence,
                 jobDescriptionsClarity: assessment.job_descriptions_clarity,
                 successDefinition: assessment.success_definition
@@ -281,7 +321,7 @@ const CoachingDemo = () => {
     // Get additional form data from URL params
     const email = searchParams.get('email');
     const selectedKPIsParam = searchParams.get('selectedKPIs');
-    const nonFinancialMetrics = searchParams.get('nonFinancialMetrics');
+    const selectedNonFinancialKPIsParam = searchParams.get('selectedNonFinancialKPIs');
     const revenueForecastConfidence = searchParams.get('revenueForecastConfidence');
     const jobDescriptionsClarity = searchParams.get('jobDescriptionsClarity');
     const successDefinition = searchParams.get('successDefinition');
@@ -305,6 +345,37 @@ const CoachingDemo = () => {
       } catch (e) {
         console.error('Error parsing selectedKPIs:', e);
       }
+    }
+
+    // Parse selected Non-Financial KPIs if available
+    let selectedNonFinancialKPIs = [];
+    if (selectedNonFinancialKPIsParam) {
+      try {
+        selectedNonFinancialKPIs = JSON.parse(selectedNonFinancialKPIsParam);
+      } catch (e) {
+        console.error('Error parsing selectedNonFinancialKPIs:', e);
+      }
+    }
+    
+    // Add sample nonfinancial KPIs for testing if none are provided
+    if (selectedNonFinancialKPIs.length === 0) {
+      selectedNonFinancialKPIs = [
+        {
+          kpi: 'team_confidence',
+          currentValue: '3.2',
+          goalValue: '4.5'
+        },
+        {
+          kpi: 'patient_satisfaction',
+          currentValue: '4.1',
+          goalValue: '4.8'
+        },
+        {
+          kpi: 'consultation_quality',
+          currentValue: '3.8',
+          goalValue: '4.6'
+        }
+      ];
     }
     
     // Create custom KPI progress based on user's selected KPIs
@@ -392,7 +463,7 @@ const CoachingDemo = () => {
       userData: {
         email: email || undefined,
         selectedKPIs,
-        nonFinancialMetrics: nonFinancialMetrics || undefined,
+        selectedNonFinancialKPIs,
         revenueForecastConfidence: revenueForecastConfidence || undefined,
         jobDescriptionsClarity: jobDescriptionsClarity || undefined,
         successDefinition: successDefinition || undefined
@@ -487,6 +558,18 @@ const CoachingDemo = () => {
     const weekNumber = parseInt(searchParams.get('weekNumber') || '0');
     const lastUpdated = searchParams.get('lastUpdated');
     
+    console.log('ResultsCard being called with data:');
+    console.log('resultsData.kpiProgress:', resultsData.kpiProgress);
+    console.log('resultsData.kpiProgress length:', resultsData.kpiProgress?.length);
+    resultsData.kpiProgress?.forEach((kpi: any, index: number) => {
+      console.log(`ResultsCard KPI ${index}:`, {
+        label: kpi.label,
+        beforeValue: kpi.beforeValue,
+        afterValue: kpi.afterValue,
+        percentageChange: kpi.percentageChange
+      });
+    });
+    
     return <ResultsCard 
       {...resultsData} 
       userData={resultsData.userData}
@@ -541,8 +624,8 @@ const CoachingDemo = () => {
               <span className="text-white/90">Long-term Impact</span>
             </div>
           </div>
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 max-w-3xl mx-auto mb-10">
-            <p className="text-white/90 text-base leading-relaxed">
+          <div className="max-w-3xl mx-auto mb-10">
+            <p className="text-white/70 text-base leading-relaxed">
               A structured, repeatable system that ensures every coaching engagement delivers measurable growth, 
               personal alignment, and long-term impact. This process supports individual accountability, 
               team momentum, and leadership clarity on ROI.
@@ -560,8 +643,8 @@ const CoachingDemo = () => {
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Our Process</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="text-[#00d9ff]" size={32} />
+              <div className="w-14 h-14 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BarChart3 className="text-[#00d9ff]" size={24} />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">1. Baseline Assessment</h3>
               <p className="text-white/70">
@@ -570,8 +653,8 @@ const CoachingDemo = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="text-[#00d9ff]" size={32} />
+              <div className="w-14 h-14 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="text-[#00d9ff]" size={24} />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">2. Personalized Coaching</h3>
               <p className="text-white/70">
@@ -580,8 +663,8 @@ const CoachingDemo = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-20 h-20 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trophy className="text-[#00d9ff]" size={32} />
+              <div className="w-14 h-14 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Trophy className="text-[#00d9ff]" size={24} />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">3. Results & Growth</h3>
               <p className="text-white/70">
@@ -600,32 +683,32 @@ const CoachingDemo = () => {
         >
           <h2 className="text-3xl font-bold text-white mb-8 text-center pt-12">What Makes It Different</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <Target className="text-[#00d9ff] mb-4" size={24} />
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
+              <Target className="text-[#ff41fd] mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Structured & Repeatable</h3>
               <p className="text-white/70">
                 Every coaching engagement follows a proven framework that ensures consistent, measurable results across all participants.
               </p>
             </div>
             
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <BarChart3 className="text-[#00d9ff] mb-4" size={24} />
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
+              <BarChart3 className="text-[#ff41fd] mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Data-Driven Approach</h3>
               <p className="text-white/70">
                 Track specific KPIs and metrics to ensure tangible improvements and clear ROI for leadership.
               </p>
             </div>
             
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <Users className="text-[#00d9ff] mb-4" size={24} />
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
+              <Users className="text-[#ff41fd] mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Individual Accountability</h3>
               <p className="text-white/70">
                 Personal baseline assessments and progress tracking ensure each participant stays accountable to their goals.
               </p>
             </div>
             
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
-              <Trophy className="text-[#00d9ff] mb-4" size={24} />
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
+              <Trophy className="text-[#ff41fd] mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Long-term Impact</h3>
               <p className="text-white/70">
                 Beyond immediate results, participants develop sustainable skills and systems for continued growth.
@@ -702,18 +785,18 @@ const CoachingDemo = () => {
             team momentum, and individual accountability metrics.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-xl mx-auto">
             <div className="bg-white/5 rounded-full p-6">
               <div className="text-3xl font-bold text-[#00d9ff] mb-2">37%</div>
-              <p className="text-white/70">Average Revenue Increase</p>
+              <p className="text-white/70 text-sm">Average Revenue Increase</p>
             </div>
             <div className="bg-white/5 rounded-full p-6">
               <div className="text-3xl font-bold text-[#00d9ff] mb-2">78%</div>
-              <p className="text-white/70">Conversion Rate Improvement</p>
+              <p className="text-white/70 text-sm">Conversion Rate Improvement</p>
             </div>
             <div className="bg-white/5 rounded-full p-6">
               <div className="text-3xl font-bold text-[#00d9ff] mb-2">94%</div>
-              <p className="text-white/70">Average Completion Score</p>
+              <p className="text-white/70 text-sm">Average Completion Score</p>
             </div>
           </div>
         </motion.div>

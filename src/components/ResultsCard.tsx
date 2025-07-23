@@ -53,7 +53,7 @@ interface ResultsCardProps {
   userData?: {
     email?: string;
     selectedKPIs?: any[];
-    nonFinancialMetrics?: string;
+    selectedNonFinancialKPIs?: any[];
     revenueForecastConfidence?: string;
     jobDescriptionsClarity?: string;
     successDefinition?: string;
@@ -82,6 +82,25 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
   console.log('Notes type:', typeof notes);
   console.log('Notes length:', notes?.length);
   console.log('Notes is array:', Array.isArray(notes));
+  
+  // Debug logging for nonfinancial KPIs
+  console.log('ResultsCard userData:', userData);
+  console.log('ResultsCard selectedNonFinancialKPIs:', userData?.selectedNonFinancialKPIs);
+  console.log('ResultsCard selectedNonFinancialKPIs length:', userData?.selectedNonFinancialKPIs?.length);
+  console.log('ResultsCard selectedNonFinancialKPIs type:', typeof userData?.selectedNonFinancialKPIs);
+  
+  // Debug logging for KPI progress
+  console.log('ResultsCard kpiProgress:', kpiProgress);
+  console.log('ResultsCard kpiProgress length:', kpiProgress?.length);
+  kpiProgress?.forEach((kpi, index) => {
+    console.log(`ResultsCard KPI ${index}:`, {
+      label: kpi.label,
+      beforeValue: kpi.beforeValue,
+      afterValue: kpi.afterValue,
+      percentageChange: kpi.percentageChange,
+      trend: kpi.trend
+    });
+  });
   
   // Notes slider state
   const [currentNotesPage, setCurrentNotesPage] = useState(0);
@@ -155,8 +174,8 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
       {/* Back Button */}
       <motion.button
         onClick={handleBackNavigation}
-        className="fixed top-6 right-6 z-50 p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group"
-        initial={{ opacity: 0, x: 20 }}
+        className="fixed top-6 right-6 z-50 p-3 
+        initial={{ opacity: 0, x: 20 }}bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group"
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0, duration: 0 }}
         whileHover={{ scale: 1.1 }}
@@ -347,7 +366,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
 
           {/* KPI Progress - Compact Row */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 relative z-10"
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 relative z-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -391,9 +410,86 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
             ))}
           </motion.div>
 
+          {/* Non-Financial KPI Boxes */}
+          {(() => {
+            console.log('Checking nonfinancial KPIs condition:');
+            console.log('userData?.selectedNonFinancialKPIs:', userData?.selectedNonFinancialKPIs);
+            console.log('userData?.selectedNonFinancialKPIs?.length:', userData?.selectedNonFinancialKPIs?.length);
+            console.log('Condition result:', userData?.selectedNonFinancialKPIs && userData?.selectedNonFinancialKPIs.length > 0);
+            return userData?.selectedNonFinancialKPIs && userData?.selectedNonFinancialKPIs.length > 0;
+          })() && (
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 relative z-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              {userData?.selectedNonFinancialKPIs?.map((kpi: any, index: number) => {
+                const nonFinancialKpiLabels: { [key: string]: string } = {
+                  'team_confidence': 'Team Sales Confidence',
+                  'patient_satisfaction': 'Patient Satisfaction Score',
+                  'consultation_quality': 'Consultation Quality Score',
+                  'treatment_adherence': 'Treatment Plan Adherence',
+                  'staff_productivity': 'Staff Productivity Score',
+                  'response_time': 'Inquiry Response Time',
+                  'online_reviews': 'Online Review Rating',
+                  'social_engagement': 'Social Media Engagement Rate',
+                  'staff_retention': 'Staff Retention Rate',
+                  'training_completion': 'Training Completion Rate',
+                  'customer_complaints': 'Customer Complaint Rate',
+                  'custom_nf': kpi.customKpiName || 'Custom Non-Financial KPI'
+                };
+
+                const kpiLabel = nonFinancialKpiLabels[kpi.kpi] || kpi.kpi;
+
+                // Calculate progress percentage
+                const currentNum = parseFloat(kpi.currentValue.replace(/[^0-9.]/g, ''));
+                const goalNum = parseFloat(kpi.goalValue.replace(/[^0-9.]/g, ''));
+                const progressPercentage = goalNum > 0 ? Math.min(100, Math.max(0, (currentNum / goalNum) * 100)) : 0;
+
+                return (
+                  <motion.div
+                    key={index}
+                    className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-sm font-semibold text-white">{kpiLabel}</h4>
+                      <div className="flex items-center space-x-1 text-[#ff41fd]">
+                        <span className="font-bold text-xs">{Math.round(progressPercentage)}%</span>
+                      </div>
+                    </div>
+                    
+                    <div className="flex justify-between items-center mb-3">
+                      <div>
+                        <p className="text-white/70 text-xs">Current</p>
+                        <p className="text-lg font-bold text-white">{kpi.currentValue}</p>
+                      </div>
+                      <ArrowRight className="text-white/40" size={16} />
+                      <div>
+                        <p className="text-white/70 text-xs">Goal</p>
+                        <p className="text-lg font-bold text-[#ff41fd]">{kpi.goalValue}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white/5 rounded-full h-1.5">
+                      <motion.div 
+                        className="h-1.5 rounded-full bg-[#ff41fd]"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${progressPercentage}%` }}
+                        transition={{ delay: 0, duration: 0.6 }}
+                      />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          )}
+
           {/* Bottom Section: Improvements & Achievements */}
           <motion.div
-            className={`grid gap-6 relative z-10 ${
+            className={`grid gap-6 relative z-10 mb-6 ${
               nonFinancialImprovements.length > 0 && successAchievements.length > 0 
                 ? 'grid-cols-1 md:grid-cols-2' 
                 : 'grid-cols-1'
@@ -467,7 +563,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
           {/* User's Custom Data Section */}
           {userData && (
             <motion.div
-              className="mt-8 relative z-10"
+              className="mt-0 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
@@ -480,11 +576,11 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Selected KPIs */}
-                  {userData.selectedKPIs && userData.selectedKPIs.length > 0 && (
+                  {userData?.selectedKPIs && userData?.selectedKPIs.length > 0 && (
                     <div>
                       <h4 className="text-[#00d9ff] font-semibold mb-3">Your Selected KPIs</h4>
                       <div className="space-y-2">
-                        {userData.selectedKPIs.map((kpi: any, index: number) => (
+                        {userData?.selectedKPIs?.map((kpi: any, index: number) => (
                           <div key={index} className="bg-white/5 rounded-lg p-3">
                             <p className="text-white font-medium text-sm">{kpi.kpi.replace(/_/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}</p>
                             <p className="text-white/70 text-xs">Current: {kpi.currentValue} → Goal: {kpi.goalValue}</p>
@@ -494,35 +590,63 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                     </div>
                   )}
 
-                  {/* Success Definition */}
-                  {userData.successDefinition && (
+                  {/* Selected Non-Financial KPIs */}
+                  {userData?.selectedNonFinancialKPIs && userData?.selectedNonFinancialKPIs.length > 0 && (
                     <div>
-                      <h4 className="text-[#ff41fd] font-semibold mb-3">Your Success Vision</h4>
-                      <div className="bg-white/5 rounded-lg p-3">
-                        <p className="text-white/90 text-sm italic">"{userData.successDefinition}"</p>
+                      <h4 className="text-[#ff41fd] font-semibold mb-3">Your Non-Financial KPIs</h4>
+                      <div className="space-y-2">
+                        {userData?.selectedNonFinancialKPIs?.map((kpi: any, index: number) => {
+                          const nonFinancialKpiLabels: { [key: string]: string } = {
+                            'team_confidence': 'Team Sales Confidence',
+                            'patient_satisfaction': 'Patient Satisfaction Score',
+                            'consultation_quality': 'Consultation Quality Score',
+                            'treatment_adherence': 'Treatment Plan Adherence',
+                            'staff_productivity': 'Staff Productivity Score',
+                            'response_time': 'Inquiry Response Time',
+                            'online_reviews': 'Online Review Rating',
+                            'social_engagement': 'Social Media Engagement Rate',
+                            'staff_retention': 'Staff Retention Rate',
+                            'training_completion': 'Training Completion Rate',
+                            'customer_complaints': 'Customer Complaint Rate',
+                            'custom_nf': kpi.customKpiName || 'Custom Non-Financial KPI'
+                          };
+                          const kpiLabel = nonFinancialKpiLabels[kpi.kpi] || kpi.kpi;
+                          return (
+                            <div key={index} className="bg-white/5 rounded-lg p-3">
+                              <p className="text-white font-medium text-sm">{kpiLabel}</p>
+                              <p className="text-white/70 text-xs">Current: {kpi.currentValue} → Goal: {kpi.goalValue}</p>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
+
                 </div>
 
                 {/* Additional Details */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                  {userData.revenueForecastConfidence && (
+                  {userData?.revenueForecastConfidence && (
                     <div className="bg-white/5 rounded-lg p-3">
                       <p className="text-[#00d9ff] text-xs font-medium">Revenue Forecast Confidence</p>
                       <p className="text-white text-sm">{formatValue(userData.revenueForecastConfidence)}</p>
                     </div>
                   )}
-                  {userData.jobDescriptionsClarity && (
+                  {userData?.jobDescriptionsClarity && (
                     <div className="bg-white/5 rounded-lg p-3">
                       <p className="text-[#00d9ff] text-xs font-medium">Job Descriptions Clarity</p>
                       <p className="text-white text-sm">{formatValue(userData.jobDescriptionsClarity)}</p>
                     </div>
                   )}
-                  {userData.nonFinancialMetrics && (
-                    <div className="bg-white/5 rounded-lg p-3">
-                      <p className="text-[#00d9ff] text-xs font-medium">Non-Financial Metrics</p>
-                      <p className="text-white text-sm">{userData.nonFinancialMetrics}</p>
+
+
+                  {/* Success Definition - moved to bottom */}
+                  {userData?.successDefinition && (
+                    <div className="mt-4 pt-4 border-t border-white/10">
+                      <h4 className="text-[#ff41fd] font-semibold mb-3">Your Success Vision</h4>
+                      <div className="bg-white/5 rounded-lg p-3">
+                        <p className="text-white/90 text-sm italic">"{userData.successDefinition}"</p>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -533,7 +657,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
           {/* Notes Section */}
           {notes && notes.length > 0 && (
             <motion.div
-              className="mt-8 relative z-10"
+              className="mt-6 relative z-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}

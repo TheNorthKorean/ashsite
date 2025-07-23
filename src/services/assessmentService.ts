@@ -182,6 +182,7 @@ export class AssessmentService {
     week_number: number;
     sales_confidence_after: number;
     kpi_updates: any[];
+    non_financial_kpi_updates?: any[];
     revenue_forecast_confidence?: string;
     job_descriptions_clarity?: string;
     new_improvements: string[];
