@@ -52,13 +52,13 @@ const CTA = () => {
             <defs>
               {/* Enhanced gradient for the moving light trace with longer trail */}
               <linearGradient id="movingTraceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="transparent" />
-                <stop offset="20%" stopColor="#00d9ff" stopOpacity="0.2" />
+                <stop offset="0%" stopColor="#ff41fd" />
+                <stop offset="20%" stopColor="#00d9ff" stopOpacity="0.8" />
                 <stop offset="40%" stopColor="#00d9ff" stopOpacity="0.6" />
                 <stop offset="50%" stopColor="#00d9ff" stopOpacity="1" />
                 <stop offset="60%" stopColor="#ff41fd" stopOpacity="1" />
                 <stop offset="80%" stopColor="#ff41fd" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="transparent" />
+                <stop offset="100%" stopColor="#00d9ff" />
               </linearGradient>
               
               {/* Enhanced glow effect for better visibility */}
@@ -81,7 +81,7 @@ const CTA = () => {
               ry="22"
               fill="none"
               stroke="url(#movingTraceGradient)"
-              strokeWidth="3"
+              strokeWidth="2"
               filter="url(#traceGlow)"
               pathLength="1"
               strokeDasharray="0.25 0.75"
@@ -111,12 +111,12 @@ const CTA = () => {
           </motion.h2>
           
           <motion.p 
-            className="text-base md:text-lg lg:text-xl text-white/70 mb-8 leading-relaxed max-w-3xl mx-auto relative z-10 px-4"
+            className="text-base md:text-lg lg:text-lg text-white/70 mb-8 leading-relaxed max-w-4xl mx-auto relative z-10 px-4"
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            Join thousands of aesthetic professionals who have already transformed their practices. 
+            Join thousands of aesthetic professionals who have transformed their practices. 
             Start your journey to higher conversion rates and increased revenue today.
           </motion.p>
 
@@ -133,10 +133,10 @@ const CTA = () => {
                   <Star key={i} className="text-[#ff41fd]" size={16} fill="currentColor" />
                 ))}
               </div>
-              <span className="text-white/80 font-semibold text-sm md:text-base">4.9/5 rating</span>
+              <span className="text-white/80 font-medium text-sm md:text-base">4.9/5 rating</span>
             </div>
-            <div className="text-white/80 font-semibold text-sm md:text-base">200+ practitioners trained</div>
-            <div className="text-white/80 font-semibold text-sm md:text-base">$90M+ revenue generated</div>
+            <div className="text-white/80 font-medium text-sm md:text-base">200+ practitioners trained</div>
+            <div className="text-white/80 font-medium text-sm md:text-base">$90M+ revenue generated</div>
           </motion.div>
 
           {/* CTA Buttons */}
@@ -147,7 +147,7 @@ const CTA = () => {
             transition={{ duration: 0.8, delay: 1.2 }}
           >
             <motion.button
-              className="group px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-base md:text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-3"
+              className="group px-8 py-3 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-base md:text-medium shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-3"
               whileHover={{ 
                 scale: 1.05, 
                 boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' 
@@ -160,7 +160,7 @@ const CTA = () => {
             </motion.button>
             
             <motion.button
-              className="group px-8 py-4 border-2 border-white/20 rounded-xl font-bold text-base md:text-lg hover:border-[#00d9ff] transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
+              className="group px-8 py-3 border-2 border-white/20 rounded-xl font-semibold text-base md:text-medium hover:border-[#ffffff]/60 transition-all duration-300 flex items-center justify-center gap-3 backdrop-blur-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => window.location.href = '/contact'}

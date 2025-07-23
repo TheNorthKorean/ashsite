@@ -48,7 +48,6 @@ const Footer = () => {
                   { label: 'About', href: '/about' },
                   { label: 'Features', href: '/features' },
                   { label: 'Pricing', href: '/pricing' },
-                  { label: 'Testimonials', href: '#testimonials' },
                 ],
               },
               {
@@ -57,17 +56,13 @@ const Footer = () => {
                   { label: 'Blog', href: '/blog' },
                   { label: 'Case Studies', href: '/case-studies' },
                   { label: 'Faculty & Ambassadors', href: '/faculty' },
-                  { label: 'Help Center', href: '#' },
                 ],
               },
               {
                 title: 'Support',
                 links: [
                   { label: 'Contact support', href: '/contact' },
-                  { label: 'Community forum', href: '#' },
-                  { label: 'Live chat', href: '#' },
                   { label: 'Release notes', href: '#' },
-                  { label: 'FAQs', href: '#faq' },
                 ],
               },
               {
@@ -75,8 +70,6 @@ const Footer = () => {
                 links: [
                   { label: 'Privacy Policy', href: '#' },
                   { label: 'Terms of Service', href: '#' },
-                  { label: 'Cookie Policy', href: '#' },
-                  { label: 'GDPR', href: '#' },
                 ],
               },
             ].map((section, index) => (

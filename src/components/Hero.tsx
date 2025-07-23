@@ -6,7 +6,7 @@ import { ArrowRight, Play } from 'lucide-react';
 const Hero = () => {
   const [currentWord, setCurrentWord] = useState(0);
   const words = [
-    'Practices', 'Injectors', 'Entrepreneurs', 'Clinics', 'Estheticians', 
+    'Practices', 'Injectors', 'Entrepreneurs', 'Physicians', 'Estheticians', 
     'Founders', 'Teams', 'Manufacturers', 'Investors', 'GPOs', 'MSOs'
   ];
 
