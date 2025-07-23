@@ -442,9 +442,25 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                 const kpiLabel = nonFinancialKpiLabels[kpi.kpi] || kpi.kpi;
 
                 // Calculate progress percentage
-                const currentNum = parseFloat(kpi.currentValue.replace(/[^0-9.]/g, ''));
-                const goalNum = parseFloat(kpi.goalValue.replace(/[^0-9.]/g, ''));
-                const progressPercentage = goalNum > 0 ? Math.min(100, Math.max(0, (currentNum / goalNum) * 100)) : 0;
+                // For baseline assessments (no progressId), show 0% progress
+                // For progress updates, calculate actual progress
+                const isBaselineAssessment = !weekNumber || weekNumber === 0;
+                
+                console.log(`Non-financial KPI ${kpi.kpi}:`, {
+                  isBaselineAssessment,
+                  weekNumber,
+                  currentValue: kpi.currentValue,
+                  goalValue: kpi.goalValue
+                });
+                
+                let progressPercentage = 0;
+                if (!isBaselineAssessment) {
+                  const currentNum = parseFloat(kpi.currentValue.replace(/[^0-9.]/g, ''));
+                  const goalNum = parseFloat(kpi.goalValue.replace(/[^0-9.]/g, ''));
+                  progressPercentage = goalNum > 0 ? Math.min(100, Math.max(0, (currentNum / goalNum) * 100)) : 0;
+                }
+                
+                console.log(`Non-financial KPI ${kpi.kpi} progress percentage:`, progressPercentage);
 
                 return (
                   <motion.div
@@ -463,13 +479,13 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                     
                     <div className="flex justify-between items-center mb-3">
                       <div>
-                        <p className="text-white/70 text-xs">Current</p>
+                        <p className="text-white/70 text-xs">Before</p>
                         <p className="text-lg font-bold text-white">{kpi.currentValue}</p>
                       </div>
                       <ArrowRight className="text-white/40" size={16} />
                       <div>
-                        <p className="text-white/70 text-xs">Goal</p>
-                        <p className="text-lg font-bold text-[#ff41fd]">{kpi.goalValue}</p>
+                        <p className="text-white/70 text-xs">After</p>
+                        <p className="text-lg font-bold text-[#ff41fd]">{kpi.currentValue}</p>
                       </div>
                     </div>
                     
