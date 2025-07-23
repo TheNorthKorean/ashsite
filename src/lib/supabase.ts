@@ -10,6 +10,10 @@ export const supabase: SupabaseClient | null = supabaseUrl && supabaseAnonKey
 
 // Helper function to check if Supabase is configured
 export const isSupabaseConfigured = () => {
+  console.log('Checking Supabase configuration:');
+  console.log('VITE_SUPABASE_URL:', import.meta.env.VITE_SUPABASE_URL);
+  console.log('VITE_SUPABASE_ANON_KEY:', import.meta.env.VITE_SUPABASE_ANON_KEY ? 'Present' : 'Missing');
+  console.log('Supabase client:', supabase ? 'Created' : 'Not created');
   return supabase !== null;
 };
 
