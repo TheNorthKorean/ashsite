@@ -13,7 +13,7 @@ import {
   Star,
   Plus
 } from 'lucide-react';
-import { AssessmentService } from '../services/assessmentService';
+import { AssessmentService, calculateComprehensiveScore } from '../services/assessmentService';
 
 interface ProgressData {
   practiceName: string;
@@ -152,79 +152,7 @@ const ProgressUpdate = () => {
     'Expanded service offerings'
   ];
 
-  // Calculate comprehensive score based on all factors
-  const calculateComprehensiveScore = (
-    salesConfidenceBefore: number,
-    salesConfidenceAfter: number,
-    selectedKPIs: any[],
-    kpiUpdates: any[],
-    revenueForecastConfidence: string,
-    jobDescriptionsClarity: string,
-    improvements: string[],
-    achievements: string[]
-  ): number => {
-    let score = 0;
-    
-    // Sales Confidence (25% of total score)
-    const confidenceImprovement = salesConfidenceAfter - salesConfidenceBefore;
-    const confidenceScore = Math.max(0, Math.min(25, 25 + (confidenceImprovement * 5)));
-    score += confidenceScore;
-    
-    // KPI Progress (30% of total score)
-    let kpiScore = 0;
-    if (selectedKPIs.length > 0 && kpiUpdates.length > 0) {
-      const kpiProgress = selectedKPIs.map((baselineKPI, index) => {
-        const update = kpiUpdates.find(u => u.kpi === baselineKPI.kpi);
-        if (update) {
-          const baselineValue = parseFloat(baselineKPI.currentValue.replace(/[^0-9.]/g, ''));
-          const currentValue = parseFloat(update.currentValue.replace(/[^0-9.]/g, ''));
-          const goalValue = parseFloat(baselineKPI.goalValue.replace(/[^0-9.]/g, ''));
-          
-          if (baselineValue > 0 && goalValue > 0) {
-            const progressTowardGoal = Math.min(1, (currentValue - baselineValue) / (goalValue - baselineValue));
-            return Math.max(0, progressTowardGoal);
-          }
-        }
-        return 0;
-      });
-      
-      const averageKPIProgress = kpiProgress.reduce((sum, val) => sum + val, 0) / kpiProgress.length;
-      kpiScore = averageKPIProgress * 30;
-    }
-    score += kpiScore;
-    
-    // Team & Operations (25% of total score)
-    let teamScore = 0;
-    
-    // Revenue Forecast Confidence (12.5%)
-    const forecastScores: { [key: string]: number } = {
-      'very-concerned': 0,
-      'concerned': 6.25,
-      'uncertain': 12.5,
-      'somewhat-confident': 18.75,
-      'very-confident': 25
-    };
-    teamScore += forecastScores[revenueForecastConfidence] || 0;
-    
-    // Job Descriptions Clarity (12.5%)
-    const clarityScores: { [key: string]: number } = {
-      'no-completely': 0,
-      'mostly-no': 6.25,
-      'partially': 12.5,
-      'mostly-yes': 18.75,
-      'yes-completely': 25
-    };
-    teamScore += clarityScores[jobDescriptionsClarity] || 0;
-    
-    score += teamScore;
-    
-    // Improvements and Achievements (20% of total score)
-    const improvementScore = Math.min(10, improvements.length * 2);
-    const achievementScore = Math.min(10, achievements.length * 2.5);
-    score += improvementScore + achievementScore;
-    
-    return Math.round(Math.min(100, Math.max(0, score)));
-  };
+
 
   // Handle lookup form submission
   const handleLookup = async (e: React.FormEvent) => {
@@ -365,6 +293,8 @@ const ProgressUpdate = () => {
         progressData.salesConfidenceAfter,
         existingAssessment.selected_kpis || [],
         progressData.kpiUpdates,
+        existingAssessment.selected_non_financial_kpis || [],
+        progressData.nonFinancialKpiUpdates,
         progressData.revenueForecastConfidence,
         progressData.jobDescriptionsClarity,
         allImprovements,
@@ -426,6 +356,7 @@ const ProgressUpdate = () => {
         newImprovements: JSON.stringify(allImprovements),
         newAchievements: JSON.stringify(allAchievements),
         kpiUpdates: JSON.stringify(progressData.kpiUpdates),
+        nonFinancialKpiUpdates: JSON.stringify(progressData.nonFinancialKpiUpdates),
         notes: JSON.stringify(notesData)
       });
 
@@ -508,6 +439,10 @@ const ProgressUpdate = () => {
       let allImprovements: string[] = [];
       let allAchievements: string[] = [];
       let lastUpdated = existingAssessment.created_at;
+      let latestKpiUpdates: any[] = [];
+      let latestNonFinancialKpiUpdates: any[] = [];
+      let latestProgressId = '';
+      let weekNumber = 0;
 
       if (allProgress && !progressError && allProgress.length > 0) {
         // Get the latest progress for score and confidence
@@ -517,6 +452,10 @@ const ProgressUpdate = () => {
         currentScore = latestProgress.current_score;
         salesConfidenceAfter = latestProgress.sales_confidence_after;
         lastUpdated = latestProgress.updated_at;
+        latestKpiUpdates = latestProgress.kpi_updates || [];
+        latestNonFinancialKpiUpdates = latestProgress.non_financial_kpi_updates || [];
+        latestProgressId = latestProgress.id || '';
+        weekNumber = latestProgress.week_number || 0;
 
         // Accumulate all improvements and achievements from all progress updates
         allProgress.forEach(progress => {
@@ -549,16 +488,57 @@ const ProgressUpdate = () => {
       console.log('All progress updates:', allProgress);
       console.log('All notes collected:', allNotes);
       console.log('Notes being passed to results:', JSON.stringify(allNotes));
-
-      // Get latest KPI updates
-      const latestProgress = allProgress && allProgress.length > 0 ? allProgress[allProgress.length - 1] : null;
-      const latestKpiUpdates = latestProgress?.kpi_updates || [];
-      const latestNonFinancialKpiUpdates = latestProgress?.non_financial_kpi_updates || [];
-      const latestProgressId = latestProgress?.id || '';
-      
-      console.log('Latest progress for KPI updates:', latestProgress);
       console.log('Latest KPI updates:', latestKpiUpdates);
       console.log('Latest Non-Financial KPI updates:', latestNonFinancialKpiUpdates);
+
+      // Get previous progress for proper before/after comparison
+      let previousKpiUpdates: any[] = [];
+      let previousNonFinancialKpiUpdates: any[] = [];
+      
+      if (allProgress && allProgress.length > 1) {
+        // Get the second-to-last progress update for "before" values
+        const previousProgress = allProgress[allProgress.length - 2];
+        previousKpiUpdates = previousProgress.kpi_updates || [];
+        previousNonFinancialKpiUpdates = previousProgress.non_financial_kpi_updates || [];
+      } else {
+        // If this is the first progress update, use baseline values as "before"
+        previousKpiUpdates = (existingAssessment.selected_kpis || []).map((kpi: any) => ({
+          kpi: kpi.kpi,
+          currentValue: kpi.currentValue
+        }));
+        previousNonFinancialKpiUpdates = (existingAssessment.selected_non_financial_kpis || []).map((kpi: any) => ({
+          kpi: kpi.kpi,
+          currentValue: kpi.currentValue
+        }));
+      }
+
+      // Format KPI updates to show proper progression
+      const formattedKpiUpdates = latestKpiUpdates.map((kpiUpdate: any) => {
+        const previousUpdate = previousKpiUpdates.find(prev => prev.kpi === kpiUpdate.kpi);
+        const baselineKpi = (existingAssessment.selected_kpis || []).find((kpi: any) => kpi.kpi === kpiUpdate.kpi);
+        
+        return {
+          kpi: kpiUpdate.kpi,
+          currentValue: kpiUpdate.currentValue,
+          goalValue: kpiUpdate.goalValue || baselineKpi?.goalValue || kpiUpdate.currentValue,
+          // Use previous progress value as "before", or baseline if first update
+          beforeValue: previousUpdate?.currentValue || baselineKpi?.currentValue || kpiUpdate.currentValue
+        };
+      });
+
+      // Format Non-Financial KPI updates with proper previousValue for comparison
+      const formattedNonFinancialKpiUpdates = latestNonFinancialKpiUpdates.map((kpiUpdate: any) => {
+        const previousUpdate = previousNonFinancialKpiUpdates.find(prev => prev.kpi === kpiUpdate.kpi);
+        const baselineKpi = (existingAssessment.selected_non_financial_kpis || []).find((kpi: any) => kpi.kpi === kpiUpdate.kpi);
+        
+        return {
+          kpi: kpiUpdate.kpi,
+          currentValue: kpiUpdate.currentValue,
+          goalValue: kpiUpdate.goalValue || baselineKpi?.goalValue || kpiUpdate.currentValue,
+          // Use previous progress value as "before", or baseline if first update
+          previousValue: previousUpdate?.currentValue || baselineKpi?.currentValue || kpiUpdate.currentValue
+        };
+      });
 
       // Navigate to results with accumulated data
       const params = new URLSearchParams({
@@ -570,11 +550,13 @@ const ProgressUpdate = () => {
         salesConfidenceBefore: existingAssessment.sales_confidence_before.toString(),
         salesConfidenceAfter: salesConfidenceAfter.toString(),
         currentScore: currentScore.toString(),
+        weekNumber: weekNumber.toString(),
         lastUpdated: lastUpdated,
+        // Add accumulated progress data
         newImprovements: JSON.stringify(allImprovements),
         newAchievements: JSON.stringify(allAchievements),
-        kpiUpdates: JSON.stringify(latestKpiUpdates),
-        nonFinancialKpiUpdates: JSON.stringify(latestNonFinancialKpiUpdates),
+        kpiUpdates: JSON.stringify(formattedKpiUpdates),
+        nonFinancialKpiUpdates: JSON.stringify(formattedNonFinancialKpiUpdates),
         notes: JSON.stringify(allNotes)
       });
 

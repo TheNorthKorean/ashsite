@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Check, Star, Zap, Crown, X } from 'lucide-react';
+import FloatingPriceGuide from '../components/FloatingPriceGuide';
 
 const PricingPage = () => {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -320,6 +321,7 @@ const PricingPage = () => {
           </motion.div>
         </motion.div>
       </section>
+      <FloatingPriceGuide />
     </div>
   );
 };

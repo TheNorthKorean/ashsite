@@ -233,10 +233,10 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                 <Trophy className="text-[#ff41fd] mr-3" size={36} />
               </motion.div>
               <h1 className="text-3xl md:text-4xl font-bold bg-white/90 bg-clip-text text-transparent">
-                Transformation Results
+                Sales Success Scorecard
               </h1>
             </div>
-            <p className="text-white/70 text-md">6-Week Transformation Program • Achievement Report</p>
+            <p className="text-white/70 text-md">6-Week Transformation Program • Progress Dashboard</p>
           </motion.div>
 
           {/* Participant Info & Scores Row */}
@@ -247,7 +247,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
           >
             {/* Participant Info */}
             <div className="lg:col-span-2 bg-white/5 rounded-2xl p-5 border border-white/10">
-              <h2 className="text-2xl font-bold text-white mb-2">{participantName}</h2>
+              <h2 className="text-2xl font-bold text-white mb-1">{participantName}</h2>
               <p className="text-[#00d9ff] text-lg font-semibold mb-1">{practiceName}</p>
               <div className="flex flex-wrap gap-4 text-sm text-white/70">
                 <span>Duration: {programDuration}</span>
@@ -282,7 +282,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
 
           {/* Sales Confidence Transformation */}
           <motion.div
-            className="bg-white/5 rounded-2xl p-6 mb-6 border border-white/10 relative z-10"
+            className="bg-white/5 rounded-2xl p-4 mb-6 border border-white/10 relative z-10"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0, duration: 0.4 }}
@@ -293,11 +293,11 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               <h3 className="text-xl font-bold text-white">Sales Confidence</h3>
             </div>
             
-            <div className="grid grid-cols-3 gap-6 text-center">
+            <div className="grid grid-cols-3 gap-2 text-center">
               <div>
-                <p className="text-white/70 text-sm mb-2">Before</p>
+                <p className="text-white/70 text-md mb-2">Before</p>
                 <motion.div 
-                  className="flex justify-center space-x-1 mb-2"
+                  className="flex justify-center space-x-2 mb-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0, staggerChildren: 0.1 }}
@@ -321,7 +321,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               </div>
               
               <div>
-                <p className="text-white/70 text-sm mb-2">Progress</p>
+                <p className="text-white/80 text-md mb-2">Progress</p>
                 <motion.div 
                   className="flex items-center justify-center space-x-2 mb-2"
                   whileHover={{ scale: 1.1 }}
@@ -331,15 +331,15 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                     +{confidenceImprovement}
                   </span>
                 </motion.div>
-                <p className="text-green-400 font-semibold text-sm">
+                <p className="text-green-400 font-semibold text-md">
                   {((confidenceImprovement / salesConfidenceBefore) * 100).toFixed(0)}% Increase
                 </p>
               </div>
               
               <div>
-                <p className="text-white/70 text-sm mb-2">After</p>
+                <p className="text-white/70 text-md mb-2">After</p>
                 <motion.div 
-                  className="flex justify-center space-x-1 mb-2"
+                  className="flex justify-center space-x-2 mb-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0, staggerChildren: 0.1 }}
@@ -443,24 +443,41 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
 
                 // Calculate progress percentage
                 // For baseline assessments (no progressId), show 0% progress
-                // For progress updates, calculate actual progress
+                // For progress updates, calculate actual progress from previous to current
                 const isBaselineAssessment = !weekNumber || weekNumber === 0;
+                
+                // Get previous value for comparison (if available)
+                const previousValue = kpi.previousValue || kpi.currentValue;
                 
                 console.log(`Non-financial KPI ${kpi.kpi}:`, {
                   isBaselineAssessment,
                   weekNumber,
+                  previousValue: previousValue,
                   currentValue: kpi.currentValue,
-                  goalValue: kpi.goalValue
+                  goalValue: kpi.goalValue,
+                  fullKpiObject: kpi
                 });
+
                 
                 let progressPercentage = 0;
+                let percentageChange = 0;
+                
                 if (!isBaselineAssessment) {
+                  const previousNum = parseFloat(previousValue.replace(/[^0-9.]/g, ''));
                   const currentNum = parseFloat(kpi.currentValue.replace(/[^0-9.]/g, ''));
+                  
+                  // Calculate percentage change from previous to current
+                  if (previousNum > 0 && currentNum !== previousNum) {
+                    percentageChange = Math.round(((currentNum - previousNum) / previousNum) * 100);
+                  }
+                  
+                  // Calculate progress toward goal
                   const goalNum = parseFloat(kpi.goalValue.replace(/[^0-9.]/g, ''));
                   progressPercentage = goalNum > 0 ? Math.min(100, Math.max(0, (currentNum / goalNum) * 100)) : 0;
                 }
                 
                 console.log(`Non-financial KPI ${kpi.kpi} progress percentage:`, progressPercentage);
+                console.log(`Non-financial KPI ${kpi.kpi} percentage change:`, percentageChange);
 
                 return (
                   <motion.div
@@ -473,14 +490,14 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-sm font-semibold text-white">{kpiLabel}</h4>
                       <div className="flex items-center space-x-1 text-[#ff41fd]">
-                        <span className="font-bold text-xs">{Math.round(progressPercentage)}%</span>
+                        <span className="font-bold text-xs">{percentageChange > 0 ? '+' : ''}{percentageChange}%</span>
                       </div>
                     </div>
                     
                     <div className="flex justify-between items-center mb-3">
                       <div>
                         <p className="text-white/70 text-xs">Before</p>
-                        <p className="text-lg font-bold text-white">{kpi.currentValue}</p>
+                        <p className="text-lg font-bold text-white">{previousValue}</p>
                       </div>
                       <ArrowRight className="text-white/40" size={16} />
                       <div>
@@ -491,9 +508,9 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                     
                     <div className="bg-white/5 rounded-full h-1.5">
                       <motion.div 
-                        className="h-1.5 rounded-full bg-[#ff41fd]"
+                        className={`h-1.5 rounded-full ${percentageChange > 0 ? 'bg-green-400' : percentageChange < 0 ? 'bg-red-400' : 'bg-[#ff41fd]'}`}
                         initial={{ width: 0 }}
-                        animate={{ width: `${progressPercentage}%` }}
+                        animate={{ width: `${Math.min(Math.abs(percentageChange), 100)}%` }}
                         transition={{ delay: 0, duration: 0.6 }}
                       />
                     </div>
@@ -516,7 +533,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
           >
             {/* Non-Financial Improvements */}
             {nonFinancialImprovements.length > 0 && (
-              <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
                 <div className="flex items-center mb-4">
                   <Users className="text-[#00d9ff] mr-3" size={20} />
                   <h3 className="text-lg font-bold text-white">Improvements</h3>
@@ -525,7 +542,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                   {nonFinancialImprovements.slice(0, 4).map((improvement, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-start space-x-3"
+                      className="flex items-start space-x-3 p-2 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/10 rounded-lg"
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0 }}
@@ -555,7 +572,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                   {successAchievements.slice(0, 4).map((achievement, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-start space-x-3 p-2 bg-gradient-to-r from-[#ff41fd]/10 to-[#00d9ff]/10 rounded-lg"
+                      className="flex items-start space-x-3 p-2 bg-gradient-to-r from-[#ff41fd]/20 to-[#00d9ff]/10 rounded-lg"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.8 + index * 0.1 }}
@@ -587,7 +604,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
                 <div className="flex items-center mb-4">
                   <Target className="text-[#00d9ff] mr-3" size={20} />
-                  <h3 className="text-lg font-bold text-white">Your Assessment Details</h3>
+                  <h3 className="text-xl font-bold text-white">Your Assessment Details</h3>
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -598,8 +615,8 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                       <div className="space-y-2">
                         {userData?.selectedKPIs?.map((kpi: any, index: number) => (
                           <div key={index} className="bg-white/5 rounded-lg p-3">
-                            <p className="text-white font-medium text-sm">{kpi.kpi.replace(/_/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}</p>
-                            <p className="text-white/70 text-xs">Current: {kpi.currentValue} → Goal: {kpi.goalValue}</p>
+                            <p className="text-white font-medium text-sm mb-1 px-1">{kpi.kpi.replace(/_/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}</p>
+                            <p className="text-white/70 text-xs px-4">Current: {kpi.currentValue} → Goal: {kpi.goalValue}</p>
                           </div>
                         ))}
                       </div>
@@ -629,8 +646,8 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                           const kpiLabel = nonFinancialKpiLabels[kpi.kpi] || kpi.kpi;
                           return (
                             <div key={index} className="bg-white/5 rounded-lg p-3">
-                              <p className="text-white font-medium text-sm">{kpiLabel}</p>
-                              <p className="text-white/70 text-xs">Current: {kpi.currentValue} → Goal: {kpi.goalValue}</p>
+                              <p className="text-white font-medium text-sm mb-1 px-1">{kpiLabel}</p>
+                              <p className="text-white/70 text-xs px-4">Current: {kpi.currentValue} → Goal: {kpi.goalValue}</p>
                             </div>
                           );
                         })}
@@ -641,25 +658,25 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                 </div>
 
                 {/* Additional Details */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4 pt-4 border-t border-white/10">
                   {userData?.revenueForecastConfidence && (
                     <div className="bg-white/5 rounded-lg p-3">
-                      <p className="text-[#00d9ff] text-xs font-medium">Revenue Forecast Confidence</p>
-                      <p className="text-white text-sm">{formatValue(userData.revenueForecastConfidence)}</p>
+                      <p className="text-[#00d9ff] text-sm font-medium">Revenue Forecast Confidence</p>
+                      <p className="text-white text-xs">{formatValue(userData.revenueForecastConfidence)}</p>
                     </div>
                   )}
                   {userData?.jobDescriptionsClarity && (
                     <div className="bg-white/5 rounded-lg p-3">
-                      <p className="text-[#00d9ff] text-xs font-medium">Job Descriptions Clarity</p>
-                      <p className="text-white text-sm">{formatValue(userData.jobDescriptionsClarity)}</p>
+                      <p className="text-[#00d9ff] text-sm font-medium">Job Descriptions Clarity</p>
+                      <p className="text-white text-xs">{formatValue(userData.jobDescriptionsClarity)}</p>
                     </div>
                   )}
 
 
                   {/* Success Definition - moved to bottom */}
                   {userData?.successDefinition && (
-                    <div className="mt-4 pt-4 border-t border-white/10">
-                      <h4 className="text-[#ff41fd] font-semibold mb-3">Your Success Vision</h4>
+                    <div className="mt-4 pt-4 border-t border-white/10 md:col-span-2">
+                      <h4 className="bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent inline-block text-lg leading-tight font-semibold mb-3">Your Success Vision</h4>
                       <div className="bg-white/5 rounded-lg p-3">
                         <p className="text-white/90 text-sm italic">"{userData.successDefinition}"</p>
                       </div>

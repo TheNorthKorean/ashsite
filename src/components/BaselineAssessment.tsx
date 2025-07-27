@@ -13,7 +13,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { AssessmentService } from '../services/assessmentService';
+import { AssessmentService, calculateBaselineScore } from '../services/assessmentService';
 
 
 interface AssessmentData {
@@ -184,6 +184,15 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
         }
       }
 
+      // Calculate baseline score using the new scoring system
+      const baselineScore = calculateBaselineScore(
+        formData.salesConfidence,
+        formData.selectedKPIs,
+        formData.selectedNonFinancialKPIs,
+        formData.revenueForecastConfidence,
+        formData.jobDescriptionsClarity
+      );
+
       // Navigate to results page with assessment ID
       const params = { 
         view: 'results',
@@ -191,6 +200,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
         participantName: formData.participantName,
         practiceName: formData.practiceType,
         salesConfidenceBefore: formData.salesConfidence.toString(),
+        currentScore: baselineScore.toString(),
         // Add all form data to URL params for results card
         email: formData.email,
         selectedKPIs: JSON.stringify(formData.selectedKPIs),

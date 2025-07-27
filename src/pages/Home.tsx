@@ -13,6 +13,7 @@ import PricingCards from '../components/PricingCards';
 import Testimonials from '../components/Testimonials';
 import FAQ from '../components/FAQ';
 import CTA from '../components/CTA';
+import FloatingPriceGuide from '../components/FloatingPriceGuide';
 
 const Home = () => {
   const [ref, inView] = useInView({
@@ -88,6 +89,7 @@ const Home = () => {
       <Testimonials />
       <FAQ />
       <CTA />
+      <FloatingPriceGuide />
     </>
   );
 };

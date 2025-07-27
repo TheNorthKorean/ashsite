@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Heart, Target, Users, Award } from 'lucide-react';
+import FloatingPriceGuide from '../components/FloatingPriceGuide';
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -164,6 +165,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      <FloatingPriceGuide />
     </div>
   );
 };

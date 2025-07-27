@@ -13,6 +13,7 @@ const Coaching = () => {
     name: '',
     email: '',
     phone: '',
+    practiceName: '',
     coachingType: '',
     goals: '',
     contactMethod: 'email',
@@ -268,7 +269,7 @@ const Coaching = () => {
                   data-netlify="true"
                   netlify-honeypot="bot-field"
                   onSubmit={handleSubmit} 
-                  className="space-y-6"
+                  className="space-y-4"
                 >
                   <input type="hidden" name="form-name" value="coaching-inquiry" />
                   <p style={{ display: 'none' }}>
@@ -276,54 +277,73 @@ const Coaching = () => {
                       Don't fill this out: <input name="bot-field" />
                     </label>
                   </p>
-                  {/* Name */}
-                  <div>
-                    <label className="block text-sm font-semibold mb-2">
-                      Full Name <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
-                      placeholder="Enter your full name"
-                    />
+                  {/* Name and Email Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-regular mb-2">
+                        Full Name <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                        placeholder="Enter your full name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-regular mb-2">
+                        Email Address <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                        placeholder="Enter your email address"
+                      />
+                    </div>
                   </div>
 
-                  {/* Email */}
-                  <div>
-                    <label className="block text-sm font-semibold mb-2">
-                      Email Address <span className="text-red-400">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
-                      placeholder="Enter your email address"
-                    />
-                  </div>
-
-                  {/* Phone */}
-                  <div>
-                    <label className="block text-sm font-semibold mb-2">Phone Number</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
-                      placeholder="Enter your phone number (optional)"
-                    />
+                  {/* Phone and Practice Name Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-regular mb-2">
+                        Phone Number <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                        placeholder="Enter your phone number"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-regular mb-2">
+                        Practice Name <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="practiceName"
+                        value={formData.practiceName}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                        placeholder="Enter your practice name"
+                      />
+                    </div>
                   </div>
 
                   {/* Coaching Type */}
                   <div>
-                    <label className="block text-sm font-semibold mb-2">
+                    <label className="block text-sm font-regular mb-2">
                       Preferred Coaching Type <span className="text-red-400">*</span>
                     </label>
                     <select
@@ -331,7 +351,7 @@ const Coaching = () => {
                       value={formData.coachingType}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                      className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
                     >
                       <option value="">Select coaching type</option>
                       <option value="1:1">1-on-1 Coaching</option>
@@ -342,11 +362,14 @@ const Coaching = () => {
 
                   {/* Goals/Challenges */}
                   <div>
-                    <label className="block text-sm font-semibold mb-2">Goals & Challenges</label>
+                    <label className="block text-sm font-regular mb-2">
+                      Goals & Challenges <span className="text-red-400">*</span>
+                    </label>
                     <textarea
                       name="goals"
                       value={formData.goals}
                       onChange={handleInputChange}
+                      required
                       rows={4}
                       className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors resize-none"
                       placeholder="Tell us about your current challenges and what you hope to achieve through coaching..."
@@ -355,7 +378,7 @@ const Coaching = () => {
 
                   {/* Contact Method */}
                   <div>
-                    <label className="block text-sm font-semibold mb-3">Preferred Contact Method</label>
+                    <label className="block text-sm font-regular mb-3">Preferred Contact Method</label>
                     <div className="flex gap-6">
                       <label className="flex items-center cursor-pointer">
                         <input
@@ -404,7 +427,7 @@ const Coaching = () => {
 
                   {/* Best Time to Contact */}
                   <div>
-                    <label className="block text-sm font-semibold mb-2">Best Time to Contact</label>
+                    <label className="block text-sm font-regular mb-2">Best Time to Contact</label>
                     <select
                       name="bestTime"
                       value={formData.bestTime}
@@ -423,7 +446,7 @@ const Coaching = () => {
                   <div className="text-center pt-4">
                     <motion.button
                       type="submit"
-                      className="px-8 py-4 md:py-4 mb-4 md:mb-0 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-medium md:text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
+                      className="px-8 py-3 md:py-3 mb-4 md:mb-0 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-base md:text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
                       whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
                       whileTap={{ scale: 0.95 }}
                     >

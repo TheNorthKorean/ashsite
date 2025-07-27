@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { MessageSquare, Users, Target, Trophy, Brain, BarChart3, Shield, Smartphone, Zap, Clock, Award, TrendingUp } from 'lucide-react';
+import FloatingPriceGuide from '../components/FloatingPriceGuide';
 
 const Features = () => {
   const [ref, inView] = useInView({
@@ -459,6 +460,7 @@ const Features = () => {
           </motion.div>
         </div>
       </section>
+      <FloatingPriceGuide />
     </div>
   );
 };

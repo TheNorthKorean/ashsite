@@ -27,6 +27,7 @@ import {
   Crown,
   Briefcase
 } from 'lucide-react';
+import FloatingPriceGuide from '../components/FloatingPriceGuide';
 
 const Faculty = () => {
   const [ref, inView] = useInView({
@@ -1224,6 +1225,7 @@ const Faculty = () => {
           </motion.div>
         </div>
       </section>
+      <FloatingPriceGuide />
     </div>
   );
 };

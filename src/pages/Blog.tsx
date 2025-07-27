@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Calendar, User, ArrowRight } from 'lucide-react';
+import FloatingPriceGuide from '../components/FloatingPriceGuide';
 
 const Blog = () => {
   const [ref, inView] = useInView({
@@ -229,6 +230,7 @@ const Blog = () => {
           </motion.div>
         </div>
       </section>
+      <FloatingPriceGuide />
     </div>
   );
 };

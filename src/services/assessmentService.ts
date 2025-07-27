@@ -232,6 +232,8 @@ export class AssessmentService {
         return { data: null, error: error.message };
       }
 
+
+
       return { data };
     } catch (error) {
       console.error('Error fetching progress updates:', error);
@@ -265,4 +267,136 @@ export class AssessmentService {
       return { data: null, error: 'Failed to fetch latest progress update' };
     }
   }
-} 
+}
+
+// Comprehensive scoring function for baseline assessments and progress updates
+export const calculateComprehensiveScore = (
+  salesConfidenceBefore: number,
+  salesConfidenceAfter: number,
+  selectedKPIs: any[],
+  kpiUpdates: any[],
+  selectedNonFinancialKPIs: any[],
+  nonFinancialKpiUpdates: any[],
+  revenueForecastConfidence: string,
+  jobDescriptionsClarity: string,
+  improvements: string[],
+  achievements: string[]
+): number => {
+  let score = 0;
+  
+  // Sales Confidence (35% of total score) - Highest weight
+  const confidenceImprovement = salesConfidenceAfter - salesConfidenceBefore;
+  const confidenceScore = Math.max(0, Math.min(35, 35 + (confidenceImprovement * 7)));
+  score += confidenceScore;
+  
+  // Financial KPI Progress (30% of total score) - Second highest weight
+  let financialKpiScore = 0;
+  if (selectedKPIs.length > 0 && kpiUpdates.length > 0) {
+    const kpiProgress = selectedKPIs.map((baselineKPI) => {
+      const update = kpiUpdates.find(u => u.kpi === baselineKPI.kpi);
+      if (update) {
+        const baselineValue = parseFloat(baselineKPI.currentValue.replace(/[^0-9.]/g, ''));
+        const currentValue = parseFloat(update.currentValue.replace(/[^0-9.]/g, ''));
+        const goalValue = parseFloat(baselineKPI.goalValue.replace(/[^0-9.]/g, ''));
+        
+        if (baselineValue > 0 && goalValue > 0) {
+          const progressTowardGoal = Math.min(1, (currentValue - baselineValue) / (goalValue - baselineValue));
+          return Math.max(0, progressTowardGoal);
+        }
+      }
+      return 0;
+    });
+    
+    const averageKPIProgress = kpiProgress.reduce((sum, val) => sum + val, 0) / kpiProgress.length;
+    financialKpiScore = averageKPIProgress * 30;
+  }
+  score += financialKpiScore;
+  
+  // Non-Financial KPI Progress (20% of total score) - Third weight
+  let nonFinancialKpiScore = 0;
+  if (selectedNonFinancialKPIs && selectedNonFinancialKPIs.length > 0 && nonFinancialKpiUpdates && nonFinancialKpiUpdates.length > 0) {
+    const nonFinancialKpiProgress = selectedNonFinancialKPIs.map((baselineKPI) => {
+      const update = nonFinancialKpiUpdates.find(u => u.kpi === baselineKPI.kpi);
+      if (update) {
+        const baselineValue = parseFloat(baselineKPI.currentValue.replace(/[^0-9.]/g, ''));
+        const currentValue = parseFloat(update.currentValue.replace(/[^0-9.]/g, ''));
+        const goalValue = parseFloat(baselineKPI.goalValue.replace(/[^0-9.]/g, ''));
+        
+        if (baselineValue > 0 && goalValue > 0) {
+          const progressTowardGoal = Math.min(1, (currentValue - baselineValue) / (goalValue - baselineValue));
+          return Math.max(0, progressTowardGoal);
+        }
+      }
+      return 0;
+    });
+    
+    const averageNonFinancialKpiProgress = nonFinancialKpiProgress.reduce((sum, val) => sum + val, 0) / nonFinancialKpiProgress.length;
+    nonFinancialKpiScore = averageNonFinancialKpiProgress * 20;
+  } else if (selectedNonFinancialKPIs && selectedNonFinancialKPIs.length > 0) {
+    // Base score for having non-financial KPIs but no updates yet
+    nonFinancialKpiScore = 5;
+  }
+  score += nonFinancialKpiScore;
+  
+  // Team & Operations (15% of total score) - Lowest weight
+  let teamScore = 0;
+  
+  // Revenue Forecast Confidence (7.5%)
+  const forecastScores: { [key: string]: number } = {
+    'very-concerned': 0,
+    'concerned': 3.75,
+    'uncertain': 7.5,
+    'somewhat-confident': 11.25,
+    'very-confident': 15
+  };
+  teamScore += forecastScores[revenueForecastConfidence] || 0;
+  
+  // Job Descriptions Clarity (7.5%)
+  const clarityScores: { [key: string]: number } = {
+    'no-completely': 0,
+    'mostly-no': 3.75,
+    'partially': 7.5,
+    'mostly-yes': 11.25,
+    'yes-completely': 15
+  };
+  teamScore += clarityScores[jobDescriptionsClarity] || 0;
+  
+  score += teamScore;
+  
+  return Math.round(Math.min(100, Math.max(0, score)));
+};
+
+// Baseline assessment scoring function
+export const calculateBaselineScore = (
+  salesConfidence: number,
+  selectedKPIs: any[],
+  selectedNonFinancialKPIs: any[],
+  revenueForecastConfidence: string,
+  jobDescriptionsClarity: string
+): number => {
+  // For baseline, we use the same scoring system but with current values as both baseline and current
+  const kpiUpdates = selectedKPIs.map(kpi => ({
+    kpi: kpi.kpi,
+    currentValue: kpi.currentValue,
+    goalValue: kpi.goalValue
+  }));
+  
+  const nonFinancialKpiUpdates = selectedNonFinancialKPIs.map(kpi => ({
+    kpi: kpi.kpi,
+    currentValue: kpi.currentValue,
+    goalValue: kpi.goalValue
+  }));
+  
+  return calculateComprehensiveScore(
+    salesConfidence,
+    salesConfidence, // Same as before for baseline
+    selectedKPIs,
+    kpiUpdates,
+    selectedNonFinancialKPIs,
+    nonFinancialKpiUpdates,
+    revenueForecastConfidence,
+    jobDescriptionsClarity,
+    [], // No improvements for baseline
+    []  // No achievements for baseline
+  );
+}; 

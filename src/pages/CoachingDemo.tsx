@@ -4,7 +4,7 @@ import { ArrowRight, BarChart3, Trophy, Users, Target, Shield } from 'lucide-rea
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import BaselineAssessment from '../components/BaselineAssessment';
 import ResultsCard from '../components/ResultsCard';
-import { AssessmentService } from '../services/assessmentService';
+import { AssessmentService, calculateBaselineScore, calculateComprehensiveScore } from '../services/assessmentService';
 
 const CoachingDemo = () => {
   const navigate = useNavigate();
@@ -61,6 +61,7 @@ const CoachingDemo = () => {
           console.log('Assessment data received:', assessment);
           console.log('URL params:', Object.fromEntries(searchParams.entries()));
           
+          
           // Check if this is from baseline assessment or progress update
           // Look for progressId parameter which indicates a progress update
           const progressId = searchParams.get('progressId');
@@ -76,7 +77,13 @@ const CoachingDemo = () => {
           if (isFromBaseline) {
             console.log('Processing as baseline assessment');
             // Baseline assessment results - show baseline data only
-            const baselineScore = 60; // Starting score for baseline
+            const baselineScore = calculateBaselineScore(
+              assessment.sales_confidence_before,
+              assessment.selected_kpis || [],
+              assessment.selected_non_financial_kpis || [],
+              assessment.revenue_forecast_confidence,
+              assessment.job_descriptions_clarity
+            );
             
             const kpiProgress = (assessment.selected_kpis || []).map((kpi: any) => {
               console.log('Baseline KPI:', kpi);
@@ -110,7 +117,10 @@ const CoachingDemo = () => {
               userData: {
                 email: assessment.email,
                 selectedKPIs: assessment.selected_kpis || [],
-                selectedNonFinancialKPIs: assessment.selected_non_financial_kpis || [],
+                selectedNonFinancialKPIs: (assessment.selected_non_financial_kpis || []).map((kpi: any) => ({
+                  ...kpi,
+                  previousValue: kpi.currentValue // For baseline, previous = current
+                })),
                 revenueForecastConfidence: assessment.revenue_forecast_confidence,
                 jobDescriptionsClarity: assessment.job_descriptions_clarity,
                 successDefinition: assessment.success_definition
@@ -196,44 +206,96 @@ const CoachingDemo = () => {
             // Get Non-Financial KPI updates from URL params
             const nonFinancialKpiUpdatesParam = searchParams.get('nonFinancialKpiUpdates');
             let nonFinancialKpiUpdates: any[] = [];
+
             if (nonFinancialKpiUpdatesParam) {
               try {
                 nonFinancialKpiUpdates = JSON.parse(nonFinancialKpiUpdatesParam);
-                console.log('Parsed nonFinancialKpiUpdates:', nonFinancialKpiUpdates);
+
               } catch (e) {
-                console.error('Error parsing nonFinancialKpiUpdates:', e);
+                console.error('CoachingDemo: Error parsing nonFinancialKpiUpdates:', e);
               }
+                          } else {
+                // No nonFinancialKpiUpdates parameter found in URL
+              }
+
+            // Fetch previous progress updates to get "before" values
+            let previousKpiUpdates: any[] = [];
+            let previousNonFinancialKpiUpdates: any[] = [];
+            try {
+              const { data: allProgress, error: progressError } = await AssessmentService.getProgressUpdates(assessmentId);
+              
+              if (!progressError && allProgress && allProgress.length > 1) {
+                // Get the second-to-last progress update (previous to current)
+                const previousProgress = allProgress[allProgress.length - 2];
+                previousKpiUpdates = previousProgress.kpi_updates || [];
+                previousNonFinancialKpiUpdates = previousProgress.non_financial_kpi_updates || [];
+                console.log('Previous KPI updates:', previousKpiUpdates);
+                console.log('Previous Non-Financial KPI updates:', previousNonFinancialKpiUpdates);
+
+              } else {
+                // If this is the first progress update, use baseline values as "before"
+                console.log('First progress update - using baseline values as "before"');
+                previousKpiUpdates = (assessment.selected_kpis || []).map(kpi => ({
+                  kpi: kpi.kpi,
+                  currentValue: kpi.currentValue
+                }));
+                previousNonFinancialKpiUpdates = (assessment.selected_non_financial_kpis || []).map(kpi => ({
+                  kpi: kpi.kpi,
+                  currentValue: kpi.currentValue
+                }));
+              }
+            } catch (error) {
+              console.error('Error fetching previous progress updates:', error);
+              // Fallback to baseline values
+              previousKpiUpdates = (assessment.selected_kpis || []).map(kpi => ({
+                kpi: kpi.kpi,
+                currentValue: kpi.currentValue
+              }));
+              previousNonFinancialKpiUpdates = (assessment.selected_non_financial_kpis || []).map(kpi => ({
+                kpi: kpi.kpi,
+                currentValue: kpi.currentValue
+              }));
             }
 
             console.log('Baseline KPIs:', assessment.selected_kpis);
 
-            // Create KPI progress from baseline and updates
+            // Create KPI progress comparing previous to current updates
             const kpiProgress = (assessment.selected_kpis || []).map((baselineKPI: any) => {
-              const update = kpiUpdates.find(u => u.kpi === baselineKPI.kpi);
-              const currentValue = update?.currentValue || baselineKPI.currentValue;
+              const currentUpdate = kpiUpdates.find(u => u.kpi === baselineKPI.kpi);
+              const previousUpdate = previousKpiUpdates.find(u => u.kpi === baselineKPI.kpi);
+              
+              // For immediate results after submission, use baseline as "before" and current as "after"
+              // For "view current results", use previous update as "before" and current as "after"
+              const isImmediateResult = progressId === searchParams.get('progressId');
+              const beforeValue = isImmediateResult 
+                ? baselineKPI.currentValue  // Use baseline for immediate results
+                : (previousUpdate?.currentValue || baselineKPI.currentValue);  // Use previous update for view results
+              const afterValue = currentUpdate?.currentValue || baselineKPI.currentValue;
               const goalValue = baselineKPI.goalValue;
+              
+
               
               console.log(`KPI ${baselineKPI.kpi}:`, {
                 baseline: baselineKPI.currentValue,
-                current: currentValue,
+                previous: beforeValue,
+                current: afterValue,
                 goal: goalValue,
-                update: update,
-                kpiUpdates: kpiUpdates,
-                hasUpdate: !!update,
-                updateValue: update?.currentValue
+                currentUpdate: currentUpdate,
+                previousUpdate: previousUpdate,
+                hasCurrentUpdate: !!currentUpdate,
+                hasPreviousUpdate: !!previousUpdate
               });
               
-              const currentNum = parseFloat(currentValue.replace(/[^0-9.]/g, ''));
-              const goalNum = parseFloat(goalValue.replace(/[^0-9.]/g, ''));
-              const baselineNum = parseFloat(baselineKPI.currentValue.replace(/[^0-9.]/g, ''));
+              const beforeNum = parseFloat(beforeValue.replace(/[^0-9.]/g, ''));
+              const afterNum = parseFloat(afterValue.replace(/[^0-9.]/g, ''));
               
-              const percentageChange = baselineNum > 0 ? Math.round(((currentNum - baselineNum) / baselineNum) * 100) : 0;
+              const percentageChange = beforeNum > 0 ? Math.round(((afterNum - beforeNum) / beforeNum) * 100) : 0;
               
               const result = {
                 kpi: baselineKPI.kpi,
                 label: baselineKPI.kpi.replace(/_/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase()),
-                beforeValue: baselineKPI.currentValue,
-                afterValue: currentValue,
+                beforeValue: beforeValue,
+                afterValue: afterValue,
                 unit: baselineKPI.kpi.includes('rate') || baselineKPI.kpi.includes('percentage') ? '%' : '',
                 percentageChange: Math.abs(percentageChange),
                 trend: percentageChange > 0 ? 'up' as const : percentageChange < 0 ? 'down' as const : 'stable' as const,
@@ -277,14 +339,44 @@ const CoachingDemo = () => {
                 selectedNonFinancialKPIs: (() => {
                   try {
                     const baselineNonFinancialKPIs = assessment.selected_non_financial_kpis || [];
-                    // Update baseline KPIs with progress updates
-                    return baselineNonFinancialKPIs.map((baselineKPI: any) => {
-                      const update = nonFinancialKpiUpdates.find(u => u.kpi === baselineKPI.kpi);
-                      return {
+                    console.log('Processing non-financial KPIs:');
+                    console.log('Baseline non-financial KPIs:', baselineNonFinancialKPIs);
+                    console.log('Current non-financial KPI updates:', nonFinancialKpiUpdates);
+                    console.log('Previous non-financial KPI updates:', previousNonFinancialKpiUpdates);
+                    
+                    // Update baseline KPIs with progress updates, including previous values for comparison
+                    const processedKPIs = baselineNonFinancialKPIs.map((baselineKPI: any, index: number) => {
+                      const currentUpdate = nonFinancialKpiUpdates.find(u => u.kpi === baselineKPI.kpi);
+                      const previousUpdate = previousNonFinancialKpiUpdates.find(u => u.kpi === baselineKPI.kpi);
+                      
+
+                      
+                      // For immediate results after submission, use baseline as "before" and current as "after"
+                      // For "view current results", use previous update as "before" and current as "after"
+                      const isImmediateResult = progressId === searchParams.get('progressId');
+                      const result = {
                         ...baselineKPI,
-                        currentValue: update?.currentValue || baselineKPI.currentValue
+                        currentValue: currentUpdate?.currentValue || baselineKPI.currentValue,
+                        previousValue: isImmediateResult 
+                          ? baselineKPI.currentValue  // Use baseline for immediate results
+                          : (previousUpdate?.currentValue || baselineKPI.currentValue)  // Use previous update for view results
                       };
+                      
+
+                      
+                      console.log(`CoachingDemo: Non-financial KPI ${baselineKPI.kpi} result:`, {
+                        baselineValue: baselineKPI.currentValue,
+                        currentUpdate: currentUpdate,
+                        previousUpdate: previousUpdate,
+                        finalCurrentValue: result.currentValue,
+                        finalPreviousValue: result.previousValue
+                      });
+                      
+                      return result;
                     });
+                    
+                    console.log('Final processed non-financial KPIs:', processedKPIs);
+                    return processedKPIs;
                   } catch (e) {
                     console.error('Error parsing non-financial metrics:', e);
                     return [];
@@ -363,19 +455,28 @@ const CoachingDemo = () => {
         {
           kpi: 'team_confidence',
           currentValue: '3.2',
-          goalValue: '4.5'
+          goalValue: '4.5',
+          previousValue: '3.2'
         },
         {
           kpi: 'patient_satisfaction',
           currentValue: '4.1',
-          goalValue: '4.8'
+          goalValue: '4.8',
+          previousValue: '4.1'
         },
         {
           kpi: 'consultation_quality',
           currentValue: '3.8',
-          goalValue: '4.6'
+          goalValue: '4.6',
+          previousValue: '3.8'
         }
       ];
+    } else {
+      // Add previousValue to existing non-financial KPIs
+      selectedNonFinancialKPIs = selectedNonFinancialKPIs.map((kpi: any) => ({
+        ...kpi,
+        previousValue: kpi.previousValue || kpi.currentValue
+      }));
     }
     
     // Create custom KPI progress based on user's selected KPIs
@@ -447,13 +548,22 @@ const CoachingDemo = () => {
       console.log('No notes param received');
     }
 
+    // Calculate score using the new scoring system
+    const calculatedScore = calculateBaselineScore(
+      salesConfidenceBefore,
+      selectedKPIs,
+      selectedNonFinancialKPIs,
+      revenueForecastConfidence || '',
+      jobDescriptionsClarity || ''
+    );
+
     const resultsData = {
       ...sampleResultsData,
       participantName,
       practiceName,
       salesConfidenceBefore,
       salesConfidenceAfter,
-      coachingScore: currentScore,
+      coachingScore: calculatedScore,
       kpiProgress: customKpiProgress,
       // Combine baseline improvements with new progress updates
       nonFinancialImprovements: newImprovements.length > 0 ? newImprovements : sampleResultsData.nonFinancialImprovements,
