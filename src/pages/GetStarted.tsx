@@ -24,16 +24,13 @@ const GetStarted = () => {
     threshold: 0.1,
   });
 
-  // Create array of logo paths - same as Home page
-  const companies = Array.from({ length: 27 }, (_, index) => {
-    const companyNumber = index + 1;
-    // Skip company 15
-    if (companyNumber === 15) return null;
-    return {
-      name: `Company ${companyNumber}`,
-      logo: `/logos/${companyNumber}.png`
-    };
-  }).filter((company): company is { name: string; logo: string } => company !== null); // Remove null entries
+  // Create array of logo paths - same as Home page TrustedBy component
+  const availableLogos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
+  
+  const companies = availableLogos.map(companyNumber => ({
+    name: `Company ${companyNumber}`,
+    logo: `/logos3/${companyNumber}.png`
+  }));
 
   const trustIndicators = [
     { metric: '200+', label: 'Practices Transformed' },
@@ -312,20 +309,20 @@ const GetStarted = () => {
           <div className="relative max-w-6xl mx-auto">
             <div className="flex overflow-hidden">
               <motion.div
-                className="flex items-center gap-12 md:gap-16"
+                className="flex items-center gap-8 md:gap-16"
                 animate={{
-                  x: [0, -100 * companies.length - 100],
+                  x: [0, -(companies.length * 120)], // Adjust based on gap and logo width
                 }}
                 transition={{
                   x: {
                     repeat: Infinity,
                     repeatType: "loop",
-                    duration: 60,
+                    duration: 60, // Faster animation
                     ease: "linear",
                   },
                 }}
               >
-                {[...companies, ...companies].map((company, index) => (
+                {[...companies, ...companies, ...companies, ...companies].map((company, index) => (
                   <motion.div
                     key={`${company.name}-${index}`}
                     className="flex items-center justify-center min-w-max group"
@@ -341,10 +338,24 @@ const GetStarted = () => {
                     <img
                       src={company.logo}
                       alt={company.name}
-                      className="h-24 md:h-28 w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out"
+                      className={`w-auto object-contain opacity-90 group-hover:opacity-100 transition-all duration-200 ease-out ${
+                        company.name === 'Company 19' 
+                          ? 'h-40 md:h-44 lg:h-48' 
+                          : ['Company 5', 'Company 7', 'Company 8', 'Company 9', 'Company 10', 'Company 11', 'Company 12', 'Company 13', 'Company 16'].includes(company.name)
+                          ? 'h-32 md:h-36 lg:h-40' 
+                          : 'h-24 md:h-28 lg:h-28'
+                      }`}
                       style={{
-                        maxWidth: '140px',
-                        minWidth: '80px'
+                        maxWidth: company.name === 'Company 19'
+                          ? '280px' 
+                          : ['Company 5', 'Company 7', 'Company 8', 'Company 9', 'Company 16'].includes(company.name)
+                          ? '180px' 
+                          : '100px',
+                        minWidth: company.name === 'Company 19' 
+                          ? '200px' 
+                          : ['Company 5', 'Company 7', 'Company 8', 'Company 9', 'Company 16'].includes(company.name)
+                          ? '100px' 
+                          : '60px'
                       }}
                     />
                   </motion.div>
