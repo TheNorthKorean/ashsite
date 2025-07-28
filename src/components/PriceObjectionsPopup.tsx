@@ -139,7 +139,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                 ease: [0.4, 0.0, 0.2, 1]
               }}
               onClick={(e) => e.stopPropagation()}
-              className="relative bg-[#121212] border border-white/10 rounded-2xl shadow-2xl w-full max-w-5xl mx-4 lg:mx-0 max-h-[90vh] lg:max-h-[50vh] overflow-hidden"
+              className="relative bg-[#121212] border border-white/10 rounded-2xl shadow-2xl w-full max-w-5xl mx-4 lg:mx-0 max-h-[95vh] lg:max-h-[50vh] overflow-hidden"
             >
               {/* Close Button */}
               <motion.button
@@ -153,9 +153,27 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
               </motion.button>
 
               {/* Content Container */}
-              <div className="relative min-h-[50vh] lg:min-h-[50vh] flex flex-col lg:flex-row">
+              <div className="relative min-h-[80vh] lg:min-h-[50vh] flex flex-col lg:flex-row">
+                {/* Mobile Video - Top */}
+                <div className="block lg:hidden w-full pt-[-10px] pb-0">
+                  <div className="relative w-full max-w-lg mx-auto">
+                    <motion.video
+                      src="/videos/Popup VIdeo.mp4"
+                      autoPlay
+                      muted
+                      playsInline
+                      controls={false}
+                      className="w-full h-auto rounded-xl opacity-90"
+                      onLoadedData={(e) => {
+                        const video = e.target as HTMLVideoElement;
+                        video.play().catch(console.error);
+                      }}
+                    />
+                  </div>
+                </div>
+
                 {/* Left Side - Content/Form Container */}
-                <div className="relative z-10 p-6 lg:p-10 flex flex-col justify-center w-full lg:max-w-2xl">
+                <div className="relative z-10 p-4 pt-2 lg:p-10 flex flex-col justify-center items-center lg:items-start text-center lg:text-left w-full lg:max-w-2xl">
                   <AnimatePresence mode="wait">
                     {!showForm ? (
                       /* Content View */
@@ -331,8 +349,8 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                   </AnimatePresence>
                 </div>
 
-                {/* Right Side - Video (Overlapping) */}
-                <div className="absolute top-0 right-[-100px] w-2/3 h-full flex items-center justify-center p-8 lg:p-12 hidden lg:flex">
+                {/* Desktop Video - Right Side (Overlapping) */}
+                <div className="absolute top-0 right-[-100px] w-2/3 h-full items-center justify-center p-8 lg:p-12 hidden lg:flex">
                   <div className="relative w-full max-w-5xl">
                     <motion.video
                       src="/videos/Popup VIdeo.mp4"
