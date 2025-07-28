@@ -10,7 +10,8 @@ const Coaching = () => {
   });
 
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     practiceName: '',
@@ -277,22 +278,40 @@ const Coaching = () => {
                       Don't fill this out: <input name="bot-field" />
                     </label>
                   </p>
-                  {/* Name and Email Row */}
+                  {/* First Name and Last Name Row */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-regular mb-2">
-                        Full Name <span className="text-red-400">*</span>
+                        First Name <span className="text-red-400">*</span>
                       </label>
                       <input
                         type="text"
-                        name="name"
-                        value={formData.name}
+                        name="firstName"
+                        value={formData.firstName}
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
-                        placeholder="Enter your full name"
+                        placeholder="Enter your first name"
                       />
                     </div>
+                    <div>
+                      <label className="block text-sm font-regular mb-2">
+                        Last Name <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                        placeholder="Enter your last name"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Email and Phone Row */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-regular mb-2">
                         Email Address <span className="text-red-400">*</span>
@@ -307,10 +326,6 @@ const Coaching = () => {
                         placeholder="Enter your email address"
                       />
                     </div>
-                  </div>
-
-                  {/* Phone and Practice Name Row */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-regular mb-2">
                         Phone Number <span className="text-red-400">*</span>
@@ -325,20 +340,22 @@ const Coaching = () => {
                         placeholder="Enter your phone number"
                       />
                     </div>
-                    <div>
-                      <label className="block text-sm font-regular mb-2">
-                        Practice Name <span className="text-red-400">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        name="practiceName"
-                        value={formData.practiceName}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
-                        placeholder="Enter your practice name"
-                      />
-                    </div>
+                  </div>
+
+                  {/* Practice Name Row */}
+                  <div>
+                    <label className="block text-sm font-regular mb-2">
+                      Practice Name <span className="text-red-400">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="practiceName"
+                      value={formData.practiceName}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                      placeholder="Enter your practice name"
+                    />
                   </div>
 
                   {/* Coaching Type */}

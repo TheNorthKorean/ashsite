@@ -17,7 +17,8 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
 }) => {
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phoneNumber: '',
     businessName: ''
@@ -53,7 +54,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
     console.log('Form submission started', formData);
     
     // Validate form data
-    if (!formData.fullName || !formData.email) {
+    if (!formData.firstName || !formData.lastName || !formData.email) {
       console.error('Required fields missing:', formData);
       alert('Please fill in all required fields');
       return;
@@ -105,7 +106,8 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
     setShowForm(false);
     setIsSubmitted(false);
     setFormData({
-      fullName: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phoneNumber: '',
       businessName: ''
@@ -123,7 +125,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+                          transition={{ duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
             onClick={handleClose}
             className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           >
@@ -134,10 +136,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
               exit={{ scale: 0.8, opacity: 0, y: 20 }}
               transition={{ 
                 duration: 0.4, 
-                ease: [0.25, 0.46, 0.45, 0.94],
-                type: "spring",
-                stiffness: 300,
-                damping: 30
+                ease: [0.4, 0.0, 0.2, 1]
               }}
               onClick={(e) => e.stopPropagation()}
               className="relative bg-[#121212] border border-white/10 rounded-2xl shadow-2xl w-full max-w-5xl mx-4 lg:mx-0 max-h-[90vh] lg:max-h-[50vh] overflow-hidden"
@@ -217,19 +216,36 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                               >
                               <input type="hidden" name="form-name" value="price-objections-guide" />
                               
-                              <div className="relative">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                  <User className={`h-5 w-5 transition-colors duration-200 ${formData.fullName ? 'text-white' : 'text-gray-400'}`} />
+                              <div className="grid grid-cols-2 gap-3">
+                                <div className="relative">
+                                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <User className={`h-5 w-5 transition-colors duration-200 ${formData.firstName ? 'text-white' : 'text-gray-400'}`} />
+                                  </div>
+                                  <input
+                                    type="text"
+                                    name="firstName"
+                                    placeholder="First Name"
+                                    value={formData.firstName}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                  />
                                 </div>
-                                <input
-                                  type="text"
-                                  name="fullName"
-                                  placeholder="Full Name"
-                                  value={formData.fullName}
-                                  onChange={handleInputChange}
-                                  required
-                                  className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
-                                />
+
+                                <div className="relative">
+                                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <User className={`h-5 w-5 transition-colors duration-200 ${formData.lastName ? 'text-white' : 'text-gray-400'}`} />
+                                  </div>
+                                  <input
+                                    type="text"
+                                    name="lastName"
+                                    placeholder="Last Name"
+                                    value={formData.lastName}
+                                    onChange={handleInputChange}
+                                    required
+                                    className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                  />
+                                </div>
                               </div>
 
                               <div className="relative">
