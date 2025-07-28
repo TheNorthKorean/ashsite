@@ -127,7 +127,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
             exit={{ opacity: 0 }}
                           transition={{ duration: 0.3, ease: [0.4, 0.0, 0.2, 1] }}
             onClick={handleClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6"
           >
             {/* Modal */}
             <motion.div
@@ -139,7 +139,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                 ease: [0.4, 0.0, 0.2, 1]
               }}
               onClick={(e) => e.stopPropagation()}
-              className="relative bg-[#121212] border border-white/10 rounded-2xl shadow-2xl w-full max-w-5xl mx-4 lg:mx-0 max-h-[95vh] lg:max-h-[50vh] overflow-hidden"
+              className="relative bg-[#121212] border border-white/10 rounded-2xl shadow-2xl w-full max-w-5xl mx-4 lg:mx-0 max-h-[70vh] lg:max-h-[50vh] overflow-hidden"
             >
               {/* Close Button */}
               <motion.button
@@ -153,9 +153,9 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
               </motion.button>
 
               {/* Content Container */}
-              <div className="relative min-h-[80vh] lg:min-h-[50vh] flex flex-col lg:flex-row">
+              <div className="relative min-h-[70vh] lg:min-h-[50vh] flex flex-col lg:flex-row">
                 {/* Mobile Video - Top */}
-                <div className="block lg:hidden w-full pt-[-10px] pb-0">
+                <div className="block lg:hidden w-full pt-0 pb-0 mb-[-50px] mt-[-50px]">
                   <div className="relative w-full max-w-lg mx-auto">
                     <motion.video
                       src="/videos/Popup VIdeo.mp4"
@@ -173,7 +173,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                 </div>
 
                 {/* Left Side - Content/Form Container */}
-                <div className="relative z-10 p-4 pt-2 lg:p-10 flex flex-col justify-center items-center lg:items-start text-center lg:text-left w-full lg:max-w-2xl">
+                <div className="relative z-10 p-6 pt-0 lg:p-10 flex flex-col justify-center items-center lg:items-start text-center lg:text-left w-full lg:max-w-2xl">
                   <AnimatePresence mode="wait">
                     {!showForm ? (
                       /* Content View */
@@ -184,7 +184,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                         exit={{ x: -400, opacity: 0 }}
                         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                       >
-                        <div className="inline-block px-3 py-1.5 bg-white/15 text-white rounded-full text-xs font-regular mb-6">
+                        <div className="inline-block px-3 py-1.5 bg-white/15 text-white rounded-full text-xs font-regular mb-4 lg:mb-6">
                           Beyond the Price Tag! ($50 Value!)
                         </div>
                         
