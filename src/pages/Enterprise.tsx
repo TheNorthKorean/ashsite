@@ -23,7 +23,8 @@ const Enterprise = () => {
   });
 
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     company: '',
     phone: '',
@@ -60,7 +61,8 @@ const Enterprise = () => {
       if (response.ok) {
         // Reset form
         setFormData({
-          name: '',
+          firstName: '',
+          lastName: '',
           email: '',
           company: '',
           phone: '',
@@ -158,7 +160,7 @@ const Enterprise = () => {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-2"
+              className="px-8 py-3.5 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-2xl font-semibold text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-2"
             >
               Get Started
               <ArrowRight size={20} />
@@ -169,7 +171,7 @@ const Enterprise = () => {
 
       {/* Features Section */}
       <section className="py-24 relative">
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 mt-16">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -177,8 +179,8 @@ const Enterprise = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Enterprise Features</h2>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+            <h2 className="text-2xl lg:text-2xl font-normal mb-6">Enterprise Features</h2>
+            <p className="text-lg text-white/70 max-w-3xl mx-auto">
               Advanced capabilities designed for large practices, multi-location operations, and enterprise organizations.
             </p>
           </motion.div>
@@ -187,7 +189,7 @@ const Enterprise = () => {
             {enterpriseFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
-                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300"
+                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 * index }}
@@ -251,19 +253,36 @@ const Enterprise = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Full Name <span className="text-red-400">*</span>
+                    First Name <span className="text-red-400">*</span>
                   </label>
                   <input
                     type="text"
-                    name="name"
-                    value={formData.name}
+                    name="firstName"
+                    value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
-                    placeholder="Enter your full name"
+                    className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
+                    placeholder="Enter your first name"
                   />
                 </div>
 
+                <div>
+                  <label className="block text-sm font-medium mb-2">
+                    Last Name <span className="text-red-400">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
+                    placeholder="Enter your last name"
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">
                     Email Address <span className="text-red-400">*</span>
@@ -274,41 +293,40 @@ const Enterprise = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
+                    className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
                     placeholder="Enter your email address"
                   />
                 </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">
-                    Company/Practice Name <span className="text-red-400">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
-                    placeholder="Enter your company name"
-                  />
-                </div>
 
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    Phone Number
+                    Phone Number <span className="text-red-400">*</span>
                   </label>
                   <input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
+                    required
+                    className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
                     placeholder="Enter your phone number"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">
+                  Company/Practice Name <span className="text-red-400">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
+                  placeholder="Enter your company name"
+                />
               </div>
 
               <div>
@@ -320,7 +338,7 @@ const Enterprise = () => {
                   value={formData.practiceSize}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
+                  className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors duration-300"
                 >
                   <option value="">Select practice size</option>
                   <option value="1-5 employees">1-5 employees</option>
@@ -348,7 +366,7 @@ const Enterprise = () => {
               <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-bold text-lg shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full px-8 py-3 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
                 whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
                 whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
               >

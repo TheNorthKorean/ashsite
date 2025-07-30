@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Video, Users, Calendar, Award, MessageCircle, TrendingUp, CheckCircle, User, Mail, Phone, Clock } from 'lucide-react';
+import { Video, Users, Calendar, Award, MessageCircle, TrendingUp, CheckCircle, User, Clock } from 'lucide-react';
 
 const Coaching = () => {
   const [ref, inView] = useInView({
@@ -17,7 +17,6 @@ const Coaching = () => {
     practiceName: '',
     coachingType: '',
     goals: '',
-    contactMethod: 'email',
     bestTime: ''
   });
 
@@ -393,54 +392,7 @@ const Coaching = () => {
                     />
                   </div>
 
-                  {/* Contact Method */}
-                  <div>
-                    <label className="block text-sm font-regular mb-3">Preferred Contact Method</label>
-                    <div className="flex gap-6">
-                      <label className="flex items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          name="contactMethod"
-                          value="email"
-                          checked={formData.contactMethod === 'email'}
-                          onChange={handleInputChange}
-                          className="sr-only"
-                        />
-                        <div className={`w-4 h-4 rounded-full border-2 mr-3 flex items-center justify-center ${
-                          formData.contactMethod === 'email' 
-                            ? 'border-[#00d9ff] bg-[#00d9ff]' 
-                            : 'border-white/40'
-                        }`}>
-                          {formData.contactMethod === 'email' && (
-                            <div className="w-2 h-2 rounded-full bg-white"></div>
-                          )}
-                        </div>
-                        <Mail size={16} className="mr-2" />
-                        Email
-                      </label>
-                      <label className="flex items-center cursor-pointer">
-                        <input
-                          type="radio"
-                          name="contactMethod"
-                          value="phone"
-                          checked={formData.contactMethod === 'phone'}
-                          onChange={handleInputChange}
-                          className="sr-only"
-                        />
-                        <div className={`w-4 h-4 rounded-full border-2 mr-3 flex items-center justify-center ${
-                          formData.contactMethod === 'phone' 
-                            ? 'border-[#00d9ff] bg-[#00d9ff]' 
-                            : 'border-white/40'
-                        }`}>
-                          {formData.contactMethod === 'phone' && (
-                            <div className="w-2 h-2 rounded-full bg-white"></div>
-                          )}
-                        </div>
-                        <Phone size={16} className="mr-2" />
-                        Phone
-                      </label>
-                    </div>
-                  </div>
+
 
                   {/* Best Time to Contact */}
                   <div>
