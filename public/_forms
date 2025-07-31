@@ -83,7 +83,10 @@
 [[forms]]
   name = "price-objections-guide"
   [forms.fields]
-    [forms.fields.fullName]
+    [forms.fields.firstName]
+      type = "text"
+      required = true
+    [forms.fields.lastName]
       type = "text"
       required = true
     [forms.fields.email]
