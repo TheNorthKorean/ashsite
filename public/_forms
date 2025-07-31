@@ -1,0 +1,147 @@
+# Netlify Forms Configuration
+
+# Enterprise Contact Form
+[[forms]]
+  name = "enterprise-contact"
+  [forms.fields]
+    [forms.fields.firstName]
+      type = "text"
+      required = true
+    [forms.fields.lastName]
+      type = "text"
+      required = true
+    [forms.fields.email]
+      type = "email"
+      required = true
+    [forms.fields.company]
+      type = "text"
+      required = true
+    [forms.fields.phone]
+      type = "tel"
+      required = true
+    [forms.fields.practiceSize]
+      type = "select"
+      required = true
+    [forms.fields.message]
+      type = "textarea"
+
+# Contact Form
+[[forms]]
+  name = "contact"
+  [forms.fields]
+    [forms.fields.firstName]
+      type = "text"
+      required = true
+    [forms.fields.lastName]
+      type = "text"
+      required = true
+    [forms.fields.email]
+      type = "email"
+      required = true
+    [forms.fields.phone]
+      type = "tel"
+      required = true
+    [forms.fields.practiceName]
+      type = "text"
+      required = true
+    [forms.fields.practiceType]
+      type = "select"
+      required = true
+    [forms.fields.message]
+      type = "textarea"
+      required = true
+
+# Coaching Inquiry Form
+[[forms]]
+  name = "coaching-inquiry"
+  [forms.fields]
+    [forms.fields.firstName]
+      type = "text"
+      required = true
+    [forms.fields.lastName]
+      type = "text"
+      required = true
+    [forms.fields.email]
+      type = "email"
+      required = true
+    [forms.fields.phone]
+      type = "tel"
+      required = true
+    [forms.fields.practiceName]
+      type = "text"
+      required = true
+    [forms.fields.coachingType]
+      type = "select"
+      required = true
+    [forms.fields.goals]
+      type = "textarea"
+      required = true
+    [forms.fields.bestTime]
+      type = "select"
+
+# Price Objections Guide Form
+[[forms]]
+  name = "price-objections-guide"
+  [forms.fields]
+    [forms.fields.fullName]
+      type = "text"
+      required = true
+    [forms.fields.email]
+      type = "email"
+      required = true
+    [forms.fields.phoneNumber]
+      type = "tel"
+      required = true
+    [forms.fields.businessName]
+      type = "text"
+      required = true
+
+# Application Form
+[[forms]]
+  name = "application"
+  [forms.fields]
+    [forms.fields.track]
+      type = "text"
+      required = true
+    [forms.fields.fullName]
+      type = "text"
+      required = true
+    [forms.fields.email]
+      type = "email"
+      required = true
+    [forms.fields.professionalTitle]
+      type = "text"
+      required = true
+    [forms.fields.organization]
+      type = "text"
+      required = true
+    [forms.fields.country]
+      type = "text"
+      required = true
+    [forms.fields.linkedinUrl]
+      type = "url"
+    [forms.fields.yearsExperience]
+      type = "number"
+      required = true
+    [forms.fields.briefBio]
+      type = "textarea"
+      required = true
+    [forms.fields.areasOfExpertise]
+      type = "text"
+      required = true
+    [forms.fields.motivationStatement]
+      type = "textarea"
+      required = true
+    [forms.fields.achievements]
+      type = "textarea"
+      required = true
+    [forms.fields.howDidYouHear]
+      type = "text"
+    [forms.fields.gdprConsent]
+      type = "checkbox"
+      required = true
+    [forms.fields.marketingConsent]
+      type = "checkbox"
+    [forms.fields.termsAccepted]
+      type = "checkbox"
+      required = true 

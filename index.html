@@ -46,6 +46,7 @@
       <input type="text" name="lastName" />
       <input type="email" name="email" />
       <input type="tel" name="phone" />
+      <input type="text" name="practiceName" />
       <select name="practiceType">
         <option value="medical-spa">Medical Spa</option>
         <option value="dermatology">Dermatology</option>
@@ -70,10 +71,6 @@
         <option value="corporate">Corporate Training</option>
       </select>
       <textarea name="goals"></textarea>
-      <select name="contactMethod">
-        <option value="email">Email</option>
-        <option value="phone">Phone</option>
-      </select>
       <input type="text" name="bestTime" />
     </form>
     
@@ -101,7 +98,8 @@
     <form name="enterprise-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="enterprise-contact" />
       <input name="bot-field" />
-      <input type="text" name="name" />
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
       <input type="email" name="email" />
       <input type="text" name="company" />
       <input type="tel" name="phone" />
@@ -118,8 +116,7 @@
     <form name="price-objections-guide" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="price-objections-guide" />
       <input name="bot-field" />
-      <input type="text" name="firstName" />
-      <input type="text" name="lastName" />
+      <input type="text" name="fullName" />
       <input type="email" name="email" />
       <input type="tel" name="phoneNumber" />
       <input type="text" name="businessName" />
