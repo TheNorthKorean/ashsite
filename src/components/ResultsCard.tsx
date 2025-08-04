@@ -230,9 +230,9 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               <motion.div
                 whileHover={{ rotate: 15, scale: 1.1 }}
               >
-                <Trophy className="text-[#ff41fd] mr-3" size={36} />
+                <Trophy className="text-yellow-400 mr-3" size={32} />
               </motion.div>
-              <h1 className="text-3xl md:text-4xl font-bold bg-white/90 bg-clip-text text-transparent">
+              <h1 className="text-3xl md:text-4xl font-black bg-white/90 bg-clip-text text-transparent">
                 Sales Success Scorecard
               </h1>
             </div>
@@ -246,9 +246,9 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
             animate={{ opacity: 1, y: 0 }}
           >
             {/* Participant Info */}
-            <div className="lg:col-span-2 bg-white/5 rounded-2xl p-5 border border-white/10">
+            <div className="lg:col-span-2 bg-white/5 rounded-3xl p-5">
               <h2 className="text-2xl font-bold text-white mb-1">{participantName}</h2>
-              <p className="text-[#00d9ff] text-lg font-semibold mb-1">{practiceName}</p>
+              <p className="text-pink-400 text-lg font-semibold mb-1">{practiceName}</p>
               <div className="flex flex-wrap gap-4 text-sm text-white/70">
                 <span>Duration: {programDuration}</span>
                 <span>•</span>
@@ -257,7 +257,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
             </div>
 
             {/* Overall Score */}
-            <div className="bg-gradient-to-br from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-2xl p-6 text-center border border-[#00d9ff]/30">
+            <div className="bg-gradient-to-br from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-3xl p-6 text-center">
               <motion.div
                 className="text-4xl font-bold bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent mb-1"
                 initial={{ scale: 0 }}
@@ -272,7 +272,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                 animate={{ width: "100%" }}
               >
                 <motion.div 
-                  className="bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] h-2 rounded-full"
+                  className="bg-gradient-to-r from-[#4543dd] to-[#eb499a] h-2 rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: `${coachingScore}%` }}
                 />
@@ -282,15 +282,15 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
 
           {/* Sales Confidence Transformation */}
           <motion.div
-            className="bg-white/5 rounded-2xl p-4 mb-6 border border-white/10 relative z-10"
+            className="bg-white/5 rounded-3xl p-5 mb-6 relative z-10"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0, duration: 0.4 }}
             whileHover={{ scale: 1.02 }}
           >
             <div className="flex items-center mb-4">
-              <TrendingUp className="text-[#00d9ff] mr-3" size={24} />
               <h3 className="text-xl font-bold text-white">Sales Confidence</h3>
+              <TrendingUp className="text-white ml-3" size={24} />
             </div>
             
             <div className="grid grid-cols-3 gap-2 text-center">
@@ -359,7 +359,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                     </motion.div>
                   ))}
                 </motion.div>
-                <p className="text-2xl font-bold text-[#00d9ff]">{salesConfidenceAfter}/5</p>
+                <p className="text-2xl font-bold text-blue-400">{salesConfidenceAfter}/5</p>
               </div>
             </div>
           </motion.div>
@@ -373,7 +373,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
             {kpiProgress.map((kpi, index) => (
               <motion.div
                 key={index}
-                className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300"
+                className="bg-white/5 rounded-3xl p-5 hover:bg-white/10 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -382,7 +382,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                   <h4 className="text-sm font-semibold text-white">{kpi.label}</h4>
                   <div className={`flex items-center space-x-1 ${getProgressColor(kpi.trend, kpi.isPositive)}`}>
                     {getProgressIcon(kpi.trend)}
-                    <span className="font-bold text-xs">{kpi.percentageChange > 0 ? '+' : ''}{kpi.percentageChange}%</span>
+                    <span className="font-bold text-xs text-blue-400">{kpi.percentageChange > 0 ? '+' : ''}{kpi.percentageChange}%</span>
                   </div>
                 </div>
                 
@@ -394,7 +394,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                   <ArrowRight className="text-white/40" size={16} />
                   <div>
                     <p className="text-white/70 text-xs">After</p>
-                    <p className="text-lg font-bold text-[#00d9ff]">{kpi.afterValue}{kpi.unit}</p>
+                    <p className="text-lg font-bold text-blue-400">{kpi.afterValue}{kpi.unit}</p>
                   </div>
                 </div>
                 
@@ -482,14 +482,14 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                 return (
                   <motion.div
                     key={index}
-                    className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-300"
+                    className="bg-white/5 rounded-3xl p-5 hover:bg-white/10 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-sm font-semibold text-white">{kpiLabel}</h4>
-                      <div className="flex items-center space-x-1 text-[#ff41fd]">
+                      <div className="flex items-center space-x-1 text-purple-400">
                         <span className="font-bold text-xs">{percentageChange > 0 ? '+' : ''}{percentageChange}%</span>
                       </div>
                     </div>
@@ -502,7 +502,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                       <ArrowRight className="text-white/40" size={16} />
                       <div>
                         <p className="text-white/70 text-xs">After</p>
-                        <p className="text-lg font-bold text-[#ff41fd]">{kpi.currentValue}</p>
+                        <p className="text-lg font-bold text-purple-400">{kpi.currentValue}</p>
                       </div>
                     </div>
                     
@@ -533,16 +533,18 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
           >
             {/* Non-Financial Improvements */}
             {nonFinancialImprovements.length > 0 && (
-              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+              <div className="bg-white/5 rounded-3xl p-5">
                 <div className="flex items-center mb-4">
-                  <Users className="text-[#00d9ff] mr-3" size={20} />
+                  <div className="bg-green-400/20 rounded-full p-3 mr-3">
+                    <Users className="text-green-400" size={18} />
+                  </div>
                   <h3 className="text-lg font-bold text-white">Improvements</h3>
                 </div>
                 <div className="space-y-3">
                   {nonFinancialImprovements.slice(0, 4).map((improvement, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-start space-x-3 p-2 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/10 rounded-lg"
+                      className="flex items-start space-x-3 p-2 bg-white/5 rounded-lg"
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0 }}
@@ -563,16 +565,18 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
 
             {/* Key Achievements */}
             {successAchievements.length > 0 && (
-              <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+              <div className="bg-white/5 rounded-3xl p-5">
                 <div className="flex items-center mb-4">
-                  <Trophy className="text-[#ff41fd] mr-3" size={20} />
+                  <div className="bg-yellow-400/20 rounded-full p-3 mr-3">
+                    <Trophy className="text-yellow-400" size={18} />
+                  </div>
                   <h3 className="text-lg font-bold text-white">Achievements</h3>
                 </div>
                 <div className="space-y-3">
                   {successAchievements.slice(0, 4).map((achievement, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-start space-x-3 p-2 bg-gradient-to-r from-[#ff41fd]/20 to-[#00d9ff]/10 rounded-lg"
+                      className="flex items-start space-x-3 p-2 bg-white/5 rounded-lg"
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.8 + index * 0.1 }}
@@ -583,7 +587,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                         animate={{ rotate: 0, scale: 1 }}
                         transition={{ delay: 0.9 + index * 0.1, type: "spring" }}
                       >
-                        <Award className="text-[#ff41fd] mt-0.5 flex-shrink-0" size={16} />
+                        <Award className="text-yellow-400 mt-0.5 flex-shrink-0" size={16} />
                       </motion.div>
                       <p className="text-white/90 font-medium text-sm">{achievement}</p>
                     </motion.div>
@@ -601,9 +605,11 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
             >
-              <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+              <div className="bg-white/5 rounded-3xl p-6">
                 <div className="flex items-center mb-4">
-                  <Target className="text-[#00d9ff] mr-3" size={20} />
+                  <div className="bg-pink-400/20 rounded-full p-3 mr-3">
+                    <Target className="text-pink-400" size={20} />
+                  </div>
                   <h3 className="text-xl font-bold text-white">Your Assessment Details</h3>
                 </div>
                 
@@ -611,7 +617,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                   {/* Selected KPIs */}
                   {userData?.selectedKPIs && userData?.selectedKPIs.length > 0 && (
                     <div>
-                      <h4 className="text-[#00d9ff] font-semibold mb-3">Your Selected KPIs</h4>
+                      <h4 className="text-white/50 font-semibold mb-3">Your Selected KPIs</h4>
                       <div className="space-y-2">
                         {userData?.selectedKPIs?.map((kpi: any, index: number) => (
                           <div key={index} className="bg-white/5 rounded-lg p-3">
@@ -626,7 +632,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                   {/* Selected Non-Financial KPIs */}
                   {userData?.selectedNonFinancialKPIs && userData?.selectedNonFinancialKPIs.length > 0 && (
                     <div>
-                      <h4 className="text-[#ff41fd] font-semibold mb-3">Your Non-Financial KPIs</h4>
+                      <h4 className="text-white/50 font-semibold mb-3">Your Non-Financial KPIs</h4>
                       <div className="space-y-2">
                         {userData?.selectedNonFinancialKPIs?.map((kpi: any, index: number) => {
                           const nonFinancialKpiLabels: { [key: string]: string } = {
@@ -661,13 +667,13 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4 pt-4 border-t border-white/10">
                   {userData?.revenueForecastConfidence && (
                     <div className="bg-white/5 rounded-lg p-3">
-                      <p className="text-[#00d9ff] text-sm font-medium">Revenue Forecast Confidence</p>
+                      <p className="text-pink-400 text-sm font-medium">Revenue Forecast Confidence</p>
                       <p className="text-white text-xs">{formatValue(userData.revenueForecastConfidence)}</p>
                     </div>
                   )}
                   {userData?.jobDescriptionsClarity && (
                     <div className="bg-white/5 rounded-lg p-3">
-                      <p className="text-[#00d9ff] text-sm font-medium">Job Descriptions Clarity</p>
+                      <p className="text-pink-400 text-sm font-medium">Job Descriptions Clarity</p>
                       <p className="text-white text-xs">{formatValue(userData.jobDescriptionsClarity)}</p>
                     </div>
                   )}
@@ -676,7 +682,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                   {/* Success Definition - moved to bottom */}
                   {userData?.successDefinition && (
                     <div className="mt-4 pt-4 border-t border-white/10 md:col-span-2">
-                      <h4 className="bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent inline-block text-lg leading-tight font-semibold mb-3">Your Success Vision</h4>
+                      <h4 className="bg-gradient-to-r from-[#a753f5] to-[#eb499a] bg-clip-text text-transparent inline-block text-lg leading-tight font-semibold mb-3">Your Success Vision</h4>
                       <div className="bg-white/5 rounded-lg p-3">
                         <p className="text-white/90 text-sm italic">"{userData.successDefinition}"</p>
                       </div>
@@ -695,10 +701,12 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.6 }}
             >
-              <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+              <div className="bg-white/5 rounded-3xl p-5">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
-                    <Calendar className="text-[#ff41fd] mr-3" size={20} />
+                    <div className="bg-white/5 rounded-full p-3 mr-3">
+                      <Calendar className="text-white" size={18} />
+                    </div>
                     <h3 className="text-lg font-bold text-white">Progress Notes</h3>
                     <span className="text-white/60 text-sm ml-2">
                       ({notes.length} total)
@@ -751,9 +759,9 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                   transition={{ duration: 0.3 }}
                 >
                   {getCurrentNotes().map((note, index) => (
-                    <div key={`${currentNotesPage}-${index}`} className="bg-white/5 rounded-lg p-4 border-l-4 border-[#ff41fd]">
+                    <div key={`${currentNotesPage}-${index}`} className="bg-white/5 rounded-lg p-4 border-l-4 border-purple-400">
                       <p className="text-white/90 text-sm mb-2">{note.text}</p>
-                      <p className="text-[#ff41fd] text-xs font-medium">
+                      <p className="text-purple-400 text-xs font-medium">
                         {new Date(note.date).toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'long',
@@ -785,10 +793,10 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               >
-                <CheckCircle className="text-[#00d9ff]" size={24} />
+                <CheckCircle className="text-blue-400" size={24} />
               </motion.div>
               <div>
-                <p className="text-[#00d9ff] font-semibold">
+                <p className="text-blue-400 font-semibold">
                   {weekNumber === 7 ? 'Program Completed' : 'Ongoing'}
                 </p>
                 <p className="text-white/70 text-sm">
