@@ -185,8 +185,8 @@ const Coaching = () => {
                     { number: '95%', label: 'Success Rate' },
                   ].map((stat, index) => (
                     <div key={index} className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
-                      <div className="text-2xl font-bold text-[#00d9ff] mb-1">{stat.number}</div>
-                      <div className="text-sm text-white/100">{stat.label}</div>
+                      <div className="text-2xl font-bold text-white mb-1">{stat.number}</div>
+                      <div className="text-sm text-blue-300">{stat.label}</div>
                     </div>
                   ))}
                 </div>
@@ -198,7 +198,7 @@ const Coaching = () => {
 
       {/* Coaching Features */}
       <section className="py-20 relative">
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
             className="text-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -206,7 +206,7 @@ const Coaching = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Coaching Options and Features</h2>
+            <h2 className="text-4xl lg:text-4xl font-bold mb-6">Coaching Options and Features</h2>
             <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
               Comprehensive training and support designed to accelerate your success.
             </p>
@@ -222,19 +222,19 @@ const Coaching = () => {
                 transition={{ duration: 0.8, delay: 0.1 * index }}
                 viewport={{ once: true }}
               >
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-6 h-full hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-[#ff41fd]/50">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-6 h-full hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-white/20">
                   {/* Icon */}
-                  <div className="flex justify-center mb-2 md:mb-6">
-                    <div className="w-14 h-14 bg-[#ff41fd]/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <feature.icon className="text-[#ff41fd] group-hover:text-white transition-colors duration-300" size={26} />
+                  <div className="flex justify-left mb-2 md:mb-4">
+                    <div className="w-12 h-12 bg-pink-400/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <feature.icon className="text-pink-400 transition-colors duration-300" size={22} />
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-2 md:mb-4 text-center transition-colors duration-300">
+                  <h3 className="text-xl font-bold mb-2 md:mb-4 text-left transition-colors duration-300">
                     {feature.title}
                   </h3>
                   
-                  <p className="text-white/70 text-center leading-relaxed">
+                  <p className="text-white/70 text-left leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -246,9 +246,9 @@ const Coaching = () => {
 
       {/* Coaching Inquiry Form */}
       <section id="coaching-form" className="py-12 md:py-24 relative">
-        <div className="relative z-10 max-w-3xl mx-auto px-6">
+        <div className="relative z-10 max-w-4xl mx-auto px-6">
           <motion.div
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-10"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-5 md:p-12"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -256,9 +256,9 @@ const Coaching = () => {
           >
             {!isSubmitted ? (
               <>
-                <div className="text-center mb-4">
+                <div className="text-center mb-8">
                   <h2 className="text-4xl font-bold mb-4 mt-4 md:mt-0">Start Your Coaching Journey</h2>
-                  <p className="text-l text-white/70 max-w-2xl mx-auto">
+                  <p className="text-base text-white/70 max-w-2xl mx-auto">
                     Ready to transform your practice? Let's discuss how personalized coaching can accelerate your success.
                   </p>
                 </div>
@@ -289,7 +289,7 @@ const Coaching = () => {
                         value={formData.firstName}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                        className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                         placeholder="Enter your first name"
                       />
                     </div>
@@ -303,7 +303,7 @@ const Coaching = () => {
                         value={formData.lastName}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                        className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                         placeholder="Enter your last name"
                       />
                     </div>
@@ -321,7 +321,7 @@ const Coaching = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                        className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                         placeholder="Enter your email address"
                       />
                     </div>
@@ -335,7 +335,7 @@ const Coaching = () => {
                         value={formData.phone}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                        className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                         placeholder="Enter your phone number"
                       />
                     </div>
@@ -352,7 +352,7 @@ const Coaching = () => {
                       value={formData.practiceName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                      className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                       placeholder="Enter your practice name"
                     />
                   </div>
@@ -367,7 +367,7 @@ const Coaching = () => {
                       value={formData.coachingType}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                      className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                     >
                       <option value="">Select coaching type</option>
                       <option value="1:1">1-on-1 Coaching</option>
@@ -387,7 +387,7 @@ const Coaching = () => {
                       onChange={handleInputChange}
                       required
                       rows={4}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors resize-none"
+                      className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors resize-none"
                       placeholder="Tell us about your current challenges and what you hope to achieve through coaching..."
                     />
                   </div>
@@ -401,7 +401,7 @@ const Coaching = () => {
                       name="bestTime"
                       value={formData.bestTime}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                      className="w-full px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                     >
                       <option value="">Select preferred time</option>
                       <option value="morning">Morning (9AM - 12PM)</option>
@@ -415,8 +415,8 @@ const Coaching = () => {
                   <div className="text-center pt-4">
                     <motion.button
                       type="submit"
-                      className="px-8 py-3 md:py-3 mb-4 md:mb-0 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] rounded-xl font-semibold text-base md:text-base shadow-lg hover:shadow-[#00d9ff]/25 transition-all duration-300"
-                      whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 217, 255, 0.4)' }}
+                      className="px-8 py-3 md:py-4 mb-4 md:mb-0 bg-gradient-to-r from-blue-400 to-pink-400 rounded-xl font-semibold text-base md:text-base shadow-lg hover:shadow-blue-400/25 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       Start My Coaching Journey

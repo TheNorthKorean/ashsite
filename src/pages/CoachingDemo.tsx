@@ -705,7 +705,7 @@ const CoachingDemo = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="inline-flex items-center px-4 py-1.5 bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-500/30 rounded-full">
+            <div className="inline-flex items-center px-4 py-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-500/30 rounded-full">
               <Shield className="text-green-400 mr-2" size={16} />
               <span className="text-xs md:text-sm font-normal text-green-400">
                 Professional Coaching • 6-Week Program
@@ -715,27 +715,27 @@ const CoachingDemo = () => {
           
           <h1 className="mt-8 text-4xl md:text-5xl lg:text-7xl max-w-4xl mx-auto font-bold mb-8 py-2">
             <span className="text-white">6-Week </span>
-            <span className="bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent" style={{ WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent" style={{ WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
               Transformation
             </span>
             <span className="text-white"> Program</span>
           </h1>
-          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-8 text-sm md:text-base">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-8 text-sm md:text-sm">
             <div className="flex items-center gap-2">
-              <BarChart3 className="text-[#00d9ff]" size={20} />
+              <BarChart3 className="text-green-400" size={20} />
               <span className="text-white/90">Measurable Growth</span>
             </div>
             <div className="flex items-center gap-2">
-              <Users className="text-[#00d9ff]" size={20} />
+              <Users className="text-blue-400" size={20} />
               <span className="text-white/90">Personal Alignment</span>
             </div>
             <div className="flex items-center gap-2">
-              <Target className="text-[#00d9ff]" size={20} />
+              <Target className="text-purple-500" size={20} />
               <span className="text-white/90">Long-term Impact</span>
             </div>
           </div>
           <div className="max-w-3xl mx-auto mb-10">
-            <p className="text-white/70 text-base leading-relaxed">
+            <p className="text-white/70 text-lg leading-relaxed">
               A structured, repeatable system that ensures every coaching engagement delivers measurable growth, 
               personal alignment, and long-term impact. This process supports individual accountability, 
               team momentum, and leadership clarity on ROI.
@@ -753,8 +753,8 @@ const CoachingDemo = () => {
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Our Process</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-14 h-14 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="text-[#00d9ff]" size={24} />
+              <div className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BarChart3 className="text-blue-400" size={24} />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">1. Baseline Assessment</h3>
               <p className="text-white/70">
@@ -763,8 +763,8 @@ const CoachingDemo = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-14 h-14 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="text-[#00d9ff]" size={24} />
+              <div className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="text-blue-400" size={24} />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">2. Personalized Coaching</h3>
               <p className="text-white/70">
@@ -773,8 +773,8 @@ const CoachingDemo = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-14 h-14 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trophy className="text-[#00d9ff]" size={24} />
+              <div className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Trophy className="text-blue-400" size={24} />
               </div>
               <h3 className="text-xl font-bold text-white mb-3">3. Results & Growth</h3>
               <p className="text-white/70">
@@ -794,7 +794,7 @@ const CoachingDemo = () => {
           <h2 className="text-3xl font-bold text-white mb-8 text-center pt-12">What Makes It Different</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
-              <Target className="text-[#ff41fd] mb-4" size={24} />
+              <Target className="text-purple-400 mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Structured & Repeatable</h3>
               <p className="text-white/70">
                 Every coaching engagement follows a proven framework that ensures consistent, measurable results across all participants.
@@ -802,7 +802,7 @@ const CoachingDemo = () => {
             </div>
             
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
-              <BarChart3 className="text-[#ff41fd] mb-4" size={24} />
+              <BarChart3 className="text-purple-400 mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Data-Driven Approach</h3>
               <p className="text-white/70">
                 Track specific KPIs and metrics to ensure tangible improvements and clear ROI for leadership.
@@ -810,7 +810,7 @@ const CoachingDemo = () => {
             </div>
             
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
-              <Users className="text-[#ff41fd] mb-4" size={24} />
+              <Users className="text-purple-400 mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Individual Accountability</h3>
               <p className="text-white/70">
                 Personal baseline assessments and progress tracking ensure each participant stays accountable to their goals.
@@ -818,7 +818,7 @@ const CoachingDemo = () => {
             </div>
             
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
-              <Trophy className="text-[#ff41fd] mb-4" size={24} />
+              <Trophy className="text-purple-400 mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Long-term Impact</h3>
               <p className="text-white/70">
                 Beyond immediate results, participants develop sustainable skills and systems for continued growth.
@@ -832,16 +832,15 @@ const CoachingDemo = () => {
           className="text-center mb-24 pt-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
           <h2 className="text-3xl font-bold text-white mb-8">Experience the System</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <motion.div
               className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:transition-all duration-300"
-              whileHover={{ scale: 1.02 }}
             >
-              <div className="w-16 h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="text-[#00d9ff]" size={24} />
+              <div className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-blue-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BarChart3 className="text-blue-400" size={24} />
               </div>
               <h3 className="text-xl font-bold text-white mb-4">Try the Assessment</h3>
               <p className="text-white/70 mb-6">
@@ -849,7 +848,7 @@ const CoachingDemo = () => {
               </p>
               <motion.button
                 onClick={() => setCurrentView('assessment')}
-                className="w-full px-6 py-3 bg-[#00d9ff]/20 text-white rounded-xl font-semibold hover:bg-[#00d9ff]/80 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="w-full px-6 py-3 bg-blue-400/20 text-white rounded-xl font-semibold hover:bg-blue-400/80 transition-all duration-300 flex items-center justify-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -860,10 +859,9 @@ const CoachingDemo = () => {
 
             <motion.div
               className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:transition-all duration-300"
-              whileHover={{ scale: 1.02 }}
             >
-              <div className="w-16 h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Trophy className="text-[#00d9ff]" size={24} />
+              <div className="w-14 h-14 bg-gradient-to-r from-purple-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Trophy className="text-purple-400" size={24} />
               </div>
               <h3 className="text-xl font-bold text-white mb-4">Track Your Progress</h3>
               <p className="text-white/70 mb-6">
@@ -871,7 +869,7 @@ const CoachingDemo = () => {
               </p>
               <motion.button
                 onClick={() => navigate('/progress-update')}
-                className="w-full px-6 py-3 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                className="w-full px-6 py-3 bg-gradient-to-r from-blue-400 to-purple-400 text-white rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -884,7 +882,7 @@ const CoachingDemo = () => {
 
         {/* ROI Benefits */}
         <motion.div
-          className="bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 rounded-3xl p-8 text-center mb-16 pt-16 max-w-5xl mx-auto"
+          className="bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-3xl p-8 text-center mb-16 pt-16 max-w-5xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -896,16 +894,16 @@ const CoachingDemo = () => {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-xl mx-auto">
-            <div className="bg-white/5 rounded-full p-6">
-              <div className="text-3xl font-bold text-[#00d9ff] mb-2">37%</div>
+            <div className="bg-white/5 rounded-3xl p-6">
+              <div className="text-3xl font-bold text-blue-400 mb-2">37%</div>
               <p className="text-white/70 text-sm">Average Revenue Increase</p>
             </div>
-            <div className="bg-white/5 rounded-full p-6">
-              <div className="text-3xl font-bold text-[#00d9ff] mb-2">78%</div>
+            <div className="bg-white/5 rounded-3xl p-6">
+              <div className="text-3xl font-bold text-blue-400 mb-2">78%</div>
               <p className="text-white/70 text-sm">Conversion Rate Improvement</p>
             </div>
-            <div className="bg-white/5 rounded-full p-6">
-              <div className="text-3xl font-bold text-[#00d9ff] mb-2">94%</div>
+            <div className="bg-white/5 rounded-3xl p-6">
+              <div className="text-3xl font-bold text-blue-400 mb-2">94%</div>
               <p className="text-white/70 text-sm">Average Completion Score</p>
             </div>
           </div>

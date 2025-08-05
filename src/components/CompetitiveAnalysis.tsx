@@ -91,7 +91,7 @@ const CompetitiveAnalysis = () => {
                 animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
                 transition={{ duration: 0.8, delay: 0.2 * index }}
               >
-                <div className="relative bg-red-500/5 backdrop-blur-xl border border-red-500/20 rounded-2xl p-6 hover:bg-red-500/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-red-500/40">
+                <div className="relative bg-red-500/5 backdrop-blur-xl border border-red-500/20 rounded-3xl p-6 hover:bg-red-500/10 hover:scale-[1.02] transition-all duration-300 group-hover:border-red-500/40">
                   <div className="flex items-start gap-6">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -135,7 +135,7 @@ const CompetitiveAnalysis = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="sticky top-8">
-              <div className="bg-gradient-to-br from-black/80 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-2xl p-4 md:p-6 h-full">
+              <div className="bg-gradient-to-br from-black/80 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-6 h-full">
                 <h3 className="text-2xl font-bold mb-6 mt-2 md:mt-0 text-center bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
                   Traditional vs Modern
                 </h3>
@@ -157,13 +157,13 @@ const CompetitiveAnalysis = () => {
                       transition={{ duration: 0.5, delay: 0.8 + 0.1 * index }}
                     >
                       <motion.div 
-                        className="bg-red-500/10 border border-red-500/20 rounded-lg p-3 flex items-center gap-2 hover:bg-red-500/15 hover:scale-[1.02] transition-all duration-300 min-h-[60px]"
+                        className="bg-red-500/10 border border-red-500/20 rounded-xl p-3 flex items-center gap-2 hover:bg-red-500/15 hover:scale-[1.02] transition-all duration-300 min-h-[60px]"
                       >
                         <X size={14} className="text-red-400 flex-shrink-0" />
                         <span className="text-red-400 text-sm font-medium">{comparison.traditional}</span>
                       </motion.div>
                       <motion.div 
-                        className="bg-green-500/10 border border-green-500/30 rounded-lg p-3 flex items-center gap-2 hover:bg-green-500/15 hover:scale-[1.02] transition-all duration-300 min-h-[60px]"
+                        className="bg-green-500/10 border border-green-500/30 rounded-xl p-3 flex items-center gap-2 hover:bg-green-500/15 hover:scale-[1.02] transition-all duration-300 min-h-[60px]"
                       >
                         <Check size={14} className="text-green-400 flex-shrink-0" />
                         <span className="text-green-400 text-sm font-medium">{comparison.modern}</span>

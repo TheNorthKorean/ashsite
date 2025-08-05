@@ -251,16 +251,15 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
           <div className="flex justify-start mb-6">
             <motion.button
               onClick={onBack || (() => navigate('/coaching-demo'))}
-              className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl transition-all duration-300 text-sm text-white/80 hover:text-white"
+              className="flex items-center space-x-2 px-3 py-3 bg-white/0 hover:bg-white/10 border-2 border-white/50 rounded-full transition-all duration-300 text-sm text-white/80 hover:text-white"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <ArrowLeft size={20} />
-              <span>Back</span>
             </motion.button>
           </div>
           
-          <h1 className="mt-10 py-2 text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
+          <h1 className="mt-10 py-2 text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             6-Week Transformation Program
           </h1>
           <h2 className="text-xl md:text-2xl font-semibold text-white mb-4">
@@ -278,7 +277,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
               <div key={index} className="flex items-center">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${
                   index <= currentStep 
-                    ? 'bg-gradient-to-r from-[#00d9ff]/80 to-[#ff41fd]/80 border-[#ffffff]/20 text-[#ffffff]' 
+                    ? 'bg-gradient-to-r from-blue-400/80 to-purple-400/80 border-white/50 text-[#ffffff]' 
                     : 'border-white/30 text-white/50'
                 }`}>
                   {index < currentStep ? (
@@ -289,7 +288,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                 </div>
                 {index < steps.length - 1 && (
                   <div className={`w-32 h-0.5 mx-4 transition-all duration-300 ${
-                    index < currentStep ? 'bg-gradient-to-r from-[#00d9ff] to-[#ff41fd]' : 'bg-white/20'
+                    index < currentStep ? 'bg-gradient-to-r from-blue-400 to-purple-400' : 'bg-white/20'
                   }`} />
                 )}
               </div>
@@ -313,7 +312,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
           <div>
             {currentStep === 0 && (
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-[#00d9ff] mb-6">Tell us about yourself</h3>
+                <h3 className="text-2xl font-bold text-blue-400 mb-6">Tell us about yourself</h3>
                 
                 <div>
                   <label className="block text-sm font-semibold mb-2 text-white">Full Name *</label>
@@ -321,7 +320,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                     type="text"
                     value={formData.participantName}
                     onChange={(e) => handleInputChange('participantName', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-white/50"
                     placeholder="Enter your full name"
                     required
                   />
@@ -333,7 +332,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                     type="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-white/50"
                     placeholder="Enter your email address"
                     required
                   />
@@ -345,7 +344,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                     type="text"
                     value={formData.practiceType}
                     onChange={(e) => handleInputChange('practiceType', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-white/50"
                     placeholder="Enter your practice name"
                     required
                   />
@@ -355,7 +354,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
 
             {currentStep === 1 && (
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-[#00d9ff] mb-6">Sales Confidence Assessment</h3>
+                <h3 className="text-2xl font-bold text-blue-400 mb-6">Sales Confidence Assessment</h3>
                 
                 <div>
                   <label className="block text-sm font-semibold mb-4 text-white">
@@ -373,8 +372,8 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                         onClick={() => handleInputChange('salesConfidence', rating)}
                         className={`w-12 h-12 rounded-full border-2 transition-all duration-300 ${
                           formData.salesConfidence === rating
-                            ? 'bg-[#00d9ff] border-[#00d9ff] text-white scale-110'
-                            : 'border-white/30 text-white/70 hover:border-[#00d9ff]/50 hover:scale-105'
+                            ? 'bg-blue-400 border-blue-400 text-white scale-110'
+                            : 'border-white/30 text-white/70 hover:border-blue-400/50 hover:scale-105'
                         }`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
@@ -390,8 +389,8 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 rounded-2xl p-6">
-                  <h4 className="text-lg font-semibold mb-3 text-[#00d9ff]">Rating Guide</h4>
+                <div className="bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-2xl p-6">
+                  <h4 className="text-lg font-semibold mb-3 text-blue-400">Rating Guide</h4>
                   <div className="space-y-2 text-white/80 text-sm">
                     <div><span className="font-medium">1 - Not Confident:</span> Struggle with sales conversations</div>
                     <div><span className="font-medium">2 - Somewhat Confident:</span> Can handle basic sales but avoid difficult conversations</div>
@@ -405,7 +404,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
 
             {currentStep === 2 && (
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-[#00d9ff] mb-6">Key Performance Indicators</h3>
+                <h3 className="text-2xl font-bold text-blue-400 mb-6">Key Performance Indicators</h3>
                 
                 <div>
                   <label className="block text-sm font-semibold mb-4 text-white">
@@ -414,7 +413,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                   
                   {formData.selectedKPIs.map((kpiData, index) => (
                     <div key={index} className="bg-white/5 border border-white/10 rounded-xl p-6 mb-6">
-                      <h4 className="text-lg font-semibold mb-4 text-[#00d9ff]">KPI #{index + 1}</h4>
+                      <h4 className="text-lg font-semibold mb-4 text-blue-400">KPI #{index + 1}</h4>
                       
                       <div className="space-y-4">
                         <div>
@@ -422,7 +421,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                           <select
                             value={kpiData.kpi}
                             onChange={(e) => handleKPIChange(index, 'kpi', e.target.value)}
-                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white"
+                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white"
                           >
                             <option value="">Choose a KPI</option>
                             {kpiOptions.map((option) => (
@@ -440,19 +439,19 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                               type="text"
                               value={kpiData.customKpiName || ''}
                               onChange={(e) => handleKPIChange(index, 'customKpiName', e.target.value)}
-                              className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50"
+                              className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-white/50"
                               placeholder="Enter your custom KPI name (e.g., Social Media Engagement Rate, Patient Satisfaction Score)"
                             />
                           </div>
                         )}
 
                         {kpiData.kpi && (
-                          <div className="bg-gradient-to-r from-[#00d9ff]/5 to-[#ff41fd]/5 rounded-lg p-4">
+                          <div className="bg-gradient-to-r from-blue-400/5 to-purple-400/5 rounded-lg p-4">
                             <div className="flex justify-between items-start mb-3">
                               <p className="text-sm text-white/80">
                                 <span className="font-medium">Formula:</span> {kpiOptions.find(opt => opt.value === kpiData.kpi)?.formula}
                               </p>
-                              <p className="text-sm text-[#00d9ff] font-medium ml-4">
+                              <p className="text-sm text-blue-400 font-medium ml-4">
                                 Example: {kpiOptions.find(opt => opt.value === kpiData.kpi)?.example}
                               </p>
                             </div>
@@ -464,7 +463,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                                   type="text"
                                   value={kpiData.currentValue}
                                   onChange={(e) => handleKPIChange(index, 'currentValue', e.target.value)}
-                                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50"
+                                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-white/50"
                                   placeholder="Enter current value"
                                 />
                               </div>
@@ -475,7 +474,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                                   type="text"
                                   value={kpiData.goalValue}
                                   onChange={(e) => handleKPIChange(index, 'goalValue', e.target.value)}
-                                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50"
+                                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-white/50"
                                   placeholder="Enter goal value"
                                 />
                               </div>
@@ -488,14 +487,14 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                 </div>
 
                 <div className="mt-8">
-                  <h4 className="text-xl font-bold text-[#ff41fd] mb-6">Non-Financial KPIs</h4>
+                  <h4 className="text-xl font-bold text-purple-400 mb-6">Non-Financial KPIs</h4>
                   <label className="block text-sm font-semibold mb-4 text-white">
                     Select your top 3 Non-Financial KPIs to track:
                   </label>
                   
                   {formData.selectedNonFinancialKPIs.map((kpiData, index) => (
                     <div key={index} className="bg-white/5 border border-white/10 rounded-xl p-6 mb-6">
-                      <h5 className="text-lg font-semibold mb-4 text-[#ff41fd]">Non-Financial KPI #{index + 1}</h5>
+                      <h5 className="text-lg font-semibold mb-4 text-purple-400">Non-Financial KPI #{index + 1}</h5>
                       
                       <div className="space-y-4">
                         <div>
@@ -503,7 +502,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                           <select
                             value={kpiData.kpi}
                             onChange={(e) => handleNonFinancialKPIChange(index, 'kpi', e.target.value)}
-                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#ff41fd] focus:outline-none transition-colors text-white"
+                            className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-purple-400 focus:outline-none transition-colors text-white"
                           >
                             <option value="">Choose a Non-Financial KPI</option>
                             {nonFinancialKpiOptions.map((option) => (
@@ -521,19 +520,19 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                               type="text"
                               value={kpiData.customKpiName || ''}
                               onChange={(e) => handleNonFinancialKPIChange(index, 'customKpiName', e.target.value)}
-                              className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#ff41fd] focus:outline-none transition-colors text-white placeholder-white/50"
+                              className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-purple-400 focus:outline-none transition-colors text-white placeholder-white/50"
                               placeholder="Enter your custom non-financial KPI name (e.g., Team Morale Score, Patient Wait Time)"
                             />
                           </div>
                         )}
 
                         {kpiData.kpi && (
-                          <div className="bg-gradient-to-r from-[#ff41fd]/5 to-[#00d9ff]/5 rounded-lg p-4">
+                          <div className="bg-gradient-to-r from-purple-400/5 to-blue-400/5 rounded-lg p-4">
                             <div className="flex justify-between items-start mb-3">
                               <p className="text-sm text-white/80">
                                 <span className="font-medium">Measurement:</span> {nonFinancialKpiOptions.find(opt => opt.value === kpiData.kpi)?.formula}
                               </p>
-                              <p className="text-sm text-[#ff41fd] font-medium ml-4">
+                              <p className="text-sm text-purple-400 font-medium ml-4">
                                 Example: {nonFinancialKpiOptions.find(opt => opt.value === kpiData.kpi)?.example}
                               </p>
                             </div>
@@ -545,7 +544,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                                   type="text"
                                   value={kpiData.currentValue}
                                   onChange={(e) => handleNonFinancialKPIChange(index, 'currentValue', e.target.value)}
-                                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#ff41fd] focus:outline-none transition-colors text-white placeholder-white/50"
+                                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-purple-400 focus:outline-none transition-colors text-white placeholder-white/50"
                                   placeholder="Enter current value"
                                 />
                               </div>
@@ -556,7 +555,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                                   type="text"
                                   value={kpiData.goalValue}
                                   onChange={(e) => handleNonFinancialKPIChange(index, 'goalValue', e.target.value)}
-                                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#ff41fd] focus:outline-none transition-colors text-white placeholder-white/50"
+                                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-purple-400 focus:outline-none transition-colors text-white placeholder-white/50"
                                   placeholder="Enter goal value"
                                 />
                               </div>
@@ -572,7 +571,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
 
             {currentStep === 3 && (
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-[#00d9ff] mb-6">Team & Operations</h3>
+                <h3 className="text-2xl font-bold text-blue-400 mb-6">Team & Operations</h3>
                 
                 <div>
                   <label className="block text-sm font-semibold mb-4 text-white">
@@ -590,8 +589,8 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                         key={option.value}
                         className={`flex items-center p-4 border rounded-xl cursor-pointer transition-all duration-300 ${
                           formData.revenueForecastConfidence === option.value
-                            ? 'border-[#00d9ff] bg-[#00d9ff]/10'
-                            : 'border-white/20 hover:border-[#00d9ff]/50 hover:bg-white/5'
+                            ? 'border-blue-400 bg-blue-400/10'
+                            : 'border-white/20 hover:border-blue-400/50 hover:bg-white/5'
                         }`}
                         whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.99 }}
@@ -602,7 +601,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                           value={option.value}
                           checked={formData.revenueForecastConfidence === option.value}
                           onChange={(e) => handleInputChange('revenueForecastConfidence', e.target.value)}
-                          className="mr-3 text-[#00d9ff] focus:ring-[#00d9ff]"
+                          className="mr-3 text-blue-400 focus:ring-blue-400"
                         />
                         <span className="text-white">{option.label}</span>
                       </motion.label>
@@ -626,8 +625,8 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                         key={option.value}
                         className={`flex items-center p-4 border rounded-xl cursor-pointer transition-all duration-300 ${
                           formData.jobDescriptionsClarity === option.value
-                            ? 'border-[#00d9ff] bg-[#00d9ff]/10'
-                            : 'border-white/20 hover:border-[#00d9ff]/50 hover:bg-white/5'
+                            ? 'border-blue-400 bg-blue-400/10'
+                            : 'border-white/20 hover:border-blue-400/50 hover:bg-white/5'
                         }`}
                         whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.99 }}
@@ -638,7 +637,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                           value={option.value}
                           checked={formData.jobDescriptionsClarity === option.value}
                           onChange={(e) => handleInputChange('jobDescriptionsClarity', e.target.value)}
-                          className="mr-3 text-[#00d9ff] focus:ring-[#00d9ff]"
+                          className="mr-3 text-blue-400 focus:ring-blue-400"
                         />
                         <span className="text-white">{option.label}</span>
                       </motion.label>
@@ -650,7 +649,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
 
             {currentStep === 4 && (
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-[#00d9ff] mb-6">Success Definition</h3>
+                <h3 className="text-2xl font-bold text-blue-400 mb-6">Success Definition</h3>
                 
                 <div>
                   <label className="block text-sm font-semibold mb-4 text-white">
@@ -659,14 +658,14 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                   <textarea
                     value={formData.successDefinition}
                     onChange={(e) => handleInputChange('successDefinition', e.target.value)}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50 resize-none"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-white/50 resize-none"
                     placeholder="Describe your vision of success... Consider both quantitative goals (revenue, conversion rates, etc.) and qualitative improvements (team confidence, patient satisfaction, operational efficiency, etc.)"
                     rows={6}
                   />
                 </div>
 
-                <div className="bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 rounded-2xl p-6">
-                  <h4 className="text-lg font-semibold mb-3 text-[#ffffff]">Consider Including:</h4>
+                <div className="bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-2xl p-6">
+                  <h4 className="text-lg font-semibold mb-3 text-white">Consider Including:</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-white/80 text-sm">
                     <div>
                       <p className="font-medium mb-2">Quantitative Goals:</p>
@@ -723,7 +722,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                 <motion.button
                   type="button"
                   onClick={nextStep}
-                  className="px-6 py-3 bg-[#00d9ff]/0 border border-[#00d9ff] text-white rounded-xl font-semibold hover:bg-[#00d9ff]/30 transition-all duration-300 flex items-center space-x-2"
+                  className="px-6 py-3 bg-blue-400/0 border border-blue-400 text-white rounded-xl font-semibold hover:bg-blue-400/30 transition-all duration-300 flex items-center space-x-2"
                   disabled={isSubmitting}
                   whileHover={!isSubmitting ? { scale: 1.05 } : {}}
                   whileTap={!isSubmitting ? { scale: 0.95 } : {}}
@@ -739,7 +738,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
                   className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     isSubmitting
                       ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] text-white hover:shadow-lg hover:shadow-[#00d9ff]/25'
+                      : 'bg-gradient-to-r from-blue-400 to-purple-400 text-white hover:shadow-lg hover:shadow-blue-400/25'
                   }`}
                   whileHover={!isSubmitting ? { scale: 1.05 } : {}}
                   whileTap={!isSubmitting ? { scale: 0.95 } : {}}

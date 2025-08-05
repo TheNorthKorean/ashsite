@@ -248,7 +248,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
             {/* Participant Info */}
             <div className="lg:col-span-2 bg-white/5 rounded-3xl p-5">
               <h2 className="text-2xl font-bold text-white mb-1">{participantName}</h2>
-              <p className="text-pink-400 text-lg font-semibold mb-1">{practiceName}</p>
+              <p className="text-white text-lg font-semibold mb-1">{practiceName}</p>
               <div className="flex flex-wrap gap-4 text-sm text-white/70">
                 <span>Duration: {programDuration}</span>
                 <span>•</span>
@@ -257,9 +257,9 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
             </div>
 
             {/* Overall Score */}
-            <div className="bg-gradient-to-br from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-3xl p-6 text-center">
+            <div className="bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-3xl p-6 text-center">
               <motion.div
-                className="text-4xl font-bold bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent mb-1"
+                className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-pink-500 bg-clip-text text-transparent mb-1"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
               >
@@ -295,7 +295,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
             
             <div className="grid grid-cols-3 gap-2 text-center">
               <div>
-                <p className="text-white/70 text-md mb-2">Before</p>
+                <p className="text-white/60 text-md mb-2">Before</p>
                 <motion.div 
                   className="flex justify-center space-x-2 mb-2"
                   initial={{ opacity: 0 }}
@@ -317,11 +317,11 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                     </motion.div>
                   ))}
                 </motion.div>
-                <p className="text-2xl font-bold text-white">{salesConfidenceBefore}/5</p>
+                <p className="text-2xl font-bold text-white/60">{salesConfidenceBefore}/5</p>
               </div>
               
               <div>
-                <p className="text-white/80 text-md mb-2">Progress</p>
+                <p className="text-white/80 text-sm mb-2">Progress</p>
                 <motion.div 
                   className="flex items-center justify-center space-x-2 mb-2"
                   whileHover={{ scale: 1.1 }}
@@ -337,7 +337,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               </div>
               
               <div>
-                <p className="text-white/70 text-md mb-2">After</p>
+                <p className="text-white text-md mb-2">After</p>
                 <motion.div 
                   className="flex justify-center space-x-2 mb-2"
                   initial={{ opacity: 0 }}
@@ -359,7 +359,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                     </motion.div>
                   ))}
                 </motion.div>
-                <p className="text-2xl font-bold text-blue-400">{salesConfidenceAfter}/5</p>
+                <p className="text-2xl font-bold text-white">{salesConfidenceAfter}/5</p>
               </div>
             </div>
           </motion.div>
@@ -704,8 +704,8 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
               <div className="bg-white/5 rounded-3xl p-5">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
-                    <div className="bg-white/5 rounded-full p-3 mr-3">
-                      <Calendar className="text-white" size={18} />
+                    <div className="bg-orange-400/20 rounded-full p-3 mr-3">
+                      <Calendar className="text-orange-400" size={18} />
                     </div>
                     <h3 className="text-lg font-bold text-white">Progress Notes</h3>
                     <span className="text-white/60 text-sm ml-2">
@@ -759,9 +759,9 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                   transition={{ duration: 0.3 }}
                 >
                   {getCurrentNotes().map((note, index) => (
-                    <div key={`${currentNotesPage}-${index}`} className="bg-white/5 rounded-lg p-4 border-l-4 border-purple-400">
+                    <div key={`${currentNotesPage}-${index}`} className="bg-white/5 rounded-lg p-4 border-l-4 border-orange-400">
                       <p className="text-white/90 text-sm mb-2">{note.text}</p>
-                      <p className="text-purple-400 text-xs font-medium">
+                      <p className="text-orange-400 text-xs font-medium">
                         {new Date(note.date).toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'long',
@@ -785,7 +785,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
             transition={{ delay: 0.8, duration: 0.6 }}
           >
             <motion.div 
-              className="inline-flex items-center space-x-8 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 border border-[#00d9ff]/30 rounded-2xl px-6 py-3"
+              className="inline-flex items-center space-x-8 bg-gradient-to-r from-blue-400/20 to-purple-400/20 border border-blue-400/30 rounded-2xl px-6 py-3"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -793,13 +793,13 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               >
-                <CheckCircle className="text-blue-400" size={24} />
+                <CheckCircle className="text-white" size={24} />
               </motion.div>
               <div>
-                <p className="text-blue-400 font-semibold">
+                <p className="text-white font-semibold">
                   {weekNumber === 7 ? 'Program Completed' : 'Ongoing'}
                 </p>
-                <p className="text-white/70 text-sm">
+                <p className="text-white/60 text-sm">
                   {weekNumber === 7 ? 'Aesthetic Sales Hero Certified' : 'Transformation in Progress'}
                 </p>
               </div>

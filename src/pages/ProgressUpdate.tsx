@@ -608,7 +608,7 @@ const ProgressUpdate = () => {
                   type="text"
                   value={progressData.practiceName}
                   onChange={(e) => setProgressData(prev => ({ ...prev, practiceName: e.target.value }))}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-white/50"
                   placeholder="Enter your practice name"
                   required
                 />
@@ -620,7 +620,7 @@ const ProgressUpdate = () => {
                   type="email"
                   value={progressData.email}
                   onChange={(e) => setProgressData(prev => ({ ...prev, email: e.target.value }))}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-white/50"
                   placeholder="Enter your email address"
                   required
                 />
@@ -642,7 +642,7 @@ const ProgressUpdate = () => {
                 className={`w-full px-8 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 ${
                   isLoading
                     ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] text-white hover:shadow-lg hover:shadow-[#00d9ff]/25'
+                    : 'bg-gradient-to-r from-blue-400 to-purple-400 text-white hover:shadow-lg hover:shadow-blue-400/25'
                 }`}
                 whileHover={!isLoading ? { scale: 1.02 } : {}}
                 whileTap={!isLoading ? { scale: 0.98 } : {}}
@@ -672,7 +672,7 @@ const ProgressUpdate = () => {
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 mb-10"
           >
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-[#00d9ff] mb-2">Welcome back, {existingAssessment.participant_name}!</h3>
+              <h3 className="text-2xl font-bold text-blue-400 mb-2">Welcome back, {existingAssessment.participant_name}!</h3>
               <p className="text-white/70">What would you like to do today?</p>
             </div>
 
@@ -688,12 +688,12 @@ const ProgressUpdate = () => {
                 className={`p-8 rounded-2xl border-2 border-dashed transition-all duration-300 flex flex-col items-center justify-center space-y-4 ${
                   isLoading
                     ? 'border-gray-600 bg-gray-800/50 cursor-not-allowed'
-                    : 'border-[#00d9ff]/30 bg-white/5 hover:border-[#00d9ff] hover:bg-white/10 cursor-pointer'
+                    : 'border-blue-400/30 bg-white/5 hover:border-blue-400 hover:bg-white/10 cursor-pointer'
                 }`}
                 whileHover={!isLoading ? { scale: 1.02 } : {}}
                 whileTap={!isLoading ? { scale: 0.98 } : {}}
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-[#00d9ff] to-[#00d9ff]/50 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-400/50 rounded-full flex items-center justify-center">
                   <BarChart3 size={32} className="text-white" />
                 </div>
                 <div>
@@ -701,7 +701,7 @@ const ProgressUpdate = () => {
                   <p className="text-white/60 text-sm">See your latest progress and achievements</p>
                 </div>
                 {isLoading && (
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#00d9ff]"></div>
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-400"></div>
                 )}
               </motion.button>
 
@@ -712,11 +712,11 @@ const ProgressUpdate = () => {
                   console.log('existingAssessment:', existingAssessment);
                   setCurrentStep('input');
                 }}
-                className="p-8 rounded-2xl border-2 border-dashed border-[#ff41fd]/30 bg-white/5 hover:border-[#ff41fd] hover:bg-white/10 transition-all duration-300 flex flex-col items-center justify-center space-y-4 cursor-pointer"
+                className="p-8 rounded-2xl border-2 border-dashed border-purple-400/30 bg-white/5 hover:border-purple-400 hover:bg-white/10 transition-all duration-300 flex flex-col items-center justify-center space-y-4 cursor-pointer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-[#ff41fd] to-[#ff41fd]/50 rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-400/50 rounded-full flex items-center justify-center">
                   <Plus size={32} className="text-white" />
                 </div>
                 <div>
@@ -747,10 +747,15 @@ const ProgressUpdate = () => {
             className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 mb-10"
           >
             <div className="mb-6">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-[#00d9ff] mb-2">Week {progressData.weekNumber} Progress Update</h3>
-                  <p className="text-white/70">Welcome back, {existingAssessment.participant_name}!</p>
+              <div className="flex justify-between items-start mb-4 items-center">
+                <div className="flex items-center space-x-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-pink-500 to-violet-600 rounded-full flex items-center justify-center">
+                    <Target size={28} className="text-white" />
+                  </div>
+                  <div className="flex flex-col">
+                    <h3 className="text-2xl font-bold text-white mb-1">Week {progressData.weekNumber} Progress Update</h3>
+                    <p className="text-white/70">Welcome back, {existingAssessment.participant_name}!</p>
+                  </div>
                 </div>
                 
                 {/* Back Button - Top Right Corner */}
@@ -772,7 +777,7 @@ const ProgressUpdate = () => {
                 <select
                   value={progressData.weekNumber}
                   onChange={(e) => setProgressData(prev => ({ ...prev, weekNumber: parseInt(e.target.value) }))}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-purple-400 focus:outline-none transition-colors text-white"
                 >
                   {[1, 2, 3, 4, 5, 6].map(week => (
                     <option key={week} value={week}>Week {week}</option>
@@ -794,8 +799,8 @@ const ProgressUpdate = () => {
                       onClick={() => setProgressData(prev => ({ ...prev, salesConfidenceAfter: rating }))}
                       className={`w-12 h-12 rounded-full border-2 transition-all duration-300 ${
                         progressData.salesConfidenceAfter === rating
-                          ? 'bg-[#00d9ff]/20 border-[#00d9ff] text-white scale-110'
-                          : 'border-white/30 text-white/70 hover:border-[#00d9ff]/90 hover:scale-105'
+                          ? 'bg-blue-400/20 border-blue-400 text-white scale-110'
+                          : 'border-white/30 text-white/70 hover:border-blue-400/90 hover:scale-105'
                       }`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -813,7 +818,7 @@ const ProgressUpdate = () => {
               {/* KPI Updates */}
               {existingAssessment.selected_kpis && existingAssessment.selected_kpis.length > 0 && (
                 <div className="space-y-5">
-                  <h4 className="text-lg font-semibold text-[#00d9ff]">KPI Updates</h4>
+                  <h4 className="text-lg font-semibold text-blue-400">KPI Updates</h4>
                   <p className="text-white/70 text-sm">Update your current KPI values for this week.</p>
                   
                   {existingAssessment.selected_kpis.map((baselineKPI: any, index: number) => {
@@ -854,7 +859,7 @@ const ProgressUpdate = () => {
                                 }
                                 setProgressData(prev => ({ ...prev, kpiUpdates: updatedKPIs }));
                               }}
-                              className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50"
+                              className="w-full px-3 py-2 bg-white/5 border border-white/20 rounded-lg focus:border-blue-400 focus:outline-none transition-colors text-white placeholder-white/50"
                               placeholder="Enter current value"
                             />
                           </div>
@@ -868,7 +873,7 @@ const ProgressUpdate = () => {
               {/* Non-Financial KPI Updates */}
               {existingAssessment.selected_non_financial_kpis && existingAssessment.selected_non_financial_kpis.length > 0 && (
                 <div className="space-y-5">
-                  <h4 className="text-lg font-semibold text-[#ff41fd]">Non-Financial KPI Updates</h4>
+                  <h4 className="text-lg font-semibold text-purple-400">Non-Financial KPI Updates</h4>
                   <p className="text-white/70 text-sm">Update your current non-financial KPI values for this week.</p>
                   
                   {existingAssessment.selected_non_financial_kpis.map((baselineKPI: any, index: number) => {
@@ -892,7 +897,7 @@ const ProgressUpdate = () => {
                         const kpiLabel = nonFinancialKpiLabels[baselineKPI.kpi] || baselineKPI.kpi;
 
                         return (
-                          <div key={index} className="bg-gradient-to-br from-[#ff41fd]/10 to-[#ff41fd]/5 rounded-xl p-4 border border-[#ff41fd]/20">
+                          <div key={index} className="bg-gradient-to-br from-purple-400/10 to-purple-400/5 rounded-xl p-4 border border-purple-400/20">
                             <h5 className="text-white font-semibold mb-3">{kpiLabel}</h5>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                               <div>
@@ -925,7 +930,7 @@ const ProgressUpdate = () => {
                                     }
                                     setProgressData(prev => ({ ...prev, nonFinancialKpiUpdates: updatedKPIs }));
                                   }}
-                                  className="w-full px-3 py-2 bg-white/5 border border-[#ff41fd]/20 rounded-lg focus:border-[#ff41fd] focus:outline-none transition-colors text-white placeholder-white/50"
+                                  className="w-full px-3 py-2 bg-white/5 border border-purple-400/20 rounded-lg focus:border-purple-400 focus:outline-none transition-colors text-white placeholder-white/50"
                                   placeholder="Enter current value"
                                 />
                               </div>
@@ -938,7 +943,7 @@ const ProgressUpdate = () => {
 
               {/* Team & Operations Questions */}
               <div className="space-y-6">
-                <h4 className="text-lg font-semibold text-[#00d9ff]">Team & Operations Update *</h4>
+                <h4 className="text-lg font-semibold text-blue-400">Team & Operations Update *</h4>
                 <p className="text-white/70 text-sm">Please answer both questions below (required).</p>
                 
                 <div>
@@ -948,7 +953,7 @@ const ProgressUpdate = () => {
                   <select
                     value={progressData.revenueForecastConfidence}
                     onChange={(e) => setProgressData(prev => ({ ...prev, revenueForecastConfidence: e.target.value }))}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white"
                   >
                     <option value="">Select your confidence level...</option>
                     <option value="very-confident">Very confident - on track to exceed forecasts</option>
@@ -969,7 +974,7 @@ const ProgressUpdate = () => {
                   <select
                     value={progressData.jobDescriptionsClarity}
                     onChange={(e) => setProgressData(prev => ({ ...prev, jobDescriptionsClarity: e.target.value }))}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors text-white"
                   >
                     <option value="">Select your clarity level...</option>
                     <option value="yes-completely">Yes, completely - everyone has clear, documented roles</option>
@@ -991,7 +996,7 @@ const ProgressUpdate = () => {
                   <motion.button
                     type="button"
                     onClick={addImprovement}
-                    className="px-3 py-1 bg-[#00d9ff]/20 text-[#00d9ff] rounded-lg text-sm hover:bg-[#00d9ff]/30 transition-colors"
+                    className="px-3 py-1 bg-green-400/20 text-green-400 rounded-lg text-sm hover:bg-green-400/30 transition-colors"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -1024,7 +1029,7 @@ const ProgressUpdate = () => {
                   <motion.button
                     type="button"
                     onClick={addAchievement}
-                    className="px-3 py-1 bg-[#ff41fd]/20 text-[#ff41fd] rounded-lg text-sm hover:bg-[#ff41fd]/30 transition-colors"
+                    className="px-3 py-1 bg-yellow-400/20 text-yellow-400 rounded-lg text-sm hover:bg-yellow-400/30 transition-colors"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -1034,7 +1039,7 @@ const ProgressUpdate = () => {
                 <div className="space-y-2">
                   {progressData.newAchievements.map((achievement, index) => (
                     <div key={index} className="flex items-center space-x-2 p-3 bg-white/5 rounded-lg">
-                      <Award className="text-[#ff41fd] flex-shrink-0" size={16} />
+                      <Award className="text-yellow-400 flex-shrink-0" size={16} />
                       <span className="text-white/90 text-sm flex-1">{achievement}</span>
                       <button
                         onClick={() => removeAchievement(index)}
@@ -1056,7 +1061,7 @@ const ProgressUpdate = () => {
                 <textarea
                   value={progressData.notes}
                   onChange={(e) => setProgressData(prev => ({ ...prev, notes: e.target.value }))}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50 resize-none"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-white/50 focus:outline-none transition-colors text-white placeholder-white/50 resize-none"
                   placeholder="Any additional notes about your progress this week..."
                   rows={4}
                 />
@@ -1069,7 +1074,7 @@ const ProgressUpdate = () => {
                 className={`w-full px-8 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 ${
                   isLoading
                     ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] text-white hover:shadow-lg hover:shadow-[#00d9ff]/25'
+                    : 'bg-gradient-to-r from-blue-400 to-purple-400 text-white hover:shadow-lg hover:shadow-blue-400/25'
                 }`}
                 whileHover={!isLoading ? { scale: 1.02 } : {}}
                 whileTap={!isLoading ? { scale: 0.98 } : {}}
@@ -1095,7 +1100,7 @@ const ProgressUpdate = () => {
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <motion.div 
-            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 max-w-md w-full"
+            className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 max-w-md w-full"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
@@ -1118,7 +1123,7 @@ const ProgressUpdate = () => {
                   handlePopupCancel();
                 }
               }}
-              className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors text-white placeholder-white/50 mb-6"
+              className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-xl focus:border-white/50 focus:outline-none transition-colors text-white placeholder-white/50 mb-8"
               placeholder={`Enter your ${popupType}...`}
               autoFocus
             />
@@ -1126,7 +1131,7 @@ const ProgressUpdate = () => {
             <div className="flex justify-end space-x-4">
               <motion.button
                 onClick={handlePopupCancel}
-                className="px-6 py-2 rounded-xl font-semibold transition-all duration-300 text-white/80 hover:text-white border border-white/20 hover:border-white"
+                className="px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 text-white/80 hover:text-white border border-white/20 hover:border-white"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -1138,8 +1143,8 @@ const ProgressUpdate = () => {
                 className={`px-6 py-2 rounded-xl font-semibold transition-all duration-300 ${
                   popupInput.trim()
                     ? popupType === 'improvement'
-                      ? 'bg-[#00d9ff]/20 text-[#00d9ff] hover:bg-[#00d9ff]/30'
-                      : 'bg-[#ff41fd]/20 text-[#ff41fd] hover:bg-[#ff41fd]/30'
+                      ? 'bg-green-400/20 text-green-400 hover:bg-green-400/30'
+                      : 'bg-yellow-400/20 text-yellow-400 hover:bg-yellow-400/30'
                     : 'bg-gray-600 text-gray-400 cursor-not-allowed'
                 }`}
                 whileHover={popupInput.trim() ? { scale: 1.02 } : {}}

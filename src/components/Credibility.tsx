@@ -255,7 +255,7 @@ const Credibility = () => {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 1.2 }}
         >
-          <div className="inline-flex items-center gap-4 px-8 py-3 bg-[#00d9ff]/5 backdrop-blur-xl border border-[#00d9ff]/30 rounded-3xl">
+          <div className="inline-flex items-center gap-4 px-8 py-3 bg-[#00d9ff]/5 backdrop-blur-xl border border-[#00d9ff]/30 rounded-full">
             <Zap className="text-[#00d9ff]" size={30} md:size={24} />
             <span className="text-s md:text-base font-medium">
               Complete your operational toolkit with our Sales System
@@ -271,7 +271,7 @@ const Credibility = () => {
           transition={{ duration: 0.8, delay: 1.4 }}
         >
           <div className="text-center group">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 hover:border-[#00d9ff]/50">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-3 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 hover:border-white/20">
               <div className="text-3xl font-bold mb-1 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
                 200+
               </div>
@@ -280,7 +280,7 @@ const Credibility = () => {
           </div>
 
           <div className="text-center group">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 hover:border-[#00d9ff]/50">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-3 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 hover:border-white/20">
               <div className="text-3xl font-bold mb-1 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
                 +27%
               </div>
@@ -289,7 +289,7 @@ const Credibility = () => {
           </div>
 
           <div className="text-center group">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-3 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 hover:border-[#00d9ff]/50">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-3 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 hover:border-white/20">
               <div className="text-3xl font-bold mb-1 bg-gradient-to-r from-[#00d9ff] to-[#ff41fd] bg-clip-text text-transparent">
                 $90M+
               </div>

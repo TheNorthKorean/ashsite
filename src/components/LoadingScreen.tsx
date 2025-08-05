@@ -13,7 +13,7 @@ const LoadingScreen = () => {
             opacity: [0.3, 0.6, 0.3],
           }}
           transition={{
-            duration: 2,
+            duration: 1.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -25,7 +25,7 @@ const LoadingScreen = () => {
             opacity: [0.4, 0.2, 0.4],
           }}
           transition={{
-            duration: 2,
+            duration: 1.5,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -52,7 +52,7 @@ const LoadingScreen = () => {
               rotate: 360,
             }}
             transition={{
-              duration: 3,
+              duration: 2,
               repeat: Infinity,
               ease: "linear",
             }}
@@ -193,9 +193,9 @@ const LoadingScreen = () => {
             initial={{ width: '0%', x: 0 }}
             animate={{ width: '100%' }}
             transition={{ 
-              duration: 3, 
+              duration: 2.5, 
               ease: "easeOut",
-              delay: 0.5
+              delay: 0.75
             }}
           />
         </motion.div>

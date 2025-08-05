@@ -106,7 +106,7 @@ const CaseStudies = () => {
                 transition={{ duration: 0.8, delay: 0.2 * index }}
                 viewport={{ once: true }}
               >
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-10 hover:scale-[1.0] transition-all duration-300 group-hover:border-[#ffffff]/50">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 md:p-8 hover:scale-[1.0] transition-all duration-300">
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
                     {/* Study Info */}
                     <div className="lg:col-span-1">
@@ -115,19 +115,19 @@ const CaseStudies = () => {
                       </h2>
                       
                       <div className="space-y-2 mb-6">
-                        <p className="text-[#ff41fd] font-semibold">{study.practice}</p>
+                        <p className="text-pink-400 font-semibold">{study.practice}</p>
                         <p className="text-white/70">{study.location}</p>
                         <p className="text-white/60 text-sm">Timeframe: {study.timeframe}</p>
                       </div>
 
                       <div className="space-y-4">
                         <div>
-                          <h4 className="font-semibold mb-2 text-[#00d9ff]">Challenge</h4>
+                          <h4 className="font-semibold mb-2 text-blue-400">Challenge</h4>
                           <p className="text-white/70 text-sm leading-relaxed">{study.challenge}</p>
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold mb-2 text-[#00d9ff]">Solution</h4>
+                          <h4 className="font-semibold mb-2 text-blue-400">Solution</h4>
                           <p className="text-white/70 text-sm leading-relaxed">{study.solution}</p>
                         </div>
                       </div>
@@ -141,17 +141,17 @@ const CaseStudies = () => {
                         {study.results.map((result, i) => (
                           <motion.div 
                             key={i} 
-                            className="group/result bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 md:p-6 text-center text-sm md:text-lg hover:bg-white/10 hover:scale-[1.05] transition-all duration-300 hover:border-[#00d9ff]/50"
+                            className="group/result bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-4 md:p-4 text-center text-sm md:text-lg hover:bg-white/10 hover:scale-[1.05] transition-all duration-300"
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, delay: 0.1 * i }}
                             viewport={{ once: true }}
                           >
                             <div className="flex justify-center mb-3">
-                              <div className="w-12 h-12 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-2xl flex items-center justify-center group-hover/result:scale-110 transition-transform duration-300">
-                                {i === 0 && <TrendingUp className="text-[#ffffff] group-hover/result:text-white transition-colors duration-300" size={24} />}
-                                {i === 1 && <DollarSign className="text-[#ffffff] group-hover/result:text-white transition-colors duration-300" size={24} />}
-                                {i === 2 && <Users className="text-[#ffffff] group-hover/result:text-white transition-colors duration-300" size={24} />}
+                              <div className="w-12 h-12 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-full flex items-center justify-center group-hover/result:scale-110 transition-transform duration-300">
+                                {i === 0 && <TrendingUp className="text-green-400 group-hover/result:text-green-400 transition-colors duration-300" size={22} />}
+                                {i === 1 && <DollarSign className="text-green-400 group-hover/result:text-green-400 transition-colors duration-300" size={22} />}
+                                {i === 2 && <Users className="text-green-400 group-hover/result:text-green-400 transition-colors duration-300" size={22} />}
                               </div>
                             </div>
                             
@@ -168,7 +168,7 @@ const CaseStudies = () => {
 
                       {/* Testimonial Quote Box */}
                       <motion.div 
-                        className="group/quote bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-gradient-to-r hover:from-[#00d9ff]/15 hover:to-[#ff41fd]/15 hover:scale-[1.02] transition-all duration-300 hover:border-[#00d9ff]/50"
+                        className="group/quote bg-gradient-to-r from-[#00d9ff]/10 to-[#ff41fd]/10 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-gradient-to-r hover:from-[#00d9ff]/15 hover:to-[#ff41fd]/15 hover:scale-[1.02] transition-all duration-300"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
@@ -177,7 +177,7 @@ const CaseStudies = () => {
                         <p className="text-white/90 italic mb-4 leading-relaxed group-hover/quote:text-white transition-colors duration-300">
                           "{study.testimonial}"
                         </p>
-                        <p className="text-[#00d9ff] font-semibold transition-colors duration-300">— {study.author}</p>
+                        <p className="text-blue-400 font-semibold transition-colors duration-300">— {study.author}</p>
 
                         {/* Quote Box Hover Glow Effect */}
                         <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-[#00d9ff]/0 to-[#ff41fd]/0 group-hover/quote:from-[#00d9ff]/5 group-hover/quote:to-[#ff41fd]/5 transition-all duration-300 pointer-events-none" />

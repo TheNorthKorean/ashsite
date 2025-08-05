@@ -141,7 +141,7 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-4">Send us a Message</h2>
+              <h2 className="text-4xl font-bold mb-4">Send us a Message</h2>
               <p className="text-white/70">
                 Fill out the form below and we'll get back to you within 24 hours.
               </p>
@@ -172,7 +172,7 @@ const Contact = () => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 md:px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-2 md:px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                     placeholder="Enter your first name"
                   />
                 </div>
@@ -186,7 +186,7 @@ const Contact = () => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 md:px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-2 md:px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                     placeholder="Enter your last name"
                   />
                 </div>
@@ -202,7 +202,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 md:px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-2 md:px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -216,7 +216,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2 md:px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                    className="w-full px-4 py-2 md:px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -231,7 +231,7 @@ const Contact = () => {
                   value={formData.practiceName}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 md:px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                  className="w-full px-4 py-2 md:px-4 py-2.5 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                   placeholder="Enter your practice name"
                 />
               </div>
@@ -244,7 +244,7 @@ const Contact = () => {
                   value={formData.practiceType}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 md:px-4 py-2 md:py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors"
+                  className="w-full px-4 py-2 md:px-4 py-2 md:py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors"
                 >
                   <option value="">Select your practice type</option>
                   <option value="medical-spa">Medical Spa</option>
@@ -264,14 +264,14 @@ const Contact = () => {
                   onChange={handleInputChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-2 md:px-4 py-2 md:py-3 bg-white/5 border border-white/20 rounded-xl focus:border-[#00d9ff] focus:outline-none transition-colors resize-none"
+                  className="w-full px-4 py-2 md:px-4 py-2 md:py-3 bg-white/5 border border-white/20 rounded-xl focus:border-blue-400 focus:outline-none transition-colors resize-none"
                   placeholder="Tell us about your practice and how we can help..."
                 ></textarea>
               </div>
               <div className="text-center">
                 <motion.button
                   type="submit"
-                  className="px-8 py-4 text-[#00d9ff] w-full bg-[#00d9ff]/20 rounded-xl font-semibold text-base shadow-lg hover:bg-[#00d9ff]/30 transition-all duration-300"
+                  className="px-8 py-4 text-blue-400 w-full bg-blue-400/20 rounded-xl font-semibold text-base shadow-lg hover:bg-blue-400/30 transition-all duration-300"
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -293,13 +293,13 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">Other Ways to Reach Us</h2>
-            <p className="text-base md:text-lg lg:text-xl text-white/70 max-w-3xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-4xl font-bold mb-6">Other Ways to Reach Us</h2>
+            <p className="text-base md:text-lg lg:text-lg text-white/70 max-w-3xl mx-auto px-4">
               Choose the contact method that works best for you.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {contactMethods.map((method, index) => (
               <motion.div
                 key={method.title}
@@ -309,15 +309,15 @@ const Contact = () => {
                 transition={{ duration: 0.8, delay: 0.1 * index }}
                 viewport={{ once: true }}
               >
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full hover:hover:scale-[1.02] transition-all duration-300 group-hover:border-[#00d9ff]/50">
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 h-full hover:hover:scale-[1.02] transition-all duration-300">
                   {/* Icon */}
                   <div className="flex justify-center mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-[#00d9ff]/20 to-[#ff41fd]/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <method.icon className="text-[#00d9ff] group-hover:text-white transition-colors duration-300" size={32} />
+                    <div className="w-12 h-12 bg-blue-400/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <method.icon className="text-blue-400 group-hover:text-white transition-colors duration-300" size={22} />
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold mb-4 text-center group-hover:text-[#00d9ff] transition-colors duration-300">
+                  <h3 className="text-xl font-bold mb-4 text-center group-hover:text-blue-400 transition-colors duration-300">
                     {method.title}
                   </h3>
                   
@@ -331,7 +331,7 @@ const Contact = () => {
 
                   <div className="text-center">
                     <motion.button
-                      className="px-6 py-3 bg-[#00d9ff]/10 border border-[#00d9ff]/30 rounded-xl font-semibold text-[#ffffff] hover:bg-[#00d9ff]/30 transition-all duration-300"
+                      className="px-6 py-3 bg-blue-400/20 border border-blue-400/30 rounded-lg font-semibold text-[#ffffff] hover:bg-blue-400/30 transition-all duration-300"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => {
