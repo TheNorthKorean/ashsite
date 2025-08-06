@@ -360,10 +360,10 @@ const ProgressUpdate = () => {
         notes: JSON.stringify(notesData)
       });
 
-      console.log('About to navigate to:', `/coaching-demo?${params.toString()}`);
-      console.log('Full URL length:', `/coaching-demo?${params.toString()}`.length);
+      console.log('About to navigate to:', `/tracker?${params.toString()}`);
+      console.log('Full URL length:', `/tracker?${params.toString()}`.length);
       console.log('Notes parameter in URL:', params.get('notes'));
-      navigate(`/coaching-demo?${params.toString()}`);
+      navigate(`/tracker?${params.toString()}`);
     } catch (error) {
       console.error('Error in handleProgressSubmit:', error);
       setError('An error occurred while saving your progress.');
@@ -560,8 +560,8 @@ const ProgressUpdate = () => {
         notes: JSON.stringify(allNotes)
       });
 
-      console.log('Navigating to:', `/coaching-demo?${params.toString()}`);
-      navigate(`/coaching-demo?${params.toString()}`);
+      console.log('Navigating to:', `/tracker?${params.toString()}`);
+      navigate(`/tracker?${params.toString()}`);
     } catch (error) {
       console.error('Error in handleViewResults:', error);
       setError('An error occurred while loading your results.');

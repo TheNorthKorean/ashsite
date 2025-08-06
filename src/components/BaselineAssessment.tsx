@@ -250,7 +250,7 @@ const BaselineAssessment: React.FC<BaselineAssessmentProps> = ({ onBack }) => {
           {/* Back Button */}
           <div className="flex justify-start mb-6">
             <motion.button
-              onClick={onBack || (() => navigate('/coaching-demo'))}
+              onClick={onBack || (() => navigate('/tracker'))}
               className="flex items-center space-x-2 px-3 py-3 bg-white/0 hover:bg-white/10 border-2 border-white/50 rounded-full transition-all duration-300 text-sm text-white/80 hover:text-white"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

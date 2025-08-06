@@ -24,7 +24,7 @@ function AppContent() {
   const location = useLocation();
   
   // Check if we're in assessment or results view
-  const isAssessmentView = location.pathname === '/coaching-demo' && 
+  const isAssessmentView = location.pathname === '/tracker' && 
     (location.search.includes('view=assessment') || location.search.includes('view=results'));
   
   return (
@@ -50,7 +50,7 @@ function AppContent() {
           <Route path="/application" element={<Application />} />
           <Route path="/getstarted" element={<GetStarted />} />
           <Route path="/enterprise" element={<Enterprise />} />
-          <Route path="/coaching-demo" element={<CoachingDemo />} />
+          <Route path="/tracker" element={<CoachingDemo />} />
           <Route path="/progress-update" element={<ProgressUpdate />} />
         </Routes>
       </main>

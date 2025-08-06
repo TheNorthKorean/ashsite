@@ -125,7 +125,7 @@ const ResultsCard: React.FC<ResultsCardProps> = ({
       navigate(`/progress-update?${params.toString()}`);
     } else {
       // If from baseline assessment, go back to coaching demo main page (which shows options)
-      navigate('/coaching-demo');
+              navigate('/tracker');
     }
   };
   

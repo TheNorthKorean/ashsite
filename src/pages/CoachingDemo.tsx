@@ -786,7 +786,7 @@ const CoachingDemo = () => {
 
         {/* Key Features */}
         <motion.div
-          className="mb-16 max-w-5xl mx-auto pt-12"
+          className="mb-20 max-w-5xl mx-auto pt-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -829,7 +829,7 @@ const CoachingDemo = () => {
 
         {/* Demo Actions */}
         <motion.div
-          className="text-center mb-24 pt-12"
+          className="text-center mb-32 pt-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -882,7 +882,7 @@ const CoachingDemo = () => {
 
         {/* ROI Benefits */}
         <motion.div
-          className="bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-3xl p-8 text-center mb-16 pt-16 max-w-5xl mx-auto"
+          className="bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-3xl p-8 text-center mb-16 pt-10 max-w-5xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
