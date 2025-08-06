@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, BarChart3, Trophy, Users, Target, Shield } from 'lucide-react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useInView } from 'react-intersection-observer';
 import BaselineAssessment from '../components/BaselineAssessment';
 import ResultsCard from '../components/ResultsCard';
 import { AssessmentService, calculateBaselineScore, calculateComprehensiveScore } from '../services/assessmentService';
@@ -10,6 +11,68 @@ const CoachingDemo = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentView, setCurrentView] = useState<'demo' | 'assessment' | 'results'>('demo');
+
+  // Intersection Observer refs for scroll-triggered animations
+  const [processRef, processInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+    rootMargin: '-50px 0px'
+  });
+
+  const [featuresRef, featuresInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+    rootMargin: '-50px 0px'
+  });
+
+  const [demoActionsRef, demoActionsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+    rootMargin: '-50px 0px'
+  });
+
+  const [roiRef, roiInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+    rootMargin: '-50px 0px'
+  });
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.7,
+        ease: "easeOut"
+      }
+    }
+  };
 
   // Check URL params on mount and when they change
   useEffect(() => {
@@ -713,135 +776,251 @@ const CoachingDemo = () => {
             </div>
           </motion.div>
           
-          <h1 className="mt-8 text-4xl md:text-5xl lg:text-7xl max-w-4xl mx-auto font-bold mb-8 py-2">
-            <span className="text-white">6-Week </span>
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent" style={{ WebkitBackgroundClip: 'text', backgroundClip: 'text' }}>
+          <motion.h1 
+            className="mt-8 text-4xl md:text-5xl lg:text-7xl max-w-4xl mx-auto font-bold mb-8 py-2"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <motion.span 
+              className="text-white"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              6-Week{' '}
+            </motion.span>
+            <motion.span 
+              className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent" 
+              style={{ WebkitBackgroundClip: 'text', backgroundClip: 'text' }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.8 }}
+            >
               Transformation
-            </span>
-            <span className="text-white"> Program</span>
-          </h1>
-          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-8 text-sm md:text-sm">
-            <div className="flex items-center gap-2">
+            </motion.span>
+            <motion.span 
+              className="text-white"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+            >
+              {' '}Program
+            </motion.span>
+          </motion.h1>
+          <motion.div 
+            className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-8 text-sm md:text-sm"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div className="flex items-center gap-2" variants={itemVariants}>
               <BarChart3 className="text-green-400" size={20} />
               <span className="text-white/90">Measurable Growth</span>
-            </div>
-            <div className="flex items-center gap-2">
+            </motion.div>
+            <motion.div className="flex items-center gap-2" variants={itemVariants}>
               <Users className="text-blue-400" size={20} />
               <span className="text-white/90">Personal Alignment</span>
-            </div>
-            <div className="flex items-center gap-2">
+            </motion.div>
+            <motion.div className="flex items-center gap-2" variants={itemVariants}>
               <Target className="text-purple-500" size={20} />
               <span className="text-white/90">Long-term Impact</span>
-            </div>
-          </div>
-          <div className="max-w-3xl mx-auto mb-10">
+            </motion.div>
+          </motion.div>
+          <motion.div 
+            className="max-w-3xl mx-auto mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+          >
             <p className="text-white/70 text-lg leading-relaxed">
               A structured, repeatable system that ensures every coaching engagement delivers measurable growth, 
               personal alignment, and long-term impact. This process supports individual accountability, 
               team momentum, and leadership clarity on ROI.
             </p>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Process Overview */}
         <motion.div
+          ref={processRef}
           className="mb-16 pt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial="hidden"
+          animate={processInView ? "visible" : "hidden"}
+          variants={containerVariants}
         >
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Our Process</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <motion.h2 
+            className="text-3xl font-bold text-white mb-8 text-center"
+            variants={itemVariants}
+          >
+            Our Process
+          </motion.h2>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            variants={containerVariants}
+          >
+            <motion.div className="text-center" variants={cardVariants}>
+              <motion.div 
+                className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <BarChart3 className="text-blue-400" size={24} />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-white mb-3">1. Baseline Assessment</h3>
               <p className="text-white/70">
                 Comprehensive evaluation of current sales confidence, KPIs, and operational metrics
               </p>
-            </div>
+            </motion.div>
             
-            <div className="text-center">
-              <div className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div className="text-center" variants={cardVariants}>
+              <motion.div 
+                className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Users className="text-blue-400" size={24} />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-white mb-3">2. Personalized Coaching</h3>
               <p className="text-white/70">
                 6-week intensive program tailored to your specific challenges and goals
               </p>
-            </div>
+            </motion.div>
             
-            <div className="text-center">
-              <div className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <motion.div className="text-center" variants={cardVariants}>
+              <motion.div 
+                className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Trophy className="text-blue-400" size={24} />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-white mb-3">3. Results & Growth</h3>
               <p className="text-white/70">
                 Measurable improvements in confidence, KPIs, and overall practice performance
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
 
         {/* Key Features */}
         <motion.div
+          ref={featuresRef}
           className="mb-20 max-w-5xl mx-auto pt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          initial="hidden"
+          animate={featuresInView ? "visible" : "hidden"}
+          variants={containerVariants}
         >
-          <h2 className="text-3xl font-bold text-white mb-8 text-center pt-12">What Makes It Different</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
+          <motion.h2 
+            className="text-3xl font-bold text-white mb-8 text-center pt-12"
+            variants={itemVariants}
+          >
+            What Makes It Different
+          </motion.h2>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            variants={containerVariants}
+          >
+            <motion.div 
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6"
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.02, 
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                transition: { duration: 0.2 }
+              }}
+            >
               <Target className="text-purple-400 mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Structured & Repeatable</h3>
               <p className="text-white/70">
                 Every coaching engagement follows a proven framework that ensures consistent, measurable results across all participants.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
+            <motion.div 
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6"
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.02, 
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                transition: { duration: 0.2 }
+              }}
+            >
               <BarChart3 className="text-purple-400 mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Data-Driven Approach</h3>
               <p className="text-white/70">
                 Track specific KPIs and metrics to ensure tangible improvements and clear ROI for leadership.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
+            <motion.div 
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6"
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.02, 
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                transition: { duration: 0.2 }
+              }}
+            >
               <Users className="text-purple-400 mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Individual Accountability</h3>
               <p className="text-white/70">
                 Personal baseline assessments and progress tracking ensure each participant stays accountable to their goals.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 rounded-2xl p-6">
+            <motion.div 
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6"
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.02, 
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                transition: { duration: 0.2 }
+              }}
+            >
               <Trophy className="text-purple-400 mb-4" size={24} />
               <h3 className="text-xl font-bold text-white mb-3">Long-term Impact</h3>
               <p className="text-white/70">
                 Beyond immediate results, participants develop sustainable skills and systems for continued growth.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
 
         {/* Demo Actions */}
         <motion.div
+          ref={demoActionsRef}
           className="text-center mb-32 pt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial="hidden"
+          animate={demoActionsInView ? "visible" : "hidden"}
+          variants={containerVariants}
         >
-          <h2 className="text-3xl font-bold text-white mb-8">Experience the System</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <motion.h2 
+            className="text-3xl font-bold text-white mb-8"
+            variants={itemVariants}
+          >
+            Experience the System
+          </motion.h2>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+            variants={containerVariants}
+          >
             <motion.div
-              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:transition-all duration-300"
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8"
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.03,
+                backgroundColor: "rgba(255, 255, 255, 0.08)",
+                transition: { duration: 0.2 }
+              }}
             >
-              <div className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-blue-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <motion.div 
+                className="w-14 h-14 bg-gradient-to-r from-blue-400/20 to-blue-400/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: 10 }}
+                transition={{ duration: 0.3 }}
+              >
                 <BarChart3 className="text-blue-400" size={24} />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-white mb-4">Try the Assessment</h3>
               <p className="text-white/70 mb-6">
                 Experience our comprehensive baseline assessment that captures current state, goals, and success metrics.
@@ -858,11 +1037,21 @@ const CoachingDemo = () => {
             </motion.div>
 
             <motion.div
-              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:transition-all duration-300"
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8"
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.03,
+                backgroundColor: "rgba(255, 255, 255, 0.08)",
+                transition: { duration: 0.2 }
+              }}
             >
-              <div className="w-14 h-14 bg-gradient-to-r from-purple-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <motion.div 
+                className="w-14 h-14 bg-gradient-to-r from-purple-400/20 to-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4"
+                whileHover={{ scale: 1.1, rotate: -10 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Trophy className="text-purple-400" size={24} />
-              </div>
+              </motion.div>
               <h3 className="text-xl font-bold text-white mb-4">Track Your Progress</h3>
               <p className="text-white/70 mb-6">
                 Enter your practice name and email to view your current results and update your weekly progress.
@@ -877,36 +1066,93 @@ const CoachingDemo = () => {
                 <ArrowRight size={20} />
               </motion.button>
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* ROI Benefits */}
         <motion.div
+          ref={roiRef}
           className="bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-3xl p-8 text-center mb-16 pt-10 max-w-5xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          initial="hidden"
+          animate={roiInView ? "visible" : "hidden"}
+          variants={containerVariants}
         >
-          <h2 className="text-3xl font-bold text-white mb-6">Leadership ROI Clarity</h2>
-          <p className="text-white/80 text-lg mb-8 max-w-4xl mx-auto">
+          <motion.h2 
+            className="text-3xl font-bold text-white mb-6"
+            variants={itemVariants}
+          >
+            Leadership ROI Clarity
+          </motion.h2>
+          <motion.p 
+            className="text-white/80 text-lg mb-8 max-w-4xl mx-auto"
+            variants={itemVariants}
+          >
             Our structured assessment and results system provides leadership with clear visibility into coaching investment returns, 
             team momentum, and individual accountability metrics.
-          </p>
+          </motion.p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-xl mx-auto">
-            <div className="bg-white/5 rounded-3xl p-6">
-              <div className="text-3xl font-bold text-blue-400 mb-2">37%</div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-xl mx-auto"
+            variants={containerVariants}
+          >
+            <motion.div 
+              className="bg-white/5 rounded-3xl p-6"
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.05,
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                transition: { duration: 0.2 }
+              }}
+            >
+              <motion.div 
+                className="text-3xl font-bold text-blue-400 mb-2"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={roiInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                37%
+              </motion.div>
               <p className="text-white/70 text-sm">Average Revenue Increase</p>
-            </div>
-            <div className="bg-white/5 rounded-3xl p-6">
-              <div className="text-3xl font-bold text-blue-400 mb-2">78%</div>
+            </motion.div>
+            <motion.div 
+              className="bg-white/5 rounded-3xl p-6"
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.05,
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                transition: { duration: 0.2 }
+              }}
+            >
+              <motion.div 
+                className="text-3xl font-bold text-blue-400 mb-2"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={roiInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.6, delay: 1.0 }}
+              >
+                78%
+              </motion.div>
               <p className="text-white/70 text-sm">Conversion Rate Improvement</p>
-            </div>
-            <div className="bg-white/5 rounded-3xl p-6">
-              <div className="text-3xl font-bold text-blue-400 mb-2">94%</div>
+            </motion.div>
+            <motion.div 
+              className="bg-white/5 rounded-3xl p-6"
+              variants={cardVariants}
+              whileHover={{ 
+                scale: 1.05,
+                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                transition: { duration: 0.2 }
+              }}
+            >
+              <motion.div 
+                className="text-3xl font-bold text-blue-400 mb-2"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={roiInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.6, delay: 1.2 }}
+              >
+                94%
+              </motion.div>
               <p className="text-white/70 text-sm">Average Completion Score</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     </div>
