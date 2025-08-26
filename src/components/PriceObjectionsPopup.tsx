@@ -154,26 +154,22 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
 
               {/* Content Container */}
               <div className="relative min-h-[70vh] lg:min-h-[50vh] flex flex-col lg:flex-row">
-                {/* Mobile Video - Top */}
+                {/* Mobile Image - Top */}
                 <div className="block lg:hidden w-full pt-0 pb-0 mb-[-50px] mt-[-50px]">
                   <div className="relative w-full max-w-lg mx-auto">
-                    <motion.video
-                      src="/videos/Popup VIdeo.mp4"
-                      autoPlay
-                      muted
-                      playsInline
-                      controls={false}
+                    <motion.img
+                      src="/videos/PriceObjections.png"
+                      alt="Price Objections Guide"
                       className="w-full h-auto rounded-xl opacity-90"
-                      onLoadedData={(e) => {
-                        const video = e.target as HTMLVideoElement;
-                        video.play().catch(console.error);
-                      }}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 0.9, scale: 1 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
                     />
                   </div>
                 </div>
 
                 {/* Left Side - Content/Form Container */}
-                <div className="relative z-10 p-6 pt-0 lg:p-10 flex flex-col justify-center items-center lg:items-start text-center lg:text-left w-full lg:max-w-2xl">
+                <div className="relative z-10 p-6 pt-0 ml-2 lg:p-10 flex flex-col justify-center items-center lg:items-start text-center lg:text-left w-full lg:max-w-2xl">
                   <AnimatePresence mode="wait">
                     {!showForm ? (
                       /* Content View */
@@ -183,10 +179,11 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: -400, opacity: 0 }}
                         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                        className="-mt-3"
                       >
-                        <div className="inline-block px-3 py-1.5 bg-white/15 text-white rounded-full text-xs font-regular mb-4 lg:mb-6">
-                          Beyond the Price Tag! ($50 Value!)
-                        </div>
+                                                  <div className="inline-block px-3 py-1.5 bg-white/5 border border-white/10 text-white rounded-full text-xs font-regular mb-4 lg:mb-4">
+                            💰 Beyond the Price Tag! ($50 Value!)
+                          </div>
                         
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">
                           Mastering <br/>
@@ -216,10 +213,14 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                       >
                         {!isSubmitted ? (
                           <div>
-                                                        <div className="relative text-left mb-4">
-                              <div className="inline-block px-2.5 py-1 bg-white/20 text-white rounded-full text-xs font-regular mb-1">
-                                Beyond the Price Tag! ($50 Value!)
-                              </div>
+                                                        <div className="relative text-left mb-2 -mt-2">
+                                                             <div className="inline-block px-2.5 py-1 bg-white/5 border border-white/10 text-white rounded-full text-xs font-regular mb-3">
+                                  💰 Beyond the Price Tag! ($50 Value!)
+                                </div>
+                              
+                              <h2 className="text-2xl font-extrabold mb-4 leading-tight">
+                                Mastering <span className="gradient-text">Price Objections</span>
+                              </h2>
                             </div>
 
                                                           <form 
@@ -230,7 +231,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                 name="price-objections-guide"
                                 method="POST"
                                 data-netlify="true"
-                                className="space-y-3.5 w-full max-w-md"
+                                className="space-y-3 w-full max-w-md"
                               >
                               <input type="hidden" name="form-name" value="price-objections-guide" />
                               
@@ -246,7 +247,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                     value={formData.firstName}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-base text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                    className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
                                   />
                                 </div>
 
@@ -261,7 +262,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                     value={formData.lastName}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-base text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                    className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
                                   />
                                 </div>
                               </div>
@@ -277,7 +278,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                   value={formData.email}
                                   onChange={handleInputChange}
                                   required
-                                  className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-base text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                  className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
                                 />
                               </div>
 
@@ -292,7 +293,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                   value={formData.phoneNumber}
                                   onChange={handleInputChange}
                                   required
-                                  className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-base text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                  className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
                                 />
                               </div>
 
@@ -307,7 +308,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                   value={formData.businessName}
                                   onChange={handleInputChange}
                                   required
-                                  className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-base text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                  className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
                                 />
                               </div>
 
@@ -315,7 +316,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                 type="submit"
                                 disabled={isSubmitting}
                                 onClick={() => console.log('Submit button clicked', formData)}
-                                className="w-full px-6 lg:px-8 py-2.5 lg:py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl text-base lg:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mt-6"
+                                className="w-full px-6 lg:px-8 py-2.5 lg:py-2.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-3xl text-base lg:text-md transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl mt-6"
                               >
                                 {isSubmitting ? 'Submitting...' : 'Submit'}
                               </button>
@@ -349,22 +350,17 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                   </AnimatePresence>
                 </div>
 
-                {/* Desktop Video - Right Side (Overlapping) */}
-                <div className="absolute top-0 right-[-100px] w-2/3 h-full items-center justify-center p-8 lg:p-12 hidden lg:flex">
+                {/* Desktop Image - Right Side (Overlapping) */}
+                <div className="absolute top-[15px] right-[-40px] w-1/2 h-full items-center justify-center p-8 lg:p-12 hidden lg:flex">
                   <div className="relative w-full max-w-5xl">
-                    <motion.video
-                      src="/videos/Popup VIdeo.mp4"
-                      autoPlay
-                      muted
-                      playsInline
-                      controls={false}
+                    <motion.img
+                      src="/videos/PriceObjections.png"
+                      alt="Price Objections Guide"
                       className="w-full h-auto rounded-2xl opacity-80"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3, ease: "easeOut" }}
-                      onLoadedData={(e) => {
-                        const video = e.target as HTMLVideoElement;
-                        video.play().catch(console.error);
-                      }}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 0.8, scale: 1 }}
                     />
                   </div>
                 </div>
