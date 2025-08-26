@@ -218,7 +218,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                   💰 Beyond the Price Tag! ($50 Value!)
                                 </div>
                               
-                              <h2 className="text-2xl font-extrabold mb-4 leading-tight">
+                              <h2 className="text-2xl font-extrabold mb-3 leading-tight">
                                 Mastering <span className="gradient-text">Price Objections</span>
                               </h2>
                             </div>
@@ -247,7 +247,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                     value={formData.firstName}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                    className="w-full pl-10 pr-4 py-2 bg-white/5 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
                                   />
                                 </div>
 
@@ -262,7 +262,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                     value={formData.lastName}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                    className="w-full pl-10 pr-4 py-2 bg-white/5 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
                                   />
                                 </div>
                               </div>
@@ -278,7 +278,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                   value={formData.email}
                                   onChange={handleInputChange}
                                   required
-                                  className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                  className="w-full pl-10 pr-4 py-2 bg-white/5 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
                                 />
                               </div>
 
@@ -293,7 +293,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                   value={formData.phoneNumber}
                                   onChange={handleInputChange}
                                   required
-                                  className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                  className="w-full pl-10 pr-4 py-2 bg-white/5 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
                                 />
                               </div>
 
@@ -308,7 +308,7 @@ const PriceObjectionsPopup: React.FC<PriceObjectionsPopupProps> = ({
                                   value={formData.businessName}
                                   onChange={handleInputChange}
                                   required
-                                  className="w-full pl-11 pr-4 py-2 bg-white/10 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
+                                  className="w-full pl-10 pr-4 py-2 bg-white/5 rounded-xl text-sm lg:text-md text-white border border-white/10 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200 [&:-webkit-autofill]:!bg-white/10 [&:-webkit-autofill]:!text-white [&:-webkit-autofill]:!shadow-[0_0_0_30px_rgba(255,255,255,0.1)_inset] [&:-webkit-autofill]:!border-white/10 [&:-webkit-autofill]:!-webkit-text-fill-color-white"
                                 />
                               </div>
 
