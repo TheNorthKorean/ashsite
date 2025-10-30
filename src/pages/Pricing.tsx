@@ -239,7 +239,7 @@ const PricingPage = () => {
                       }
                     }}
                   >
-                    {plan.recommended ? 'Start Your Journey' : 'Contact Sales'}
+                    {plan.recommended ? 'Start Free Trial' : 'Contact Sales'}
                   </motion.button>
 
                   {/* Hover Glow Effect */}
